@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💼 JobBoard — A Modern Job Posting and Application Platform
 
-## Getting Started
+JobBoard is a full-stack web application that allows users to **post available job openings**, **browse listings**, and **apply for jobs** directly on the platform.  
+Job posters can **edit, delete**, or **mark positions as filled**, while applicants can submit **resumes** and **cover letters** securely.
 
-First, run the development server:
+Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **PostgreSQL** — JobBoard is designed to be fast, secure, and developer-friendly.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 👥 User Features
+- **Sign up / Login** (via Clerk or NextAuth)
+- **View all available jobs**
+- **Search & filter** by title, location, tags, or remote
+- **Apply for jobs** with a cover letter and resume upload
+- **Edit profile** (name, headline, resume, avatar)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🧑‍💼 Poster Features
+- **Post new job openings**
+- **Edit or delete** posted jobs
+- **Mark job as filled**
+- **View applicants** and download resumes
+- **Dashboard** to manage all job listings
 
-## Learn More
+### 🔒 Admin / Security
+- Role-based access (only posters can manage their jobs)
+- Input validation (Zod)
+- Secure file uploads (Neon / S3)
+- Rate limiting to prevent spam
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🏗️ Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### **Frontend**
+- [Next.js 14](https://nextjs.org/) — React Framework with App Router  
+- [Tailwind CSS](https://tailwindcss.com/) — Utility-first styling  
+- [shadcn/ui](https://ui.shadcn.com/) — Prebuilt accessible components  
+- [React Hook Form](https://react-hook-form.com/) — Form handling  
+- [Zod](https://zod.dev/) — Schema validation  
+- [TanStack Query (React Query)](https://tanstack.com/query) — Server state management  
 
-## Deploy on Vercel
+### **Backend**
+- [Prisma](https://www.prisma.io/) — ORM for PostgreSQL  
+- [Next.js API Routes] — Backend endpoints  
+- [PostgreSQL](https://www.postgresql.org/) — Relational database  
+- [Better Auth](https://www.better-auth.com/) — Authentication & user management  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### **Infrastructure**
+- Hosted on [Vercel](https://vercel.com/)
+- Database via [Neon](https://neon.com/) 
+- Storage: Neon / AWS S3 for resumes
+- CI/CD via GitHub Actions

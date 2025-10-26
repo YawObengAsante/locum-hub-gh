@@ -1,6 +1,13 @@
+import NavBar from "@/components/nav-bar";
+import { auth } from "../lib/auth";
+import { headers } from "next/headers";
 
-export default function Home() {
+export default async function Home() {
+ 
   return (
-   <div>home page</div>
+    <>
+      <NavBar />
+      <div>home page</div>
+    </>
   );
 }

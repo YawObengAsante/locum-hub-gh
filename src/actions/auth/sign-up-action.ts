@@ -1,3 +1,4 @@
+"use server"
 import { redirect } from "next/navigation";
 import { auth } from "../../lib/auth";
 import { z } from "zod";
@@ -8,20 +9,20 @@ const signUpSchema = z.object({
   password: z.string().min(8, "Password must be at least 8 characters"),
 });
 
-type SignUpForm = z.infer<typeof signUpSchema>;
+export type SignUpForm = z.infer<typeof signUpSchema>;
 
-type SignUpFormReturnType = {
+export type SignUpFormReturnType = {
   success: boolean;
   message: string;
   entries?: Partial<SignUpForm>;
   error?: Partial<{
     name: string[];
     email: string[];
-    message: string[];
+    password: string[];
   }>;
 };
 
-export async function signUpAction(
+export async function signUpAction(prevState: SignUpFormReturnType,
   formData: FormData
 ): Promise<SignUpFormReturnType> {
   try {
@@ -46,6 +47,7 @@ export async function signUpAction(
     await auth.api.signUpEmail({
       body: { ...validatedData.data },
     });
+    console.log("signed up user")
 
     redirect("/");
   } catch (error) {

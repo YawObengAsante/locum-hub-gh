@@ -1,3 +1,4 @@
+"use server"
 import { redirect } from "next/navigation";
 import { auth } from "../../lib/auth";
 import { z } from "zod";
@@ -9,18 +10,17 @@ const signInSchema = z.object({
 
 type SignInForm = z.infer<typeof signInSchema>;
 
-type SignInFormReturnType = {
+export type SignInFormReturnType = {
   success: boolean;
   message: string;
   entries?: Partial<SignInForm>;
   error?: Partial<{
-    name: string[];
     email: string[];
-    message: string[];
+    password: string[];
   }>;
 };
 
-export async function signInAction(
+export async function signInAction(prevState: SignInFormReturnType,
   formData: FormData
 ): Promise<SignInFormReturnType> {
   try {
@@ -46,7 +46,10 @@ export async function signInAction(
     });
 
     redirect("/");
-  } catch (error) {
+  } catch (error: any) {
+    if (error?.digest?.startsWith("NEXT_REDIRECT")) {
+    throw error; // rethrow so Next.js can handle it
+  }
     console.log("Sign up error:", error);
     return {
       success: false,

@@ -3,38 +3,32 @@ import { signOutAction } from "@/actions/auth/sign-out-action";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Link from "next/link";
+import MobileNavBar from "./mobile-nav-bar";
+import { NAV_ITEMS } from "./constants";
 
 export default async function NavBar() {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
-  if (!session) {
-    return (
-      <div className="flex items-center justify-between">
-        <h1 className="text-4xl font-bold">Job Board</h1>
-        <div className="flex items-center justify-center gap-4 mr-2">
-          <button className="bg-black text-white font-bold p-1">
-            <Link href="/sign-up">Sign Up</Link>
-          </button>
-          <button className="bg-black text-white font-bold p-1">
-            <Link href="/sign-in">Sign In</Link>
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   return (
-    <div className="flex items-center justify-between">
-      <h1 className="text-4xl font-bold">Yaw Obeng</h1>
-      <div className="flex items-center justify-center gap-3">
-        <p className="text-lg mb-4">Welcome, {session.user.name}</p>
-        <form action={signOutAction}>
-          <button type="submit" className="bg-black text-white font-bold p-1">
-            Logout
-          </button>
-        </form>
+    <nav className="container flex justify-between items-center p-5 border border-">
+      <h1>Job Board</h1>
+      <div className="hidden md:flex">
+        <ul>
+          {NAV_ITEMS.map((item, index) => {
+            return (
+              <li key={index}>
+                <Link href={item.href}>{item.label}</Link>
+              </li>
+            );
+          })}
+        </ul>
       </div>
-    </div>
+
+      <div className="md:hidden">
+        <MobileNavBar />
+      </div>
+    </nav>
   );
 }

@@ -1,0 +1,119 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Base */
+  --text: #051729;
+  --background: #e3f1fc;
+  --primary: #0e4977;
+  --secondary: #6664ed;
+  --accent: #3119cc;
+
+  /* Neutral / Structure */
+  --border: #c1d9ec;
+  --border-hover: #9fc3e4;
+  --surface: #f5faff;
+  --surface-hover: #e8f3fb;
+  --shadow: rgba(0, 0, 0, 0.08);
+
+  /* Interactive States */
+  --primary-hover: #13619f;
+  --primary-active: #0b3a5b;
+  --secondary-hover: #7b79f2;
+  --accent-hover: #3f26e0;
+  --disabled: #b4c5d6;
+
+  /* Semantic */
+  --success: #1d9a5f;
+  --warning: #d99200;
+  --error: #e84141;
+  --info: #007fdc;
+
+  /* Gradients & Effects */
+  --gradient-primary: linear-gradient(135deg, #3119cc, #0e4977);
+  --gradient-surface: linear-gradient(180deg, #f5faff, #e3f1fc);
+  --focus-ring: rgba(14, 73, 119, 0.35);
+  --scrollbar-thumb: #9fc3e4;
+  --scrollbar-thumb-hover: #7eadd8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-text: var(--text);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+
+  --color-border: var(--border);
+  --color-surface:var(--surface);
+  --color-border-hover: var(--border-hover);
+  --color-surface-hover: var(--surface-hover);
+  --color-shadow: var(--shadow);
+
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-active: var(--primary-active);
+  --color-secondary-hover:var(--secondary-hover);
+  --color-accent-hover: var(--accent-hover);
+  --color-disabled: var(--disabled);
+
+  --color-success: var(--success);
+  --color-warning:var(--warning);
+  --color-error: var(--error);
+  --color-info: var(--info);
+
+  --color-gradient-primary: var(--gradient-primary);
+  --color-gradient-surface: var(--gradient-surface);
+  --color-focus-ring: var(--focus-ring);
+  --color-scrollbar-thumb:var(--scrollbar-thumb);
+  --color-scrollbar-thumb-hover: var(--scrollbar-thumb-hover);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  --text: #d6e8fa;
+  --background: #03111c;
+  --primary: #88c4f1;
+  --secondary: #14129b;
+  --accent: #4b33e6;
+
+  --border: #0a1f33;
+  --border-hover: #16395a;
+  --surface: #081b2b;
+  --surface-hover: #0d2842;
+  --shadow: rgba(0, 0, 0, 0.5);
+
+  --primary-hover: #a3d4f8;
+  --primary-active: #72b8ea;
+  --secondary-hover: #1b19c2;
+  --accent-hover: #5d47f0;
+  --disabled: #3a4d63;
+
+  --success: #3fd07f;
+  --warning: #f5b942;
+  --error: #ff5c5c;
+  --info: #6ab8f7;
+
+  --gradient-primary: linear-gradient(135deg, #4b33e6, #88c4f1);
+  --gradient-surface: linear-gradient(180deg, #081b2b, #03111c);
+  --focus-ring: rgba(136, 196, 241, 0.5);
+  --scrollbar-thumb: #16395a;
+  --scrollbar-thumb-hover: #1f4f7a;
+}
+
+}
+
+.dark {
+  --text: #d6e8fa;
+  --background: #03111c;
+  --primary: #88c4f1;
+  --secondary: #14129b;
+  --accent: #4b33e6;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text;
+  }
+}

@@ -1,6 +1,6 @@
-"use server"
-import { signOutAction } from "@/src/actions/auth/sign-out-action";
-import { auth } from "@/src/lib/auth";
+"use server";
+import { signOutAction } from "@/actions/auth/sign-out-action";
+import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Link from "next/link";
 

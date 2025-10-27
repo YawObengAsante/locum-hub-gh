@@ -1,4 +1,4 @@
-"use server"
+"use server";
 import { redirect } from "next/navigation";
 import { auth } from "../../lib/auth";
 import { z } from "zod";
@@ -20,7 +20,8 @@ export type SignInFormReturnType = {
   }>;
 };
 
-export async function signInAction(prevState: SignInFormReturnType,
+export async function signInAction(
+  prevState: SignInFormReturnType,
   formData: FormData
 ): Promise<SignInFormReturnType> {
   try {
@@ -48,8 +49,8 @@ export async function signInAction(prevState: SignInFormReturnType,
     redirect("/");
   } catch (error: any) {
     if (error?.digest?.startsWith("NEXT_REDIRECT")) {
-    throw error; // rethrow so Next.js can handle it
-  }
+      throw error; // rethrow so Next.js can handle it
+    }
     console.log("Sign up error:", error);
     return {
       success: false,

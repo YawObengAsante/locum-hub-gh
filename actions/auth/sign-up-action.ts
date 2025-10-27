@@ -1,4 +1,4 @@
-"use server"
+"use server";
 import { redirect } from "next/navigation";
 import { auth } from "../../lib/auth";
 import { z } from "zod";
@@ -22,7 +22,8 @@ export type SignUpFormReturnType = {
   }>;
 };
 
-export async function signUpAction(prevState: SignUpFormReturnType,
+export async function signUpAction(
+  prevState: SignUpFormReturnType,
   formData: FormData
 ): Promise<SignUpFormReturnType> {
   try {
@@ -47,7 +48,7 @@ export async function signUpAction(prevState: SignUpFormReturnType,
     await auth.api.signUpEmail({
       body: { ...validatedData.data },
     });
-    console.log("signed up user")
+    console.log("signed up user");
 
     redirect("/");
   } catch (error) {

@@ -3,27 +3,23 @@ import { signOutAction } from "@/actions/auth/sign-out-action";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Link from "next/link";
-import MobileNavBar from "./mobile-nav-bar";
-import { NAV_ITEMS } from "./constants";
-
+import MobileNavBar, { NavLinks } from "./mobile-nav-bar";
+import { CircleUserRound } from "lucide-react";
 export default async function NavBar() {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  // const session = await auth.api.getSession({
+  //   headers: await headers(),
+  // });
 
   return (
-    <nav className="container flex justify-between items-center p-5 border border-">
-      <h1>Job Board</h1>
-      <div className="hidden md:flex">
-        <ul>
-          {NAV_ITEMS.map((item, index) => {
-            return (
-              <li key={index}>
-                <Link href={item.href}>{item.label}</Link>
-              </li>
-            );
-          })}
-        </ul>
+    <nav className="container p-5 border-b border-b-border shadow-2xl shadow-shadow">
+      <div className="flex items-center justify-between">
+        <h1>Job Board</h1>
+        <div className="hidden md:flex">
+          <NavLinks />
+        </div>
+          <Link href={"/dashboard"}>
+            <CircleUserRound className="text-text" />
+          </Link>
       </div>
 
       <div className="md:hidden">

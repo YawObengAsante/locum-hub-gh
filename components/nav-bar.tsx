@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import Link from "next/link";
 import MobileNavBar, { NavLinks } from "./mobile-nav-bar";
 import { CircleUserRound } from "lucide-react";
+
 export default async function NavBar() {
   // const session = await auth.api.getSession({
   //   headers: await headers(),
@@ -17,8 +18,8 @@ export default async function NavBar() {
         <div className="hidden md:flex">
           <NavLinks />
         </div>
-          <Link href={"/dashboard"}>
-            <CircleUserRound className="text-text" />
+          <Link href={"/dashboard"} className="hover:text-accent hidden md:flex ">
+            <CircleUserRound className="text-inherit" />
           </Link>
       </div>
 

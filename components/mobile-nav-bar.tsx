@@ -34,8 +34,8 @@ export default function MobileNavBar() {
                   <li key={index}>
                     <Link
                       href={item.href}
-                      className={cn("text-secondary flex gap-3 items-center", {
-                        "text-accent": isActive,
+                      className={cn("flex gap-3 items-center", {
+                        "text-secondary": isActive,
                       })}
                     >
                       <i>{item.icon}</i>
@@ -68,7 +68,7 @@ export const NavLinks = () => {
             <Link
               href={item.href}
               className={cn(
-                "flex text-secondary cursor-pointer hover:text-accent-hover",
+                "text-secondary cursor-pointer hover:text-accent-hover",
                 {
                   "text-accent border-b-3 transition-all duration-300 ease-in-out":
                     isActive,

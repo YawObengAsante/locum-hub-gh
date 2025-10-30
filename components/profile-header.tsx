@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
-import { PenIcon } from "lucide-react";
+import { PenIcon, CogIcon } from "lucide-react";
 import { Card } from "./ui/card";
 import BioText from "./bio-text";
 
@@ -40,7 +40,7 @@ export default function ProfileHeader() {
           size={"sm"}
           className="text-white cursor-pointer w-full sm:w-auto"
         >
-          Settings <PenIcon className="ml-2 h-4 w-4" />
+          Settings <CogIcon className="ml-2 h-4 w-4" />
         </Button>
       </div>
     </Card>

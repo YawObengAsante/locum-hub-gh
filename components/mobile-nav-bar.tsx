@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { NAV_ITEMS } from "./constants";
+import { NAV_ITEMS } from "../constants";
 import {
   Sheet,
   SheetTrigger,

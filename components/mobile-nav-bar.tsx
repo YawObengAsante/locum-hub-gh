@@ -25,8 +25,10 @@ export default function MobileNavBar() {
           <MenuIcon />
         </SheetTrigger>
         <SheetContent>
-          <SheetHeader>{/* <ProfileHeader /> */}</SheetHeader>
-          <nav className="border border-red-500 p-5">
+          <SheetHeader>
+            <SheetTitle>Mobile Navigation</SheetTitle>
+            {/* <ProfileHeader /> */}</SheetHeader>
+          <nav className="p-5">
             <ul className="flex flex-col gap-5 font-bold">
               {NAV_ITEMS.map((item, index) => {
                 const isActive = pathname === item.href;

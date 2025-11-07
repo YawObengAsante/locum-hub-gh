@@ -1,14 +1,13 @@
-"use client"
+"use client";
 import PasswordInput from "@/components/password-input";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signInAction } from "@/actions/auth";
-import {  type SignInFormReturnType } from "@/actions/auth/sign-in-action";
+import { type SignInFormReturnType } from "@/actions/auth/sign-in-action";
 import Link from "next/link";
 import { useActionState } from "react";
 import { Ring } from "ldrs/react";
-
 
 const initState: SignInFormReturnType = {
   success: false,
@@ -24,7 +23,7 @@ const initState: SignInFormReturnType = {
 };
 
 export default function SignInPage() {
-  const [state, action, isLoading] = useActionState(signInAction, initState )
+  const [state, action, isLoading] = useActionState(signInAction, initState);
   return (
     <div className="bg-[#391F81] text-white min-h-screen w-full flex items-center">
       <div className="container mx-auto px-6 py-12">
@@ -73,6 +72,12 @@ export default function SignInPage() {
                 Sign in to access job listings and apply in one click.
               </p>
 
+              {state.message && (
+                <div className="bg-red-200 border-red-300 text-red-600 p-3 rounded-2xl mb-2 text-center">
+                  <p>{state.message}</p>
+                </div>
+              )}
+
               <div className="flex flex-col gap-4">
                 {/* Email field */}
                 <div>
@@ -105,7 +110,7 @@ export default function SignInPage() {
                       </svg>
                     </span>
                     <Input
-                    defaultValue={state.entries?.email}
+                      defaultValue={state.entries?.email}
                       id="email"
                       name="email"
                       type="email"

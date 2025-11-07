@@ -45,7 +45,11 @@ export async function signInAction(
     await auth.api.signInEmail({
       body: { ...validatedData.data },
     });
-
+    console.log("user signed in successfully");
+     return {
+      success: true,
+      message: "Sign in successfully. Try again later",
+    };
     redirect("/");
   } catch (error: any) {
     if (error?.digest?.startsWith("NEXT_REDIRECT")) {

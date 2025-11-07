@@ -1,15 +1,15 @@
 "use server";
-import { signOutAction } from "@/actions/auth/sign-out-action";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Link from "next/link";
 import MobileNavBar, { NavLinks } from "./mobile-nav-bar";
 import { CircleUserRound } from "lucide-react";
+import { Button } from "./ui/button";
 
 export default async function NavBar() {
-  // const session = await auth.api.getSession({
-  //   headers: await headers(),
-  // });
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
 
   return (
     <nav className="container p-5 border-b border-b-border shadow-2xl shadow-shadow">
@@ -18,9 +18,18 @@ export default async function NavBar() {
         <div className="hidden md:flex">
           <NavLinks />
         </div>
-          <Link href={"/dashboard"} className="hover:text-accent hidden md:flex ">
+        {session ? (
+          <Link
+            href={"/dashboard"}
+            className="hover:text-accent hidden md:flex "
+          >
             <CircleUserRound className="text-inherit" />
           </Link>
+        ) : (
+          <Link href={"/sign-in"}>
+            <Button className="text-white cursor-pointer">Sign In</Button>
+          </Link>
+        )}
       </div>
 
       <div className="md:hidden">

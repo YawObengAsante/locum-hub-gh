@@ -14,15 +14,18 @@ datasource db {
 }
 
 model User {
-  id            String    @id 
+  id            String        @id @default(cuid())
   name          String
-  email         String   
-  emailVerified Boolean   @default(false)
+  email         String
+  emailVerified Boolean       @default(false)
   image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @default(now()) @updatedAt
+  headline      String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @default(now()) @updatedAt
   sessions      Session[]
   accounts      Account[]
+  Job           Job[]
+  Application   Application[]
 
   @@unique([email])
   @@map("user")
@@ -71,4 +74,57 @@ model Verification {
   updatedAt  DateTime @default(now()) @updatedAt
 
   @@map("verification")
+}
+
+model Job {
+  id           String        @id @default(cuid())
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  title        String
+  company      String
+  location     String?
+  type         JobType // FULL_TIME, PART_TIME, CONTRACT, INTERNSHIP, ANY
+  remote       Boolean       @default(false)
+  salaryMin    Int?
+  salaryMax    Int?
+  description  String        @db.Text
+  tags         String[] // Postgres array or separate Tag model
+  status       JobStatus     @default(OPEN) // OPEN, FILLED, CLOSED
+  posterId     String
+  poster       User          @relation(fields: [posterId], references: [id])
+  applications Application[]
+}
+
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERNSHIP
+  ANY
+}
+
+enum JobStatus {
+  OPEN
+  FILLED
+  CLOSED
+}
+
+model Application {
+  id          String    @id @default(cuid())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  jobId       String
+  job         Job       @relation(fields: [jobId], references: [id])
+  applicantId String
+  applicant   User      @relation(fields: [applicantId], references: [id])
+  coverLetter String?   @db.Text
+  resumeUrl   String? // link to uploaded resume
+  status      AppStatus @default(PENDING) // PENDING, REVIEWED, REJECTED, ACCEPTED
+}
+
+enum AppStatus {
+  PENDING
+  REVIEWED
+  REJECTED
+  ACCEPTED
 }

@@ -33,7 +33,7 @@ export default function ProfileHeader() {
           size={"sm"}
           className="text-white cursor-pointer w-full sm:w-auto"
         >
-          Edit profile <PenIcon className="ml-2 h-4 w-4" />
+          Edit profile <PenIcon className="ml-2 md:ml-0 h-4 w-4" />
         </Button>
         <form action={signOutAction}>
           <Button
@@ -42,7 +42,7 @@ export default function ProfileHeader() {
             className="text-white cursor-pointer w-full sm:w-auto"
           >
             Sign out
-            <LogOut className="ml-2 h-4 w-4" />
+            <LogOut className="ml-2 md:ml-0 h-4 w-4" />
           </Button>
         </form>
       </div>

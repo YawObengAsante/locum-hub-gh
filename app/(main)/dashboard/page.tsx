@@ -15,9 +15,6 @@ export default function DashboardPage() {
           <TabsContent value="uploaded">
             <div className="w-full bg-blue-300">
               <div>uploaded jobs here</div>
-              <Card>
-                
-              </Card>
             </div>
           </TabsContent>
 

@@ -81,14 +81,11 @@ model Job {
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
   title        String
-  company      String
+  hospital     String
   location     String?
-  type         JobType // FULL_TIME, PART_TIME, CONTRACT, INTERNSHIP, ANY
-  remote       Boolean       @default(false)
-  salaryMin    Int?
-  salaryMax    Int?
+  type         JobType 
+  salary       String?
   description  String        @db.Text
-  tags         String[] // Postgres array or separate Tag model
   status       JobStatus     @default(OPEN) // OPEN, FILLED, CLOSED
   posterId     String
   poster       User          @relation(fields: [posterId], references: [id])
@@ -98,6 +95,7 @@ model Job {
 enum JobType {
   FULL_TIME
   PART_TIME
+  LOCUM
   CONTRACT
   INTERNSHIP
   ANY

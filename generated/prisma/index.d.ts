@@ -48,19 +48,7 @@ export type Application = $Result.DefaultSelection<Prisma.$ApplicationPayload>
  * Enums
  */
 export namespace $Enums {
-  export const JobType: {
-  FULL_TIME: 'FULL_TIME',
-  PART_TIME: 'PART_TIME',
-  LOCUM: 'LOCUM',
-  CONTRACT: 'CONTRACT',
-  INTERNSHIP: 'INTERNSHIP',
-  ANY: 'ANY'
-};
-
-export type JobType = (typeof JobType)[keyof typeof JobType]
-
-
-export const JobStatus: {
+  export const JobStatus: {
   OPEN: 'OPEN',
   FILLED: 'FILLED',
   CLOSED: 'CLOSED'
@@ -79,10 +67,6 @@ export const AppStatus: {
 export type AppStatus = (typeof AppStatus)[keyof typeof AppStatus]
 
 }
-
-export type JobType = $Enums.JobType
-
-export const JobType: typeof $Enums.JobType
 
 export type JobStatus = $Enums.JobStatus
 
@@ -5929,7 +5913,7 @@ export namespace Prisma {
     title: string | null
     hospital: string | null
     location: string | null
-    jobType: $Enums.JobType | null
+    jobType: string | null
     salary: string | null
     description: string | null
     status: $Enums.JobStatus | null
@@ -5943,7 +5927,7 @@ export namespace Prisma {
     title: string | null
     hospital: string | null
     location: string | null
-    jobType: $Enums.JobType | null
+    jobType: string | null
     salary: string | null
     description: string | null
     status: $Enums.JobStatus | null
@@ -6088,7 +6072,7 @@ export namespace Prisma {
     title: string
     hospital: string
     location: string | null
-    jobType: $Enums.JobType
+    jobType: string
     salary: string | null
     description: string
     status: $Enums.JobStatus
@@ -6199,7 +6183,7 @@ export namespace Prisma {
       title: string
       hospital: string
       location: string | null
-      jobType: $Enums.JobType
+      jobType: string
       salary: string | null
       description: string
       status: $Enums.JobStatus
@@ -6635,7 +6619,7 @@ export namespace Prisma {
     readonly title: FieldRef<"Job", 'String'>
     readonly hospital: FieldRef<"Job", 'String'>
     readonly location: FieldRef<"Job", 'String'>
-    readonly jobType: FieldRef<"Job", 'JobType'>
+    readonly jobType: FieldRef<"Job", 'String'>
     readonly salary: FieldRef<"Job", 'String'>
     readonly description: FieldRef<"Job", 'String'>
     readonly status: FieldRef<"Job", 'JobStatus'>
@@ -8352,20 +8336,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'JobType'
-   */
-  export type EnumJobTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobType'>
-    
-
-
-  /**
-   * Reference to a field of type 'JobType[]'
-   */
-  export type ListEnumJobTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobType[]'>
-    
-
-
-  /**
    * Reference to a field of type 'JobStatus'
    */
   export type EnumJobStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobStatus'>
@@ -8721,7 +8691,7 @@ export namespace Prisma {
     title?: StringFilter<"Job"> | string
     hospital?: StringFilter<"Job"> | string
     location?: StringNullableFilter<"Job"> | string | null
-    jobType?: EnumJobTypeFilter<"Job"> | $Enums.JobType
+    jobType?: StringFilter<"Job"> | string
     salary?: StringNullableFilter<"Job"> | string | null
     description?: StringFilter<"Job"> | string
     status?: EnumJobStatusFilter<"Job"> | $Enums.JobStatus
@@ -8756,7 +8726,7 @@ export namespace Prisma {
     title?: StringFilter<"Job"> | string
     hospital?: StringFilter<"Job"> | string
     location?: StringNullableFilter<"Job"> | string | null
-    jobType?: EnumJobTypeFilter<"Job"> | $Enums.JobType
+    jobType?: StringFilter<"Job"> | string
     salary?: StringNullableFilter<"Job"> | string | null
     description?: StringFilter<"Job"> | string
     status?: EnumJobStatusFilter<"Job"> | $Enums.JobStatus
@@ -8792,7 +8762,7 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Job"> | string
     hospital?: StringWithAggregatesFilter<"Job"> | string
     location?: StringNullableWithAggregatesFilter<"Job"> | string | null
-    jobType?: EnumJobTypeWithAggregatesFilter<"Job"> | $Enums.JobType
+    jobType?: StringWithAggregatesFilter<"Job"> | string
     salary?: StringNullableWithAggregatesFilter<"Job"> | string | null
     description?: StringWithAggregatesFilter<"Job"> | string
     status?: EnumJobStatusWithAggregatesFilter<"Job"> | $Enums.JobStatus
@@ -8830,6 +8800,7 @@ export namespace Prisma {
 
   export type ApplicationWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    jobId_applicantId?: ApplicationJobIdApplicantIdCompoundUniqueInput
     AND?: ApplicationWhereInput | ApplicationWhereInput[]
     OR?: ApplicationWhereInput[]
     NOT?: ApplicationWhereInput | ApplicationWhereInput[]
@@ -8842,7 +8813,7 @@ export namespace Prisma {
     status?: EnumAppStatusFilter<"Application"> | $Enums.AppStatus
     job?: XOR<JobScalarRelationFilter, JobWhereInput>
     applicant?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id">
+  }, "id" | "jobId_applicantId">
 
   export type ApplicationOrderByWithAggregationInput = {
     id?: SortOrder
@@ -9222,7 +9193,7 @@ export namespace Prisma {
     title: string
     hospital: string
     location?: string | null
-    jobType: $Enums.JobType
+    jobType: string
     salary?: string | null
     description: string
     status?: $Enums.JobStatus
@@ -9237,7 +9208,7 @@ export namespace Prisma {
     title: string
     hospital: string
     location?: string | null
-    jobType: $Enums.JobType
+    jobType: string
     salary?: string | null
     description: string
     status?: $Enums.JobStatus
@@ -9252,7 +9223,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     hospital?: StringFieldUpdateOperationsInput | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: EnumJobTypeFieldUpdateOperationsInput | $Enums.JobType
+    jobType?: StringFieldUpdateOperationsInput | string
     salary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
@@ -9267,7 +9238,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     hospital?: StringFieldUpdateOperationsInput | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: EnumJobTypeFieldUpdateOperationsInput | $Enums.JobType
+    jobType?: StringFieldUpdateOperationsInput | string
     salary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
@@ -9282,7 +9253,7 @@ export namespace Prisma {
     title: string
     hospital: string
     location?: string | null
-    jobType: $Enums.JobType
+    jobType: string
     salary?: string | null
     description: string
     status?: $Enums.JobStatus
@@ -9296,7 +9267,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     hospital?: StringFieldUpdateOperationsInput | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: EnumJobTypeFieldUpdateOperationsInput | $Enums.JobType
+    jobType?: StringFieldUpdateOperationsInput | string
     salary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
@@ -9309,7 +9280,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     hospital?: StringFieldUpdateOperationsInput | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: EnumJobTypeFieldUpdateOperationsInput | $Enums.JobType
+    jobType?: StringFieldUpdateOperationsInput | string
     salary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
@@ -9711,13 +9682,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type EnumJobTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.JobType | EnumJobTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.JobType[] | ListEnumJobTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.JobType[] | ListEnumJobTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumJobTypeFilter<$PrismaModel> | $Enums.JobType
-  }
-
   export type EnumJobStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.JobStatus | EnumJobStatusFieldRefInput<$PrismaModel>
     in?: $Enums.JobStatus[] | ListEnumJobStatusFieldRefInput<$PrismaModel>
@@ -9767,16 +9731,6 @@ export namespace Prisma {
     posterId?: SortOrder
   }
 
-  export type EnumJobTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.JobType | EnumJobTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.JobType[] | ListEnumJobTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.JobType[] | ListEnumJobTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumJobTypeWithAggregatesFilter<$PrismaModel> | $Enums.JobType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumJobTypeFilter<$PrismaModel>
-    _max?: NestedEnumJobTypeFilter<$PrismaModel>
-  }
-
   export type EnumJobStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.JobStatus | EnumJobStatusFieldRefInput<$PrismaModel>
     in?: $Enums.JobStatus[] | ListEnumJobStatusFieldRefInput<$PrismaModel>
@@ -9797,6 +9751,11 @@ export namespace Prisma {
   export type JobScalarRelationFilter = {
     is?: JobWhereInput
     isNot?: JobWhereInput
+  }
+
+  export type ApplicationJobIdApplicantIdCompoundUniqueInput = {
+    jobId: string
+    applicantId: string
   }
 
   export type ApplicationCountOrderByAggregateInput = {
@@ -10078,10 +10037,6 @@ export namespace Prisma {
     connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
   }
 
-  export type EnumJobTypeFieldUpdateOperationsInput = {
-    set?: $Enums.JobType
-  }
-
   export type EnumJobStatusFieldUpdateOperationsInput = {
     set?: $Enums.JobStatus
   }
@@ -10301,28 +10256,11 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedEnumJobTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.JobType | EnumJobTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.JobType[] | ListEnumJobTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.JobType[] | ListEnumJobTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumJobTypeFilter<$PrismaModel> | $Enums.JobType
-  }
-
   export type NestedEnumJobStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.JobStatus | EnumJobStatusFieldRefInput<$PrismaModel>
     in?: $Enums.JobStatus[] | ListEnumJobStatusFieldRefInput<$PrismaModel>
     notIn?: $Enums.JobStatus[] | ListEnumJobStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumJobStatusFilter<$PrismaModel> | $Enums.JobStatus
-  }
-
-  export type NestedEnumJobTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.JobType | EnumJobTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.JobType[] | ListEnumJobTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.JobType[] | ListEnumJobTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumJobTypeWithAggregatesFilter<$PrismaModel> | $Enums.JobType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumJobTypeFilter<$PrismaModel>
-    _max?: NestedEnumJobTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumJobStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -10429,7 +10367,7 @@ export namespace Prisma {
     title: string
     hospital: string
     location?: string | null
-    jobType: $Enums.JobType
+    jobType: string
     salary?: string | null
     description: string
     status?: $Enums.JobStatus
@@ -10443,7 +10381,7 @@ export namespace Prisma {
     title: string
     hospital: string
     location?: string | null
-    jobType: $Enums.JobType
+    jobType: string
     salary?: string | null
     description: string
     status?: $Enums.JobStatus
@@ -10581,7 +10519,7 @@ export namespace Prisma {
     title?: StringFilter<"Job"> | string
     hospital?: StringFilter<"Job"> | string
     location?: StringNullableFilter<"Job"> | string | null
-    jobType?: EnumJobTypeFilter<"Job"> | $Enums.JobType
+    jobType?: StringFilter<"Job"> | string
     salary?: StringNullableFilter<"Job"> | string | null
     description?: StringFilter<"Job"> | string
     status?: EnumJobStatusFilter<"Job"> | $Enums.JobStatus
@@ -10887,7 +10825,7 @@ export namespace Prisma {
     title: string
     hospital: string
     location?: string | null
-    jobType: $Enums.JobType
+    jobType: string
     salary?: string | null
     description: string
     status?: $Enums.JobStatus
@@ -10901,7 +10839,7 @@ export namespace Prisma {
     title: string
     hospital: string
     location?: string | null
-    jobType: $Enums.JobType
+    jobType: string
     salary?: string | null
     description: string
     status?: $Enums.JobStatus
@@ -10964,7 +10902,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     hospital?: StringFieldUpdateOperationsInput | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: EnumJobTypeFieldUpdateOperationsInput | $Enums.JobType
+    jobType?: StringFieldUpdateOperationsInput | string
     salary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
@@ -10978,7 +10916,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     hospital?: StringFieldUpdateOperationsInput | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: EnumJobTypeFieldUpdateOperationsInput | $Enums.JobType
+    jobType?: StringFieldUpdateOperationsInput | string
     salary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
@@ -11056,7 +10994,7 @@ export namespace Prisma {
     title: string
     hospital: string
     location?: string | null
-    jobType: $Enums.JobType
+    jobType: string
     salary?: string | null
     description: string
     status?: $Enums.JobStatus
@@ -11154,7 +11092,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     hospital?: StringFieldUpdateOperationsInput | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: EnumJobTypeFieldUpdateOperationsInput | $Enums.JobType
+    jobType?: StringFieldUpdateOperationsInput | string
     salary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
@@ -11168,7 +11106,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     hospital?: StringFieldUpdateOperationsInput | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: EnumJobTypeFieldUpdateOperationsInput | $Enums.JobType
+    jobType?: StringFieldUpdateOperationsInput | string
     salary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
@@ -11182,7 +11120,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     hospital?: StringFieldUpdateOperationsInput | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: EnumJobTypeFieldUpdateOperationsInput | $Enums.JobType
+    jobType?: StringFieldUpdateOperationsInput | string
     salary?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus

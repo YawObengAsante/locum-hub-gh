@@ -207,15 +207,6 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-exports.JobType = exports.$Enums.JobType = {
-  FULL_TIME: 'FULL_TIME',
-  PART_TIME: 'PART_TIME',
-  LOCUM: 'LOCUM',
-  CONTRACT: 'CONTRACT',
-  INTERNSHIP: 'INTERNSHIP',
-  ANY: 'ANY'
-};
-
 exports.JobStatus = exports.$Enums.JobStatus = {
   OPEN: 'OPEN',
   FILLED: 'FILLED',

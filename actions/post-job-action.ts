@@ -1,0 +1,86 @@
+"use server";
+import { z } from "zod";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import { prisma } from "@/lib/prisma";
+
+const jobSchema = z.object({
+  title: z.string().min(1, "Job title is required"),
+  hospital: z.string().min(1, "Hospital name is required"),
+  location: z.string().min(1, "Location is required"),
+  jobType: z.string().min(1, "Job type is required"),
+  description: z.string().min(1, "Description is required"),
+  salary: z.string().min(1, "Salary is required"),
+});
+
+type JobForm = z.infer<typeof jobSchema>;
+
+export type JobFormReturnType = {
+  success: boolean;
+  message: string;
+  entries?: Partial<JobForm>;
+  error?: Partial<Record<keyof JobForm, string[]>>;
+};
+
+export async function postJobAction(
+  prevState: JobFormReturnType,
+  formData: FormData
+): Promise<JobFormReturnType> {
+  try {
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+    if (!session) redirect("/sign-in");
+
+    const data: Partial<JobForm> = {
+      title: formData.get("title") as string | undefined,
+      hospital: formData.get("hospital") as string | undefined,
+      location: formData.get("location") as string | undefined,
+      jobType: formData.get("jobType") as string | undefined,
+      description: formData.get("description") as string | undefined,
+      salary: formData.get("salary") as string | undefined,
+    };
+    const validatedData = jobSchema.safeParse(data);
+
+    if (!validatedData.success) {
+      const formattedErrors: Partial<Record<keyof JobForm, string[]>> = {};
+      validatedData.error.issues.forEach((err) => {
+        const field = err.path[0] as keyof JobForm;
+        if (!formattedErrors[field]) formattedErrors[field] = [];
+        formattedErrors[field]!.push(err.message);
+      });
+      return {
+        success: false,
+        message: "There was an error. Please fill the form correctly",
+        error: formattedErrors,
+        entries: data,
+      };
+    }
+
+    const userId = session.user.id;
+
+    await prisma.job.create({
+      data: {
+        title: validatedData.data.title,
+        location: validatedData.data.location,
+        hospital: validatedData.data.description,
+        description: validatedData.data.description,
+        salary: validatedData.data.salary,
+        posterId: userId,
+        jobType: validatedData.data.jobType,
+      },
+    });
+
+    return {
+      success: true,
+      message: "Job posted successfully",
+    };
+  } catch (error) {
+    console.log("Post job error:", error);
+    return {
+      success: false,
+      message: "Sign up failed. Try again later",
+    };
+  }
+}

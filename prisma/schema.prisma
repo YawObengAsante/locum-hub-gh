@@ -30,7 +30,7 @@ model User {
   updatedAt     DateTime      @default(now()) @updatedAt
   sessions      Session[]
   accounts      Account[]
-  jobs          Job[]
+  jobs          Job[] 
   Application   Application[]
 
   @@unique([email])
@@ -89,7 +89,7 @@ model Job {
   title        String
   hospital     String
   location     String?
-  jobType      JobType 
+  jobType      String 
   salary       String?
   description  String        @db.Text
   status       JobStatus     @default(OPEN) // OPEN, FILLED, CLOSED
@@ -98,14 +98,13 @@ model Job {
   applications Application[]
 }
 
-enum JobType {
-  FULL_TIME
-  PART_TIME
-  LOCUM
-  CONTRACT
-  INTERNSHIP
-  ANY
-}
+// enum JobType {
+//   FULL_TIME
+//   PART_TIME
+//   LOCUM
+//   CONTRACT
+//   INTERNSHIP
+// }
 
 enum JobStatus {
   OPEN
@@ -124,6 +123,8 @@ model Application {
   coverLetter String?   @db.Text
   resumeUrl   String? // link to uploaded resume
   status      AppStatus @default(PENDING) // PENDING, REVIEWED, REJECTED, ACCEPTED
+
+  @@unique([jobId, applicantId])
 }
 
 enum AppStatus {

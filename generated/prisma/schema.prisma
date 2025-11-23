@@ -9,14 +9,14 @@
 // }
 
 generator client {
-  provider        = "prisma-client-js" // or `prisma-client-js`
-  output          = "../generated/prisma"
-  engineType      = "client" // enable Prisma ORM without Rust
+  provider   = "prisma-client-js" // or `prisma-client-js`
+  output     = "../generated/prisma"
+  engineType = "client" // enable Prisma ORM without Rust
 }
 
 datasource db {
   provider = "postgresql"
-  url = env("DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -89,7 +89,7 @@ model Job {
   title        String
   hospital     String
   location     String?
-  jobType      JobType 
+  jobType      JobType
   salary       String?
   description  String        @db.Text
   status       JobStatus     @default(OPEN) // OPEN, FILLED, CLOSED

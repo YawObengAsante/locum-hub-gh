@@ -2,6 +2,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "../../lib/auth";
 import { z } from "zod";
+import { formatZodValidationErrors } from "@/lib/utils";
 
 const signUpSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -37,12 +38,7 @@ export async function signUpAction(
     const validatedData = signUpSchema.safeParse(data);
 
     if (!validatedData.success) {
-      const formattedErrors: Partial<Record<keyof SignUpForm, string[]>> = {}
-      validatedData.error.issues.forEach((err) => {
-        const field = err.path[0] as keyof SignUpForm
-        if(!formattedErrors[field]) formattedErrors[field] = []
-        formattedErrors[field].push(err.message)
-      })
+      const formattedErrors = formatZodValidationErrors(validatedData);
       return {
         success: false,
         message: "Please fill the fields correctly",

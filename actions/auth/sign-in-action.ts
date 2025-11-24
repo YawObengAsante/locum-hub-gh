@@ -2,6 +2,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "../../lib/auth";
 import { z } from "zod";
+import { formatZodValidationErrors } from "@/lib/utils";
 
 const signInSchema = z.object({
   email: z.email().min(1, "Please enter a valid email"),
@@ -34,12 +35,7 @@ export async function signInAction(
     const validatedData = signInSchema.safeParse(data);
 
     if (!validatedData.success) {
-      const formattedErrors: Partial<Record<keyof SignInForm, string[]>> = {}
-      validatedData.error.issues.forEach((err) => {
-        const field = err.path[0] as keyof SignInForm
-        if(!formattedErrors[field]) formattedErrors[field] = []
-        formattedErrors[field].push(err.message)
-      })
+      const formattedErrors = formatZodValidationErrors(validatedData);
       return {
         success: false,
         message: "Please fill the fields correctly",

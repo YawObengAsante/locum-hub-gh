@@ -4,6 +4,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import { formatZodValidationErrors } from "@/lib/utils";
 
 const jobSchema = z.object({
   title: z.string().min(1, "Job title is required"),
@@ -44,12 +45,7 @@ export async function postJobAction(
     const validatedData = jobSchema.safeParse(data);
 
     if (!validatedData.success) {
-      const formattedErrors: Partial<Record<keyof JobForm, string[]>> = {};
-      validatedData.error.issues.forEach((err) => {
-        const field = err.path[0] as keyof JobForm;
-        if (!formattedErrors[field]) formattedErrors[field] = [];
-        formattedErrors[field]!.push(err.message);
-      });
+      const formattedErrors = formatZodValidationErrors(validatedData)
       return {
         success: false,
         message: "There was an error. Please fill the form correctly",

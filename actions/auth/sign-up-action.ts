@@ -37,10 +37,16 @@ export async function signUpAction(
     const validatedData = signUpSchema.safeParse(data);
 
     if (!validatedData.success) {
+      const formattedErrors: Partial<Record<keyof SignUpForm, string[]>> = {}
+      validatedData.error.issues.forEach((err) => {
+        const field = err.path[0] as keyof SignUpForm
+        if(!formattedErrors[field]) formattedErrors[field] = []
+        formattedErrors[field].push(err.message)
+      })
       return {
         success: false,
         message: "Please fill the fields correctly",
-        error: validatedData.error.flatten().fieldErrors,
+        error: formattedErrors,
         entries: data,
       };
     }
@@ -51,11 +57,11 @@ export async function signUpAction(
     console.log("signed up user");
 
     redirect("/");
-  } catch (error) {
+  } catch (error: any) {
     console.log("Sign up error:", error);
     return {
       success: false,
-      message: "Sign up failed. Try again later",
+      message: error.message,
     };
   }
 }

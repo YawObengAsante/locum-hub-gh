@@ -8,6 +8,7 @@ import { type SignInFormReturnType } from "@/actions/auth/sign-in-action";
 import Link from "next/link";
 import { useActionState } from "react";
 import { Ring } from "ldrs/react";
+import { cn } from "@/lib/utils";
 
 const initState: SignInFormReturnType = {
   success: false,
@@ -71,9 +72,15 @@ export default function SignInPage() {
               <p className="text-sm text-white/70 mb-6">
                 Sign in to access job listings and apply in one click.
               </p>
-
               {state.message && (
-                <div className="bg-red-200 border-red-300 text-red-600 p-3 rounded-2xl mb-2 text-center">
+                <div
+                  className={cn(
+                    "p-3 rounded-2xl mb-2 text-center",
+                    state.success
+                      ? "bg-green-200 border-green-300 text-green-600"
+                      : "bg-red-200 border-red-300 text-red-600"
+                  )}
+                >
                   <p>{state.message}</p>
                 </div>
               )}
@@ -113,10 +120,11 @@ export default function SignInPage() {
                       defaultValue={state.entries?.email}
                       id="email"
                       name="email"
-                      type="email"
+                      // type="email"
                       placeholder="you@email.com"
                       className="pl-10 bg-transparent text-white placeholder-white/60 border border-white/20 rounded-lg py-3 w-full focus:outline-none focus:ring-2 focus:ring-white/10"
                     />
+                    {state.error?.email && <p className="text-red-500">{state.error.email[0]}</p>}
                   </div>
                 </div>
 
@@ -126,8 +134,8 @@ export default function SignInPage() {
                     Password
                   </Label>
                   <PasswordInput defaultValue={state.entries?.password} />
+                  {state.error?.password && <p className="text-red-500">{state.error.password[0]}</p>}
                 </div>
-
                 <Button
                   type="submit"
                   className="mt-1 w-full bg-white/20 hover:bg-white/30 text-white font-semibold py-3 rounded-lg"

@@ -34,10 +34,16 @@ export async function signInAction(
     const validatedData = signInSchema.safeParse(data);
 
     if (!validatedData.success) {
+      const formattedErrors: Partial<Record<keyof SignInForm, string[]>> = {}
+      validatedData.error.issues.forEach((err) => {
+        const field = err.path[0] as keyof SignInForm
+        if(!formattedErrors[field]) formattedErrors[field] = []
+        formattedErrors[field].push(err.message)
+      })
       return {
         success: false,
         message: "Please fill the fields correctly",
-        error: validatedData.error.flatten().fieldErrors,
+        error: formattedErrors,
         entries: data,
       };
     }
@@ -46,10 +52,6 @@ export async function signInAction(
       body: { ...validatedData.data },
     });
     console.log("user signed in successfully");
-     return {
-      success: true,
-      message: "Sign in successfully. Try again later",
-    };
     redirect("/");
   } catch (error: any) {
     if (error?.digest?.startsWith("NEXT_REDIRECT")) {
@@ -58,7 +60,7 @@ export async function signInAction(
     console.log("Sign up error:", error);
     return {
       success: false,
-      message: "Sign in failed. Try again later",
+      message: error.message,
     };
   }
 }

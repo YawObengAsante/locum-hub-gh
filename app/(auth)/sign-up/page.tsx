@@ -8,7 +8,7 @@ import { SignUpFormReturnType } from "@/actions/auth/sign-up-action";
 import Link from "next/link";
 import { useActionState, useEffect } from "react";
 import { Ring } from "ldrs/react";
-
+import { cn } from "@/lib/utils";
 
 const initState: SignUpFormReturnType = {
   success: false,
@@ -27,10 +27,6 @@ const initState: SignUpFormReturnType = {
 
 export default function SignUpPage() {
   const [state, action, isLoading] = useActionState(signUpAction, initState);
-
-  useEffect(() => {
-    if (!state.success) alert(state.message);
-  }, [state.success, state.message]);
 
   return (
     <div className="bg-[#391F81] text-white min-h-screen w-full flex items-center">
@@ -79,7 +75,18 @@ export default function SignUpPage() {
               <p className="text-sm text-white/70 mb-6">
                 Sign up to access job listings and apply in one click.
               </p>
-
+              {state.message && (
+                <div
+                  className={cn(
+                    "p-3 rounded-2xl mb-2 text-center",
+                    state.success
+                      ? "bg-green-200 border-green-300 text-green-600"
+                      : "bg-red-200 border-red-300 text-red-600"
+                  )}
+                >
+                  <p>{state.message}</p>
+                </div>
+              )}
               <div className="flex flex-col gap-4">
                 {/* Name field */}
                 <div>
@@ -119,6 +126,9 @@ export default function SignUpPage() {
                       placeholder="Your full name"
                       className="pl-10 bg-transparent text-white placeholder-white/60 border border-white/20 rounded-lg py-3 w-full focus:outline-none focus:ring-2 focus:ring-white/10"
                     />
+                    {state.error?.name && (
+                      <p className="text-red-500">{state.error.name}</p>
+                    )}
                   </div>
                 </div>
 
@@ -160,6 +170,9 @@ export default function SignUpPage() {
                       placeholder="you@email.com"
                       className="pl-10 bg-transparent text-white placeholder-white/60 border border-white/20 rounded-lg py-3 w-full focus:outline-none focus:ring-2 focus:ring-white/10"
                     />
+                    {state.error?.email && (
+                      <p className="text-red-500">{state.error.email}</p>
+                    )}
                   </div>
                 </div>
 
@@ -169,6 +182,9 @@ export default function SignUpPage() {
                     Password
                   </Label>
                   <PasswordInput defaultValue={state.entries?.password} />
+                  {state.error?.password && (
+                    <p className="text-red-500">{state.error.password}</p>
+                  )}
                 </div>
 
                 <Button

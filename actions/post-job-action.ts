@@ -64,7 +64,7 @@ export async function postJobAction(
       data: {
         title: validatedData.data.title,
         location: validatedData.data.location,
-        hospital: validatedData.data.description,
+        hospital: validatedData.data.hospital,
         description: validatedData.data.description,
         salary: validatedData.data.salary,
         posterId: userId,
@@ -72,15 +72,12 @@ export async function postJobAction(
       },
     });
 
-    return {
-      success: true,
-      message: "Job posted successfully",
-    };
+    redirect("/jobs");
   } catch (error) {
     console.log("Post job error:", error);
     return {
       success: false,
-      message: "Sign up failed. Try again later",
+      message: "Failed to post job. Try again later",
     };
   }
 }

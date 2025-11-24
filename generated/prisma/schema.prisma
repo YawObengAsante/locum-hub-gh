@@ -1,17 +1,7 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
-// generator client {
-//   provider = "prisma-client-js"
-// }
-
 generator client {
-  provider   = "prisma-client-js" // or `prisma-client-js`
+  provider   = "prisma-client-js"
   output     = "../generated/prisma"
-  engineType = "client" // enable Prisma ORM without Rust
+  engineType = "client"
 }
 
 datasource db {
@@ -20,44 +10,46 @@ datasource db {
 }
 
 model User {
-  id            String        @id @default(cuid())
+  id            String   @id @default(cuid())
   name          String
-  email         String
-  emailVerified Boolean       @default(false)
+  email         String   @unique
+  emailVerified Boolean  @default(false)
   image         String?
   headline      String?
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @default(now()) @updatedAt
-  sessions      Session[]
-  accounts      Account[]
-  jobs          Job[]
-  Application   Application[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
 
-  @@unique([email])
+  sessions     Session[]
+  accounts     Account[]
+  jobs         Job[]         @relation("PostedJobs")
+  applications Application[]
+
   @@map("user")
 }
 
 model Session {
   id        String   @id
+  token     String   @unique
   expiresAt DateTime
-  token     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   ipAddress String?
   userAgent String?
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([token])
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@map("session")
 }
 
 model Account {
-  id                    String    @id
-  accountId             String
-  providerId            String
-  userId                String
-  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                String @id
+  provider          String
+  providerAccountId String
+  userId            String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   accessToken           String?
   refreshToken          String?
   idToken               String?
@@ -65,9 +57,11 @@ model Account {
   refreshTokenExpiresAt DateTime?
   scope                 String?
   password              String?
-  createdAt             DateTime  @default(now())
-  updatedAt             DateTime  @updatedAt
 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([provider, providerAccountId])
   @@map("account")
 }
 
@@ -79,32 +73,32 @@ model Verification {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now()) @updatedAt
 
+  @@unique([identifier, value])
   @@map("verification")
 }
 
 model Job {
-  id           String        @id @default(cuid())
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  title        String
-  hospital     String
-  location     String?
-  jobType      String
-  salary       String?
-  description  String        @db.Text
-  status       JobStatus     @default(OPEN) // OPEN, FILLED, CLOSED
-  posterId     String
-  poster       User          @relation(fields: [posterId], references: [id])
-  applications Application[]
-}
+  id          String    @id @default(cuid())
+  title       String
+  hospital    String
+  location    String?
+  jobType     String
+  salary      String?
+  description String    @db.Text
+  status      JobStatus @default(OPEN)
 
-// enum JobType {
-//   FULL_TIME
-//   PART_TIME
-//   LOCUM
-//   CONTRACT
-//   INTERNSHIP
-// }
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  posterId String
+  poster   User   @relation("PostedJobs", fields: [posterId], references: [id], onDelete: Cascade)
+
+  applications Application[]
+
+  @@index([title])
+  @@index([hospital])
+  @@index([location])
+}
 
 enum JobStatus {
   OPEN
@@ -114,17 +108,21 @@ enum JobStatus {
 
 model Application {
   id          String    @id @default(cuid())
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  jobId       String
-  job         Job       @relation(fields: [jobId], references: [id])
-  applicantId String
-  applicant   User      @relation(fields: [applicantId], references: [id])
   coverLetter String?   @db.Text
-  resumeUrl   String? // link to uploaded resume
-  status      AppStatus @default(PENDING) // PENDING, REVIEWED, REJECTED, ACCEPTED
+  resumeUrl   String?
+  status      AppStatus @default(PENDING)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  jobId String
+  job   Job    @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  applicantId String
+  applicant   User   @relation(fields: [applicantId], references: [id], onDelete: Cascade)
 
   @@unique([jobId, applicantId])
+  @@index([status])
 }
 
 enum AppStatus {

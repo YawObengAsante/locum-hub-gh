@@ -134,8 +134,8 @@ exports.Prisma.UserScalarFieldEnum = {
 
 exports.Prisma.SessionScalarFieldEnum = {
   id: 'id',
-  expiresAt: 'expiresAt',
   token: 'token',
+  expiresAt: 'expiresAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   ipAddress: 'ipAddress',
@@ -145,8 +145,8 @@ exports.Prisma.SessionScalarFieldEnum = {
 
 exports.Prisma.AccountScalarFieldEnum = {
   id: 'id',
-  accountId: 'accountId',
-  providerId: 'providerId',
+  provider: 'provider',
+  providerAccountId: 'providerAccountId',
   userId: 'userId',
   accessToken: 'accessToken',
   refreshToken: 'refreshToken',
@@ -170,8 +170,6 @@ exports.Prisma.VerificationScalarFieldEnum = {
 
 exports.Prisma.JobScalarFieldEnum = {
   id: 'id',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
   title: 'title',
   hospital: 'hospital',
   location: 'location',
@@ -179,18 +177,20 @@ exports.Prisma.JobScalarFieldEnum = {
   salary: 'salary',
   description: 'description',
   status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   posterId: 'posterId'
 };
 
 exports.Prisma.ApplicationScalarFieldEnum = {
   id: 'id',
+  coverLetter: 'coverLetter',
+  resumeUrl: 'resumeUrl',
+  status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   jobId: 'jobId',
-  applicantId: 'applicantId',
-  coverLetter: 'coverLetter',
-  resumeUrl: 'resumeUrl',
-  status: 'status'
+  applicantId: 'applicantId'
 };
 
 exports.Prisma.SortOrder = {

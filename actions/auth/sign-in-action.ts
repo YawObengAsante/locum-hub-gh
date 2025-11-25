@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "../../lib/auth";
 import { z } from "zod";
-import { formatZodValidationErrors } from "@/lib/utils";
+import { formatZodValidationErrors, parseError } from "@/lib/utils";
 
 const signInSchema = z.object({
   email: z.email().min(1, "Please enter a valid email"),
@@ -54,9 +54,10 @@ export async function signInAction(
       throw error; // rethrow so Next.js can handle it
     }
     console.log("Sign up error:", error);
+    const errorMessage = parseError(error);
     return {
       success: false,
-      message: error.message,
+      message: errorMessage,
     };
   }
 }

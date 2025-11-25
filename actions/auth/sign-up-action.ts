@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "../../lib/auth";
 import { z } from "zod";
-import { formatZodValidationErrors } from "@/lib/utils";
+import { formatZodValidationErrors, parseError } from "@/lib/utils";
 
 const signUpSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -54,10 +54,14 @@ export async function signUpAction(
 
     redirect("/");
   } catch (error: any) {
+    if (error?.digest?.startsWith("NEXT_REDIRECT")) {
+      throw error; // rethrow so Next.js can handle it
+    }
     console.log("Sign up error:", error);
+    const errorMessage = parseError(error)
     return {
       success: false,
-      message: error.message,
+      message: errorMessage,
     };
   }
 }

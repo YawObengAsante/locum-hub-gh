@@ -4,7 +4,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { formatZodValidationErrors } from "@/lib/utils";
+import { formatZodValidationErrors, parseError } from "@/lib/utils";
 
 const jobSchema = z.object({
   title: z.string().min(1, "Job title is required"),
@@ -45,7 +45,7 @@ export async function postJobAction(
     const validatedData = jobSchema.safeParse(data);
 
     if (!validatedData.success) {
-      const formattedErrors = formatZodValidationErrors(validatedData)
+      const formattedErrors = formatZodValidationErrors(validatedData);
       return {
         success: false,
         message: "There was an error. Please fill the form correctly",
@@ -69,11 +69,14 @@ export async function postJobAction(
     });
 
     redirect("/jobs");
-  } catch (error) {
-    console.log("Post job error:", error);
+  } catch (error: any) {
+    if (error?.digest?.startsWith("NEXT_REDIRECT")) {
+      throw error; // rethrow so Next.js can handle it
+    }
+    const errorMessage = parseError(error);
     return {
       success: false,
-      message: "Failed to post job. Try again later",
+      message: errorMessage,
     };
   }
 }

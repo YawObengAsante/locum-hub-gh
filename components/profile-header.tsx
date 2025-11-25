@@ -5,25 +5,33 @@ import { Card } from "./ui/card";
 import BioText from "./bio-text";
 import { signOutAction } from "@/actions/auth/sign-out-action";
 
-export default function ProfileHeader() {
-  const bioText = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis aut
-          fugit aspernatur similique esse, eveniet rerum laboriosam non odit in
-          numquam minima quas tempore sequi at, nostrum mollitia culpa ducimus!`;
+type User = {
+  image: string | null;
+  id: string;
+  email: string;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+  emailVerified: boolean;
+  headline: string | null;
+};
+
+export default function ProfileHeader({ userData }: { userData: User }) {
+  
   return (
     <Card className="m-3 sm:m-5 p-4 sm:p-6 md:p-8 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
           <Avatar className="h-16 w-16 md:h-20 md:w-20">
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>YA</AvatarFallback>
+            <AvatarImage src={userData.image ?? undefined} />
+            <AvatarFallback className="bg-amber-300 font-bold text-sm md:text-2xl">{userData.name.slice(0,1)}</AvatarFallback>
           </Avatar>
           <div className="space-y-2">
-            <h2 className="font-semibold text-lg md:text-xl">Yaw Asante</h2>
-            <p className="text-sm md:text-base">SanFransico</p>
+            <h2 className="font-semibold text-lg md:text-xl">{userData.name}</h2>
             <p className="text-sm md:text-base text-black/50">
-              yawasante@email.com
+              {userData.email}
             </p>
-            <BioText bioText={bioText} />
+            <BioText bioText={userData.headline} />
           </div>
         </div>
       </div>

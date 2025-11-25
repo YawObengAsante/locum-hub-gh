@@ -47,8 +47,11 @@ export async function signUpAction(
       };
     }
 
+    const idx = Math.floor(Math.random() * 100) + 1; // generate a num between 1-100
+    const randomAvatar = `https://avatar.iran.liara.run/public/${idx}.png`;
+
     await auth.api.signUpEmail({
-      body: { ...validatedData.data },
+      body: { ...validatedData.data, image: randomAvatar },
     });
     console.log("signed up user");
 

@@ -5,11 +5,11 @@
 
 :root {
   /* Base */
-  --text: #051729;
-  --background: #e3f1fc;
-  --primary: #0e4977;
-  --secondary: #6664ed;
-  --accent: #3119cc;
+  --text: #050315;
+  --background: #fbfbfe;
+  --primary: #2f27ce;
+  --secondary: #9691f5;
+  --accent: #433bff;
 
   /* Neutral / Structure */
   --border: #c1d9ec;
@@ -47,69 +47,68 @@
   --color-accent: var(--accent);
 
   --color-border: var(--border);
-  --color-surface:var(--surface);
+  --color-surface: var(--surface);
   --color-border-hover: var(--border-hover);
   --color-surface-hover: var(--surface-hover);
   --color-shadow: var(--shadow);
 
   --color-primary-hover: var(--primary-hover);
   --color-primary-active: var(--primary-active);
-  --color-secondary-hover:var(--secondary-hover);
+  --color-secondary-hover: var(--secondary-hover);
   --color-accent-hover: var(--accent-hover);
   --color-disabled: var(--disabled);
 
   --color-success: var(--success);
-  --color-warning:var(--warning);
+  --color-warning: var(--warning);
   --color-error: var(--error);
   --color-info: var(--info);
 
   --color-gradient-primary: var(--gradient-primary);
   --color-gradient-surface: var(--gradient-surface);
   --color-focus-ring: var(--focus-ring);
-  --color-scrollbar-thumb:var(--scrollbar-thumb);
+  --color-scrollbar-thumb: var(--scrollbar-thumb);
   --color-scrollbar-thumb-hover: var(--scrollbar-thumb-hover);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-  --text: #d6e8fa;
-  --background: #03111c;
-  --primary: #88c4f1;
-  --secondary: #14129b;
-  --accent: #4b33e6;
+    --text: #ebe9fc;
+    --background: #010104;
+    --primary: #3a31d8;
+    --secondary: #020024;
+    --accent: #0600c2;
 
-  --border: #0a1f33;
-  --border-hover: #16395a;
-  --surface: #081b2b;
-  --surface-hover: #0d2842;
-  --shadow: rgba(0, 0, 0, 0.5);
+    --border: #0a1f33;
+    --border-hover: #16395a;
+    --surface: #081b2b;
+    --surface-hover: #0d2842;
+    --shadow: rgba(0, 0, 0, 0.5);
 
-  --primary-hover: #a3d4f8;
-  --primary-active: #72b8ea;
-  --secondary-hover: #1b19c2;
-  --accent-hover: #5d47f0;
-  --disabled: #3a4d63;
+    --primary-hover: #a3d4f8;
+    --primary-active: #72b8ea;
+    --secondary-hover: #1b19c2;
+    --accent-hover: #5d47f0;
+    --disabled: #3a4d63;
 
-  --success: #3fd07f;
-  --warning: #f5b942;
-  --error: #ff5c5c;
-  --info: #6ab8f7;
+    --success: #3fd07f;
+    --warning: #f5b942;
+    --error: #ff5c5c;
+    --info: #6ab8f7;
 
-  --gradient-primary: linear-gradient(135deg, #4b33e6, #88c4f1);
-  --gradient-surface: linear-gradient(180deg, #081b2b, #03111c);
-  --focus-ring: rgba(136, 196, 241, 0.5);
-  --scrollbar-thumb: #16395a;
-  --scrollbar-thumb-hover: #1f4f7a;
-}
-
+    --gradient-primary: linear-gradient(135deg, #4b33e6, #88c4f1);
+    --gradient-surface: linear-gradient(180deg, #081b2b, #03111c);
+    --focus-ring: rgba(136, 196, 241, 0.5);
+    --scrollbar-thumb: #16395a;
+    --scrollbar-thumb-hover: #1f4f7a;
+  }
 }
 
 .dark {
-  --text: #d6e8fa;
-  --background: #03111c;
-  --primary: #88c4f1;
-  --secondary: #14129b;
-  --accent: #4b33e6;
+  --text: #ebe9fc;
+  --background: #010104;
+  --primary: #3a31d8;
+  --secondary: #020024;
+  --accent: #0600c2;
 }
 
 @layer base {

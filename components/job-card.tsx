@@ -21,7 +21,6 @@ export default function JobCard() {
               <time className="text-xs text-gray-400">2d ago</time>
             </div>
           </div>
-          
         </div>
       </CardHeader>
       <CardContent>
@@ -54,9 +53,11 @@ export default function JobCard() {
         <Separator className="mb-3" />
 
         <div className="flex items-center justify-between gap-3 mt-3">
-          <div>
+          <div className="grid gap-1">
             <span className="font-semibold text-base">$120/hr</span>
-            <div className="text-sm text-gray-400">Accra</div>
+            <span className="text-sm text-success border border-success bg-green-100 p-1 font-semibold flex justify-center items-center rounded-sm">
+              Open
+            </span>
           </div>
 
           <div className="flex items-center gap-2">

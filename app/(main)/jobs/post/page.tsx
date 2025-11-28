@@ -1,5 +1,6 @@
 "use client"
 import { JobFormReturnType, postJobAction } from "@/actions/post-job-action";
+import { JobTypeSelectGroup } from "@/components/job-type-select-group";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,15 +9,6 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Ring } from "ldrs/react";
 import { useActionState } from "react";
@@ -66,24 +58,7 @@ export default function PostJobPage() {
             </div>
             <div>
               <h1>Job Type</h1>
-              <Select name="jobType">
-                <SelectTrigger className="w-full">
-                  <SelectValue
-                    defaultValue={state.entries?.jobType}
-                    placeholder="Select a type"
-                  />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Full time</SelectLabel>
-                    <SelectItem value="FULL_TIME">Full time</SelectItem>
-                    <SelectItem value="PART_TIME">Part time</SelectItem>
-                    <SelectItem value="LOCUM">Locum</SelectItem>
-                    <SelectItem value="CONTRACT">Contract</SelectItem>
-                    <SelectItem value="INTERNSHIP">Internship</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <JobTypeSelectGroup name={"jobType"} state={state} />
             </div>
             <div>
               <h1>Description</h1>

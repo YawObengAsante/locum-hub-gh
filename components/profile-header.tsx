@@ -6,7 +6,7 @@ import BioText from "./bio-text";
 import { signOutAction } from "@/actions/auth/sign-out-action";
 import { EditProfileButton } from "./edit-profile-button";
 
-type User = {
+export type UserType = {
   image: string | null;
   id: string;
   email: string;
@@ -17,7 +17,7 @@ type User = {
   headline: string | null;
 };
 
-export default function ProfileHeader({ userData }: { userData: User }) {
+export default function ProfileHeader({ userData }: { userData: UserType }) {
   return (
     <Card className="m-3 sm:m-5 p-4 sm:p-6 md:p-8 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
       <div className="space-y-4">
@@ -40,7 +40,7 @@ export default function ProfileHeader({ userData }: { userData: User }) {
         </div>
       </div>
       <div className="flex flex-col sm:flex-row gap-3 sm:items-center md:items-start">
-        <EditProfileButton />
+        <EditProfileButton name={userData.name} headline={userData.headline} image={userData.image} />
         <form action={signOutAction}>
           <Button
             variant={"secondary"}

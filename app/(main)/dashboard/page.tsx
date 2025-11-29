@@ -1,4 +1,5 @@
 import ProfileHeader from "@/components/profile-header";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
 import { auth } from "@/lib/auth";
@@ -34,6 +35,14 @@ export default async function DashboardPage() {
           <TabsContent value="uploaded">
             <div className="w-full bg-blue-300">
               <div>uploaded jobs here</div>
+              <div>
+                <h1>Job Title</h1>
+                <p>Hospital</p>
+                <p>Location</p>
+                <p>Job status</p>
+                <p>Salary</p>
+                <Button>Edit</Button>
+              </div>
             </div>
           </TabsContent>
 

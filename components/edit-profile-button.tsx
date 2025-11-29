@@ -12,8 +12,13 @@ import {
 } from "./ui/dialog";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Textarea } from "./ui/textarea";
+import { type UserType } from "./profile-header";
 
-export function EditProfileButton() {
+type EditUser = Pick<UserType, "name" | "headline" | "image">;
+
+export function EditProfileButton({ name, headline, image }: EditUser) {
   return (
     <Dialog>
       <form>
@@ -35,13 +40,30 @@ export function EditProfileButton() {
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4">
-            <div className="grid gap-3">
-              <Label htmlFor="name-1">Name</Label>
-              <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
+            <div className="flex justify-between items-center">
+              <Avatar className="h-16 w-16 md:h-20 md:w-20">
+                <AvatarImage src={image ?? undefined}></AvatarImage>
+                <AvatarFallback className="bg-amber-300 font-bold text-sm md:text-2xl">
+                  {name.slice(0, 1)}
+                </AvatarFallback>
+              </Avatar>
+              <div className="space-x-2">
+                <Button>Change picture</Button>
+                <Button variant="destructive">Delete picture</Button>
+              </div>
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="username-1">Username</Label>
-              <Input id="username-1" name="username" defaultValue="@peduarte" />
+              <Label htmlFor="name">Name</Label>
+              <Input id="name" name="name" defaultValue={name} />
+            </div>
+            <div className="grid gap-3">
+              <Label htmlFor="headline">Bio</Label>
+              <Textarea
+                id="headline"
+                name="headline"
+                placeholder="Add a bio to your profile"
+                defaultValue={headline ?? undefined}
+              />
             </div>
           </div>
           <DialogFooter>

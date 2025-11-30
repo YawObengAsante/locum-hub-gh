@@ -115,4 +115,8 @@
   body {
     @apply bg-background text-text;
   }
+
+  .uploaded-job-items {
+    @apply font-semibold text-sm md:text-xl flex justify-start items-center gap-1.5
+  }
 }

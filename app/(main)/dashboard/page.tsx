@@ -2,27 +2,26 @@ import ProfileHeader from "@/components/profile-header";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
+import { UserJobCard } from "@/components/user-job-card";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
+
 export default async function DashboardPage() {
-
   const session = await auth.api.getSession({
-    headers: await headers()
-  })
-  
-  if(!session || !session.user) redirect("/")
-    
-   const userData = await prisma.user.findUnique({
-      where: {id: session.user.id}
-    })
+    headers: await headers(),
+  });
 
-    if (!userData) throw new Error("User data not found")
+  if (!session || !session.user) redirect("/");
 
-  
-  
+  const userData = await prisma.user.findUnique({
+    where: { id: session.user.id },
+  });
+
+  if (!userData) throw new Error("User data not found");
+
   return (
     <div>
       <ProfileHeader userData={userData} />
@@ -33,21 +32,15 @@ export default async function DashboardPage() {
             <TabsTrigger value="applied">Jobs Applied</TabsTrigger>
           </TabsList>
           <TabsContent value="uploaded">
-            <div className="w-full bg-blue-300">
-              <div>uploaded jobs here</div>
-              <div>
-                <h1>Job Title</h1>
-                <p>Hospital</p>
-                <p>Location</p>
-                <p>Job status</p>
-                <p>Salary</p>
-                <Button>Edit</Button>
-              </div>
+            <div className="w-full grid sm:grid-cols-2 gap-2">
+              <UserJobCard />
+              <UserJobCard />
+              <UserJobCard />
             </div>
           </TabsContent>
 
           <TabsContent value="applied">
-             <div className="w-full bg-pink-300">
+            <div className="w-full bg-pink-300">
               <div>applied jobs here</div>
             </div>
           </TabsContent>

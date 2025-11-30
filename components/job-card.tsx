@@ -5,7 +5,7 @@ import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import { $Enums } from "@/generated/prisma";
 
- type JobType = {
+type JobType = {
   id: string;
   title: string;
   hospital: string;
@@ -17,24 +17,35 @@ import { $Enums } from "@/generated/prisma";
   createdAt: Date;
   updatedAt: Date;
   posterId: string;
+} 
+
+type Poster = {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  name: string;
+  email: string;
+  emailVerified: boolean;
+  image: string | null;
+  headline: string | null;
 };
 
-export default function JobCard({job}:{ job: JobType}) {
+export default function JobCard({ job, postedBy }: { job: JobType , postedBy: Poster}) {
   return (
     <Card className="bg-white/70">
       <CardHeader>
         <div className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="flex items-center gap-3">
             <Avatar className="h-10 w-10 sm:h-12 sm:w-12">
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>YA</AvatarFallback>
+              <AvatarImage src={postedBy.image ?? undefined} />
+              <AvatarFallback>{postedBy.name.slice(0,1)}</AvatarFallback>
             </Avatar>
             <div className="flex flex-col">
               <span className="text-sm sm:text-base font-semibold text-gray-800">
                 {job.hospital}
               </span>
               <time className="text-xs text-gray-400">2d ago</time>
-              <span className="text-xs text-gray-400">Posted by Yaw</span>
+              <span className="text-xs text-gray-400">Posted by {postedBy.name}</span>
             </div>
           </div>
         </div>

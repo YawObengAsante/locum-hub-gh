@@ -2,7 +2,15 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { JobTypeSelectGroup } from "./job-type-select-group";
 
-export default function SearchBar() {
+export default async function SearchBar({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
+const { job, jobType, location } = (searchParams) || {};
+console.log(job);
+
+
   return (
     <form action="/jobs">
       <div className="grid gap-2.5 p-2 md:p-3 md:my-3 bg-white/70 rounded-2xl shadow-xl">
@@ -13,13 +21,15 @@ export default function SearchBar() {
             name="job"
             placeholder="Search Job"
             className="bg-white"
+            defaultValue={job}
           />
-          <JobTypeSelectGroup name="jobType" />
+          <JobTypeSelectGroup name="jobType" defaultValue={jobType} />
           <Input
             type="search"
             name="location"
             placeholder="Location"
             className="bg-white "
+            defaultValue={location}
           />
         </div>
         <Button type="submit" className="text-white">

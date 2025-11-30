@@ -12,15 +12,16 @@ import {
 type SelectType = {
     name: string,
     state?: JobFormReturnType
+    defaultValue: string | string[] | undefined
 }
 
-export function JobTypeSelectGroup({ name, state } : SelectType) {
+export function JobTypeSelectGroup({ name, state, defaultValue } : SelectType) {
   return (
     <Select name={name}>
       <SelectTrigger className="w-full">
         <SelectValue
-          defaultValue={state?.entries?.jobType}
-          placeholder="Select a type"
+          defaultValue={state?.entries?.jobType ?? defaultValue}
+          placeholder="Select a job type"
         />
       </SelectTrigger>
       <SelectContent>

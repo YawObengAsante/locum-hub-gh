@@ -4,7 +4,7 @@ import { LogOut } from "lucide-react";
 import { Card } from "./ui/card";
 import BioText from "./bio-text";
 import { signOutAction } from "@/actions/auth/sign-out-action";
-import { EditProfileForm } from "./edit-profile-form";
+import { EditProfileModal } from "./edit-profile-modal";
 
 export type UserType = {
   image: string | null;
@@ -40,7 +40,7 @@ export default function ProfileHeader({ userData }: { userData: UserType }) {
         </div>
       </div>
       <div className="flex flex-col sm:flex-row gap-3 sm:items-center md:items-start">
-        <EditProfileForm name={userData.name} headline={userData.headline} image={userData.image} />
+        <EditProfileModal name={userData.name} headline={userData.headline} image={userData.image} />
         <form action={signOutAction}>
           <Button
             variant={"secondary"}

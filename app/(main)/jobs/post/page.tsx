@@ -1,13 +1,8 @@
-"use client"
+"use client";
 import { JobFormReturnType, postJobAction } from "@/actions/post-job-action";
 import { JobTypeSelectGroup } from "@/components/job-type-select-group";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Ring } from "ldrs/react";
@@ -25,7 +20,11 @@ export default function PostJobPage() {
       <Card className="w-[800px]">
         <CardHeader>
           <CardTitle>Job details</CardTitle>
-          {state.error && <div>{state.message}</div>}
+          {state.error && (
+            <div className="p-3 rounded-2xl mb-2 text-center bg-red-200 border-red-300 text-red-600">
+              {state.message}
+            </div>
+          )}
         </CardHeader>
         <CardContent>
           <form action={action} className="flex flex-col gap-5">

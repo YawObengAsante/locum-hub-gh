@@ -12,7 +12,7 @@ import {
 type SelectType = {
     name: string,
     state?: JobFormReturnType
-    defaultValue: string | string[] | undefined
+    defaultValue?: string | string[] 
 }
 
 export function JobTypeSelectGroup({ name, state, defaultValue } : SelectType) {

@@ -5,6 +5,7 @@ import { NoData } from "./no-data";
 export async function UserUploadedJobs({ userId }: { userId: string }) {
   const postedJobs = await prisma.job.findMany({
     where: { posterId: userId },
+    orderBy: {createdAt: "desc"}
   });
 
   if (postedJobs.length === 0) return <NoData />;

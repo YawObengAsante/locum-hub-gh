@@ -10,7 +10,7 @@ import {
 import { toast } from "sonner";
 import { Ring } from "ldrs/react";
 import { DialogClose, DialogFooter } from "./ui/dialog";
-import { type EditUserType } from "@/types/user";
+import { type EditUserType } from "@/types";
 
 const initState: EditUserProfileReturnType = {
   success: false,

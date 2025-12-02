@@ -119,4 +119,8 @@
   .uploaded-job-items {
     @apply font-semibold text-sm md:text-xl flex justify-start items-center gap-1.5
   }
+
+  .job-details-text {
+    @apply font-semibold text-sm md:text-xl text-secondary
+  }
 }

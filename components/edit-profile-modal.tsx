@@ -13,7 +13,7 @@ import {
 } from "./ui/dialog";
 import { UserAvatarWithActions } from "./user-avatar-with-actions";
 import { EditProfileForm } from "./edit-profile-form";
-import { type EditUserType } from "@/types/user";
+import { type EditUserType } from "@/types";
 
 export function EditProfileModal({ name, headline, image }: EditUserType) {
   return (

@@ -1,3 +1,4 @@
+import { type JobType } from "@/types";
 import {
   MapPin,
   BriefcaseBusinessIcon,
@@ -7,45 +8,58 @@ import {
   ArrowRightIcon,
   NotebookTextIcon,
 } from "lucide-react";
+import { Button } from "./ui/button";
 
-export function UserJobCard() {
+export function UserJobCard({ job }: { job: JobType }) {
   return (
-    <div className="bg-background/45 flex border border-border rounded-xl shadow-xl px-4 py-3">
-      <div className="flex flex-col gap-2 md:gap-4 w-1/2">
+    <div className="bg-background/45 border border-border rounded-xl shadow-xl px-4 py-3">
+      <div className="flex flex-col gap-2 md:gap-4 w-full">
         <h1 className="uploaded-job-items">
           <BriefcaseBusinessIcon className="h-5 w-5" />
-          Job Title
+          <p>
+            Position: <span className="job-details-text">{job.title}</span>{" "}
+          </p>
         </h1>
-        <p className="uploaded-job-items">
+        <div className="uploaded-job-items">
           <HospitalIcon className="h-5 w-5" />
-          Hospital
-        </p>
-        <p className="uploaded-job-items">
+          <p>
+            Hospital: <span className="job-details-text">{job.hospital}</span>{" "}
+          </p>
+        </div>
+        <div className="uploaded-job-items">
           <MapPin className="h-5 w-5" />
-          Location
-        </p>
-        <p className="uploaded-job-items">
+          <p>
+            Location: <span className="job-details-text">{job.location}</span>
+          </p>
+        </div>
+        <div className="uploaded-job-items">
           <LockIcon className="h-5 w-5" />
-          Job status
-        </p>
-        <p className="uploaded-job-items">
+          <p>
+            Status: <span className="job-details-text">{job.status}</span>
+          </p>
+        </div>
+        <div className="uploaded-job-items">
           <DollarSignIcon className="h-5 w-5" />
-          Salary
-        </p>
-        <p className="uploaded-job-items">
+          <p>
+            Salary: <span className="job-details-text">{job.salary}</span>{" "}
+          </p>
+        </div>
+        <div className="uploaded-job-items">
           <NotebookTextIcon className="h-5 w-5" />
-          Description
-        </p>
+          <p className="job-details-text">
+            {job.description.substring(0, 40)}...
+          </p>
+        </div>
       </div>
-      <div className="flex items-end w-1/2 justify-end text-blue-500">
-        <span className="flex justify-center items-center bg-pink-400">
+      <div className="flex justify-end gap-5 mt-3">
+        <Button size={"sm"}>
           <p>Edit Details</p>
           <ArrowRightIcon className="w-5 h-5" />
-        </span>
-        <span>
-          Edit Details
-          <ArrowRightIcon className="w-5 h-5" />
-        </span>
+        </Button>
+
+        <Button size={"sm"} variant={"destructive"}>
+          Delete
+        </Button>
       </div>
     </div>
   );

@@ -2,11 +2,12 @@ import { NoData } from "@/components/no-data";
 import ProfileHeader from "@/components/profile-header";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
+import { UserAppliedJobs } from "@/components/user-applied-jobs";
 import { UserUploadedJobs } from "@/components/user-uploaded-jobs";
 import { useAuthUser } from "@/hooks/auth-context";
 
 export default async function DashboardPage() {
-  const {userId} = await useAuthUser()
+  const { userId } = await useAuthUser();
   return (
     <div>
       <ProfileHeader userId={userId} />
@@ -16,12 +17,13 @@ export default async function DashboardPage() {
             <TabsTrigger value="uploaded">Jobs Uploaded</TabsTrigger>
             <TabsTrigger value="applied">Jobs Applied</TabsTrigger>
           </TabsList>
+          
           <TabsContent value="uploaded">
             <UserUploadedJobs userId={userId} />
           </TabsContent>
 
           <TabsContent value="applied">
-            <NoData />
+            <UserAppliedJobs userId={userId} />
           </TabsContent>
         </Tabs>
       </Card>

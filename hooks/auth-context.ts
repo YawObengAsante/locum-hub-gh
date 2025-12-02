@@ -9,6 +9,6 @@ export async function useAuthUser() {
 
     if(!session || !session.user) redirect("/sign-in")
 
-    return {user: session.user}
+    return {userId: session.user.id}
 }
 

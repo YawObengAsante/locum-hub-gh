@@ -6,12 +6,11 @@ import BioText from "./bio-text";
 import { signOutAction } from "@/actions/auth/sign-out-action";
 import { EditProfileModal } from "./edit-profile-modal";
 import { prisma } from "@/lib/prisma";
-import { UserType } from "@/types/user";
 
-export default async function ProfileHeader({user}:{ user: UserType}) {
+export default async function ProfileHeader({userId}:{ userId: string}) {
 
   const userData = await prisma.user.findUnique({
-    where: { id: user.id },
+    where: { id: userId },
   });
 
   if (!userData) throw new Error("User data not found");

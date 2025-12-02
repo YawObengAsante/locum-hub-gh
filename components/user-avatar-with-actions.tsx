@@ -1,12 +1,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
+import { type EditUserType } from "@/types/user";
 
-type Types = {
-    name: string,
-    image: string | null
-}
-
-export function UserAvatarWithActions({image, name}: Types) {
+export function UserAvatarWithActions({image, name}: EditUserType) {
     return (
         <div className="flex justify-between items-center">
               <Avatar className="h-16 w-16 md:h-20 md:w-20">

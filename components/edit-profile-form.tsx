@@ -10,18 +10,14 @@ import {
 import { toast } from "sonner";
 import { Ring } from "ldrs/react";
 import { DialogClose, DialogFooter } from "./ui/dialog";
-
-type Types = {
-  headline: string | null;
-  name: string;
-};
+import { type EditUserType } from "@/types/user";
 
 const initState: EditUserProfileReturnType = {
   success: false,
   message: "",
 };
 
-export function EditProfileForm({ headline, name }: Types) {
+export function EditProfileForm({ headline, name }: EditUserType) {
   const [state, action, isLoading] = useActionState(
     editUserProfileAction,
     initState

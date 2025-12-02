@@ -5,19 +5,16 @@ import { Card } from "./ui/card";
 import BioText from "./bio-text";
 import { signOutAction } from "@/actions/auth/sign-out-action";
 import { EditProfileModal } from "./edit-profile-modal";
+import { prisma } from "@/lib/prisma";
+import { UserType } from "@/types/user";
 
-export type UserType = {
-  image: string | null;
-  id: string;
-  email: string;
-  name: string;
-  createdAt: Date;
-  updatedAt: Date;
-  emailVerified: boolean;
-  headline: string | null;
-};
+export default async function ProfileHeader({user}:{ user: UserType}) {
 
-export default function ProfileHeader({ userData }: { userData: UserType }) {
+  const userData = await prisma.user.findUnique({
+    where: { id: user.id },
+  });
+
+  if (!userData) throw new Error("User data not found");
   return (
     <Card className="m-3 sm:m-5 p-4 sm:p-6 md:p-8 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
       <div className="space-y-4">
@@ -40,7 +37,11 @@ export default function ProfileHeader({ userData }: { userData: UserType }) {
         </div>
       </div>
       <div className="flex flex-col sm:flex-row gap-3 sm:items-center md:items-start">
-        <EditProfileModal name={userData.name} headline={userData.headline} image={userData.image} />
+        <EditProfileModal
+          name={userData.name}
+          headline={userData.headline}
+          image={userData.image}
+        />
         <form action={signOutAction}>
           <Button
             variant={"secondary"}

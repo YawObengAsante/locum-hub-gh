@@ -1,30 +1,14 @@
 import ProfileHeader from "@/components/profile-header";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
 import { UserJobCard } from "@/components/user-job-card";
-import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
-
+import { useAuthUser } from "@/hooks/auth-context";
 
 export default async function DashboardPage() {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session || !session.user) redirect("/");
-
-  const userData = await prisma.user.findUnique({
-    where: { id: session.user.id },
-  });
-
-  if (!userData) throw new Error("User data not found");
-
+  const {user} = await useAuthUser()
   return (
     <div>
-      <ProfileHeader userData={userData} />
+      <ProfileHeader user={user} />
       <Card className="m-3 sm:m-5 p-4 sm:p-6 md:p-8">
         <Tabs defaultValue="uploaded">
           <TabsList className="bg-gray-200 w-full flex items-center justify-center">

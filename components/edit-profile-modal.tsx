@@ -11,24 +11,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Textarea } from "./ui/textarea";
-import { type UserType } from "./profile-header";
-import { useActionState, useEffect } from "react";
-import {
-  editUserProfileAction,
-  EditUserProfileReturnType,
-} from "@/actions/edit-user-profile-action";
-import { Ring } from "ldrs/react";
-import { toast } from "sonner";
 import { UserAvatarWithActions } from "./user-avatar-with-actions";
 import { EditProfileForm } from "./edit-profile-form";
+import { type EditUserType } from "@/types/user";
 
-type EditUser = Pick<UserType, "name" | "headline" | "image">;
-
-export function EditProfileModal({ name, headline, image }: EditUser) {
+export function EditProfileModal({ name, headline, image }: EditUserType) {
   return (
     <Dialog>
       <DialogTrigger asChild>

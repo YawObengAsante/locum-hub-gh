@@ -1,3 +1,4 @@
+import { NoData } from "@/components/no-data";
 import ProfileHeader from "@/components/profile-header";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
@@ -20,9 +21,7 @@ export default async function DashboardPage() {
           </TabsContent>
 
           <TabsContent value="applied">
-            <div className="w-full bg-pink-300">
-              <div>applied jobs here</div>
-            </div>
+            <NoData />
           </TabsContent>
         </Tabs>
       </Card>

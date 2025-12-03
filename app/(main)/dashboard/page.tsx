@@ -13,11 +13,11 @@ export default async function DashboardPage() {
       <ProfileHeader userId={userId} />
       <Card className="m-3 sm:m-5 p-4 sm:p-6 md:p-8">
         <Tabs defaultValue="uploaded">
-          <TabsList className="bg-gray-200 w-full flex items-center justify-center">
+          <TabsList className="w-full flex items-center justify-center">
             <TabsTrigger value="uploaded">Jobs Uploaded</TabsTrigger>
             <TabsTrigger value="applied">Jobs Applied</TabsTrigger>
           </TabsList>
-          
+
           <TabsContent value="uploaded">
             <UserUploadedJobs userId={userId} />
           </TabsContent>

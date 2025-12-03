@@ -3,34 +3,11 @@ import { Card, CardHeader, CardContent, CardTitle } from "./ui/card";
 import { MapPin } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
-import { $Enums } from "@/generated/prisma";
+import { timeAgo } from "@/lib/utils";
+import {type JobType, type UserType } from "@/types";
 
-type JobType = {
-  id: string;
-  title: string;
-  hospital: string;
-  location: string | null;
-  jobType: string;
-  salary: string | null;
-  description: string;
-  status: $Enums.JobStatus;
-  createdAt: Date;
-  updatedAt: Date;
-  posterId: string;
-} 
 
-type Poster = {
-  id: string;
-  createdAt: Date;
-  updatedAt: Date;
-  name: string;
-  email: string;
-  emailVerified: boolean;
-  image: string | null;
-  headline: string | null;
-};
-
-export default function JobCard({ job, postedBy }: { job: JobType , postedBy: Poster}) {
+export default function JobCard({ job, postedBy }: { job: JobType , postedBy: UserType}) {
   return (
     <Card className="bg-white/70">
       <CardHeader>
@@ -44,7 +21,7 @@ export default function JobCard({ job, postedBy }: { job: JobType , postedBy: Po
               <span className="text-sm sm:text-base font-semibold text-gray-800">
                 {job.hospital}
               </span>
-              <time className="text-xs text-gray-400">2d ago</time>
+              <time className="text-xs text-gray-400">{timeAgo(job.createdAt)}</time>
               <span className="text-xs text-gray-400">Posted by {postedBy.name}</span>
             </div>
           </div>
@@ -64,7 +41,7 @@ export default function JobCard({ job, postedBy }: { job: JobType , postedBy: Po
         </div>
 
         <div
-          className="bg-white p-3 mb-3 rounded-2xl text-sm text-gray-700"
+          className="bg-gray-100 p-3 mb-3 min-h-20 rounded-2xl text-sm text-gray-700"
           style={{
             WebkitBoxOrient: "vertical",
             overflow: "hidden",
@@ -73,7 +50,7 @@ export default function JobCard({ job, postedBy }: { job: JobType , postedBy: Po
           }}
           aria-label="Job description"
         >
-          {job.description}
+          {job.description.substring(0, 100)}{job.description.length > 100 && "..."}
         </div>
 
         <Separator className="mb-3" />

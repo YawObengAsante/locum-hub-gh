@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { auth } from "../../lib/auth";
 import { formatZodValidationErrors, parseError } from "@/lib/utils";
 import { SignUpForm, SignUpFormReturnType } from "@/types";
-import { signUpSchema } from "../schema";
+import { signUpSchema } from "../../schema";
 
 export async function signUpAction(
   prevState: SignUpFormReturnType,

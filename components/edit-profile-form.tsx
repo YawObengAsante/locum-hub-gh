@@ -6,7 +6,7 @@ import { Textarea } from "./ui/textarea";
 import {
   editUserProfileAction,
   type EditUserProfileReturnType,
-} from "@/actions/edit-user-profile-action";
+} from "@/actions/user/edit-user-profile-action";
 import { toast } from "sonner";
 import { Ring } from "ldrs/react";
 import { DialogClose, DialogFooter } from "./ui/dialog";

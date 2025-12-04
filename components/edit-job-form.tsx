@@ -7,7 +7,7 @@ import { Ring } from "ldrs/react";
 import { JobTypeSelectGroup } from "./job-type-select-group";
 import { Button } from "./ui/button";
 import { useActionState } from "react";
-import { editJobAction } from "@/actions/edit-job-action";
+import { editJobAction } from "@/actions/job/edit-job-action";
 
 const initState: JobFormReturnType = {
   success: false,

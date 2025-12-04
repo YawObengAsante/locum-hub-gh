@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "../../lib/auth";
 import { formatZodValidationErrors, parseError } from "@/lib/utils";
-import { signInSchema } from "../schema";
+import { signInSchema } from "../../schema";
 import { SignInForm, SignInFormReturnType } from "@/types";
 
 export async function signInAction(

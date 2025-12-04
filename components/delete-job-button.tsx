@@ -1,7 +1,7 @@
 "use client";
 import { parseError } from "@/lib/utils";
 import { Button } from "./ui/button";
-import { deleteJobAction } from "@/actions/delete-job-action";
+import { deleteJobAction } from "@/actions/job/delete-job-action";
 import { JobType } from "@/types";
 import { useState } from "react";
 import { toast } from "sonner";

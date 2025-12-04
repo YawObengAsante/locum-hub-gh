@@ -1,4 +1,4 @@
-import { jobSchema, signInSchema, signUpSchema } from "@/actions/schema";
+import { jobSchema, signInSchema, signUpSchema } from "@/schema";
 import { $Enums } from "@/generated/prisma";
 import z from "zod";
 

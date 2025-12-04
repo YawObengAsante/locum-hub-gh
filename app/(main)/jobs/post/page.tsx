@@ -1,5 +1,5 @@
 "use client";
-import { postJobAction } from "@/actions/post-job-action";
+import { postJobAction } from "@/actions/job/post-job-action";
 import { PostJobForm } from "@/components/post-job-form";
 import { JobFormReturnType } from "@/types";
 import { useActionState } from "react";

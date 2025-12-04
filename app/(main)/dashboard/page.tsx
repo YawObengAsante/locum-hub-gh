@@ -4,10 +4,10 @@ import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
 import { UserAppliedJobs } from "@/components/user-applied-jobs";
 import { UserUploadedJobs } from "@/components/user-uploaded-jobs";
-import { useAuthUser } from "@/hooks/auth-context";
+import { serverAuthUser } from "@/lib/server-helpers";
 
 export default async function DashboardPage() {
-  const { userId } = await useAuthUser();
+  const { userId } = await serverAuthUser();
   return (
     <div>
       <ProfileHeader userId={userId} />

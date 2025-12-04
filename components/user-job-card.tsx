@@ -9,6 +9,7 @@ import {
   NotebookTextIcon,
 } from "lucide-react";
 import { Button } from "./ui/button";
+import { DeleteJobButton } from "./delete-job-button";
 
 export function UserJobCard({ job }: { job: JobType }) {
   return (
@@ -57,9 +58,7 @@ export function UserJobCard({ job }: { job: JobType }) {
           <ArrowRightIcon className="w-5 h-5" />
         </Button>
 
-        <Button size={"sm"} variant={"destructive"}>
-          Delete
-        </Button>
+        <DeleteJobButton id={job.id} posterId={job.posterId}/>
       </div>
     </div>
   );

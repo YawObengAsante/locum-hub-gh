@@ -1,27 +1,9 @@
 "use server";
 import { redirect } from "next/navigation";
 import { auth } from "../../lib/auth";
-import { z } from "zod";
 import { formatZodValidationErrors, parseError } from "@/lib/utils";
-
-const signUpSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.email().min(1, "Please enter a valid email"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
-});
-
-export type SignUpForm = z.infer<typeof signUpSchema>;
-
-export type SignUpFormReturnType = {
-  success: boolean;
-  message: string;
-  entries?: Partial<SignUpForm>;
-  error?: Partial<{
-    name: string[];
-    email: string[];
-    password: string[];
-  }>;
-};
+import { SignUpForm, SignUpFormReturnType } from "@/types";
+import { signUpSchema } from "../schema";
 
 export async function signUpAction(
   prevState: SignUpFormReturnType,
@@ -61,7 +43,7 @@ export async function signUpAction(
       throw error; // rethrow so Next.js can handle it
     }
     console.log("Sign up error:", error);
-    const errorMessage = parseError(error)
+    const errorMessage = parseError(error);
     return {
       success: false,
       message: errorMessage,

@@ -1,25 +1,9 @@
 "use server";
 import { redirect } from "next/navigation";
 import { auth } from "../../lib/auth";
-import { z } from "zod";
 import { formatZodValidationErrors, parseError } from "@/lib/utils";
-
-const signInSchema = z.object({
-  email: z.email().min(1, "Please enter a valid email"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
-});
-
-type SignInForm = z.infer<typeof signInSchema>;
-
-export type SignInFormReturnType = {
-  success: boolean;
-  message: string;
-  entries?: Partial<SignInForm>;
-  error?: Partial<{
-    email: string[];
-    password: string[];
-  }>;
-};
+import { signInSchema } from "../schema";
+import { SignInForm, SignInFormReturnType } from "@/types";
 
 export async function signInAction(
   prevState: SignInFormReturnType,

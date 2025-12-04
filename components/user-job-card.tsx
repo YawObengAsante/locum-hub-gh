@@ -5,11 +5,12 @@ import {
   HospitalIcon,
   LockIcon,
   DollarSignIcon,
-  ArrowRightIcon,
   NotebookTextIcon,
+  ArrowRightIcon,
 } from "lucide-react";
-import { Button } from "./ui/button";
 import { DeleteJobButton } from "./delete-job-button";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 export function UserJobCard({ job }: { job: JobType }) {
   return (
@@ -53,12 +54,13 @@ export function UserJobCard({ job }: { job: JobType }) {
         </div>
       </div>
       <div className="flex justify-end gap-5 mt-3">
+        <Link href={`jobs/post/${job.id}`}>
         <Button size={"sm"}>
           <p>Edit Details</p>
           <ArrowRightIcon className="w-5 h-5" />
         </Button>
-
-        <DeleteJobButton id={job.id} posterId={job.posterId}/>
+        </Link>
+        <DeleteJobButton id={job.id} posterId={job.posterId} />
       </div>
     </div>
   );

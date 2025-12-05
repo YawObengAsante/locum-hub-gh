@@ -8,10 +8,10 @@ import { Button } from "./ui/button";
 
 export function PostJobForm({ state, action, isLoading }: PostJobFormType) {
   return (
-    <Card className="w-[800px]">
+    <Card className="w-full md:w-[800px]">
       <CardHeader>
         <CardTitle>Job details</CardTitle>
-        {state.error && (
+        {state?.error && (
           <div className="p-3 rounded-2xl mb-2 text-center bg-red-200 border-red-300 text-red-600">
             {state.message}
           </div>
@@ -27,6 +27,7 @@ export function PostJobForm({ state, action, isLoading }: PostJobFormType) {
               placeholder="Physician Assistant"
               defaultValue={state.entries?.title}
             />
+            {state.error?.title && <p className="text-red-400">{state.error.title}</p>}
           </div>
           <div>
             <h1>Hospital</h1>
@@ -36,6 +37,7 @@ export function PostJobForm({ state, action, isLoading }: PostJobFormType) {
               placeholder="Hospital name"
               defaultValue={state.entries?.hospital}
             />
+            {state.error?.hospital && <p className="text-red-400">{state.error.hospital}</p>}
           </div>
           <div>
             <h1>Location</h1>
@@ -43,12 +45,13 @@ export function PostJobForm({ state, action, isLoading }: PostJobFormType) {
               type="text"
               name="location"
               placeholder="Tema"
-              defaultValue={state.entries?.location}
+              defaultValue={state.entries?.location ?? undefined}
             />
+            {state.error?.location && <p className="text-red-400">{state.error.location}</p>}
           </div>
           <div>
             <h1>Job Type</h1>
-            <JobTypeSelectGroup name={"jobType"} state={state} />
+            <JobTypeSelectGroup state={state} defaultValue={state.entries?.jobType} />
           </div>
           <div>
             <h1>Description</h1>
@@ -57,6 +60,7 @@ export function PostJobForm({ state, action, isLoading }: PostJobFormType) {
               placeholder="Type your job description here."
               defaultValue={state.entries?.description}
             />
+            {state.error?.description && <p className="text-red-400">{state.error.description}</p>}
           </div>
           <div>
             <h1>Salary</h1>
@@ -64,8 +68,9 @@ export function PostJobForm({ state, action, isLoading }: PostJobFormType) {
               type="text"
               name="salary"
               placeholder="e.g. Ghc3,000 - Ghc4,000"
-              defaultValue={state.entries?.salary}
+              defaultValue={state.entries?.salary ?? undefined}
             />
+            {state.error?.salary && <p className="text-red-400">{state.error.salary}</p>}
           </div>
           <Button type="submit" className="w-full text-white">
             {isLoading ? (
@@ -77,11 +82,12 @@ export function PostJobForm({ state, action, isLoading }: PostJobFormType) {
                 color="white"
               />
             ) : (
-              "Post Job"
+              "Update Job"
             )}
           </Button>
         </form>
       </CardContent>
     </Card>
+
   );
 }

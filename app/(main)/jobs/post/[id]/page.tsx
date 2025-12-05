@@ -13,7 +13,7 @@ export default async function EditJobPage({
       });
       if (!job) return;
 
-    return <div  className="container w-full my-10 flex flex-col justify-center items-center">
+    return <div  className="container w-full m-10  flex flex-col justify-center items-center">
         <EditJobForm job={job}/>
     </div>
 }

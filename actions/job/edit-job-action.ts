@@ -1,9 +1,10 @@
 "use server";
 import { serverAuthUser } from "@/lib/server-helpers";
 import { JobForm, JobFormReturnType } from "@/types";
-import { jobSchema } from "./schema";
 import { formatZodValidationErrors, parseError } from "@/lib/utils";
 import { prisma } from "@/lib/prisma";
+import { jobSchema } from "@/schema";
+import { redirect } from "next/navigation";
 
 export async function editJobAction(
   prevState: JobFormReturnType,
@@ -31,7 +32,7 @@ export async function editJobAction(
     const validatedData = jobSchema.safeParse(data);
 
     if (!validatedData.success) {
-      const formattedErrors = formatZodValidationErrors(validatedData);
+      const formattedErrors = formatZodValidationErrors(validatedData);      
       return {
         success: false,
         message: "There was an error. Please fill the form correctly",
@@ -44,10 +45,7 @@ export async function editJobAction(
         data: {...validatedData.data},
         where: {id}
     })
-    return {
-        success: true,
-        message: "Job had been updated successfully"
-    }
+    redirect("/dashboard")
 
   } catch (error: any) {
      if (error?.digest?.startsWith("NEXT_REDIRECT")) {

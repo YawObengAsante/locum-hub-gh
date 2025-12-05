@@ -1,4 +1,4 @@
-import { JobFormReturnType } from "@/actions/post-job-action";
+import { JobFormReturnType } from "@/types";
 import {
   SelectContent,
   SelectGroup,
@@ -10,17 +10,18 @@ import {
 } from "./ui/select";
 
 type SelectType = {
-    name: string,
     state?: JobFormReturnType
     defaultValue?: string | string[] 
 }
 
-export function JobTypeSelectGroup({ name, state, defaultValue } : SelectType) {
+export function JobTypeSelectGroup({ state, defaultValue } : SelectType) {
   return (
-    <Select name={name}>
+    <div>
+
+    <Select name="jobType">
       <SelectTrigger className="w-full">
         <SelectValue
-          defaultValue={state?.entries?.jobType ?? defaultValue}
+          defaultValue={defaultValue}
           placeholder="Select a job type"
         />
       </SelectTrigger>
@@ -35,5 +36,7 @@ export function JobTypeSelectGroup({ name, state, defaultValue } : SelectType) {
         </SelectGroup>
       </SelectContent>
     </Select>
+    {state?.error?.jobType && <p className="text-red-400">{state.error.jobType}</p>}
+    </div>
   );
 }

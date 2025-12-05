@@ -23,7 +23,7 @@ export function EditJobForm({ job }: { job: JobType }) {
   };
   const [state, action, isLoading] = useActionState(editJobWithId, initState);
   return (
-    <Card className="w-[800px]">
+    <Card className="w-full md:w-[800px]">
       <CardHeader>
         <CardTitle>Edit Job details</CardTitle>
         {state?.error && (
@@ -42,6 +42,7 @@ export function EditJobForm({ job }: { job: JobType }) {
               placeholder="Physician Assistant"
               defaultValue={job.title}
             />
+            {state.error?.title && <p className="text-red-400">{state.error.title}</p>}
           </div>
           <div>
             <h1>Hospital</h1>
@@ -51,6 +52,7 @@ export function EditJobForm({ job }: { job: JobType }) {
               placeholder="Hospital name"
               defaultValue={job.hospital}
             />
+            {state.error?.hospital && <p className="text-red-400">{state.error.hospital}</p>}
           </div>
           <div>
             <h1>Location</h1>
@@ -60,10 +62,11 @@ export function EditJobForm({ job }: { job: JobType }) {
               placeholder="Tema"
               defaultValue={job.location ?? undefined}
             />
+            {state.error?.location && <p className="text-red-400">{state.error.location}</p>}
           </div>
           <div>
             <h1>Job Type</h1>
-            <JobTypeSelectGroup name={"jobType"} state={state} />
+            <JobTypeSelectGroup state={state} defaultValue={job.jobType} />
           </div>
           <div>
             <h1>Description</h1>
@@ -72,6 +75,7 @@ export function EditJobForm({ job }: { job: JobType }) {
               placeholder="Type your job description here."
               defaultValue={job.description}
             />
+            {state.error?.description && <p className="text-red-400">{state.error.description}</p>}
           </div>
           <div>
             <h1>Salary</h1>
@@ -81,6 +85,7 @@ export function EditJobForm({ job }: { job: JobType }) {
               placeholder="e.g. Ghc3,000 - Ghc4,000"
               defaultValue={job.salary ?? undefined}
             />
+            {state.error?.salary && <p className="text-red-400">{state.error.salary}</p>}
           </div>
           <Button type="submit" className="w-full text-white">
             {isLoading ? (

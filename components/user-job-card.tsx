@@ -7,6 +7,7 @@ import {
   DollarSignIcon,
   NotebookTextIcon,
   ArrowRightIcon,
+  PersonStandingIcon
 } from "lucide-react";
 import { DeleteJobButton } from "./delete-job-button";
 import { Button } from "./ui/button";
@@ -32,6 +33,12 @@ export function UserJobCard({ job }: { job: JobType }) {
           <MapPin className="h-5 w-5" />
           <p>
             Location: <span className="job-details-text">{job.location}</span>
+          </p>
+        </div>
+        <div className="uploaded-job-items">
+          <PersonStandingIcon className="h-5 w-5" />
+          <p>
+            Job Type: <span className="job-details-text">{job.jobType}</span>
           </p>
         </div>
         <div className="uploaded-job-items">

@@ -3,11 +3,28 @@ import { Card, CardHeader, CardContent, CardTitle } from "./ui/card";
 import { MapPin } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
-import { timeAgo } from "@/lib/utils";
-import {type JobType, type UserType } from "@/types";
+import { cn, timeAgo } from "@/lib/utils";
+import { type JobType, type UserType } from "@/types";
 
-
-export default function JobCard({ job, postedBy }: { job: JobType , postedBy: UserType}) {
+export default function JobCard({
+  job,
+  postedBy,
+}: {
+  job: JobType;
+  postedBy: UserType;
+}) {
+  const jobStatusClass = () => {
+    switch (job.status) {
+      case "OPEN":
+        return "text-success border-success bg-green-100";
+      case "CLOSED":
+        return "text-error border-error bg-red-100";
+      case "FILLED":
+        return "text-info border-info bg-blue-100";
+      default:
+        return "text-success border border-success bg-green-100";
+    }
+  };
   return (
     <Card className="bg-white/70">
       <CardHeader>
@@ -15,14 +32,18 @@ export default function JobCard({ job, postedBy }: { job: JobType , postedBy: Us
           <div className="flex items-center gap-3">
             <Avatar className="h-10 w-10 sm:h-12 sm:w-12">
               <AvatarImage src={postedBy.image ?? undefined} />
-              <AvatarFallback>{postedBy.name.slice(0,1)}</AvatarFallback>
+              <AvatarFallback>{postedBy.name.slice(0, 1)}</AvatarFallback>
             </Avatar>
             <div className="flex flex-col">
               <span className="text-sm sm:text-base font-semibold text-gray-800">
                 {job.hospital}
               </span>
-              <time className="text-xs text-gray-400">{timeAgo(job.createdAt)}</time>
-              <span className="text-xs text-gray-400">Posted by {postedBy.name}</span>
+              <time className="text-xs text-gray-400">
+                {timeAgo(job.createdAt)}
+              </time>
+              <span className="text-xs text-gray-400">
+                Posted by {postedBy.name}
+              </span>
             </div>
           </div>
         </div>
@@ -50,7 +71,8 @@ export default function JobCard({ job, postedBy }: { job: JobType , postedBy: Us
           }}
           aria-label="Job description"
         >
-          {job.description.substring(0, 100)}{job.description.length > 100 && "..."}
+          {job.description.substring(0, 100)}
+          {job.description.length > 100 && "..."}
         </div>
 
         <Separator className="mb-3" />
@@ -58,7 +80,12 @@ export default function JobCard({ job, postedBy }: { job: JobType , postedBy: Us
         <div className="flex items-center justify-between gap-3 mt-3">
           <div className="grid gap-1">
             <span className="font-semibold text-base">{job.salary}</span>
-            <span className="text-sm text-success border border-success bg-green-100 p-1 font-semibold flex justify-center items-center rounded-sm">
+            <span
+              className={cn(
+                "text-sm border p-1 font-semibold flex justify-center items-center rounded-sm",
+                jobStatusClass()
+              )}
+            >
               {job.status}
             </span>
           </div>

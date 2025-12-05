@@ -5,6 +5,7 @@ import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import { cn, timeAgo } from "@/lib/utils";
 import { type JobType, type UserType } from "@/types";
+import Link from "next/link";
 
 export default function JobCard({
   job,
@@ -91,12 +92,16 @@ export default function JobCard({
           </div>
 
           <div className="flex items-center gap-2">
-            <Button
-              className=" text-white px-4 py-2 text-sm hover:cursor-pointer"
-              aria-label="Apply to Physician Assistant role"
-            >
-              Apply now
-            </Button>
+            {job.status !== "CLOSED" && (
+              <Link href={`/jobs/apply/${job.id}`}>
+                <Button
+                  className=" text-white px-4 py-2 text-sm hover:cursor-pointer"
+                  aria-label="Apply to Physician Assistant role"
+                >
+                  Apply now
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </CardContent>

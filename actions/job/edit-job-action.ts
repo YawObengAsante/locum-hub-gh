@@ -1,6 +1,6 @@
 "use server";
 import { serverAuthUser } from "@/lib/server-helpers";
-import { JobForm, JobFormReturnType } from "@/types";
+import type { JobForm, JobFormReturnType, JobStatusType } from "@/types";
 import { formatZodValidationErrors, parseError } from "@/lib/utils";
 import { prisma } from "@/lib/prisma";
 import { jobSchema } from "@/schema";
@@ -27,6 +27,7 @@ export async function editJobAction(
       jobType: formData.get("jobType") as string | undefined,
       description: formData.get("description") as string | undefined,
       salary: formData.get("salary") as string | undefined,
+      status: formData.get("status") as JobStatusType | undefined,
     };
 
     const validatedData = jobSchema.safeParse(data);

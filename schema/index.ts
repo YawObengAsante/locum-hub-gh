@@ -1,3 +1,4 @@
+import { JobStatus } from "@/generated/prisma";
 import z from "zod";
 
 export const jobSchema = z.object({
@@ -7,6 +8,7 @@ export const jobSchema = z.object({
   jobType: z.string().min(1, "Job type is required"),
   description: z.string().min(1, "Description is required"),
   salary: z.string().min(1, "Salary is required"),
+  status: z.enum(JobStatus)
 });
 
 export const signInSchema = z.object({

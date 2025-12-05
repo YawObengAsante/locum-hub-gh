@@ -69,6 +69,8 @@ type SignUpFormReturnType = {
   }>;
 };
 
+type JobStatusType = "OPEN" | "FILLED" | "CLOSED";
+
 export type {
   UserType,
   EditUserType,
@@ -80,4 +82,5 @@ export type {
   SignInFormReturnType,
   SignUpForm,
   SignUpFormReturnType,
+  JobStatusType,
 };

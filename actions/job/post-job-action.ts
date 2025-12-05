@@ -3,8 +3,8 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { formatZodValidationErrors, parseError } from "@/lib/utils";
 import { JobForm, JobFormReturnType } from "@/types";
-import { jobSchema } from "./schema";
 import { serverAuthUser } from "@/lib/server-helpers";
+import { jobSchema } from "@/schema";
 
 
 export async function postJobAction(

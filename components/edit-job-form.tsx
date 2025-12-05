@@ -124,8 +124,8 @@ export function EditJobForm({ job }: { job: JobType }) {
                 </SelectGroup>
               </SelectContent>
             </Select>
-            {state.error?.salary && (
-              <p className="text-red-400">{state.error.salary}</p>
+            {state.error?.status && (
+              <p className="text-red-400">{state.error.status}</p>
             )}
           </div>
           <Button type="submit" className="w-full text-white">

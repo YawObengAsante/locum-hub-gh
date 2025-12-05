@@ -82,7 +82,7 @@ export function PostJobForm({ state, action, isLoading }: PostJobFormType) {
                 color="white"
               />
             ) : (
-              "Update Job"
+              "Post Job"
             )}
           </Button>
         </form>

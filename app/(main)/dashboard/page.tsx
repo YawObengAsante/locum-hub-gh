@@ -1,13 +1,13 @@
-import { NoData } from "@/components/no-data";
 import ProfileHeader from "@/components/profile-header";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
 import { UserAppliedJobs } from "@/components/user-applied-jobs";
 import { UserUploadedJobs } from "@/components/user-uploaded-jobs";
-import { serverAuthUser } from "@/lib/server-helpers";
+import { isAuthorizedUser } from "@/lib/server-helpers";
 
 export default async function DashboardPage() {
-  const { userId } = await serverAuthUser();
+  
+  const {userId} = await isAuthorizedUser()
   return (
     <div>
       <ProfileHeader userId={userId} />

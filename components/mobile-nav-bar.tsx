@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { NAV_ITEMS } from "../constants";
+import { navLinks } from "../constants";
 import {
   Sheet,
   SheetTrigger,
@@ -27,10 +27,11 @@ export default function MobileNavBar() {
         <SheetContent>
           <SheetHeader>
             <SheetTitle>Mobile Navigation</SheetTitle>
-            {/* <ProfileHeader /> */}</SheetHeader>
+            {/* <ProfileHeader /> */}
+          </SheetHeader>
           <nav className="p-5">
             <ul className="flex flex-col gap-5 font-bold">
-              {NAV_ITEMS.map((item, index) => {
+              {navLinks.map((item, index) => {
                 const isActive = pathname === item.href;
                 return (
                   <li key={index}>
@@ -40,7 +41,7 @@ export default function MobileNavBar() {
                         "text-secondary": isActive,
                       })}
                     >
-                      <i>{item.icon}</i>
+                      {/* <i>{item.icon}</i> */}
                       {item.label}
                     </Link>
                   </li>
@@ -62,26 +63,26 @@ export default function MobileNavBar() {
 export const NavLinks = () => {
   const pathname = usePathname();
   return (
-    <ul className="flex gap-7">
-      {NAV_ITEMS.map((item, index) => {
-        const isActive = pathname === item.href;
+    <nav className="flex items-center gap-9">
+      {navLinks.map((link) => {
+        const isActive = pathname === link.href;
         return (
-          <li key={index}>
-            <Link
-              href={item.href}
-              className={cn(
-                "text-secondary cursor-pointer hover:text-accent-hover",
-                {
-                  "text-accent border-b-3 transition-all duration-300 ease-in-out":
-                    isActive,
-                }
-              )}
-            >
-              {item.label}
-            </Link>
-          </li>
+          <Link
+            key={link.label}
+            href={link.href}
+            className={cn(
+              "text-foreground text-sm font-medium leading-normal hover:text-primary transition-colors",
+              {
+                "text-accent border-b-3 transition-all duration-300 ease-in-out":
+                  isActive,
+              }
+            )}
+          >
+            {link.label}
+          </Link>
         );
       })}
-    </ul>
+    </nav>
   );
 };
+

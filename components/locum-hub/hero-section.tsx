@@ -1,4 +1,5 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -15,23 +16,28 @@ export function HeroSection() {
               Connecting Ghana&apos;s Health Workforce to Opportunities Near You
             </h1>
             <p className="text-slate-200 text-base font-normal leading-normal sm:text-lg">
-              The premier platform connecting health facilities with qualified health workers across Ghana.
+              The premier platform connecting health facilities with qualified
+              health workers across Ghana.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Button size="lg" className="h-10 sm:h-12">
-              Find Health Job
-            </Button>
-            <Button
-              size="lg"
-              variant="secondary"
-              className="h-10 sm:h-12 bg-[#e7ecf3] text-[#0d131b] hover:bg-slate-300"
-            >
-              Post a Vacancy
-            </Button>
+            <Link href={"/jobs"}>
+              <Button size="lg" className="h-10 sm:h-12">
+                Find Health Job
+              </Button>
+            </Link>
+            <Link href={"/jobs/post"}>
+              <Button
+                size="lg"
+                variant="secondary"
+                className="h-10 sm:h-12 bg-[#e7ecf3] text-[#0d131b] hover:bg-slate-300"
+              >
+                Post a Vacancy
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

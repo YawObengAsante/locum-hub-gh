@@ -4,7 +4,6 @@ import { Toaster } from "sonner";
 import "../globals.css";
 import "ldrs/react/Ring.css";
 import { Navbar } from "@/components/locum-hub/navbar";
-// import NavBar from "@/components/nav-bar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +30,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* <NavBar /> */}
         <Navbar/>
         {children}
         <Toaster />

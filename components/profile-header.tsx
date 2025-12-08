@@ -7,8 +7,7 @@ import { signOutAction } from "@/actions/auth/sign-out-action";
 import { EditProfileModal } from "./edit-profile-modal";
 import { prisma } from "@/lib/prisma";
 
-export default async function ProfileHeader({userId}:{ userId: string}) {
-
+export default async function ProfileHeader({ userId }: { userId: string }) {
   const userData = await prisma.user.findUnique({
     where: { id: userId },
   });
@@ -45,7 +44,7 @@ export default async function ProfileHeader({userId}:{ userId: string}) {
           <Button
             variant={"secondary"}
             size={"sm"}
-            className="text-white cursor-pointer w-full sm:w-auto"
+            className="text-red-500 w-full sm:w-auto"
           >
             Sign out
             <LogOut className="ml-2 md:ml-0 h-4 w-4" />

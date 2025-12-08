@@ -19,11 +19,7 @@ export function EditProfileModal({ name, headline, image }: EditUserType) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          variant={"secondary"}
-          size={"sm"}
-          className="text-white cursor-pointer w-full sm:w-auto"
-        >
+        <Button variant={"secondary"} size={"sm"} className="w-full sm:w-auto">
           Edit profile <PenIcon className="ml-2 md:ml-0 h-4 w-4" />
         </Button>
       </DialogTrigger>

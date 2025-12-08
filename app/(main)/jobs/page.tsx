@@ -16,9 +16,9 @@ export default async function JobPage({
   return (
     <div className="m-3">
       <SearchBar />
-        <Suspense fallback={<JobsLoadingScreen />}>
-          <JobCardContainer jobs={jobs} />
-        </Suspense>
+      <Suspense fallback={<JobsLoadingScreen />}>
+        <JobCardContainer jobs={jobs} />
+      </Suspense>
     </div>
   );
 }

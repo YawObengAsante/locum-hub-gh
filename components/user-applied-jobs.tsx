@@ -1,13 +1,9 @@
-import { prisma } from "@/lib/prisma";
+import { getUserAppliedJob } from "@/actions/user/get-user-jobs";
 import { NoData } from "./no-data";
 import { UserJobCard } from "./user-job-card";
 
 export async function UserAppliedJobs({userId}: {userId: string}) {
-    const appliedJobs = await prisma.application.findMany({
-        where: {applicantId: userId},
-        orderBy: {createdAt: "desc"},
-        include: {job: true}
-    })
+    const appliedJobs = await getUserAppliedJob(userId)
 
     if(appliedJobs.length === 0) return <NoData />
 

@@ -7,7 +7,6 @@ export async function serverAuthUser() {
     headers: await headers(),
   });
 
-  // if(!session || !session.user) throw new Error("Unauthorized")
   if (!session || !session.user) redirect("/sign-in");
 
   return { userId: session.user.id };

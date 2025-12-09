@@ -1,7 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import { SearchParamsType } from "@/types";
+import { cache } from "react";
 
-export async function getAllJobs(params: SearchParamsType) {
+export const getAllJobs = cache(async (params: SearchParamsType) => {
   const jobName = params.job as string;
   const type = params.jobType as string;
   const jobLocation = params.location as string;
@@ -35,4 +36,4 @@ export async function getAllJobs(params: SearchParamsType) {
     });
 
     return jobs
-}
+}) 

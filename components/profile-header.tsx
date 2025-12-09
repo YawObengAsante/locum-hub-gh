@@ -5,13 +5,10 @@ import { Card } from "./ui/card";
 import BioText from "./bio-text";
 import { signOutAction } from "@/actions/auth/sign-out-action";
 import { EditProfileModal } from "./edit-profile-modal";
-import { prisma } from "@/lib/prisma";
+import { getUserData } from "@/actions/user/get-user-data";
 
 export default async function ProfileHeader({ userId }: { userId: string }) {
-  const userData = await prisma.user.findUnique({
-    where: { id: userId },
-  });
-
+  const userData = await getUserData(userId);
   if (!userData) throw new Error("User data not found");
   return (
     <Card className="m-3 sm:m-5 p-4 sm:p-6 md:p-8 flex flex-col md:flex-row md:items-start md:justify-between gap-6">

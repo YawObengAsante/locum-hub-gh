@@ -1,12 +1,9 @@
-import { prisma } from "@/lib/prisma";
 import { UserJobCard } from "./user-job-card";
 import { NoData } from "./no-data";
+import { getUserPostedJob } from "@/actions/user/get-user-jobs";
 
 export async function UserUploadedJobs({ userId }: { userId: string }) {
-  const postedJobs = await prisma.job.findMany({
-    where: { posterId: userId },
-    orderBy: {createdAt: "desc"}
-  });
+  const postedJobs = await getUserPostedJob(userId)
 
   if (postedJobs.length === 0) return <NoData />;
 

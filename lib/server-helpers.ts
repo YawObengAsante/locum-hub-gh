@@ -17,7 +17,7 @@ export async function isAuthorizedUser() {
     headers: await headers(),
   });
 
-  if(!session || !session.user) throw new Error("Unauthorized")
+  if(!session || !session.user) throw new Error("Unauthorized. Log in to perform this action.")
 
   return { userId: session.user.id };
 }

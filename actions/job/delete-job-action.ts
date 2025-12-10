@@ -1,6 +1,6 @@
 "use server"
 import { prisma } from "@/lib/prisma";
-import { serverAuthUser } from "@/lib/server-helpers";
+import { isAuthorizedUser } from "@/lib/server-helpers";
 import { parseError } from "@/lib/utils";
 
 export type DeleteJobActionReturnType = {
@@ -10,7 +10,7 @@ export type DeleteJobActionReturnType = {
 
 export async function deleteJobAction(id: string, posterId: string) {
   try {
-    const {userId} = await serverAuthUser()
+    const {userId} = await isAuthorizedUser()
     
     if(userId !== posterId) throw new Error("Unauthorized: You cannot delete this job")
 

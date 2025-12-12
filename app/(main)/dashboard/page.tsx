@@ -1,3 +1,4 @@
+import DashboardLoadingSkeleton from "@/components/dashboard-loading-skeleton";
 import ProfileHeader from "@/components/profile-header";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";

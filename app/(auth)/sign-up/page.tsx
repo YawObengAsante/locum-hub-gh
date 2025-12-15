@@ -4,11 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signUpAction } from "@/actions/auth";
-import { SignUpFormReturnType } from "@/actions/auth/sign-up-action";
 import Link from "next/link";
-import { useActionState, useEffect } from "react";
+import { useActionState } from "react";
 import { Ring } from "ldrs/react";
 import { cn } from "@/lib/utils";
+import type { SignUpFormReturnType } from "@/types";
 
 const initState: SignUpFormReturnType = {
   success: false,

@@ -9,7 +9,6 @@ export function LandingPage() {
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
       <div className="flex h-full grow flex-col">
-        {/* <Navbar /> */}
         <main className="flex-1">
           <HeroSection />
           <JobSearchPreview />

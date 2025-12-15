@@ -4,11 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signInAction } from "@/actions/auth";
-import { type SignInFormReturnType } from "@/actions/auth/sign-in-action";
 import Link from "next/link";
 import { useActionState } from "react";
 import { Ring } from "ldrs/react";
 import { cn } from "@/lib/utils";
+import type { SignInFormReturnType } from "@/types";
 
 const initState: SignInFormReturnType = {
   success: false,

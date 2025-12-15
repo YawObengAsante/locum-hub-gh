@@ -23,7 +23,7 @@ console.log(job);
             className="bg-white"
             defaultValue={job}
           />
-          <JobTypeSelectGroup name="jobType" defaultValue={jobType} />
+          <JobTypeSelectGroup defaultValue={jobType} />
           <Input
             type="search"
             name="location"

@@ -4,7 +4,7 @@ import { PostJobForm } from "@/components/post-job-form";
 import { useUserSession } from "@/lib/auth-client";
 import { JobFormReturnType } from "@/types";
 import { useRouter } from "next/navigation";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 
 const initState: JobFormReturnType = {
   success: false,
@@ -15,7 +15,11 @@ export default function PostJobPage() {
   const [state, action, isLoading] = useActionState(postJobAction, initState);
   const router = useRouter()
   const { session } = useUserSession();
-  if (!session || !session.user) router.push("/sign-in")
+
+  useEffect(() => {
+    if (!session || !session.user) router.push("/sign-in")
+  }, [session, session?.user])
+  
   return (
     <div className="container w-full my-10 flex flex-col justify-center items-center">
       <PostJobForm state={state} action={action} isLoading={isLoading} />

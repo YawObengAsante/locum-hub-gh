@@ -26,12 +26,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <section
+      <div
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar/>
         {children}
         <Toaster />
-      </section>
+      </div>
   );
 }

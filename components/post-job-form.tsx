@@ -8,7 +8,7 @@ import { Button } from "./ui/button";
 
 export function PostJobForm({ state, action, isLoading }: PostJobFormType) {
   return (
-    <Card className="w-full md:w-[800px]">
+    <Card className="w-full md:w-200">
       <CardHeader>
         <CardTitle>Job details</CardTitle>
         {state?.error && (

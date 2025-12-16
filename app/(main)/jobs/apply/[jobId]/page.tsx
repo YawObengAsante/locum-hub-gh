@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { serverAuthUser } from "@/lib/server-helpers";
 import { Ring } from "ldrs/react";
 
 export default async function JobApplicationPage({
@@ -10,9 +11,13 @@ export default async function JobApplicationPage({
   params: Promise<{ jobId: string }>;
 }) {
   const { jobId } = await params;
+  const {userId} = await serverAuthUser()
+
+  // TODO: handle form submission to backend
+  
   return (
     <div className="container w-full m-10  flex flex-col justify-center items-center">
-      <Card className="w-full md:w-[800px]">
+      <Card className="w-full md:w-200">
         <CardHeader>
           <CardTitle>Apply to Job</CardTitle>
         </CardHeader>

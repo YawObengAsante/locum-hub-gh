@@ -209,7 +209,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\USER\\Desktop\\web dev\\job-board\\generated\\prisma",
+      "value": "C:\\Users\\USER\\Desktop\\web dev\\locum-hub-gh\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -220,10 +220,14 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "rhel-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\USER\\Desktop\\web dev\\job-board\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\USER\\Desktop\\web dev\\locum-hub-gh\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -246,8 +250,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider   = \"prisma-client-js\"\n  output     = \"../generated/prisma\"\n  engineType = \"client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id            String   @id @default(cuid())\n  name          String\n  email         String   @unique\n  emailVerified Boolean  @default(false)\n  image         String?\n  headline      String?\n  createdAt     DateTime @default(now())\n  updatedAt     DateTime @default(now()) @updatedAt\n\n  sessions     Session[]\n  accounts     Account[]\n  jobs         Job[]         @relation(\"PostedJobs\")\n  applications Application[]\n\n  @@map(\"user\")\n}\n\nmodel Session {\n  id        String   @id\n  token     String   @unique\n  expiresAt DateTime\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n  ipAddress String?\n  userAgent String?\n\n  userId String\n  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@map(\"session\")\n}\n\nmodel Account {\n  id         String @id\n  accountId  String\n  providerId String\n  userId     String\n\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  accessToken           String?\n  refreshToken          String?\n  idToken               String?\n  accessTokenExpiresAt  DateTime?\n  refreshTokenExpiresAt DateTime?\n  scope                 String?\n  password              String?\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([accountId, providerId])\n  @@map(\"account\")\n}\n\nmodel Verification {\n  id         String   @id\n  identifier String\n  value      String\n  expiresAt  DateTime\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @default(now()) @updatedAt\n\n  @@unique([identifier, value])\n  @@map(\"verification\")\n}\n\nmodel Job {\n  id          String    @id @default(cuid())\n  title       String\n  hospital    String\n  location    String?\n  jobType     String\n  salary      String?\n  description String    @db.Text\n  status      JobStatus @default(OPEN)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  posterId String\n  poster   User   @relation(\"PostedJobs\", fields: [posterId], references: [id], onDelete: Cascade)\n\n  applications Application[]\n\n  @@index([title])\n  @@index([hospital])\n  @@index([location])\n}\n\nenum JobStatus {\n  OPEN\n  FILLED\n  CLOSED\n}\n\nmodel Application {\n  id          String    @id @default(cuid())\n  coverLetter String?   @db.Text\n  resumeUrl   String?\n  status      AppStatus @default(PENDING)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  jobId String\n  job   Job    @relation(fields: [jobId], references: [id], onDelete: Cascade)\n\n  applicantId String\n  applicant   User   @relation(fields: [applicantId], references: [id], onDelete: Cascade)\n\n  @@unique([jobId, applicantId])\n  @@index([status])\n}\n\nenum AppStatus {\n  PENDING\n  REVIEWED\n  REJECTED\n  ACCEPTED\n}\n",
-  "inlineSchemaHash": "5e7f67b96c8c050440f333664c22618c994a0d74c12b0ae2431facf993111a4e",
+  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  binaryTargets = [\"native\", \"rhel-openssl-3.0.x\"]\n  output        = \"../generated/prisma\"\n  engineType    = \"client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id            String   @id @default(cuid())\n  name          String\n  email         String   @unique\n  emailVerified Boolean  @default(false)\n  image         String?\n  headline      String?\n  createdAt     DateTime @default(now())\n  updatedAt     DateTime @default(now()) @updatedAt\n\n  sessions     Session[]\n  accounts     Account[]\n  jobs         Job[]         @relation(\"PostedJobs\")\n  applications Application[]\n\n  @@map(\"user\")\n}\n\nmodel Session {\n  id        String   @id\n  token     String   @unique\n  expiresAt DateTime\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n  ipAddress String?\n  userAgent String?\n\n  userId String\n  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@map(\"session\")\n}\n\nmodel Account {\n  id         String @id\n  accountId  String\n  providerId String\n  userId     String\n\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  accessToken           String?\n  refreshToken          String?\n  idToken               String?\n  accessTokenExpiresAt  DateTime?\n  refreshTokenExpiresAt DateTime?\n  scope                 String?\n  password              String?\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([accountId, providerId])\n  @@map(\"account\")\n}\n\nmodel Verification {\n  id         String   @id\n  identifier String\n  value      String\n  expiresAt  DateTime\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @default(now()) @updatedAt\n\n  @@unique([identifier, value])\n  @@map(\"verification\")\n}\n\nmodel Job {\n  id          String    @id @default(cuid())\n  title       String\n  hospital    String\n  location    String?\n  jobType     String\n  salary      String?\n  description String    @db.Text\n  status      JobStatus @default(OPEN)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  posterId String\n  poster   User   @relation(\"PostedJobs\", fields: [posterId], references: [id], onDelete: Cascade)\n\n  applications Application[]\n\n  @@index([title])\n  @@index([hospital])\n  @@index([location])\n}\n\nenum JobStatus {\n  OPEN\n  FILLED\n  CLOSED\n}\n\nmodel Application {\n  id          String    @id @default(cuid())\n  coverLetter String?   @db.Text\n  resumeUrl   String?\n  status      AppStatus @default(PENDING)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  jobId String\n  job   Job    @relation(fields: [jobId], references: [id], onDelete: Cascade)\n\n  applicantId String\n  applicant   User   @relation(fields: [applicantId], references: [id], onDelete: Cascade)\n\n  @@unique([jobId, applicantId])\n  @@index([status])\n}\n\nenum AppStatus {\n  PENDING\n  REVIEWED\n  REJECTED\n  ACCEPTED\n}\n",
+  "inlineSchemaHash": "bc6e85a08bdfbd284843ba56adfb4588985ad723cf292c7d946898ba7da3658a",
   "copyEngine": true
 }
 
@@ -287,6 +291,10 @@ Object.assign(exports, Prisma)
 // file annotations for bundling tools to include these files
 path.join(__dirname, "query_engine-windows.dll.node");
 path.join(process.cwd(), "generated/prisma/query_engine-windows.dll.node")
+
+// file annotations for bundling tools to include these files
+path.join(__dirname, "libquery_engine-rhel-openssl-3.0.x.so.node");
+path.join(process.cwd(), "generated/prisma/libquery_engine-rhel-openssl-3.0.x.so.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "generated/prisma/schema.prisma")

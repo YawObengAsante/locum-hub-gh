@@ -21,3 +21,11 @@ export async function isAuthorizedUser() {
 
   return { userId: session.user.id };
 }
+
+export async function redirectIfIsAuthorized() {
+  const session = await auth.api.getSession({
+    headers: await headers()
+  })
+
+  if(session && session.user) redirect("/")
+}

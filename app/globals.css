@@ -10,6 +10,7 @@
   --primary: #2f27ce;
   --secondary: #9691f5;
   --accent: #433bff;
+  --card: #fbfbfe;
 
   /* Neutral / Structure */
   --border: #c1d9ec;
@@ -45,6 +46,7 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
+  --color-card: var(--card);
 
   --color-border: var(--border);
   --color-surface: var(--surface);
@@ -77,6 +79,7 @@
     --primary: #3a31d8;
     --secondary: #020024;
     --accent: #0600c2;
+    --card: #020024;
 
     --border: #0a1f33;
     --border-hover: #16395a;

@@ -20,7 +20,6 @@ console.log(job);
             type="search"
             name="job"
             placeholder="Search Job"
-            // className="bg-white"
             defaultValue={job}
           />
           <JobTypeSelectGroup defaultValue={jobType} />
@@ -28,7 +27,6 @@ console.log(job);
             type="search"
             name="location"
             placeholder="Location"
-            // className="bg-white "
             defaultValue={location}
           />
         </div>

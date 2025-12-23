@@ -39,9 +39,8 @@ export default async function ProfileHeader({ userId }: { userId: string }) {
         />
         <form action={signOutAction}>
           <Button
-            variant={"secondary"}
+            variant={"destructive"}
             size={"sm"}
-            className="text-red-500 w-full sm:w-auto"
           >
             Sign out
             <LogOut className="ml-2 md:ml-0 h-4 w-4" />

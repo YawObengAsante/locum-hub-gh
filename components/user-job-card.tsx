@@ -19,37 +19,37 @@ export function UserJobCard({ job }: { job: JobType }) {
       <div className="flex flex-col gap-2 md:gap-4 w-full">
         <h1 className="uploaded-job-items">
           <BriefcaseBusinessIcon className="h-5 w-5" />
-          <p>
+          <p className="job-details-container">
             Position: <span className="job-details-text">{job.title}</span>{" "}
           </p>
         </h1>
         <div className="uploaded-job-items">
           <HospitalIcon className="h-5 w-5" />
-          <p>
+          <p className="job-details-container">
             Hospital: <span className="job-details-text">{job.hospital}</span>{" "}
           </p>
         </div>
         <div className="uploaded-job-items">
           <MapPin className="h-5 w-5" />
-          <p>
+          <p className="job-details-container">
             Location: <span className="job-details-text">{job.location}</span>
           </p>
         </div>
         <div className="uploaded-job-items">
           <PersonStandingIcon className="h-5 w-5" />
-          <p>
+          <p className="job-details-container">
             Job Type: <span className="job-details-text">{job.jobType}</span>
           </p>
         </div>
         <div className="uploaded-job-items">
           <LockIcon className="h-5 w-5" />
-          <p>
+          <p className="job-details-container">
             Status: <span className="job-details-text">{job.status}</span>
           </p>
         </div>
         <div className="uploaded-job-items">
           <DollarSignIcon className="h-5 w-5" />
-          <p>
+          <p className="job-details-container">
             Salary: <span className="job-details-text">{job.salary}</span>{" "}
           </p>
         </div>

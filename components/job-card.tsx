@@ -27,7 +27,7 @@ export default function JobCard({
     }
   };
   return (
-    <Card className="bg-white/70">
+    <Card className="bg-card">
       <CardHeader>
         <div className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="flex items-center gap-3">
@@ -36,7 +36,7 @@ export default function JobCard({
               <AvatarFallback>{postedBy.name.slice(0, 1)}</AvatarFallback>
             </Avatar>
             <div className="flex flex-col">
-              <span className="text-sm sm:text-base font-semibold text-gray-800">
+              <span className="text-sm sm:text-base font-semibold text-text">
                 {job.hospital}
               </span>
               <time className="text-xs text-gray-400">
@@ -50,7 +50,7 @@ export default function JobCard({
         </div>
       </CardHeader>
       <CardContent>
-        <h1 className="font-bold text-lg sm:text-2xl text-gray-700 mb-3">
+        <h1 className="font-bold text-lg sm:text-2xl text-text mb-3">
           {job.title}
         </h1>
 
@@ -63,7 +63,7 @@ export default function JobCard({
         </div>
 
         <div
-          className="bg-gray-100 p-3 mb-3 min-h-20 rounded-2xl text-sm text-gray-700"
+          className="bg-background p-3 mb-3 min-h-20 rounded-2xl text-sm text-text"
           style={{
             WebkitBoxOrient: "vertical",
             overflow: "hidden",
@@ -111,7 +111,7 @@ export default function JobCard({
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="bg-gray-100 py-1.5 px-3 rounded-xl flex items-center gap-1 text-sm">
+    <span className="bg-background py-1.5 px-3 rounded-xl flex items-center gap-1 text-sm">
       {children}
     </span>
   );

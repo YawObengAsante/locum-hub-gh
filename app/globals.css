@@ -106,37 +106,6 @@
   }
 }
 
-/* .dark {
-  --text: red;
-  --background: #212121;
-  --primary: #3a31d8;
-  --secondary: #020024;
-  --accent: #0600c2;
-
-  --border: #0a1f33;
-  --border-hover: #16395a;
-  --surface: #081b2b;
-  --surface-hover: #0d2842;
-  --shadow: rgba(0, 0, 0, 0.5);
-
-  --primary-hover: #a3d4f8;
-  --primary-active: #72b8ea;
-  --secondary-hover: #1b19c2;
-  --accent-hover: #5d47f0;
-  --disabled: #3a4d63;
-
-  --success: #3fd07f;
-  --warning: #f5b942;
-  --error: #ff5c5c;
-  --info: #6ab8f7;
-
-  --gradient-primary: linear-gradient(135deg, #4b33e6, #88c4f1);
-  --gradient-surface: linear-gradient(180deg, #081b2b, #03111c);
-  --focus-ring: rgba(136, 196, 241, 0.5);
-  --scrollbar-thumb: #16395a;
-  --scrollbar-thumb-hover: #1f4f7a;
-} */
-
 @layer base {
   body {
     @apply bg-background text-text;
@@ -147,6 +116,10 @@
   }
 
   .job-details-text {
-    @apply font-semibold text-sm md:text-xl text-secondary;
+    @apply font-semibold text-sm md:text-xl text-text;
+  }
+
+  .job-details-container {
+    @apply flex gap-4
   }
 }

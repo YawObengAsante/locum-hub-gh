@@ -33,7 +33,7 @@ export function EditProfileForm({ headline, name }: EditUserType) {
       <div className="grid gap-4">
         <div className="grid gap-3">
           <Label htmlFor="name">Name</Label>
-          <Input id="name" name="name" defaultValue={name} />
+          <Input id="name" name="name" defaultValue={name} className="bg-card" />
           {state.error?.name && (
             <div className="text-red-500">{state.error.name[0]}</div>
           )}
@@ -45,6 +45,7 @@ export function EditProfileForm({ headline, name }: EditUserType) {
             name="headline"
             placeholder="Add a bio to your profile"
             defaultValue={headline ?? undefined}
+            className="bg-card"
           />
           {state.error?.headline && (
             <div className="text-red-500">{state.error.headline[0]}</div>

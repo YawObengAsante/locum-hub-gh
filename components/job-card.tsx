@@ -33,7 +33,7 @@ export default function JobCard({
           <div className="flex items-center gap-3">
             <Avatar className="h-10 w-10 sm:h-12 sm:w-12">
               <AvatarImage src={postedBy.image ?? undefined} />
-              <AvatarFallback>{postedBy.name.slice(0, 1)}</AvatarFallback>
+              <AvatarFallback className="bg-focus-ring font-bold">{postedBy.name.slice(0, 1)}</AvatarFallback>
             </Avatar>
             <div className="flex flex-col">
               <span className="text-sm sm:text-base font-semibold text-text">
@@ -63,7 +63,7 @@ export default function JobCard({
         </div>
 
         <div
-          className="bg-background p-3 mb-3 min-h-20 rounded-2xl text-sm text-text"
+          className="bg-focus-ring p-3 mb-3 min-h-20 rounded-2xl text-sm text-text"
           style={{
             WebkitBoxOrient: "vertical",
             overflow: "hidden",
@@ -111,7 +111,7 @@ export default function JobCard({
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="bg-background py-1.5 px-3 rounded-xl flex items-center gap-1 text-sm">
+    <span className="bg-focus-ring py-1.5 px-3 rounded-xl flex items-center gap-1 text-sm">
       {children}
     </span>
   );

@@ -78,7 +78,9 @@ type JobStatusType = "OPEN" | "FILLED" | "CLOSED";
 type SearchParamsType = {
     job: string | string[] | undefined,
     jobType: string | string[] | undefined,
-    location: string | string[] | undefined
+    location: string | string[] | undefined,
+    page: string | string[] | undefined,
+    limit: string | string[] | undefined
 }
 
 export type {

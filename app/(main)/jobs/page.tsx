@@ -9,15 +9,15 @@ export default async function JobPage({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const { job, jobType, location } = await searchParams;
+  const { job, jobType, location, page, limit } = await searchParams;
 
-  const jobs = getAllJobs({ job, jobType, location });
+  const  jobsPromise  = getAllJobs({ job, jobType, location, page, limit });
 
   return (
     <div className="m-3">
       <SearchBar />
       <Suspense fallback={<JobsLoadingScreen />}>
-        <JobCardContainer jobs={jobs} />
+        <JobCardContainer jobsPromise={jobsPromise} />
       </Suspense>
     </div>
   );

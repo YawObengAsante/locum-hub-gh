@@ -99,6 +99,7 @@ model Job {
   @@index([title])
   @@index([hospital])
   @@index([location])
+  @@index([createdAt])
 }
 
 enum JobStatus {

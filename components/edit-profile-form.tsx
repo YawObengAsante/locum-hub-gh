@@ -24,16 +24,24 @@ export function EditProfileForm({ headline, name }: EditUserType) {
   );
 
   useEffect(() => {
+    if (!state.message) return;
+
     state.success
       ? toast.success(`${state.message}`)
       : toast.error(`${state.message}`);
-  }, [state]);
+  }, [state.message, state.success]);
+
   return (
     <form action={action}>
       <div className="grid gap-4">
         <div className="grid gap-3">
           <Label htmlFor="name">Name</Label>
-          <Input id="name" name="name" defaultValue={name} className="bg-card" />
+          <Input
+            id="name"
+            name="name"
+            defaultValue={name}
+            className="bg-card"
+          />
           {state.error?.name && (
             <div className="text-red-500">{state.error.name[0]}</div>
           )}

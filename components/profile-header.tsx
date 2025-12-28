@@ -41,6 +41,7 @@ export default async function ProfileHeader({ userId }: { userId: string }) {
           <Button
             variant={"destructive"}
             size={"sm"}
+            className="w-full sm:w-auto"
           >
             Sign out
             <LogOut className="ml-2 md:ml-0 h-4 w-4" />

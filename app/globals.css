@@ -18,6 +18,8 @@
   --surface: #f5faff;
   --surface-hover: #e8f3fb;
   --shadow: rgba(0, 0, 0, 0.08);
+  --muted: oklch(0.85 0.02 20);
+  --muted-foreground: oklch(0.4 0.02 20);
 
   /* Interactive States */
   --primary-hover: #13619f;
@@ -41,6 +43,9 @@
 }
 
 @theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --font-serif: "Times New Roman", serif;
   --color-background: var(--background);
   --color-text: var(--text);
   --color-primary: var(--primary);
@@ -53,6 +58,8 @@
   --color-border-hover: var(--border-hover);
   --color-surface-hover: var(--surface-hover);
   --color-shadow: var(--shadow);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
 
   --color-primary-hover: var(--primary-hover);
   --color-primary-active: var(--primary-active);
@@ -86,6 +93,8 @@
     --surface: #081b2b;
     --surface-hover: #0d2842;
     --shadow: rgba(0, 0, 0, 0.5);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
 
     --primary-hover: #a3d4f8;
     --primary-active: #72b8ea;
@@ -120,6 +129,19 @@
   }
 
   .job-details-container {
-    @apply flex gap-4
+    @apply flex gap-4;
   }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
 }

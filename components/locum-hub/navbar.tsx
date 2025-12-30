@@ -17,7 +17,7 @@ export async function Navbar() {
         <header className="flex items-center justify-between whitespace-nowrap h-16">
           <Link href="/" className="flex items-center gap-4 text-foreground">
             <Logo className="size-6 text-primary" />
-            <h2 className="text-foreground text-lg font-bold leading-tight tracking-[-0.015em]">
+            <h2 className="text-foreground text-lg font-bold leading-tight tracking-[-0.015em] font-serif">
               Locum Hub GH
             </h2>
           </Link>

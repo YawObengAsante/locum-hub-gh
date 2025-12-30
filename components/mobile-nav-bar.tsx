@@ -40,7 +40,7 @@ export default function MobileNavBar() {
                         "text-secondary": isActive,
                       })}
                     >
-                      {/* <i>{item.icon}</i> */}
+                      <i>{item.icon}</i>
                       {item.label}
                     </Link>
                   </li>

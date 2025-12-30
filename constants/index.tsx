@@ -1,12 +1,12 @@
-import {  House, List, BriefcaseBusinessIcon } from "lucide-react"
-export const NAV_ITEMS = [
-    {icon: <House size={25}/> ,label: "Home", href: "/"},
-    {icon: <List size={25}/>, label: "Browse Jobs", href: "/jobs"},
-    {icon: <BriefcaseBusinessIcon size={25}/>, label: "Post A Job", href: "/jobs/post"},
-]
+import { House, List, BriefcaseBusinessIcon, Album } from "lucide-react";
 
 export const navLinks = [
-  { href: "/jobs", label: "Browse Jobs" },
-  { href: "/jobs/post", label: "Post A Jobs" },
-  { href: "/about", label: "About" },
-]
+  { icon: <House size={25} />, label: "Home", href: "/" },
+  { icon: <List size={25} />, href: "/jobs", label: "Browse Jobs" },
+  {
+    icon: <BriefcaseBusinessIcon size={25} />,
+    href: "/jobs/post",
+    label: "Post A Jobs",
+  },
+  { icon: <Album size={25} />, href: "/about", label: "About" },
+];

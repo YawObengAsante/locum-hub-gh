@@ -8,6 +8,5 @@ export const NAV_ITEMS = [
 export const navLinks = [
   { href: "/jobs", label: "Browse Jobs" },
   { href: "/jobs/post", label: "Post A Jobs" },
-  { href: "#", label: "For Facilities" },
-  { href: "#", label: "About" },
+  { href: "/about", label: "About" },
 ]

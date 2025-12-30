@@ -4,7 +4,6 @@ import { navLinks } from "../constants";
 import {
   Sheet,
   SheetTrigger,
-  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,

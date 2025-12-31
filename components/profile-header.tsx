@@ -1,11 +1,9 @@
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Button } from "./ui/button";
-import { LogOut } from "lucide-react";
 import { Card } from "./ui/card";
 import BioText from "./bio-text";
-import { signOutAction } from "@/actions/auth/sign-out-action";
 import { EditProfileModal } from "./edit-profile-modal";
 import { getUserData } from "@/actions/user/get-user-data";
+import SignOutButton from "./sign-out-button";
 
 export default async function ProfileHeader({ userId }: { userId: string }) {
   const userData = await getUserData(userId);
@@ -37,16 +35,7 @@ export default async function ProfileHeader({ userId }: { userId: string }) {
           headline={userData.headline}
           image={userData.image}
         />
-        <form action={signOutAction}>
-          <Button
-            variant={"destructive"}
-            size={"sm"}
-            className="w-full sm:w-auto"
-          >
-            Sign out
-            <LogOut className="ml-2 md:ml-0 h-4 w-4" />
-          </Button>
-        </form>
+        <SignOutButton />
       </div>
     </Card>
   );

@@ -6,6 +6,7 @@ import MobileNavBar, { NavLinks } from "../mobile-nav-bar";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { CircleUserRound } from "lucide-react";
+import SignOutButton from "../sign-out-button";
 
 export async function Navbar() {
   const session = await auth.api.getSession({
@@ -47,7 +48,9 @@ export async function Navbar() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <MobileNavBar session={session}/>
+            <MobileNavBar session={session}>
+              <SignOutButton/>
+            </MobileNavBar>
           </div>
         </header>
       </div>

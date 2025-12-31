@@ -14,12 +14,14 @@ import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { type SessionType } from "@/types";
+import { ReactNode } from "react";
 
-export default function MobileNavBar({
-  session,
-}: {
+type NavBarProps = {
   session: SessionType | null;
-}) {
+  children: ReactNode;
+};
+
+export default function MobileNavBar({ session, children }: NavBarProps) {
   const pathname = usePathname();
 
   return (
@@ -54,9 +56,7 @@ export default function MobileNavBar({
           </nav>
           <SheetFooter>
             {session ? (
-              <Button className="text-white">
-                Sign Out <LogOut />
-              </Button>
+              <div>{children}</div>
             ) : (
               <Link href={"/sign-in"}>
                 <Button className="text-white">Sign In</Button>

@@ -9,7 +9,7 @@ import {
   SheetTitle,
   SheetFooter,
 } from "./ui/sheet";
-import { MenuIcon, LogOut } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";

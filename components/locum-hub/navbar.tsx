@@ -47,7 +47,7 @@ export async function Navbar() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <MobileNavBar />
+            <MobileNavBar session={session}/>
           </div>
         </header>
       </div>

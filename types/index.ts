@@ -1,6 +1,7 @@
 import { jobSchema, signInSchema, signUpSchema } from "@/schema";
 import { $Enums } from "@/generated/prisma";
 import z from "zod";
+import { auth } from "@/lib/auth";
 
 type UserType = {
   id: string;
@@ -83,6 +84,8 @@ type SearchParamsType = {
     limit: string | string[] | undefined
 }
 
+type SessionType = typeof auth.$Infer.Session
+
 export type {
   UserType,
   EditUserType,
@@ -96,5 +99,6 @@ export type {
   SignUpFormReturnType,
   JobStatusType,
   SearchParamsType,
-  JobWithPosterType
+  JobWithPosterType,
+  SessionType
 };

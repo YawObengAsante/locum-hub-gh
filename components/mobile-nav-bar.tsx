@@ -13,8 +13,13 @@ import { MenuIcon, LogOut } from "lucide-react";
 import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { type SessionType } from "@/types";
 
-export default function MobileNavBar() {
+export default function MobileNavBar({
+  session,
+}: {
+  session: SessionType | null;
+}) {
   const pathname = usePathname();
 
   return (
@@ -26,7 +31,6 @@ export default function MobileNavBar() {
         <SheetContent>
           <SheetHeader>
             <SheetTitle>Mobile Navigation</SheetTitle>
-            {/* <ProfileHeader /> */}
           </SheetHeader>
           <nav className="p-5">
             <ul className="flex flex-col gap-5 font-bold">
@@ -49,9 +53,15 @@ export default function MobileNavBar() {
             </ul>
           </nav>
           <SheetFooter>
-            <Button className="text-white">
-              Sign Out <LogOut />
-            </Button>
+            {session ? (
+              <Button className="text-white">
+                Sign Out <LogOut />
+              </Button>
+            ) : (
+              <Link href={"/sign-in"}>
+                <Button className="text-white">Sign In</Button>
+              </Link>
+            )}
           </SheetFooter>
         </SheetContent>
       </Sheet>
@@ -84,4 +94,3 @@ export const NavLinks = () => {
     </nav>
   );
 };
-

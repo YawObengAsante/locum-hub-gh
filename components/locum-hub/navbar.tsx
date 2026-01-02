@@ -15,7 +15,7 @@ export async function Navbar() {
   return (
     <div className="w-full bg-background/80 backdrop-blur-sm sticky top-0 z-50 border-b border-border">
       <div className="px-4 sm:px-10 lg:px-20 mx-auto">
-        <header className="flex items-center justify-between whitespace-nowrap h-16">
+        <div className="flex items-center justify-between whitespace-nowrap h-16">
           <Link href="/" className="flex items-center gap-4 text-foreground">
             <Logo className="size-6 text-primary" />
             <h2 className="text-foreground text-lg font-bold leading-tight tracking-[-0.015em] font-serif">
@@ -52,7 +52,7 @@ export async function Navbar() {
               <SignOutButton/>
             </MobileNavBar>
           </div>
-        </header>
+        </div>
       </div>
     </div>
   );

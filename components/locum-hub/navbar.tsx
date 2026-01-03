@@ -49,7 +49,7 @@ export async function Navbar() {
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <MobileNavBar session={session}>
-              <SignOutButton/>
+              <SignOutButton />
             </MobileNavBar>
           </div>
         </div>

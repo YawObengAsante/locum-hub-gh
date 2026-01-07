@@ -1,8 +1,8 @@
 generator client {
-  provider   = "prisma-client-js"
+  provider      = "prisma-client-js"
+  output        = "../generated/prisma"
   binaryTargets = ["native", "rhel-openssl-3.0.x"]
-  output     = "../generated/prisma"
-  engineType = "client"
+  engineType    = "client"
 }
 
 datasource db {
@@ -11,32 +11,30 @@ datasource db {
 }
 
 model User {
-  id            String         @id @default(cuid())
+  id            String        @id @default(cuid())
   name          String
-  email         String         @unique
-  emailVerified Boolean        @default(false)
+  email         String        @unique
+  emailVerified Boolean       @default(false)
   image         String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @default(now()) @updatedAt
   headline      String?
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @default(now()) @updatedAt
-
-  sessions      Session[]
-  accounts      Account[]
-  jobs          Job[]          @relation("PostedJobs")
   applications  Application[]
+  jobs          Job[]         @relation("PostedJobs")
+  accounts      Account[]
+  sessions      Session[]
 
   @@map("user")
 }
 
 model Session {
   id        String   @id
-  token     String   @unique
   expiresAt DateTime
+  token     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   ipAddress String?
   userAgent String?
-
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -45,22 +43,19 @@ model Session {
 
 model Account {
   id                    String    @id
-  accountId             String
-  providerId            String
   userId                String
-
-  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-
   accessToken           String?
   refreshToken          String?
   idToken               String?
   accessTokenExpiresAt  DateTime?
   refreshTokenExpiresAt DateTime?
   scope                 String?
-  password              String? 
-
+  password              String?
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
+  accountId             String
+  providerId            String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([accountId, providerId])
   @@map("account")
@@ -79,27 +74,40 @@ model Verification {
 }
 
 model Job {
-  id           String         @id @default(cuid())
+  id           String        @id @default(cuid())
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
   title        String
-  hospital     String
   location     String?
-  jobType      String
-  salary       String?
-  description  String         @db.Text
-  status       JobStatus      @default(OPEN)
-
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-
+  description  String
+  status       JobStatus     @default(OPEN)
   posterId     String
-  poster       User           @relation("PostedJobs", fields: [posterId], references: [id], onDelete: Cascade)
-
+  hospital     String
+  salary       String?
+  jobType      String
   applications Application[]
+  poster       User          @relation("PostedJobs", fields: [posterId], references: [id], onDelete: Cascade)
 
   @@index([title])
   @@index([hospital])
   @@index([location])
   @@index([createdAt])
+}
+
+model Application {
+  id          String    @id @default(cuid())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  jobId       String
+  applicantId String
+  coverLetter String?
+  resumeUrl   String?
+  status      ApplicationStatus @default(PENDING)
+  applicant   User      @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  job         Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([jobId, applicantId])
+  @@index([status])
 }
 
 enum JobStatus {
@@ -108,26 +116,7 @@ enum JobStatus {
   CLOSED
 }
 
-model Application {
-  id          String     @id @default(cuid())
-  coverLetter String?    @db.Text
-  resumeUrl   String?
-  status      AppStatus  @default(PENDING)
-
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-
-  jobId       String
-  job         Job        @relation(fields: [jobId], references: [id], onDelete: Cascade)
-
-  applicantId String
-  applicant   User       @relation(fields: [applicantId], references: [id], onDelete: Cascade)
-
-  @@unique([jobId, applicantId])
-  @@index([status])
-}
-
-enum AppStatus {
+enum ApplicationStatus {
   PENDING
   REVIEWED
   REJECTED

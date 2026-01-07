@@ -57,14 +57,14 @@ export namespace $Enums {
 export type JobStatus = (typeof JobStatus)[keyof typeof JobStatus]
 
 
-export const AppStatus: {
+export const ApplicationStatus: {
   PENDING: 'PENDING',
   REVIEWED: 'REVIEWED',
   REJECTED: 'REJECTED',
   ACCEPTED: 'ACCEPTED'
 };
 
-export type AppStatus = (typeof AppStatus)[keyof typeof AppStatus]
+export type ApplicationStatus = (typeof ApplicationStatus)[keyof typeof ApplicationStatus]
 
 }
 
@@ -72,9 +72,9 @@ export type JobStatus = $Enums.JobStatus
 
 export const JobStatus: typeof $Enums.JobStatus
 
-export type AppStatus = $Enums.AppStatus
+export type ApplicationStatus = $Enums.ApplicationStatus
 
-export const AppStatus: typeof $Enums.AppStatus
+export const ApplicationStatus: typeof $Enums.ApplicationStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1305,17 +1305,17 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    sessions: number
-    accounts: number
-    jobs: number
     applications: number
+    jobs: number
+    accounts: number
+    sessions: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    sessions?: boolean | UserCountOutputTypeCountSessionsArgs
-    accounts?: boolean | UserCountOutputTypeCountAccountsArgs
-    jobs?: boolean | UserCountOutputTypeCountJobsArgs
     applications?: boolean | UserCountOutputTypeCountApplicationsArgs
+    jobs?: boolean | UserCountOutputTypeCountJobsArgs
+    accounts?: boolean | UserCountOutputTypeCountAccountsArgs
+    sessions?: boolean | UserCountOutputTypeCountSessionsArgs
   }
 
   // Custom InputTypes
@@ -1332,15 +1332,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SessionWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AccountWhereInput
+  export type UserCountOutputTypeCountApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ApplicationWhereInput
   }
 
   /**
@@ -1353,8 +1346,15 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ApplicationWhereInput
+  export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AccountWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SessionWhereInput
   }
 
 
@@ -1409,9 +1409,9 @@ export namespace Prisma {
     email: string | null
     emailVerified: boolean | null
     image: string | null
-    headline: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    headline: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1420,9 +1420,9 @@ export namespace Prisma {
     email: string | null
     emailVerified: boolean | null
     image: string | null
-    headline: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    headline: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1431,9 +1431,9 @@ export namespace Prisma {
     email: number
     emailVerified: number
     image: number
-    headline: number
     createdAt: number
     updatedAt: number
+    headline: number
     _all: number
   }
 
@@ -1444,9 +1444,9 @@ export namespace Prisma {
     email?: true
     emailVerified?: true
     image?: true
-    headline?: true
     createdAt?: true
     updatedAt?: true
+    headline?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1455,9 +1455,9 @@ export namespace Prisma {
     email?: true
     emailVerified?: true
     image?: true
-    headline?: true
     createdAt?: true
     updatedAt?: true
+    headline?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1466,9 +1466,9 @@ export namespace Prisma {
     email?: true
     emailVerified?: true
     image?: true
-    headline?: true
     createdAt?: true
     updatedAt?: true
+    headline?: true
     _all?: true
   }
 
@@ -1550,9 +1550,9 @@ export namespace Prisma {
     email: string
     emailVerified: boolean
     image: string | null
-    headline: string | null
     createdAt: Date
     updatedAt: Date
+    headline: string | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1578,13 +1578,13 @@ export namespace Prisma {
     email?: boolean
     emailVerified?: boolean
     image?: boolean
-    headline?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    sessions?: boolean | User$sessionsArgs<ExtArgs>
-    accounts?: boolean | User$accountsArgs<ExtArgs>
-    jobs?: boolean | User$jobsArgs<ExtArgs>
+    headline?: boolean
     applications?: boolean | User$applicationsArgs<ExtArgs>
+    jobs?: boolean | User$jobsArgs<ExtArgs>
+    accounts?: boolean | User$accountsArgs<ExtArgs>
+    sessions?: boolean | User$sessionsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1594,9 +1594,9 @@ export namespace Prisma {
     email?: boolean
     emailVerified?: boolean
     image?: boolean
-    headline?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    headline?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1605,16 +1605,16 @@ export namespace Prisma {
     email?: boolean
     emailVerified?: boolean
     image?: boolean
-    headline?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    headline?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    sessions?: boolean | User$sessionsArgs<ExtArgs>
-    accounts?: boolean | User$accountsArgs<ExtArgs>
-    jobs?: boolean | User$jobsArgs<ExtArgs>
     applications?: boolean | User$applicationsArgs<ExtArgs>
+    jobs?: boolean | User$jobsArgs<ExtArgs>
+    accounts?: boolean | User$accountsArgs<ExtArgs>
+    sessions?: boolean | User$sessionsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1622,10 +1622,10 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      sessions: Prisma.$SessionPayload<ExtArgs>[]
-      accounts: Prisma.$AccountPayload<ExtArgs>[]
-      jobs: Prisma.$JobPayload<ExtArgs>[]
       applications: Prisma.$ApplicationPayload<ExtArgs>[]
+      jobs: Prisma.$JobPayload<ExtArgs>[]
+      accounts: Prisma.$AccountPayload<ExtArgs>[]
+      sessions: Prisma.$SessionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1633,9 +1633,9 @@ export namespace Prisma {
       email: string
       emailVerified: boolean
       image: string | null
-      headline: string | null
       createdAt: Date
       updatedAt: Date
+      headline: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2000,10 +2000,10 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany"> | Null>
-    accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany"> | Null>
-    jobs<T extends User$jobsArgs<ExtArgs> = {}>(args?: Subset<T, User$jobsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, "findMany"> | Null>
     applications<T extends User$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, User$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findMany"> | Null>
+    jobs<T extends User$jobsArgs<ExtArgs> = {}>(args?: Subset<T, User$jobsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, "findMany"> | Null>
+    accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany"> | Null>
+    sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2038,9 +2038,9 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly emailVerified: FieldRef<"User", 'Boolean'>
     readonly image: FieldRef<"User", 'String'>
-    readonly headline: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly headline: FieldRef<"User", 'String'>
   }
     
 
@@ -2355,43 +2355,23 @@ export namespace Prisma {
   }
 
   /**
-   * User.sessions
+   * User.applications
    */
-  export type User$sessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$applicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Session
+     * Select specific fields to fetch from the Application
      */
-    select?: SessionSelect<ExtArgs> | null
+    select?: ApplicationSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SessionInclude<ExtArgs> | null
-    where?: SessionWhereInput
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
-    cursor?: SessionWhereUniqueInput
+    include?: ApplicationInclude<ExtArgs> | null
+    where?: ApplicationWhereInput
+    orderBy?: ApplicationOrderByWithRelationInput | ApplicationOrderByWithRelationInput[]
+    cursor?: ApplicationWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
-  }
-
-  /**
-   * User.accounts
-   */
-  export type User$accountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Account
-     */
-    select?: AccountSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccountInclude<ExtArgs> | null
-    where?: AccountWhereInput
-    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
-    cursor?: AccountWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
+    distinct?: ApplicationScalarFieldEnum | ApplicationScalarFieldEnum[]
   }
 
   /**
@@ -2415,23 +2395,43 @@ export namespace Prisma {
   }
 
   /**
-   * User.applications
+   * User.accounts
    */
-  export type User$applicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$accountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Application
+     * Select specific fields to fetch from the Account
      */
-    select?: ApplicationSelect<ExtArgs> | null
+    select?: AccountSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ApplicationInclude<ExtArgs> | null
-    where?: ApplicationWhereInput
-    orderBy?: ApplicationOrderByWithRelationInput | ApplicationOrderByWithRelationInput[]
-    cursor?: ApplicationWhereUniqueInput
+    include?: AccountInclude<ExtArgs> | null
+    where?: AccountWhereInput
+    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
+    cursor?: AccountWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ApplicationScalarFieldEnum | ApplicationScalarFieldEnum[]
+    distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
+  }
+
+  /**
+   * User.sessions
+   */
+  export type User$sessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Session
+     */
+    select?: SessionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SessionInclude<ExtArgs> | null
+    where?: SessionWhereInput
+    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
+    cursor?: SessionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
   }
 
   /**
@@ -2461,8 +2461,8 @@ export namespace Prisma {
 
   export type SessionMinAggregateOutputType = {
     id: string | null
-    token: string | null
     expiresAt: Date | null
+    token: string | null
     createdAt: Date | null
     updatedAt: Date | null
     ipAddress: string | null
@@ -2472,8 +2472,8 @@ export namespace Prisma {
 
   export type SessionMaxAggregateOutputType = {
     id: string | null
-    token: string | null
     expiresAt: Date | null
+    token: string | null
     createdAt: Date | null
     updatedAt: Date | null
     ipAddress: string | null
@@ -2483,8 +2483,8 @@ export namespace Prisma {
 
   export type SessionCountAggregateOutputType = {
     id: number
-    token: number
     expiresAt: number
+    token: number
     createdAt: number
     updatedAt: number
     ipAddress: number
@@ -2496,8 +2496,8 @@ export namespace Prisma {
 
   export type SessionMinAggregateInputType = {
     id?: true
-    token?: true
     expiresAt?: true
+    token?: true
     createdAt?: true
     updatedAt?: true
     ipAddress?: true
@@ -2507,8 +2507,8 @@ export namespace Prisma {
 
   export type SessionMaxAggregateInputType = {
     id?: true
-    token?: true
     expiresAt?: true
+    token?: true
     createdAt?: true
     updatedAt?: true
     ipAddress?: true
@@ -2518,8 +2518,8 @@ export namespace Prisma {
 
   export type SessionCountAggregateInputType = {
     id?: true
-    token?: true
     expiresAt?: true
+    token?: true
     createdAt?: true
     updatedAt?: true
     ipAddress?: true
@@ -2602,8 +2602,8 @@ export namespace Prisma {
 
   export type SessionGroupByOutputType = {
     id: string
-    token: string
     expiresAt: Date
+    token: string
     createdAt: Date
     updatedAt: Date
     ipAddress: string | null
@@ -2630,8 +2630,8 @@ export namespace Prisma {
 
   export type SessionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    token?: boolean
     expiresAt?: boolean
+    token?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ipAddress?: boolean
@@ -2642,8 +2642,8 @@ export namespace Prisma {
 
   export type SessionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    token?: boolean
     expiresAt?: boolean
+    token?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ipAddress?: boolean
@@ -2654,8 +2654,8 @@ export namespace Prisma {
 
   export type SessionSelectScalar = {
     id?: boolean
-    token?: boolean
     expiresAt?: boolean
+    token?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ipAddress?: boolean
@@ -2677,8 +2677,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      token: string
       expiresAt: Date
+      token: string
       createdAt: Date
       updatedAt: Date
       ipAddress: string | null
@@ -3079,8 +3079,8 @@ export namespace Prisma {
    */ 
   interface SessionFieldRefs {
     readonly id: FieldRef<"Session", 'String'>
-    readonly token: FieldRef<"Session", 'String'>
     readonly expiresAt: FieldRef<"Session", 'DateTime'>
+    readonly token: FieldRef<"Session", 'String'>
     readonly createdAt: FieldRef<"Session", 'DateTime'>
     readonly updatedAt: FieldRef<"Session", 'DateTime'>
     readonly ipAddress: FieldRef<"Session", 'String'>
@@ -3430,8 +3430,6 @@ export namespace Prisma {
 
   export type AccountMinAggregateOutputType = {
     id: string | null
-    accountId: string | null
-    providerId: string | null
     userId: string | null
     accessToken: string | null
     refreshToken: string | null
@@ -3442,12 +3440,12 @@ export namespace Prisma {
     password: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    accountId: string | null
+    providerId: string | null
   }
 
   export type AccountMaxAggregateOutputType = {
     id: string | null
-    accountId: string | null
-    providerId: string | null
     userId: string | null
     accessToken: string | null
     refreshToken: string | null
@@ -3458,12 +3456,12 @@ export namespace Prisma {
     password: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    accountId: string | null
+    providerId: string | null
   }
 
   export type AccountCountAggregateOutputType = {
     id: number
-    accountId: number
-    providerId: number
     userId: number
     accessToken: number
     refreshToken: number
@@ -3474,14 +3472,14 @@ export namespace Prisma {
     password: number
     createdAt: number
     updatedAt: number
+    accountId: number
+    providerId: number
     _all: number
   }
 
 
   export type AccountMinAggregateInputType = {
     id?: true
-    accountId?: true
-    providerId?: true
     userId?: true
     accessToken?: true
     refreshToken?: true
@@ -3492,12 +3490,12 @@ export namespace Prisma {
     password?: true
     createdAt?: true
     updatedAt?: true
+    accountId?: true
+    providerId?: true
   }
 
   export type AccountMaxAggregateInputType = {
     id?: true
-    accountId?: true
-    providerId?: true
     userId?: true
     accessToken?: true
     refreshToken?: true
@@ -3508,12 +3506,12 @@ export namespace Prisma {
     password?: true
     createdAt?: true
     updatedAt?: true
+    accountId?: true
+    providerId?: true
   }
 
   export type AccountCountAggregateInputType = {
     id?: true
-    accountId?: true
-    providerId?: true
     userId?: true
     accessToken?: true
     refreshToken?: true
@@ -3524,6 +3522,8 @@ export namespace Prisma {
     password?: true
     createdAt?: true
     updatedAt?: true
+    accountId?: true
+    providerId?: true
     _all?: true
   }
 
@@ -3601,8 +3601,6 @@ export namespace Prisma {
 
   export type AccountGroupByOutputType = {
     id: string
-    accountId: string
-    providerId: string
     userId: string
     accessToken: string | null
     refreshToken: string | null
@@ -3613,6 +3611,8 @@ export namespace Prisma {
     password: string | null
     createdAt: Date
     updatedAt: Date
+    accountId: string
+    providerId: string
     _count: AccountCountAggregateOutputType | null
     _min: AccountMinAggregateOutputType | null
     _max: AccountMaxAggregateOutputType | null
@@ -3634,8 +3634,6 @@ export namespace Prisma {
 
   export type AccountSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    accountId?: boolean
-    providerId?: boolean
     userId?: boolean
     accessToken?: boolean
     refreshToken?: boolean
@@ -3646,13 +3644,13 @@ export namespace Prisma {
     password?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    accountId?: boolean
+    providerId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["account"]>
 
   export type AccountSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    accountId?: boolean
-    providerId?: boolean
     userId?: boolean
     accessToken?: boolean
     refreshToken?: boolean
@@ -3663,13 +3661,13 @@ export namespace Prisma {
     password?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    accountId?: boolean
+    providerId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["account"]>
 
   export type AccountSelectScalar = {
     id?: boolean
-    accountId?: boolean
-    providerId?: boolean
     userId?: boolean
     accessToken?: boolean
     refreshToken?: boolean
@@ -3680,6 +3678,8 @@ export namespace Prisma {
     password?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    accountId?: boolean
+    providerId?: boolean
   }
 
   export type AccountInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3696,8 +3696,6 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      accountId: string
-      providerId: string
       userId: string
       accessToken: string | null
       refreshToken: string | null
@@ -3708,6 +3706,8 @@ export namespace Prisma {
       password: string | null
       createdAt: Date
       updatedAt: Date
+      accountId: string
+      providerId: string
     }, ExtArgs["result"]["account"]>
     composites: {}
   }
@@ -4103,8 +4103,6 @@ export namespace Prisma {
    */ 
   interface AccountFieldRefs {
     readonly id: FieldRef<"Account", 'String'>
-    readonly accountId: FieldRef<"Account", 'String'>
-    readonly providerId: FieldRef<"Account", 'String'>
     readonly userId: FieldRef<"Account", 'String'>
     readonly accessToken: FieldRef<"Account", 'String'>
     readonly refreshToken: FieldRef<"Account", 'String'>
@@ -4115,6 +4113,8 @@ export namespace Prisma {
     readonly password: FieldRef<"Account", 'String'>
     readonly createdAt: FieldRef<"Account", 'DateTime'>
     readonly updatedAt: FieldRef<"Account", 'DateTime'>
+    readonly accountId: FieldRef<"Account", 'String'>
+    readonly providerId: FieldRef<"Account", 'String'>
   }
     
 
@@ -5349,88 +5349,88 @@ export namespace Prisma {
 
   export type JobMinAggregateOutputType = {
     id: string | null
-    title: string | null
-    hospital: string | null
-    location: string | null
-    jobType: string | null
-    salary: string | null
-    description: string | null
-    status: $Enums.JobStatus | null
     createdAt: Date | null
     updatedAt: Date | null
+    title: string | null
+    location: string | null
+    description: string | null
+    status: $Enums.JobStatus | null
     posterId: string | null
+    hospital: string | null
+    salary: string | null
+    jobType: string | null
   }
 
   export type JobMaxAggregateOutputType = {
     id: string | null
-    title: string | null
-    hospital: string | null
-    location: string | null
-    jobType: string | null
-    salary: string | null
-    description: string | null
-    status: $Enums.JobStatus | null
     createdAt: Date | null
     updatedAt: Date | null
+    title: string | null
+    location: string | null
+    description: string | null
+    status: $Enums.JobStatus | null
     posterId: string | null
+    hospital: string | null
+    salary: string | null
+    jobType: string | null
   }
 
   export type JobCountAggregateOutputType = {
     id: number
-    title: number
-    hospital: number
-    location: number
-    jobType: number
-    salary: number
-    description: number
-    status: number
     createdAt: number
     updatedAt: number
+    title: number
+    location: number
+    description: number
+    status: number
     posterId: number
+    hospital: number
+    salary: number
+    jobType: number
     _all: number
   }
 
 
   export type JobMinAggregateInputType = {
     id?: true
-    title?: true
-    hospital?: true
-    location?: true
-    jobType?: true
-    salary?: true
-    description?: true
-    status?: true
     createdAt?: true
     updatedAt?: true
+    title?: true
+    location?: true
+    description?: true
+    status?: true
     posterId?: true
+    hospital?: true
+    salary?: true
+    jobType?: true
   }
 
   export type JobMaxAggregateInputType = {
     id?: true
-    title?: true
-    hospital?: true
-    location?: true
-    jobType?: true
-    salary?: true
-    description?: true
-    status?: true
     createdAt?: true
     updatedAt?: true
+    title?: true
+    location?: true
+    description?: true
+    status?: true
     posterId?: true
+    hospital?: true
+    salary?: true
+    jobType?: true
   }
 
   export type JobCountAggregateInputType = {
     id?: true
-    title?: true
-    hospital?: true
-    location?: true
-    jobType?: true
-    salary?: true
-    description?: true
-    status?: true
     createdAt?: true
     updatedAt?: true
+    title?: true
+    location?: true
+    description?: true
+    status?: true
     posterId?: true
+    hospital?: true
+    salary?: true
+    jobType?: true
     _all?: true
   }
 
@@ -5508,16 +5508,16 @@ export namespace Prisma {
 
   export type JobGroupByOutputType = {
     id: string
-    title: string
-    hospital: string
-    location: string | null
-    jobType: string
-    salary: string | null
-    description: string
-    status: $Enums.JobStatus
     createdAt: Date
     updatedAt: Date
+    title: string
+    location: string | null
+    description: string
+    status: $Enums.JobStatus
     posterId: string
+    hospital: string
+    salary: string | null
+    jobType: string
     _count: JobCountAggregateOutputType | null
     _min: JobMinAggregateOutputType | null
     _max: JobMaxAggregateOutputType | null
@@ -5539,53 +5539,53 @@ export namespace Prisma {
 
   export type JobSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    hospital?: boolean
-    location?: boolean
-    jobType?: boolean
-    salary?: boolean
-    description?: boolean
-    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    title?: boolean
+    location?: boolean
+    description?: boolean
+    status?: boolean
     posterId?: boolean
-    poster?: boolean | UserDefaultArgs<ExtArgs>
+    hospital?: boolean
+    salary?: boolean
+    jobType?: boolean
     applications?: boolean | Job$applicationsArgs<ExtArgs>
+    poster?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | JobCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["job"]>
 
   export type JobSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    hospital?: boolean
-    location?: boolean
-    jobType?: boolean
-    salary?: boolean
-    description?: boolean
-    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    title?: boolean
+    location?: boolean
+    description?: boolean
+    status?: boolean
     posterId?: boolean
+    hospital?: boolean
+    salary?: boolean
+    jobType?: boolean
     poster?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["job"]>
 
   export type JobSelectScalar = {
     id?: boolean
-    title?: boolean
-    hospital?: boolean
-    location?: boolean
-    jobType?: boolean
-    salary?: boolean
-    description?: boolean
-    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    title?: boolean
+    location?: boolean
+    description?: boolean
+    status?: boolean
     posterId?: boolean
+    hospital?: boolean
+    salary?: boolean
+    jobType?: boolean
   }
 
   export type JobInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    poster?: boolean | UserDefaultArgs<ExtArgs>
     applications?: boolean | Job$applicationsArgs<ExtArgs>
+    poster?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | JobCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type JobIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5595,21 +5595,21 @@ export namespace Prisma {
   export type $JobPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Job"
     objects: {
-      poster: Prisma.$UserPayload<ExtArgs>
       applications: Prisma.$ApplicationPayload<ExtArgs>[]
+      poster: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      title: string
-      hospital: string
-      location: string | null
-      jobType: string
-      salary: string | null
-      description: string
-      status: $Enums.JobStatus
       createdAt: Date
       updatedAt: Date
+      title: string
+      location: string | null
+      description: string
+      status: $Enums.JobStatus
       posterId: string
+      hospital: string
+      salary: string | null
+      jobType: string
     }, ExtArgs["result"]["job"]>
     composites: {}
   }
@@ -5974,8 +5974,8 @@ export namespace Prisma {
    */
   export interface Prisma__JobClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    poster<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     applications<T extends Job$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, Job$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findMany"> | Null>
+    poster<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6006,16 +6006,16 @@ export namespace Prisma {
    */ 
   interface JobFieldRefs {
     readonly id: FieldRef<"Job", 'String'>
-    readonly title: FieldRef<"Job", 'String'>
-    readonly hospital: FieldRef<"Job", 'String'>
-    readonly location: FieldRef<"Job", 'String'>
-    readonly jobType: FieldRef<"Job", 'String'>
-    readonly salary: FieldRef<"Job", 'String'>
-    readonly description: FieldRef<"Job", 'String'>
-    readonly status: FieldRef<"Job", 'JobStatus'>
     readonly createdAt: FieldRef<"Job", 'DateTime'>
     readonly updatedAt: FieldRef<"Job", 'DateTime'>
+    readonly title: FieldRef<"Job", 'String'>
+    readonly location: FieldRef<"Job", 'String'>
+    readonly description: FieldRef<"Job", 'String'>
+    readonly status: FieldRef<"Job", 'JobStatus'>
     readonly posterId: FieldRef<"Job", 'String'>
+    readonly hospital: FieldRef<"Job", 'String'>
+    readonly salary: FieldRef<"Job", 'String'>
+    readonly jobType: FieldRef<"Job", 'String'>
   }
     
 
@@ -6380,70 +6380,70 @@ export namespace Prisma {
 
   export type ApplicationMinAggregateOutputType = {
     id: string | null
-    coverLetter: string | null
-    resumeUrl: string | null
-    status: $Enums.AppStatus | null
     createdAt: Date | null
     updatedAt: Date | null
     jobId: string | null
     applicantId: string | null
+    coverLetter: string | null
+    resumeUrl: string | null
+    status: $Enums.ApplicationStatus | null
   }
 
   export type ApplicationMaxAggregateOutputType = {
     id: string | null
-    coverLetter: string | null
-    resumeUrl: string | null
-    status: $Enums.AppStatus | null
     createdAt: Date | null
     updatedAt: Date | null
     jobId: string | null
     applicantId: string | null
+    coverLetter: string | null
+    resumeUrl: string | null
+    status: $Enums.ApplicationStatus | null
   }
 
   export type ApplicationCountAggregateOutputType = {
     id: number
-    coverLetter: number
-    resumeUrl: number
-    status: number
     createdAt: number
     updatedAt: number
     jobId: number
     applicantId: number
+    coverLetter: number
+    resumeUrl: number
+    status: number
     _all: number
   }
 
 
   export type ApplicationMinAggregateInputType = {
     id?: true
-    coverLetter?: true
-    resumeUrl?: true
-    status?: true
     createdAt?: true
     updatedAt?: true
     jobId?: true
     applicantId?: true
+    coverLetter?: true
+    resumeUrl?: true
+    status?: true
   }
 
   export type ApplicationMaxAggregateInputType = {
     id?: true
-    coverLetter?: true
-    resumeUrl?: true
-    status?: true
     createdAt?: true
     updatedAt?: true
     jobId?: true
     applicantId?: true
+    coverLetter?: true
+    resumeUrl?: true
+    status?: true
   }
 
   export type ApplicationCountAggregateInputType = {
     id?: true
-    coverLetter?: true
-    resumeUrl?: true
-    status?: true
     createdAt?: true
     updatedAt?: true
     jobId?: true
     applicantId?: true
+    coverLetter?: true
+    resumeUrl?: true
+    status?: true
     _all?: true
   }
 
@@ -6521,13 +6521,13 @@ export namespace Prisma {
 
   export type ApplicationGroupByOutputType = {
     id: string
-    coverLetter: string | null
-    resumeUrl: string | null
-    status: $Enums.AppStatus
     createdAt: Date
     updatedAt: Date
     jobId: string
     applicantId: string
+    coverLetter: string | null
+    resumeUrl: string | null
+    status: $Enums.ApplicationStatus
     _count: ApplicationCountAggregateOutputType | null
     _min: ApplicationMinAggregateOutputType | null
     _max: ApplicationMaxAggregateOutputType | null
@@ -6549,65 +6549,65 @@ export namespace Prisma {
 
   export type ApplicationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    coverLetter?: boolean
-    resumeUrl?: boolean
-    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     jobId?: boolean
     applicantId?: boolean
-    job?: boolean | JobDefaultArgs<ExtArgs>
+    coverLetter?: boolean
+    resumeUrl?: boolean
+    status?: boolean
     applicant?: boolean | UserDefaultArgs<ExtArgs>
+    job?: boolean | JobDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["application"]>
 
   export type ApplicationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    coverLetter?: boolean
-    resumeUrl?: boolean
-    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     jobId?: boolean
     applicantId?: boolean
-    job?: boolean | JobDefaultArgs<ExtArgs>
+    coverLetter?: boolean
+    resumeUrl?: boolean
+    status?: boolean
     applicant?: boolean | UserDefaultArgs<ExtArgs>
+    job?: boolean | JobDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["application"]>
 
   export type ApplicationSelectScalar = {
     id?: boolean
-    coverLetter?: boolean
-    resumeUrl?: boolean
-    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     jobId?: boolean
     applicantId?: boolean
+    coverLetter?: boolean
+    resumeUrl?: boolean
+    status?: boolean
   }
 
   export type ApplicationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    job?: boolean | JobDefaultArgs<ExtArgs>
     applicant?: boolean | UserDefaultArgs<ExtArgs>
+    job?: boolean | JobDefaultArgs<ExtArgs>
   }
   export type ApplicationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    job?: boolean | JobDefaultArgs<ExtArgs>
     applicant?: boolean | UserDefaultArgs<ExtArgs>
+    job?: boolean | JobDefaultArgs<ExtArgs>
   }
 
   export type $ApplicationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Application"
     objects: {
-      job: Prisma.$JobPayload<ExtArgs>
       applicant: Prisma.$UserPayload<ExtArgs>
+      job: Prisma.$JobPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      coverLetter: string | null
-      resumeUrl: string | null
-      status: $Enums.AppStatus
       createdAt: Date
       updatedAt: Date
       jobId: string
       applicantId: string
+      coverLetter: string | null
+      resumeUrl: string | null
+      status: $Enums.ApplicationStatus
     }, ExtArgs["result"]["application"]>
     composites: {}
   }
@@ -6972,8 +6972,8 @@ export namespace Prisma {
    */
   export interface Prisma__ApplicationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    job<T extends JobDefaultArgs<ExtArgs> = {}>(args?: Subset<T, JobDefaultArgs<ExtArgs>>): Prisma__JobClient<$Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     applicant<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    job<T extends JobDefaultArgs<ExtArgs> = {}>(args?: Subset<T, JobDefaultArgs<ExtArgs>>): Prisma__JobClient<$Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7004,13 +7004,13 @@ export namespace Prisma {
    */ 
   interface ApplicationFieldRefs {
     readonly id: FieldRef<"Application", 'String'>
-    readonly coverLetter: FieldRef<"Application", 'String'>
-    readonly resumeUrl: FieldRef<"Application", 'String'>
-    readonly status: FieldRef<"Application", 'AppStatus'>
     readonly createdAt: FieldRef<"Application", 'DateTime'>
     readonly updatedAt: FieldRef<"Application", 'DateTime'>
     readonly jobId: FieldRef<"Application", 'String'>
     readonly applicantId: FieldRef<"Application", 'String'>
+    readonly coverLetter: FieldRef<"Application", 'String'>
+    readonly resumeUrl: FieldRef<"Application", 'String'>
+    readonly status: FieldRef<"Application", 'ApplicationStatus'>
   }
     
 
@@ -7363,9 +7363,9 @@ export namespace Prisma {
     email: 'email',
     emailVerified: 'emailVerified',
     image: 'image',
-    headline: 'headline',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    headline: 'headline'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -7373,8 +7373,8 @@ export namespace Prisma {
 
   export const SessionScalarFieldEnum: {
     id: 'id',
-    token: 'token',
     expiresAt: 'expiresAt',
+    token: 'token',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     ipAddress: 'ipAddress',
@@ -7387,8 +7387,6 @@ export namespace Prisma {
 
   export const AccountScalarFieldEnum: {
     id: 'id',
-    accountId: 'accountId',
-    providerId: 'providerId',
     userId: 'userId',
     accessToken: 'accessToken',
     refreshToken: 'refreshToken',
@@ -7398,7 +7396,9 @@ export namespace Prisma {
     scope: 'scope',
     password: 'password',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    accountId: 'accountId',
+    providerId: 'providerId'
   };
 
   export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
@@ -7418,16 +7418,16 @@ export namespace Prisma {
 
   export const JobScalarFieldEnum: {
     id: 'id',
-    title: 'title',
-    hospital: 'hospital',
-    location: 'location',
-    jobType: 'jobType',
-    salary: 'salary',
-    description: 'description',
-    status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    posterId: 'posterId'
+    title: 'title',
+    location: 'location',
+    description: 'description',
+    status: 'status',
+    posterId: 'posterId',
+    hospital: 'hospital',
+    salary: 'salary',
+    jobType: 'jobType'
   };
 
   export type JobScalarFieldEnum = (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum]
@@ -7435,13 +7435,13 @@ export namespace Prisma {
 
   export const ApplicationScalarFieldEnum: {
     id: 'id',
-    coverLetter: 'coverLetter',
-    resumeUrl: 'resumeUrl',
-    status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     jobId: 'jobId',
-    applicantId: 'applicantId'
+    applicantId: 'applicantId',
+    coverLetter: 'coverLetter',
+    resumeUrl: 'resumeUrl',
+    status: 'status'
   };
 
   export type ApplicationScalarFieldEnum = (typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum]
@@ -7526,16 +7526,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'AppStatus'
+   * Reference to a field of type 'ApplicationStatus'
    */
-  export type EnumAppStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AppStatus'>
+  export type EnumApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationStatus'>
     
 
 
   /**
-   * Reference to a field of type 'AppStatus[]'
+   * Reference to a field of type 'ApplicationStatus[]'
    */
-  export type ListEnumAppStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AppStatus[]'>
+  export type ListEnumApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationStatus[]'>
     
 
 
@@ -7565,13 +7565,13 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     emailVerified?: BoolFilter<"User"> | boolean
     image?: StringNullableFilter<"User"> | string | null
-    headline?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    sessions?: SessionListRelationFilter
-    accounts?: AccountListRelationFilter
-    jobs?: JobListRelationFilter
+    headline?: StringNullableFilter<"User"> | string | null
     applications?: ApplicationListRelationFilter
+    jobs?: JobListRelationFilter
+    accounts?: AccountListRelationFilter
+    sessions?: SessionListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -7580,13 +7580,13 @@ export namespace Prisma {
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrderInput | SortOrder
-    headline?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    sessions?: SessionOrderByRelationAggregateInput
-    accounts?: AccountOrderByRelationAggregateInput
-    jobs?: JobOrderByRelationAggregateInput
+    headline?: SortOrderInput | SortOrder
     applications?: ApplicationOrderByRelationAggregateInput
+    jobs?: JobOrderByRelationAggregateInput
+    accounts?: AccountOrderByRelationAggregateInput
+    sessions?: SessionOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -7598,13 +7598,13 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     emailVerified?: BoolFilter<"User"> | boolean
     image?: StringNullableFilter<"User"> | string | null
-    headline?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    sessions?: SessionListRelationFilter
-    accounts?: AccountListRelationFilter
-    jobs?: JobListRelationFilter
+    headline?: StringNullableFilter<"User"> | string | null
     applications?: ApplicationListRelationFilter
+    jobs?: JobListRelationFilter
+    accounts?: AccountListRelationFilter
+    sessions?: SessionListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -7613,9 +7613,9 @@ export namespace Prisma {
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrderInput | SortOrder
-    headline?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    headline?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -7630,9 +7630,9 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"User"> | string
     emailVerified?: BoolWithAggregatesFilter<"User"> | boolean
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
-    headline?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    headline?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type SessionWhereInput = {
@@ -7640,8 +7640,8 @@ export namespace Prisma {
     OR?: SessionWhereInput[]
     NOT?: SessionWhereInput | SessionWhereInput[]
     id?: StringFilter<"Session"> | string
-    token?: StringFilter<"Session"> | string
     expiresAt?: DateTimeFilter<"Session"> | Date | string
+    token?: StringFilter<"Session"> | string
     createdAt?: DateTimeFilter<"Session"> | Date | string
     updatedAt?: DateTimeFilter<"Session"> | Date | string
     ipAddress?: StringNullableFilter<"Session"> | string | null
@@ -7652,8 +7652,8 @@ export namespace Prisma {
 
   export type SessionOrderByWithRelationInput = {
     id?: SortOrder
-    token?: SortOrder
     expiresAt?: SortOrder
+    token?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ipAddress?: SortOrderInput | SortOrder
@@ -7679,8 +7679,8 @@ export namespace Prisma {
 
   export type SessionOrderByWithAggregationInput = {
     id?: SortOrder
-    token?: SortOrder
     expiresAt?: SortOrder
+    token?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ipAddress?: SortOrderInput | SortOrder
@@ -7696,8 +7696,8 @@ export namespace Prisma {
     OR?: SessionScalarWhereWithAggregatesInput[]
     NOT?: SessionScalarWhereWithAggregatesInput | SessionScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Session"> | string
-    token?: StringWithAggregatesFilter<"Session"> | string
     expiresAt?: DateTimeWithAggregatesFilter<"Session"> | Date | string
+    token?: StringWithAggregatesFilter<"Session"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Session"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Session"> | Date | string
     ipAddress?: StringNullableWithAggregatesFilter<"Session"> | string | null
@@ -7710,8 +7710,6 @@ export namespace Prisma {
     OR?: AccountWhereInput[]
     NOT?: AccountWhereInput | AccountWhereInput[]
     id?: StringFilter<"Account"> | string
-    accountId?: StringFilter<"Account"> | string
-    providerId?: StringFilter<"Account"> | string
     userId?: StringFilter<"Account"> | string
     accessToken?: StringNullableFilter<"Account"> | string | null
     refreshToken?: StringNullableFilter<"Account"> | string | null
@@ -7722,13 +7720,13 @@ export namespace Prisma {
     password?: StringNullableFilter<"Account"> | string | null
     createdAt?: DateTimeFilter<"Account"> | Date | string
     updatedAt?: DateTimeFilter<"Account"> | Date | string
+    accountId?: StringFilter<"Account"> | string
+    providerId?: StringFilter<"Account"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
   export type AccountOrderByWithRelationInput = {
     id?: SortOrder
-    accountId?: SortOrder
-    providerId?: SortOrder
     userId?: SortOrder
     accessToken?: SortOrderInput | SortOrder
     refreshToken?: SortOrderInput | SortOrder
@@ -7739,6 +7737,8 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    accountId?: SortOrder
+    providerId?: SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -7748,8 +7748,6 @@ export namespace Prisma {
     AND?: AccountWhereInput | AccountWhereInput[]
     OR?: AccountWhereInput[]
     NOT?: AccountWhereInput | AccountWhereInput[]
-    accountId?: StringFilter<"Account"> | string
-    providerId?: StringFilter<"Account"> | string
     userId?: StringFilter<"Account"> | string
     accessToken?: StringNullableFilter<"Account"> | string | null
     refreshToken?: StringNullableFilter<"Account"> | string | null
@@ -7760,13 +7758,13 @@ export namespace Prisma {
     password?: StringNullableFilter<"Account"> | string | null
     createdAt?: DateTimeFilter<"Account"> | Date | string
     updatedAt?: DateTimeFilter<"Account"> | Date | string
+    accountId?: StringFilter<"Account"> | string
+    providerId?: StringFilter<"Account"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
   }, "id" | "accountId_providerId">
 
   export type AccountOrderByWithAggregationInput = {
     id?: SortOrder
-    accountId?: SortOrder
-    providerId?: SortOrder
     userId?: SortOrder
     accessToken?: SortOrderInput | SortOrder
     refreshToken?: SortOrderInput | SortOrder
@@ -7777,6 +7775,8 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    accountId?: SortOrder
+    providerId?: SortOrder
     _count?: AccountCountOrderByAggregateInput
     _max?: AccountMaxOrderByAggregateInput
     _min?: AccountMinOrderByAggregateInput
@@ -7787,8 +7787,6 @@ export namespace Prisma {
     OR?: AccountScalarWhereWithAggregatesInput[]
     NOT?: AccountScalarWhereWithAggregatesInput | AccountScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Account"> | string
-    accountId?: StringWithAggregatesFilter<"Account"> | string
-    providerId?: StringWithAggregatesFilter<"Account"> | string
     userId?: StringWithAggregatesFilter<"Account"> | string
     accessToken?: StringNullableWithAggregatesFilter<"Account"> | string | null
     refreshToken?: StringNullableWithAggregatesFilter<"Account"> | string | null
@@ -7799,6 +7797,8 @@ export namespace Prisma {
     password?: StringNullableWithAggregatesFilter<"Account"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Account"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Account"> | Date | string
+    accountId?: StringWithAggregatesFilter<"Account"> | string
+    providerId?: StringWithAggregatesFilter<"Account"> | string
   }
 
   export type VerificationWhereInput = {
@@ -7864,34 +7864,34 @@ export namespace Prisma {
     OR?: JobWhereInput[]
     NOT?: JobWhereInput | JobWhereInput[]
     id?: StringFilter<"Job"> | string
-    title?: StringFilter<"Job"> | string
-    hospital?: StringFilter<"Job"> | string
-    location?: StringNullableFilter<"Job"> | string | null
-    jobType?: StringFilter<"Job"> | string
-    salary?: StringNullableFilter<"Job"> | string | null
-    description?: StringFilter<"Job"> | string
-    status?: EnumJobStatusFilter<"Job"> | $Enums.JobStatus
     createdAt?: DateTimeFilter<"Job"> | Date | string
     updatedAt?: DateTimeFilter<"Job"> | Date | string
+    title?: StringFilter<"Job"> | string
+    location?: StringNullableFilter<"Job"> | string | null
+    description?: StringFilter<"Job"> | string
+    status?: EnumJobStatusFilter<"Job"> | $Enums.JobStatus
     posterId?: StringFilter<"Job"> | string
-    poster?: XOR<UserRelationFilter, UserWhereInput>
+    hospital?: StringFilter<"Job"> | string
+    salary?: StringNullableFilter<"Job"> | string | null
+    jobType?: StringFilter<"Job"> | string
     applications?: ApplicationListRelationFilter
+    poster?: XOR<UserRelationFilter, UserWhereInput>
   }
 
   export type JobOrderByWithRelationInput = {
     id?: SortOrder
-    title?: SortOrder
-    hospital?: SortOrder
-    location?: SortOrderInput | SortOrder
-    jobType?: SortOrder
-    salary?: SortOrderInput | SortOrder
-    description?: SortOrder
-    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    title?: SortOrder
+    location?: SortOrderInput | SortOrder
+    description?: SortOrder
+    status?: SortOrder
     posterId?: SortOrder
-    poster?: UserOrderByWithRelationInput
+    hospital?: SortOrder
+    salary?: SortOrderInput | SortOrder
+    jobType?: SortOrder
     applications?: ApplicationOrderByRelationAggregateInput
+    poster?: UserOrderByWithRelationInput
   }
 
   export type JobWhereUniqueInput = Prisma.AtLeast<{
@@ -7899,32 +7899,32 @@ export namespace Prisma {
     AND?: JobWhereInput | JobWhereInput[]
     OR?: JobWhereInput[]
     NOT?: JobWhereInput | JobWhereInput[]
-    title?: StringFilter<"Job"> | string
-    hospital?: StringFilter<"Job"> | string
-    location?: StringNullableFilter<"Job"> | string | null
-    jobType?: StringFilter<"Job"> | string
-    salary?: StringNullableFilter<"Job"> | string | null
-    description?: StringFilter<"Job"> | string
-    status?: EnumJobStatusFilter<"Job"> | $Enums.JobStatus
     createdAt?: DateTimeFilter<"Job"> | Date | string
     updatedAt?: DateTimeFilter<"Job"> | Date | string
+    title?: StringFilter<"Job"> | string
+    location?: StringNullableFilter<"Job"> | string | null
+    description?: StringFilter<"Job"> | string
+    status?: EnumJobStatusFilter<"Job"> | $Enums.JobStatus
     posterId?: StringFilter<"Job"> | string
-    poster?: XOR<UserRelationFilter, UserWhereInput>
+    hospital?: StringFilter<"Job"> | string
+    salary?: StringNullableFilter<"Job"> | string | null
+    jobType?: StringFilter<"Job"> | string
     applications?: ApplicationListRelationFilter
+    poster?: XOR<UserRelationFilter, UserWhereInput>
   }, "id">
 
   export type JobOrderByWithAggregationInput = {
     id?: SortOrder
-    title?: SortOrder
-    hospital?: SortOrder
-    location?: SortOrderInput | SortOrder
-    jobType?: SortOrder
-    salary?: SortOrderInput | SortOrder
-    description?: SortOrder
-    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    title?: SortOrder
+    location?: SortOrderInput | SortOrder
+    description?: SortOrder
+    status?: SortOrder
     posterId?: SortOrder
+    hospital?: SortOrder
+    salary?: SortOrderInput | SortOrder
+    jobType?: SortOrder
     _count?: JobCountOrderByAggregateInput
     _max?: JobMaxOrderByAggregateInput
     _min?: JobMinOrderByAggregateInput
@@ -7935,16 +7935,16 @@ export namespace Prisma {
     OR?: JobScalarWhereWithAggregatesInput[]
     NOT?: JobScalarWhereWithAggregatesInput | JobScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Job"> | string
-    title?: StringWithAggregatesFilter<"Job"> | string
-    hospital?: StringWithAggregatesFilter<"Job"> | string
-    location?: StringNullableWithAggregatesFilter<"Job"> | string | null
-    jobType?: StringWithAggregatesFilter<"Job"> | string
-    salary?: StringNullableWithAggregatesFilter<"Job"> | string | null
-    description?: StringWithAggregatesFilter<"Job"> | string
-    status?: EnumJobStatusWithAggregatesFilter<"Job"> | $Enums.JobStatus
     createdAt?: DateTimeWithAggregatesFilter<"Job"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Job"> | Date | string
+    title?: StringWithAggregatesFilter<"Job"> | string
+    location?: StringNullableWithAggregatesFilter<"Job"> | string | null
+    description?: StringWithAggregatesFilter<"Job"> | string
+    status?: EnumJobStatusWithAggregatesFilter<"Job"> | $Enums.JobStatus
     posterId?: StringWithAggregatesFilter<"Job"> | string
+    hospital?: StringWithAggregatesFilter<"Job"> | string
+    salary?: StringNullableWithAggregatesFilter<"Job"> | string | null
+    jobType?: StringWithAggregatesFilter<"Job"> | string
   }
 
   export type ApplicationWhereInput = {
@@ -7952,28 +7952,28 @@ export namespace Prisma {
     OR?: ApplicationWhereInput[]
     NOT?: ApplicationWhereInput | ApplicationWhereInput[]
     id?: StringFilter<"Application"> | string
-    coverLetter?: StringNullableFilter<"Application"> | string | null
-    resumeUrl?: StringNullableFilter<"Application"> | string | null
-    status?: EnumAppStatusFilter<"Application"> | $Enums.AppStatus
     createdAt?: DateTimeFilter<"Application"> | Date | string
     updatedAt?: DateTimeFilter<"Application"> | Date | string
     jobId?: StringFilter<"Application"> | string
     applicantId?: StringFilter<"Application"> | string
-    job?: XOR<JobRelationFilter, JobWhereInput>
+    coverLetter?: StringNullableFilter<"Application"> | string | null
+    resumeUrl?: StringNullableFilter<"Application"> | string | null
+    status?: EnumApplicationStatusFilter<"Application"> | $Enums.ApplicationStatus
     applicant?: XOR<UserRelationFilter, UserWhereInput>
+    job?: XOR<JobRelationFilter, JobWhereInput>
   }
 
   export type ApplicationOrderByWithRelationInput = {
     id?: SortOrder
-    coverLetter?: SortOrderInput | SortOrder
-    resumeUrl?: SortOrderInput | SortOrder
-    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     jobId?: SortOrder
     applicantId?: SortOrder
-    job?: JobOrderByWithRelationInput
+    coverLetter?: SortOrderInput | SortOrder
+    resumeUrl?: SortOrderInput | SortOrder
+    status?: SortOrder
     applicant?: UserOrderByWithRelationInput
+    job?: JobOrderByWithRelationInput
   }
 
   export type ApplicationWhereUniqueInput = Prisma.AtLeast<{
@@ -7982,26 +7982,26 @@ export namespace Prisma {
     AND?: ApplicationWhereInput | ApplicationWhereInput[]
     OR?: ApplicationWhereInput[]
     NOT?: ApplicationWhereInput | ApplicationWhereInput[]
-    coverLetter?: StringNullableFilter<"Application"> | string | null
-    resumeUrl?: StringNullableFilter<"Application"> | string | null
-    status?: EnumAppStatusFilter<"Application"> | $Enums.AppStatus
     createdAt?: DateTimeFilter<"Application"> | Date | string
     updatedAt?: DateTimeFilter<"Application"> | Date | string
     jobId?: StringFilter<"Application"> | string
     applicantId?: StringFilter<"Application"> | string
-    job?: XOR<JobRelationFilter, JobWhereInput>
+    coverLetter?: StringNullableFilter<"Application"> | string | null
+    resumeUrl?: StringNullableFilter<"Application"> | string | null
+    status?: EnumApplicationStatusFilter<"Application"> | $Enums.ApplicationStatus
     applicant?: XOR<UserRelationFilter, UserWhereInput>
+    job?: XOR<JobRelationFilter, JobWhereInput>
   }, "id" | "jobId_applicantId">
 
   export type ApplicationOrderByWithAggregationInput = {
     id?: SortOrder
-    coverLetter?: SortOrderInput | SortOrder
-    resumeUrl?: SortOrderInput | SortOrder
-    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     jobId?: SortOrder
     applicantId?: SortOrder
+    coverLetter?: SortOrderInput | SortOrder
+    resumeUrl?: SortOrderInput | SortOrder
+    status?: SortOrder
     _count?: ApplicationCountOrderByAggregateInput
     _max?: ApplicationMaxOrderByAggregateInput
     _min?: ApplicationMinOrderByAggregateInput
@@ -8012,13 +8012,13 @@ export namespace Prisma {
     OR?: ApplicationScalarWhereWithAggregatesInput[]
     NOT?: ApplicationScalarWhereWithAggregatesInput | ApplicationScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Application"> | string
-    coverLetter?: StringNullableWithAggregatesFilter<"Application"> | string | null
-    resumeUrl?: StringNullableWithAggregatesFilter<"Application"> | string | null
-    status?: EnumAppStatusWithAggregatesFilter<"Application"> | $Enums.AppStatus
     createdAt?: DateTimeWithAggregatesFilter<"Application"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Application"> | Date | string
     jobId?: StringWithAggregatesFilter<"Application"> | string
     applicantId?: StringWithAggregatesFilter<"Application"> | string
+    coverLetter?: StringNullableWithAggregatesFilter<"Application"> | string | null
+    resumeUrl?: StringNullableWithAggregatesFilter<"Application"> | string | null
+    status?: EnumApplicationStatusWithAggregatesFilter<"Application"> | $Enums.ApplicationStatus
   }
 
   export type UserCreateInput = {
@@ -8027,13 +8027,13 @@ export namespace Prisma {
     email: string
     emailVerified?: boolean
     image?: string | null
-    headline?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    jobs?: JobCreateNestedManyWithoutPosterInput
+    headline?: string | null
     applications?: ApplicationCreateNestedManyWithoutApplicantInput
+    jobs?: JobCreateNestedManyWithoutPosterInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -8042,13 +8042,13 @@ export namespace Prisma {
     email: string
     emailVerified?: boolean
     image?: string | null
-    headline?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    jobs?: JobUncheckedCreateNestedManyWithoutPosterInput
+    headline?: string | null
     applications?: ApplicationUncheckedCreateNestedManyWithoutApplicantInput
+    jobs?: JobUncheckedCreateNestedManyWithoutPosterInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -8057,13 +8057,13 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    headline?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    jobs?: JobUpdateManyWithoutPosterNestedInput
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationUpdateManyWithoutApplicantNestedInput
+    jobs?: JobUpdateManyWithoutPosterNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -8072,13 +8072,13 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    headline?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    jobs?: JobUncheckedUpdateManyWithoutPosterNestedInput
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationUncheckedUpdateManyWithoutApplicantNestedInput
+    jobs?: JobUncheckedUpdateManyWithoutPosterNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -8087,9 +8087,9 @@ export namespace Prisma {
     email: string
     emailVerified?: boolean
     image?: string | null
-    headline?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    headline?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -8098,9 +8098,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    headline?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -8109,15 +8109,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    headline?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SessionCreateInput = {
     id: string
-    token: string
     expiresAt: Date | string
+    token: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ipAddress?: string | null
@@ -8127,8 +8127,8 @@ export namespace Prisma {
 
   export type SessionUncheckedCreateInput = {
     id: string
-    token: string
     expiresAt: Date | string
+    token: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ipAddress?: string | null
@@ -8138,8 +8138,8 @@ export namespace Prisma {
 
   export type SessionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    token?: StringFieldUpdateOperationsInput | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8149,8 +8149,8 @@ export namespace Prisma {
 
   export type SessionUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    token?: StringFieldUpdateOperationsInput | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8160,8 +8160,8 @@ export namespace Prisma {
 
   export type SessionCreateManyInput = {
     id: string
-    token: string
     expiresAt: Date | string
+    token: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ipAddress?: string | null
@@ -8171,8 +8171,8 @@ export namespace Prisma {
 
   export type SessionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    token?: StringFieldUpdateOperationsInput | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8181,8 +8181,8 @@ export namespace Prisma {
 
   export type SessionUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    token?: StringFieldUpdateOperationsInput | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8192,8 +8192,6 @@ export namespace Prisma {
 
   export type AccountCreateInput = {
     id: string
-    accountId: string
-    providerId: string
     accessToken?: string | null
     refreshToken?: string | null
     idToken?: string | null
@@ -8203,13 +8201,13 @@ export namespace Prisma {
     password?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    accountId: string
+    providerId: string
     user: UserCreateNestedOneWithoutAccountsInput
   }
 
   export type AccountUncheckedCreateInput = {
     id: string
-    accountId: string
-    providerId: string
     userId: string
     accessToken?: string | null
     refreshToken?: string | null
@@ -8220,12 +8218,12 @@ export namespace Prisma {
     password?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    accountId: string
+    providerId: string
   }
 
   export type AccountUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    accountId?: StringFieldUpdateOperationsInput | string
-    providerId?: StringFieldUpdateOperationsInput | string
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     idToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8235,13 +8233,13 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accountId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutAccountsNestedInput
   }
 
   export type AccountUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    accountId?: StringFieldUpdateOperationsInput | string
-    providerId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8252,12 +8250,12 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accountId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type AccountCreateManyInput = {
     id: string
-    accountId: string
-    providerId: string
     userId: string
     accessToken?: string | null
     refreshToken?: string | null
@@ -8268,12 +8266,12 @@ export namespace Prisma {
     password?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    accountId: string
+    providerId: string
   }
 
   export type AccountUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    accountId?: StringFieldUpdateOperationsInput | string
-    providerId?: StringFieldUpdateOperationsInput | string
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     idToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8283,12 +8281,12 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accountId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type AccountUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    accountId?: StringFieldUpdateOperationsInput | string
-    providerId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     accessToken?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8299,6 +8297,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accountId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type VerificationCreateInput = {
@@ -8366,178 +8366,178 @@ export namespace Prisma {
 
   export type JobCreateInput = {
     id?: string
-    title: string
-    hospital: string
-    location?: string | null
-    jobType: string
-    salary?: string | null
-    description: string
-    status?: $Enums.JobStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    poster: UserCreateNestedOneWithoutJobsInput
+    title: string
+    location?: string | null
+    description: string
+    status?: $Enums.JobStatus
+    hospital: string
+    salary?: string | null
+    jobType: string
     applications?: ApplicationCreateNestedManyWithoutJobInput
+    poster: UserCreateNestedOneWithoutJobsInput
   }
 
   export type JobUncheckedCreateInput = {
     id?: string
-    title: string
-    hospital: string
-    location?: string | null
-    jobType: string
-    salary?: string | null
-    description: string
-    status?: $Enums.JobStatus
     createdAt?: Date | string
     updatedAt?: Date | string
+    title: string
+    location?: string | null
+    description: string
+    status?: $Enums.JobStatus
     posterId: string
+    hospital: string
+    salary?: string | null
+    jobType: string
     applications?: ApplicationUncheckedCreateNestedManyWithoutJobInput
   }
 
   export type JobUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    hospital?: StringFieldUpdateOperationsInput | string
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: StringFieldUpdateOperationsInput | string
-    salary?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    poster?: UserUpdateOneRequiredWithoutJobsNestedInput
+    title?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
+    hospital?: StringFieldUpdateOperationsInput | string
+    salary?: NullableStringFieldUpdateOperationsInput | string | null
+    jobType?: StringFieldUpdateOperationsInput | string
     applications?: ApplicationUpdateManyWithoutJobNestedInput
+    poster?: UserUpdateOneRequiredWithoutJobsNestedInput
   }
 
   export type JobUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    hospital?: StringFieldUpdateOperationsInput | string
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: StringFieldUpdateOperationsInput | string
-    salary?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    title?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
     posterId?: StringFieldUpdateOperationsInput | string
+    hospital?: StringFieldUpdateOperationsInput | string
+    salary?: NullableStringFieldUpdateOperationsInput | string | null
+    jobType?: StringFieldUpdateOperationsInput | string
     applications?: ApplicationUncheckedUpdateManyWithoutJobNestedInput
   }
 
   export type JobCreateManyInput = {
     id?: string
-    title: string
-    hospital: string
-    location?: string | null
-    jobType: string
-    salary?: string | null
-    description: string
-    status?: $Enums.JobStatus
     createdAt?: Date | string
     updatedAt?: Date | string
+    title: string
+    location?: string | null
+    description: string
+    status?: $Enums.JobStatus
     posterId: string
+    hospital: string
+    salary?: string | null
+    jobType: string
   }
 
   export type JobUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    hospital?: StringFieldUpdateOperationsInput | string
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: StringFieldUpdateOperationsInput | string
-    salary?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    title?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
+    hospital?: StringFieldUpdateOperationsInput | string
+    salary?: NullableStringFieldUpdateOperationsInput | string | null
+    jobType?: StringFieldUpdateOperationsInput | string
   }
 
   export type JobUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    hospital?: StringFieldUpdateOperationsInput | string
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: StringFieldUpdateOperationsInput | string
-    salary?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    title?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
     posterId?: StringFieldUpdateOperationsInput | string
+    hospital?: StringFieldUpdateOperationsInput | string
+    salary?: NullableStringFieldUpdateOperationsInput | string | null
+    jobType?: StringFieldUpdateOperationsInput | string
   }
 
   export type ApplicationCreateInput = {
     id?: string
-    coverLetter?: string | null
-    resumeUrl?: string | null
-    status?: $Enums.AppStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    job: JobCreateNestedOneWithoutApplicationsInput
+    coverLetter?: string | null
+    resumeUrl?: string | null
+    status?: $Enums.ApplicationStatus
     applicant: UserCreateNestedOneWithoutApplicationsInput
+    job: JobCreateNestedOneWithoutApplicationsInput
   }
 
   export type ApplicationUncheckedCreateInput = {
     id?: string
-    coverLetter?: string | null
-    resumeUrl?: string | null
-    status?: $Enums.AppStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     jobId: string
     applicantId: string
+    coverLetter?: string | null
+    resumeUrl?: string | null
+    status?: $Enums.ApplicationStatus
   }
 
   export type ApplicationUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    job?: JobUpdateOneRequiredWithoutApplicationsNestedInput
+    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
     applicant?: UserUpdateOneRequiredWithoutApplicationsNestedInput
+    job?: JobUpdateOneRequiredWithoutApplicationsNestedInput
   }
 
   export type ApplicationUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     jobId?: StringFieldUpdateOperationsInput | string
     applicantId?: StringFieldUpdateOperationsInput | string
+    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   }
 
   export type ApplicationCreateManyInput = {
     id?: string
-    coverLetter?: string | null
-    resumeUrl?: string | null
-    status?: $Enums.AppStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     jobId: string
     applicantId: string
+    coverLetter?: string | null
+    resumeUrl?: string | null
+    status?: $Enums.ApplicationStatus
   }
 
   export type ApplicationUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   }
 
   export type ApplicationUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     jobId?: StringFieldUpdateOperationsInput | string
     applicantId?: StringFieldUpdateOperationsInput | string
+    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -8586,16 +8586,10 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type SessionListRelationFilter = {
-    every?: SessionWhereInput
-    some?: SessionWhereInput
-    none?: SessionWhereInput
-  }
-
-  export type AccountListRelationFilter = {
-    every?: AccountWhereInput
-    some?: AccountWhereInput
-    none?: AccountWhereInput
+  export type ApplicationListRelationFilter = {
+    every?: ApplicationWhereInput
+    some?: ApplicationWhereInput
+    none?: ApplicationWhereInput
   }
 
   export type JobListRelationFilter = {
@@ -8604,10 +8598,16 @@ export namespace Prisma {
     none?: JobWhereInput
   }
 
-  export type ApplicationListRelationFilter = {
-    every?: ApplicationWhereInput
-    some?: ApplicationWhereInput
-    none?: ApplicationWhereInput
+  export type AccountListRelationFilter = {
+    every?: AccountWhereInput
+    some?: AccountWhereInput
+    none?: AccountWhereInput
+  }
+
+  export type SessionListRelationFilter = {
+    every?: SessionWhereInput
+    some?: SessionWhereInput
+    none?: SessionWhereInput
   }
 
   export type SortOrderInput = {
@@ -8615,11 +8615,7 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type SessionOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type AccountOrderByRelationAggregateInput = {
+  export type ApplicationOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8627,7 +8623,11 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type ApplicationOrderByRelationAggregateInput = {
+  export type AccountOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SessionOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8637,9 +8637,9 @@ export namespace Prisma {
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
-    headline?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    headline?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -8648,9 +8648,9 @@ export namespace Prisma {
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
-    headline?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    headline?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -8659,9 +8659,9 @@ export namespace Prisma {
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
-    headline?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    headline?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -8729,8 +8729,8 @@ export namespace Prisma {
 
   export type SessionCountOrderByAggregateInput = {
     id?: SortOrder
-    token?: SortOrder
     expiresAt?: SortOrder
+    token?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ipAddress?: SortOrder
@@ -8740,8 +8740,8 @@ export namespace Prisma {
 
   export type SessionMaxOrderByAggregateInput = {
     id?: SortOrder
-    token?: SortOrder
     expiresAt?: SortOrder
+    token?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ipAddress?: SortOrder
@@ -8751,8 +8751,8 @@ export namespace Prisma {
 
   export type SessionMinOrderByAggregateInput = {
     id?: SortOrder
-    token?: SortOrder
     expiresAt?: SortOrder
+    token?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ipAddress?: SortOrder
@@ -8778,8 +8778,6 @@ export namespace Prisma {
 
   export type AccountCountOrderByAggregateInput = {
     id?: SortOrder
-    accountId?: SortOrder
-    providerId?: SortOrder
     userId?: SortOrder
     accessToken?: SortOrder
     refreshToken?: SortOrder
@@ -8790,12 +8788,12 @@ export namespace Prisma {
     password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    accountId?: SortOrder
+    providerId?: SortOrder
   }
 
   export type AccountMaxOrderByAggregateInput = {
     id?: SortOrder
-    accountId?: SortOrder
-    providerId?: SortOrder
     userId?: SortOrder
     accessToken?: SortOrder
     refreshToken?: SortOrder
@@ -8806,12 +8804,12 @@ export namespace Prisma {
     password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    accountId?: SortOrder
+    providerId?: SortOrder
   }
 
   export type AccountMinOrderByAggregateInput = {
     id?: SortOrder
-    accountId?: SortOrder
-    providerId?: SortOrder
     userId?: SortOrder
     accessToken?: SortOrder
     refreshToken?: SortOrder
@@ -8822,6 +8820,8 @@ export namespace Prisma {
     password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    accountId?: SortOrder
+    providerId?: SortOrder
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -8879,44 +8879,44 @@ export namespace Prisma {
 
   export type JobCountOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
-    hospital?: SortOrder
-    location?: SortOrder
-    jobType?: SortOrder
-    salary?: SortOrder
-    description?: SortOrder
-    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    title?: SortOrder
+    location?: SortOrder
+    description?: SortOrder
+    status?: SortOrder
     posterId?: SortOrder
+    hospital?: SortOrder
+    salary?: SortOrder
+    jobType?: SortOrder
   }
 
   export type JobMaxOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
-    hospital?: SortOrder
-    location?: SortOrder
-    jobType?: SortOrder
-    salary?: SortOrder
-    description?: SortOrder
-    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    title?: SortOrder
+    location?: SortOrder
+    description?: SortOrder
+    status?: SortOrder
     posterId?: SortOrder
+    hospital?: SortOrder
+    salary?: SortOrder
+    jobType?: SortOrder
   }
 
   export type JobMinOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
-    hospital?: SortOrder
-    location?: SortOrder
-    jobType?: SortOrder
-    salary?: SortOrder
-    description?: SortOrder
-    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    title?: SortOrder
+    location?: SortOrder
+    description?: SortOrder
+    status?: SortOrder
     posterId?: SortOrder
+    hospital?: SortOrder
+    salary?: SortOrder
+    jobType?: SortOrder
   }
 
   export type EnumJobStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -8929,11 +8929,11 @@ export namespace Prisma {
     _max?: NestedEnumJobStatusFilter<$PrismaModel>
   }
 
-  export type EnumAppStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.AppStatus | EnumAppStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.AppStatus[] | ListEnumAppStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AppStatus[] | ListEnumAppStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumAppStatusFilter<$PrismaModel> | $Enums.AppStatus
+  export type EnumApplicationStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ApplicationStatus | EnumApplicationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumApplicationStatusFilter<$PrismaModel> | $Enums.ApplicationStatus
   }
 
   export type JobRelationFilter = {
@@ -8948,66 +8948,45 @@ export namespace Prisma {
 
   export type ApplicationCountOrderByAggregateInput = {
     id?: SortOrder
-    coverLetter?: SortOrder
-    resumeUrl?: SortOrder
-    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     jobId?: SortOrder
     applicantId?: SortOrder
+    coverLetter?: SortOrder
+    resumeUrl?: SortOrder
+    status?: SortOrder
   }
 
   export type ApplicationMaxOrderByAggregateInput = {
     id?: SortOrder
-    coverLetter?: SortOrder
-    resumeUrl?: SortOrder
-    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     jobId?: SortOrder
     applicantId?: SortOrder
+    coverLetter?: SortOrder
+    resumeUrl?: SortOrder
+    status?: SortOrder
   }
 
   export type ApplicationMinOrderByAggregateInput = {
     id?: SortOrder
-    coverLetter?: SortOrder
-    resumeUrl?: SortOrder
-    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     jobId?: SortOrder
     applicantId?: SortOrder
+    coverLetter?: SortOrder
+    resumeUrl?: SortOrder
+    status?: SortOrder
   }
 
-  export type EnumAppStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.AppStatus | EnumAppStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.AppStatus[] | ListEnumAppStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AppStatus[] | ListEnumAppStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumAppStatusWithAggregatesFilter<$PrismaModel> | $Enums.AppStatus
+  export type EnumApplicationStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ApplicationStatus | EnumApplicationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumApplicationStatusWithAggregatesFilter<$PrismaModel> | $Enums.ApplicationStatus
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumAppStatusFilter<$PrismaModel>
-    _max?: NestedEnumAppStatusFilter<$PrismaModel>
-  }
-
-  export type SessionCreateNestedManyWithoutUserInput = {
-    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
-    createMany?: SessionCreateManyUserInputEnvelope
-    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-  }
-
-  export type AccountCreateNestedManyWithoutUserInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-  }
-
-  export type JobCreateNestedManyWithoutPosterInput = {
-    create?: XOR<JobCreateWithoutPosterInput, JobUncheckedCreateWithoutPosterInput> | JobCreateWithoutPosterInput[] | JobUncheckedCreateWithoutPosterInput[]
-    connectOrCreate?: JobCreateOrConnectWithoutPosterInput | JobCreateOrConnectWithoutPosterInput[]
-    createMany?: JobCreateManyPosterInputEnvelope
-    connect?: JobWhereUniqueInput | JobWhereUniqueInput[]
+    _min?: NestedEnumApplicationStatusFilter<$PrismaModel>
+    _max?: NestedEnumApplicationStatusFilter<$PrismaModel>
   }
 
   export type ApplicationCreateNestedManyWithoutApplicantInput = {
@@ -9017,18 +8996,32 @@ export namespace Prisma {
     connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
   }
 
-  export type SessionUncheckedCreateNestedManyWithoutUserInput = {
+  export type JobCreateNestedManyWithoutPosterInput = {
+    create?: XOR<JobCreateWithoutPosterInput, JobUncheckedCreateWithoutPosterInput> | JobCreateWithoutPosterInput[] | JobUncheckedCreateWithoutPosterInput[]
+    connectOrCreate?: JobCreateOrConnectWithoutPosterInput | JobCreateOrConnectWithoutPosterInput[]
+    createMany?: JobCreateManyPosterInputEnvelope
+    connect?: JobWhereUniqueInput | JobWhereUniqueInput[]
+  }
+
+  export type AccountCreateNestedManyWithoutUserInput = {
+    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
+    createMany?: AccountCreateManyUserInputEnvelope
+    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  }
+
+  export type SessionCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
     createMany?: SessionCreateManyUserInputEnvelope
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
-  export type AccountUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  export type ApplicationUncheckedCreateNestedManyWithoutApplicantInput = {
+    create?: XOR<ApplicationCreateWithoutApplicantInput, ApplicationUncheckedCreateWithoutApplicantInput> | ApplicationCreateWithoutApplicantInput[] | ApplicationUncheckedCreateWithoutApplicantInput[]
+    connectOrCreate?: ApplicationCreateOrConnectWithoutApplicantInput | ApplicationCreateOrConnectWithoutApplicantInput[]
+    createMany?: ApplicationCreateManyApplicantInputEnvelope
+    connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
   }
 
   export type JobUncheckedCreateNestedManyWithoutPosterInput = {
@@ -9038,11 +9031,18 @@ export namespace Prisma {
     connect?: JobWhereUniqueInput | JobWhereUniqueInput[]
   }
 
-  export type ApplicationUncheckedCreateNestedManyWithoutApplicantInput = {
-    create?: XOR<ApplicationCreateWithoutApplicantInput, ApplicationUncheckedCreateWithoutApplicantInput> | ApplicationCreateWithoutApplicantInput[] | ApplicationUncheckedCreateWithoutApplicantInput[]
-    connectOrCreate?: ApplicationCreateOrConnectWithoutApplicantInput | ApplicationCreateOrConnectWithoutApplicantInput[]
-    createMany?: ApplicationCreateManyApplicantInputEnvelope
-    connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+  export type AccountUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
+    createMany?: AccountCreateManyUserInputEnvelope
+    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  }
+
+  export type SessionUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
+    createMany?: SessionCreateManyUserInputEnvelope
+    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -9061,32 +9061,18 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type SessionUpdateManyWithoutUserNestedInput = {
-    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
-    upsert?: SessionUpsertWithWhereUniqueWithoutUserInput | SessionUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: SessionCreateManyUserInputEnvelope
-    set?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    disconnect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    delete?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    update?: SessionUpdateWithWhereUniqueWithoutUserInput | SessionUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: SessionUpdateManyWithWhereWithoutUserInput | SessionUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
-  }
-
-  export type AccountUpdateManyWithoutUserNestedInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    upsert?: AccountUpsertWithWhereUniqueWithoutUserInput | AccountUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    set?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    disconnect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    delete?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
+  export type ApplicationUpdateManyWithoutApplicantNestedInput = {
+    create?: XOR<ApplicationCreateWithoutApplicantInput, ApplicationUncheckedCreateWithoutApplicantInput> | ApplicationCreateWithoutApplicantInput[] | ApplicationUncheckedCreateWithoutApplicantInput[]
+    connectOrCreate?: ApplicationCreateOrConnectWithoutApplicantInput | ApplicationCreateOrConnectWithoutApplicantInput[]
+    upsert?: ApplicationUpsertWithWhereUniqueWithoutApplicantInput | ApplicationUpsertWithWhereUniqueWithoutApplicantInput[]
+    createMany?: ApplicationCreateManyApplicantInputEnvelope
+    set?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    disconnect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    delete?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    update?: ApplicationUpdateWithWhereUniqueWithoutApplicantInput | ApplicationUpdateWithWhereUniqueWithoutApplicantInput[]
+    updateMany?: ApplicationUpdateManyWithWhereWithoutApplicantInput | ApplicationUpdateManyWithWhereWithoutApplicantInput[]
+    deleteMany?: ApplicationScalarWhereInput | ApplicationScalarWhereInput[]
   }
 
   export type JobUpdateManyWithoutPosterNestedInput = {
@@ -9103,21 +9089,21 @@ export namespace Prisma {
     deleteMany?: JobScalarWhereInput | JobScalarWhereInput[]
   }
 
-  export type ApplicationUpdateManyWithoutApplicantNestedInput = {
-    create?: XOR<ApplicationCreateWithoutApplicantInput, ApplicationUncheckedCreateWithoutApplicantInput> | ApplicationCreateWithoutApplicantInput[] | ApplicationUncheckedCreateWithoutApplicantInput[]
-    connectOrCreate?: ApplicationCreateOrConnectWithoutApplicantInput | ApplicationCreateOrConnectWithoutApplicantInput[]
-    upsert?: ApplicationUpsertWithWhereUniqueWithoutApplicantInput | ApplicationUpsertWithWhereUniqueWithoutApplicantInput[]
-    createMany?: ApplicationCreateManyApplicantInputEnvelope
-    set?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
-    disconnect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
-    delete?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
-    connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
-    update?: ApplicationUpdateWithWhereUniqueWithoutApplicantInput | ApplicationUpdateWithWhereUniqueWithoutApplicantInput[]
-    updateMany?: ApplicationUpdateManyWithWhereWithoutApplicantInput | ApplicationUpdateManyWithWhereWithoutApplicantInput[]
-    deleteMany?: ApplicationScalarWhereInput | ApplicationScalarWhereInput[]
+  export type AccountUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
+    upsert?: AccountUpsertWithWhereUniqueWithoutUserInput | AccountUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AccountCreateManyUserInputEnvelope
+    set?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    disconnect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    delete?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
-  export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
+  export type SessionUpdateManyWithoutUserNestedInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
     upsert?: SessionUpsertWithWhereUniqueWithoutUserInput | SessionUpsertWithWhereUniqueWithoutUserInput[]
@@ -9131,18 +9117,18 @@ export namespace Prisma {
     deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
   }
 
-  export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    upsert?: AccountUpsertWithWhereUniqueWithoutUserInput | AccountUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    set?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    disconnect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    delete?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
+  export type ApplicationUncheckedUpdateManyWithoutApplicantNestedInput = {
+    create?: XOR<ApplicationCreateWithoutApplicantInput, ApplicationUncheckedCreateWithoutApplicantInput> | ApplicationCreateWithoutApplicantInput[] | ApplicationUncheckedCreateWithoutApplicantInput[]
+    connectOrCreate?: ApplicationCreateOrConnectWithoutApplicantInput | ApplicationCreateOrConnectWithoutApplicantInput[]
+    upsert?: ApplicationUpsertWithWhereUniqueWithoutApplicantInput | ApplicationUpsertWithWhereUniqueWithoutApplicantInput[]
+    createMany?: ApplicationCreateManyApplicantInputEnvelope
+    set?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    disconnect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    delete?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    update?: ApplicationUpdateWithWhereUniqueWithoutApplicantInput | ApplicationUpdateWithWhereUniqueWithoutApplicantInput[]
+    updateMany?: ApplicationUpdateManyWithWhereWithoutApplicantInput | ApplicationUpdateManyWithWhereWithoutApplicantInput[]
+    deleteMany?: ApplicationScalarWhereInput | ApplicationScalarWhereInput[]
   }
 
   export type JobUncheckedUpdateManyWithoutPosterNestedInput = {
@@ -9159,18 +9145,32 @@ export namespace Prisma {
     deleteMany?: JobScalarWhereInput | JobScalarWhereInput[]
   }
 
-  export type ApplicationUncheckedUpdateManyWithoutApplicantNestedInput = {
-    create?: XOR<ApplicationCreateWithoutApplicantInput, ApplicationUncheckedCreateWithoutApplicantInput> | ApplicationCreateWithoutApplicantInput[] | ApplicationUncheckedCreateWithoutApplicantInput[]
-    connectOrCreate?: ApplicationCreateOrConnectWithoutApplicantInput | ApplicationCreateOrConnectWithoutApplicantInput[]
-    upsert?: ApplicationUpsertWithWhereUniqueWithoutApplicantInput | ApplicationUpsertWithWhereUniqueWithoutApplicantInput[]
-    createMany?: ApplicationCreateManyApplicantInputEnvelope
-    set?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
-    disconnect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
-    delete?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
-    connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
-    update?: ApplicationUpdateWithWhereUniqueWithoutApplicantInput | ApplicationUpdateWithWhereUniqueWithoutApplicantInput[]
-    updateMany?: ApplicationUpdateManyWithWhereWithoutApplicantInput | ApplicationUpdateManyWithWhereWithoutApplicantInput[]
-    deleteMany?: ApplicationScalarWhereInput | ApplicationScalarWhereInput[]
+  export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
+    upsert?: AccountUpsertWithWhereUniqueWithoutUserInput | AccountUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AccountCreateManyUserInputEnvelope
+    set?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    disconnect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    delete?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
+  }
+
+  export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
+    upsert?: SessionUpsertWithWhereUniqueWithoutUserInput | SessionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SessionCreateManyUserInputEnvelope
+    set?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    disconnect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    delete?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    update?: SessionUpdateWithWhereUniqueWithoutUserInput | SessionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SessionUpdateManyWithWhereWithoutUserInput | SessionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSessionsInput = {
@@ -9205,17 +9205,17 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountsInput, UserUpdateWithoutAccountsInput>, UserUncheckedUpdateWithoutAccountsInput>
   }
 
-  export type UserCreateNestedOneWithoutJobsInput = {
-    create?: XOR<UserCreateWithoutJobsInput, UserUncheckedCreateWithoutJobsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutJobsInput
-    connect?: UserWhereUniqueInput
-  }
-
   export type ApplicationCreateNestedManyWithoutJobInput = {
     create?: XOR<ApplicationCreateWithoutJobInput, ApplicationUncheckedCreateWithoutJobInput> | ApplicationCreateWithoutJobInput[] | ApplicationUncheckedCreateWithoutJobInput[]
     connectOrCreate?: ApplicationCreateOrConnectWithoutJobInput | ApplicationCreateOrConnectWithoutJobInput[]
     createMany?: ApplicationCreateManyJobInputEnvelope
     connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedOneWithoutJobsInput = {
+    create?: XOR<UserCreateWithoutJobsInput, UserUncheckedCreateWithoutJobsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutJobsInput
+    connect?: UserWhereUniqueInput
   }
 
   export type ApplicationUncheckedCreateNestedManyWithoutJobInput = {
@@ -9227,14 +9227,6 @@ export namespace Prisma {
 
   export type EnumJobStatusFieldUpdateOperationsInput = {
     set?: $Enums.JobStatus
-  }
-
-  export type UserUpdateOneRequiredWithoutJobsNestedInput = {
-    create?: XOR<UserCreateWithoutJobsInput, UserUncheckedCreateWithoutJobsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutJobsInput
-    upsert?: UserUpsertWithoutJobsInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutJobsInput, UserUpdateWithoutJobsInput>, UserUncheckedUpdateWithoutJobsInput>
   }
 
   export type ApplicationUpdateManyWithoutJobNestedInput = {
@@ -9251,6 +9243,14 @@ export namespace Prisma {
     deleteMany?: ApplicationScalarWhereInput | ApplicationScalarWhereInput[]
   }
 
+  export type UserUpdateOneRequiredWithoutJobsNestedInput = {
+    create?: XOR<UserCreateWithoutJobsInput, UserUncheckedCreateWithoutJobsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutJobsInput
+    upsert?: UserUpsertWithoutJobsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutJobsInput, UserUpdateWithoutJobsInput>, UserUncheckedUpdateWithoutJobsInput>
+  }
+
   export type ApplicationUncheckedUpdateManyWithoutJobNestedInput = {
     create?: XOR<ApplicationCreateWithoutJobInput, ApplicationUncheckedCreateWithoutJobInput> | ApplicationCreateWithoutJobInput[] | ApplicationUncheckedCreateWithoutJobInput[]
     connectOrCreate?: ApplicationCreateOrConnectWithoutJobInput | ApplicationCreateOrConnectWithoutJobInput[]
@@ -9265,28 +9265,20 @@ export namespace Prisma {
     deleteMany?: ApplicationScalarWhereInput | ApplicationScalarWhereInput[]
   }
 
-  export type JobCreateNestedOneWithoutApplicationsInput = {
-    create?: XOR<JobCreateWithoutApplicationsInput, JobUncheckedCreateWithoutApplicationsInput>
-    connectOrCreate?: JobCreateOrConnectWithoutApplicationsInput
-    connect?: JobWhereUniqueInput
-  }
-
   export type UserCreateNestedOneWithoutApplicationsInput = {
     create?: XOR<UserCreateWithoutApplicationsInput, UserUncheckedCreateWithoutApplicationsInput>
     connectOrCreate?: UserCreateOrConnectWithoutApplicationsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type EnumAppStatusFieldUpdateOperationsInput = {
-    set?: $Enums.AppStatus
-  }
-
-  export type JobUpdateOneRequiredWithoutApplicationsNestedInput = {
+  export type JobCreateNestedOneWithoutApplicationsInput = {
     create?: XOR<JobCreateWithoutApplicationsInput, JobUncheckedCreateWithoutApplicationsInput>
     connectOrCreate?: JobCreateOrConnectWithoutApplicationsInput
-    upsert?: JobUpsertWithoutApplicationsInput
     connect?: JobWhereUniqueInput
-    update?: XOR<XOR<JobUpdateToOneWithWhereWithoutApplicationsInput, JobUpdateWithoutApplicationsInput>, JobUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type EnumApplicationStatusFieldUpdateOperationsInput = {
+    set?: $Enums.ApplicationStatus
   }
 
   export type UserUpdateOneRequiredWithoutApplicationsNestedInput = {
@@ -9295,6 +9287,14 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutApplicationsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutApplicationsInput, UserUpdateWithoutApplicationsInput>, UserUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type JobUpdateOneRequiredWithoutApplicationsNestedInput = {
+    create?: XOR<JobCreateWithoutApplicationsInput, JobUncheckedCreateWithoutApplicationsInput>
+    connectOrCreate?: JobCreateOrConnectWithoutApplicationsInput
+    upsert?: JobUpsertWithoutApplicationsInput
+    connect?: JobWhereUniqueInput
+    update?: XOR<XOR<JobUpdateToOneWithWhereWithoutApplicationsInput, JobUpdateWithoutApplicationsInput>, JobUncheckedUpdateWithoutApplicationsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -9461,27 +9461,135 @@ export namespace Prisma {
     _max?: NestedEnumJobStatusFilter<$PrismaModel>
   }
 
-  export type NestedEnumAppStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.AppStatus | EnumAppStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.AppStatus[] | ListEnumAppStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AppStatus[] | ListEnumAppStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumAppStatusFilter<$PrismaModel> | $Enums.AppStatus
+  export type NestedEnumApplicationStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ApplicationStatus | EnumApplicationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumApplicationStatusFilter<$PrismaModel> | $Enums.ApplicationStatus
   }
 
-  export type NestedEnumAppStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.AppStatus | EnumAppStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.AppStatus[] | ListEnumAppStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AppStatus[] | ListEnumAppStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumAppStatusWithAggregatesFilter<$PrismaModel> | $Enums.AppStatus
+  export type NestedEnumApplicationStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ApplicationStatus | EnumApplicationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumApplicationStatusWithAggregatesFilter<$PrismaModel> | $Enums.ApplicationStatus
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumAppStatusFilter<$PrismaModel>
-    _max?: NestedEnumAppStatusFilter<$PrismaModel>
+    _min?: NestedEnumApplicationStatusFilter<$PrismaModel>
+    _max?: NestedEnumApplicationStatusFilter<$PrismaModel>
+  }
+
+  export type ApplicationCreateWithoutApplicantInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    coverLetter?: string | null
+    resumeUrl?: string | null
+    status?: $Enums.ApplicationStatus
+    job: JobCreateNestedOneWithoutApplicationsInput
+  }
+
+  export type ApplicationUncheckedCreateWithoutApplicantInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    jobId: string
+    coverLetter?: string | null
+    resumeUrl?: string | null
+    status?: $Enums.ApplicationStatus
+  }
+
+  export type ApplicationCreateOrConnectWithoutApplicantInput = {
+    where: ApplicationWhereUniqueInput
+    create: XOR<ApplicationCreateWithoutApplicantInput, ApplicationUncheckedCreateWithoutApplicantInput>
+  }
+
+  export type ApplicationCreateManyApplicantInputEnvelope = {
+    data: ApplicationCreateManyApplicantInput | ApplicationCreateManyApplicantInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type JobCreateWithoutPosterInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    title: string
+    location?: string | null
+    description: string
+    status?: $Enums.JobStatus
+    hospital: string
+    salary?: string | null
+    jobType: string
+    applications?: ApplicationCreateNestedManyWithoutJobInput
+  }
+
+  export type JobUncheckedCreateWithoutPosterInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    title: string
+    location?: string | null
+    description: string
+    status?: $Enums.JobStatus
+    hospital: string
+    salary?: string | null
+    jobType: string
+    applications?: ApplicationUncheckedCreateNestedManyWithoutJobInput
+  }
+
+  export type JobCreateOrConnectWithoutPosterInput = {
+    where: JobWhereUniqueInput
+    create: XOR<JobCreateWithoutPosterInput, JobUncheckedCreateWithoutPosterInput>
+  }
+
+  export type JobCreateManyPosterInputEnvelope = {
+    data: JobCreateManyPosterInput | JobCreateManyPosterInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AccountCreateWithoutUserInput = {
+    id: string
+    accessToken?: string | null
+    refreshToken?: string | null
+    idToken?: string | null
+    accessTokenExpiresAt?: Date | string | null
+    refreshTokenExpiresAt?: Date | string | null
+    scope?: string | null
+    password?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accountId: string
+    providerId: string
+  }
+
+  export type AccountUncheckedCreateWithoutUserInput = {
+    id: string
+    accessToken?: string | null
+    refreshToken?: string | null
+    idToken?: string | null
+    accessTokenExpiresAt?: Date | string | null
+    refreshTokenExpiresAt?: Date | string | null
+    scope?: string | null
+    password?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accountId: string
+    providerId: string
+  }
+
+  export type AccountCreateOrConnectWithoutUserInput = {
+    where: AccountWhereUniqueInput
+    create: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput>
+  }
+
+  export type AccountCreateManyUserInputEnvelope = {
+    data: AccountCreateManyUserInput | AccountCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type SessionCreateWithoutUserInput = {
     id: string
-    token: string
     expiresAt: Date | string
+    token: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ipAddress?: string | null
@@ -9490,8 +9598,8 @@ export namespace Prisma {
 
   export type SessionUncheckedCreateWithoutUserInput = {
     id: string
-    token: string
     expiresAt: Date | string
+    token: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ipAddress?: string | null
@@ -9506,212 +9614,6 @@ export namespace Prisma {
   export type SessionCreateManyUserInputEnvelope = {
     data: SessionCreateManyUserInput | SessionCreateManyUserInput[]
     skipDuplicates?: boolean
-  }
-
-  export type AccountCreateWithoutUserInput = {
-    id: string
-    accountId: string
-    providerId: string
-    accessToken?: string | null
-    refreshToken?: string | null
-    idToken?: string | null
-    accessTokenExpiresAt?: Date | string | null
-    refreshTokenExpiresAt?: Date | string | null
-    scope?: string | null
-    password?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type AccountUncheckedCreateWithoutUserInput = {
-    id: string
-    accountId: string
-    providerId: string
-    accessToken?: string | null
-    refreshToken?: string | null
-    idToken?: string | null
-    accessTokenExpiresAt?: Date | string | null
-    refreshTokenExpiresAt?: Date | string | null
-    scope?: string | null
-    password?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type AccountCreateOrConnectWithoutUserInput = {
-    where: AccountWhereUniqueInput
-    create: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput>
-  }
-
-  export type AccountCreateManyUserInputEnvelope = {
-    data: AccountCreateManyUserInput | AccountCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type JobCreateWithoutPosterInput = {
-    id?: string
-    title: string
-    hospital: string
-    location?: string | null
-    jobType: string
-    salary?: string | null
-    description: string
-    status?: $Enums.JobStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    applications?: ApplicationCreateNestedManyWithoutJobInput
-  }
-
-  export type JobUncheckedCreateWithoutPosterInput = {
-    id?: string
-    title: string
-    hospital: string
-    location?: string | null
-    jobType: string
-    salary?: string | null
-    description: string
-    status?: $Enums.JobStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    applications?: ApplicationUncheckedCreateNestedManyWithoutJobInput
-  }
-
-  export type JobCreateOrConnectWithoutPosterInput = {
-    where: JobWhereUniqueInput
-    create: XOR<JobCreateWithoutPosterInput, JobUncheckedCreateWithoutPosterInput>
-  }
-
-  export type JobCreateManyPosterInputEnvelope = {
-    data: JobCreateManyPosterInput | JobCreateManyPosterInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ApplicationCreateWithoutApplicantInput = {
-    id?: string
-    coverLetter?: string | null
-    resumeUrl?: string | null
-    status?: $Enums.AppStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    job: JobCreateNestedOneWithoutApplicationsInput
-  }
-
-  export type ApplicationUncheckedCreateWithoutApplicantInput = {
-    id?: string
-    coverLetter?: string | null
-    resumeUrl?: string | null
-    status?: $Enums.AppStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    jobId: string
-  }
-
-  export type ApplicationCreateOrConnectWithoutApplicantInput = {
-    where: ApplicationWhereUniqueInput
-    create: XOR<ApplicationCreateWithoutApplicantInput, ApplicationUncheckedCreateWithoutApplicantInput>
-  }
-
-  export type ApplicationCreateManyApplicantInputEnvelope = {
-    data: ApplicationCreateManyApplicantInput | ApplicationCreateManyApplicantInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type SessionUpsertWithWhereUniqueWithoutUserInput = {
-    where: SessionWhereUniqueInput
-    update: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
-    create: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput>
-  }
-
-  export type SessionUpdateWithWhereUniqueWithoutUserInput = {
-    where: SessionWhereUniqueInput
-    data: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
-  }
-
-  export type SessionUpdateManyWithWhereWithoutUserInput = {
-    where: SessionScalarWhereInput
-    data: XOR<SessionUpdateManyMutationInput, SessionUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type SessionScalarWhereInput = {
-    AND?: SessionScalarWhereInput | SessionScalarWhereInput[]
-    OR?: SessionScalarWhereInput[]
-    NOT?: SessionScalarWhereInput | SessionScalarWhereInput[]
-    id?: StringFilter<"Session"> | string
-    token?: StringFilter<"Session"> | string
-    expiresAt?: DateTimeFilter<"Session"> | Date | string
-    createdAt?: DateTimeFilter<"Session"> | Date | string
-    updatedAt?: DateTimeFilter<"Session"> | Date | string
-    ipAddress?: StringNullableFilter<"Session"> | string | null
-    userAgent?: StringNullableFilter<"Session"> | string | null
-    userId?: StringFilter<"Session"> | string
-  }
-
-  export type AccountUpsertWithWhereUniqueWithoutUserInput = {
-    where: AccountWhereUniqueInput
-    update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
-    create: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput>
-  }
-
-  export type AccountUpdateWithWhereUniqueWithoutUserInput = {
-    where: AccountWhereUniqueInput
-    data: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
-  }
-
-  export type AccountUpdateManyWithWhereWithoutUserInput = {
-    where: AccountScalarWhereInput
-    data: XOR<AccountUpdateManyMutationInput, AccountUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type AccountScalarWhereInput = {
-    AND?: AccountScalarWhereInput | AccountScalarWhereInput[]
-    OR?: AccountScalarWhereInput[]
-    NOT?: AccountScalarWhereInput | AccountScalarWhereInput[]
-    id?: StringFilter<"Account"> | string
-    accountId?: StringFilter<"Account"> | string
-    providerId?: StringFilter<"Account"> | string
-    userId?: StringFilter<"Account"> | string
-    accessToken?: StringNullableFilter<"Account"> | string | null
-    refreshToken?: StringNullableFilter<"Account"> | string | null
-    idToken?: StringNullableFilter<"Account"> | string | null
-    accessTokenExpiresAt?: DateTimeNullableFilter<"Account"> | Date | string | null
-    refreshTokenExpiresAt?: DateTimeNullableFilter<"Account"> | Date | string | null
-    scope?: StringNullableFilter<"Account"> | string | null
-    password?: StringNullableFilter<"Account"> | string | null
-    createdAt?: DateTimeFilter<"Account"> | Date | string
-    updatedAt?: DateTimeFilter<"Account"> | Date | string
-  }
-
-  export type JobUpsertWithWhereUniqueWithoutPosterInput = {
-    where: JobWhereUniqueInput
-    update: XOR<JobUpdateWithoutPosterInput, JobUncheckedUpdateWithoutPosterInput>
-    create: XOR<JobCreateWithoutPosterInput, JobUncheckedCreateWithoutPosterInput>
-  }
-
-  export type JobUpdateWithWhereUniqueWithoutPosterInput = {
-    where: JobWhereUniqueInput
-    data: XOR<JobUpdateWithoutPosterInput, JobUncheckedUpdateWithoutPosterInput>
-  }
-
-  export type JobUpdateManyWithWhereWithoutPosterInput = {
-    where: JobScalarWhereInput
-    data: XOR<JobUpdateManyMutationInput, JobUncheckedUpdateManyWithoutPosterInput>
-  }
-
-  export type JobScalarWhereInput = {
-    AND?: JobScalarWhereInput | JobScalarWhereInput[]
-    OR?: JobScalarWhereInput[]
-    NOT?: JobScalarWhereInput | JobScalarWhereInput[]
-    id?: StringFilter<"Job"> | string
-    title?: StringFilter<"Job"> | string
-    hospital?: StringFilter<"Job"> | string
-    location?: StringNullableFilter<"Job"> | string | null
-    jobType?: StringFilter<"Job"> | string
-    salary?: StringNullableFilter<"Job"> | string | null
-    description?: StringFilter<"Job"> | string
-    status?: EnumJobStatusFilter<"Job"> | $Enums.JobStatus
-    createdAt?: DateTimeFilter<"Job"> | Date | string
-    updatedAt?: DateTimeFilter<"Job"> | Date | string
-    posterId?: StringFilter<"Job"> | string
   }
 
   export type ApplicationUpsertWithWhereUniqueWithoutApplicantInput = {
@@ -9735,13 +9637,111 @@ export namespace Prisma {
     OR?: ApplicationScalarWhereInput[]
     NOT?: ApplicationScalarWhereInput | ApplicationScalarWhereInput[]
     id?: StringFilter<"Application"> | string
-    coverLetter?: StringNullableFilter<"Application"> | string | null
-    resumeUrl?: StringNullableFilter<"Application"> | string | null
-    status?: EnumAppStatusFilter<"Application"> | $Enums.AppStatus
     createdAt?: DateTimeFilter<"Application"> | Date | string
     updatedAt?: DateTimeFilter<"Application"> | Date | string
     jobId?: StringFilter<"Application"> | string
     applicantId?: StringFilter<"Application"> | string
+    coverLetter?: StringNullableFilter<"Application"> | string | null
+    resumeUrl?: StringNullableFilter<"Application"> | string | null
+    status?: EnumApplicationStatusFilter<"Application"> | $Enums.ApplicationStatus
+  }
+
+  export type JobUpsertWithWhereUniqueWithoutPosterInput = {
+    where: JobWhereUniqueInput
+    update: XOR<JobUpdateWithoutPosterInput, JobUncheckedUpdateWithoutPosterInput>
+    create: XOR<JobCreateWithoutPosterInput, JobUncheckedCreateWithoutPosterInput>
+  }
+
+  export type JobUpdateWithWhereUniqueWithoutPosterInput = {
+    where: JobWhereUniqueInput
+    data: XOR<JobUpdateWithoutPosterInput, JobUncheckedUpdateWithoutPosterInput>
+  }
+
+  export type JobUpdateManyWithWhereWithoutPosterInput = {
+    where: JobScalarWhereInput
+    data: XOR<JobUpdateManyMutationInput, JobUncheckedUpdateManyWithoutPosterInput>
+  }
+
+  export type JobScalarWhereInput = {
+    AND?: JobScalarWhereInput | JobScalarWhereInput[]
+    OR?: JobScalarWhereInput[]
+    NOT?: JobScalarWhereInput | JobScalarWhereInput[]
+    id?: StringFilter<"Job"> | string
+    createdAt?: DateTimeFilter<"Job"> | Date | string
+    updatedAt?: DateTimeFilter<"Job"> | Date | string
+    title?: StringFilter<"Job"> | string
+    location?: StringNullableFilter<"Job"> | string | null
+    description?: StringFilter<"Job"> | string
+    status?: EnumJobStatusFilter<"Job"> | $Enums.JobStatus
+    posterId?: StringFilter<"Job"> | string
+    hospital?: StringFilter<"Job"> | string
+    salary?: StringNullableFilter<"Job"> | string | null
+    jobType?: StringFilter<"Job"> | string
+  }
+
+  export type AccountUpsertWithWhereUniqueWithoutUserInput = {
+    where: AccountWhereUniqueInput
+    update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
+    create: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput>
+  }
+
+  export type AccountUpdateWithWhereUniqueWithoutUserInput = {
+    where: AccountWhereUniqueInput
+    data: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
+  }
+
+  export type AccountUpdateManyWithWhereWithoutUserInput = {
+    where: AccountScalarWhereInput
+    data: XOR<AccountUpdateManyMutationInput, AccountUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type AccountScalarWhereInput = {
+    AND?: AccountScalarWhereInput | AccountScalarWhereInput[]
+    OR?: AccountScalarWhereInput[]
+    NOT?: AccountScalarWhereInput | AccountScalarWhereInput[]
+    id?: StringFilter<"Account"> | string
+    userId?: StringFilter<"Account"> | string
+    accessToken?: StringNullableFilter<"Account"> | string | null
+    refreshToken?: StringNullableFilter<"Account"> | string | null
+    idToken?: StringNullableFilter<"Account"> | string | null
+    accessTokenExpiresAt?: DateTimeNullableFilter<"Account"> | Date | string | null
+    refreshTokenExpiresAt?: DateTimeNullableFilter<"Account"> | Date | string | null
+    scope?: StringNullableFilter<"Account"> | string | null
+    password?: StringNullableFilter<"Account"> | string | null
+    createdAt?: DateTimeFilter<"Account"> | Date | string
+    updatedAt?: DateTimeFilter<"Account"> | Date | string
+    accountId?: StringFilter<"Account"> | string
+    providerId?: StringFilter<"Account"> | string
+  }
+
+  export type SessionUpsertWithWhereUniqueWithoutUserInput = {
+    where: SessionWhereUniqueInput
+    update: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
+    create: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput>
+  }
+
+  export type SessionUpdateWithWhereUniqueWithoutUserInput = {
+    where: SessionWhereUniqueInput
+    data: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
+  }
+
+  export type SessionUpdateManyWithWhereWithoutUserInput = {
+    where: SessionScalarWhereInput
+    data: XOR<SessionUpdateManyMutationInput, SessionUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type SessionScalarWhereInput = {
+    AND?: SessionScalarWhereInput | SessionScalarWhereInput[]
+    OR?: SessionScalarWhereInput[]
+    NOT?: SessionScalarWhereInput | SessionScalarWhereInput[]
+    id?: StringFilter<"Session"> | string
+    expiresAt?: DateTimeFilter<"Session"> | Date | string
+    token?: StringFilter<"Session"> | string
+    createdAt?: DateTimeFilter<"Session"> | Date | string
+    updatedAt?: DateTimeFilter<"Session"> | Date | string
+    ipAddress?: StringNullableFilter<"Session"> | string | null
+    userAgent?: StringNullableFilter<"Session"> | string | null
+    userId?: StringFilter<"Session"> | string
   }
 
   export type UserCreateWithoutSessionsInput = {
@@ -9750,12 +9750,12 @@ export namespace Prisma {
     email: string
     emailVerified?: boolean
     image?: string | null
-    headline?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    jobs?: JobCreateNestedManyWithoutPosterInput
+    headline?: string | null
     applications?: ApplicationCreateNestedManyWithoutApplicantInput
+    jobs?: JobCreateNestedManyWithoutPosterInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -9764,12 +9764,12 @@ export namespace Prisma {
     email: string
     emailVerified?: boolean
     image?: string | null
-    headline?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    jobs?: JobUncheckedCreateNestedManyWithoutPosterInput
+    headline?: string | null
     applications?: ApplicationUncheckedCreateNestedManyWithoutApplicantInput
+    jobs?: JobUncheckedCreateNestedManyWithoutPosterInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -9794,12 +9794,12 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    headline?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    jobs?: JobUpdateManyWithoutPosterNestedInput
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationUpdateManyWithoutApplicantNestedInput
+    jobs?: JobUpdateManyWithoutPosterNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -9808,12 +9808,12 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    headline?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    jobs?: JobUncheckedUpdateManyWithoutPosterNestedInput
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationUncheckedUpdateManyWithoutApplicantNestedInput
+    jobs?: JobUncheckedUpdateManyWithoutPosterNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutAccountsInput = {
@@ -9822,12 +9822,12 @@ export namespace Prisma {
     email: string
     emailVerified?: boolean
     image?: string | null
-    headline?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    jobs?: JobCreateNestedManyWithoutPosterInput
+    headline?: string | null
     applications?: ApplicationCreateNestedManyWithoutApplicantInput
+    jobs?: JobCreateNestedManyWithoutPosterInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -9836,12 +9836,12 @@ export namespace Prisma {
     email: string
     emailVerified?: boolean
     image?: string | null
-    headline?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    jobs?: JobUncheckedCreateNestedManyWithoutPosterInput
+    headline?: string | null
     applications?: ApplicationUncheckedCreateNestedManyWithoutApplicantInput
+    jobs?: JobUncheckedCreateNestedManyWithoutPosterInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -9866,12 +9866,12 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    headline?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    jobs?: JobUpdateManyWithoutPosterNestedInput
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationUpdateManyWithoutApplicantNestedInput
+    jobs?: JobUpdateManyWithoutPosterNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -9880,65 +9880,32 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    headline?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    jobs?: JobUncheckedUpdateManyWithoutPosterNestedInput
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationUncheckedUpdateManyWithoutApplicantNestedInput
-  }
-
-  export type UserCreateWithoutJobsInput = {
-    id?: string
-    name: string
-    email: string
-    emailVerified?: boolean
-    image?: string | null
-    headline?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    applications?: ApplicationCreateNestedManyWithoutApplicantInput
-  }
-
-  export type UserUncheckedCreateWithoutJobsInput = {
-    id?: string
-    name: string
-    email: string
-    emailVerified?: boolean
-    image?: string | null
-    headline?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    applications?: ApplicationUncheckedCreateNestedManyWithoutApplicantInput
-  }
-
-  export type UserCreateOrConnectWithoutJobsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutJobsInput, UserUncheckedCreateWithoutJobsInput>
+    jobs?: JobUncheckedUpdateManyWithoutPosterNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ApplicationCreateWithoutJobInput = {
     id?: string
-    coverLetter?: string | null
-    resumeUrl?: string | null
-    status?: $Enums.AppStatus
     createdAt?: Date | string
     updatedAt?: Date | string
+    coverLetter?: string | null
+    resumeUrl?: string | null
+    status?: $Enums.ApplicationStatus
     applicant: UserCreateNestedOneWithoutApplicationsInput
   }
 
   export type ApplicationUncheckedCreateWithoutJobInput = {
     id?: string
-    coverLetter?: string | null
-    resumeUrl?: string | null
-    status?: $Enums.AppStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     applicantId: string
+    coverLetter?: string | null
+    resumeUrl?: string | null
+    status?: $Enums.ApplicationStatus
   }
 
   export type ApplicationCreateOrConnectWithoutJobInput = {
@@ -9949,6 +9916,55 @@ export namespace Prisma {
   export type ApplicationCreateManyJobInputEnvelope = {
     data: ApplicationCreateManyJobInput | ApplicationCreateManyJobInput[]
     skipDuplicates?: boolean
+  }
+
+  export type UserCreateWithoutJobsInput = {
+    id?: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    headline?: string | null
+    applications?: ApplicationCreateNestedManyWithoutApplicantInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutJobsInput = {
+    id?: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    headline?: string | null
+    applications?: ApplicationUncheckedCreateNestedManyWithoutApplicantInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutJobsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutJobsInput, UserUncheckedCreateWithoutJobsInput>
+  }
+
+  export type ApplicationUpsertWithWhereUniqueWithoutJobInput = {
+    where: ApplicationWhereUniqueInput
+    update: XOR<ApplicationUpdateWithoutJobInput, ApplicationUncheckedUpdateWithoutJobInput>
+    create: XOR<ApplicationCreateWithoutJobInput, ApplicationUncheckedCreateWithoutJobInput>
+  }
+
+  export type ApplicationUpdateWithWhereUniqueWithoutJobInput = {
+    where: ApplicationWhereUniqueInput
+    data: XOR<ApplicationUpdateWithoutJobInput, ApplicationUncheckedUpdateWithoutJobInput>
+  }
+
+  export type ApplicationUpdateManyWithWhereWithoutJobInput = {
+    where: ApplicationScalarWhereInput
+    data: XOR<ApplicationUpdateManyMutationInput, ApplicationUncheckedUpdateManyWithoutJobInput>
   }
 
   export type UserUpsertWithoutJobsInput = {
@@ -9968,12 +9984,12 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    headline?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    accounts?: AccountUpdateManyWithoutUserNestedInput
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationUpdateManyWithoutApplicantNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutJobsInput = {
@@ -9982,61 +9998,12 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    headline?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationUncheckedUpdateManyWithoutApplicantNestedInput
-  }
-
-  export type ApplicationUpsertWithWhereUniqueWithoutJobInput = {
-    where: ApplicationWhereUniqueInput
-    update: XOR<ApplicationUpdateWithoutJobInput, ApplicationUncheckedUpdateWithoutJobInput>
-    create: XOR<ApplicationCreateWithoutJobInput, ApplicationUncheckedCreateWithoutJobInput>
-  }
-
-  export type ApplicationUpdateWithWhereUniqueWithoutJobInput = {
-    where: ApplicationWhereUniqueInput
-    data: XOR<ApplicationUpdateWithoutJobInput, ApplicationUncheckedUpdateWithoutJobInput>
-  }
-
-  export type ApplicationUpdateManyWithWhereWithoutJobInput = {
-    where: ApplicationScalarWhereInput
-    data: XOR<ApplicationUpdateManyMutationInput, ApplicationUncheckedUpdateManyWithoutJobInput>
-  }
-
-  export type JobCreateWithoutApplicationsInput = {
-    id?: string
-    title: string
-    hospital: string
-    location?: string | null
-    jobType: string
-    salary?: string | null
-    description: string
-    status?: $Enums.JobStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    poster: UserCreateNestedOneWithoutJobsInput
-  }
-
-  export type JobUncheckedCreateWithoutApplicationsInput = {
-    id?: string
-    title: string
-    hospital: string
-    location?: string | null
-    jobType: string
-    salary?: string | null
-    description: string
-    status?: $Enums.JobStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    posterId: string
-  }
-
-  export type JobCreateOrConnectWithoutApplicationsInput = {
-    where: JobWhereUniqueInput
-    create: XOR<JobCreateWithoutApplicationsInput, JobUncheckedCreateWithoutApplicationsInput>
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutApplicationsInput = {
@@ -10045,12 +10012,12 @@ export namespace Prisma {
     email: string
     emailVerified?: boolean
     image?: string | null
-    headline?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    accounts?: AccountCreateNestedManyWithoutUserInput
+    headline?: string | null
     jobs?: JobCreateNestedManyWithoutPosterInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutApplicationsInput = {
@@ -10059,12 +10026,12 @@ export namespace Prisma {
     email: string
     emailVerified?: boolean
     image?: string | null
-    headline?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    headline?: string | null
     jobs?: JobUncheckedCreateNestedManyWithoutPosterInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutApplicationsInput = {
@@ -10072,43 +10039,37 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutApplicationsInput, UserUncheckedCreateWithoutApplicationsInput>
   }
 
-  export type JobUpsertWithoutApplicationsInput = {
-    update: XOR<JobUpdateWithoutApplicationsInput, JobUncheckedUpdateWithoutApplicationsInput>
+  export type JobCreateWithoutApplicationsInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    title: string
+    location?: string | null
+    description: string
+    status?: $Enums.JobStatus
+    hospital: string
+    salary?: string | null
+    jobType: string
+    poster: UserCreateNestedOneWithoutJobsInput
+  }
+
+  export type JobUncheckedCreateWithoutApplicationsInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    title: string
+    location?: string | null
+    description: string
+    status?: $Enums.JobStatus
+    posterId: string
+    hospital: string
+    salary?: string | null
+    jobType: string
+  }
+
+  export type JobCreateOrConnectWithoutApplicationsInput = {
+    where: JobWhereUniqueInput
     create: XOR<JobCreateWithoutApplicationsInput, JobUncheckedCreateWithoutApplicationsInput>
-    where?: JobWhereInput
-  }
-
-  export type JobUpdateToOneWithWhereWithoutApplicationsInput = {
-    where?: JobWhereInput
-    data: XOR<JobUpdateWithoutApplicationsInput, JobUncheckedUpdateWithoutApplicationsInput>
-  }
-
-  export type JobUpdateWithoutApplicationsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    hospital?: StringFieldUpdateOperationsInput | string
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: StringFieldUpdateOperationsInput | string
-    salary?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    poster?: UserUpdateOneRequiredWithoutJobsNestedInput
-  }
-
-  export type JobUncheckedUpdateWithoutApplicationsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    hospital?: StringFieldUpdateOperationsInput | string
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: StringFieldUpdateOperationsInput | string
-    salary?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    posterId?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUpsertWithoutApplicationsInput = {
@@ -10128,12 +10089,12 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    headline?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    accounts?: AccountUpdateManyWithoutUserNestedInput
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
     jobs?: JobUpdateManyWithoutPosterNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutApplicationsInput = {
@@ -10142,28 +10103,78 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    headline?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
     jobs?: JobUncheckedUpdateManyWithoutPosterNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type SessionCreateManyUserInput = {
-    id: string
-    token: string
-    expiresAt: Date | string
+  export type JobUpsertWithoutApplicationsInput = {
+    update: XOR<JobUpdateWithoutApplicationsInput, JobUncheckedUpdateWithoutApplicationsInput>
+    create: XOR<JobCreateWithoutApplicationsInput, JobUncheckedCreateWithoutApplicationsInput>
+    where?: JobWhereInput
+  }
+
+  export type JobUpdateToOneWithWhereWithoutApplicationsInput = {
+    where?: JobWhereInput
+    data: XOR<JobUpdateWithoutApplicationsInput, JobUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type JobUpdateWithoutApplicationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    title?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
+    hospital?: StringFieldUpdateOperationsInput | string
+    salary?: NullableStringFieldUpdateOperationsInput | string | null
+    jobType?: StringFieldUpdateOperationsInput | string
+    poster?: UserUpdateOneRequiredWithoutJobsNestedInput
+  }
+
+  export type JobUncheckedUpdateWithoutApplicationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    title?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
+    posterId?: StringFieldUpdateOperationsInput | string
+    hospital?: StringFieldUpdateOperationsInput | string
+    salary?: NullableStringFieldUpdateOperationsInput | string | null
+    jobType?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ApplicationCreateManyApplicantInput = {
+    id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    ipAddress?: string | null
-    userAgent?: string | null
+    jobId: string
+    coverLetter?: string | null
+    resumeUrl?: string | null
+    status?: $Enums.ApplicationStatus
+  }
+
+  export type JobCreateManyPosterInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    title: string
+    location?: string | null
+    description: string
+    status?: $Enums.JobStatus
+    hospital: string
+    salary?: string | null
+    jobType: string
   }
 
   export type AccountCreateManyUserInput = {
     id: string
-    accountId: string
-    providerId: string
     accessToken?: string | null
     refreshToken?: string | null
     idToken?: string | null
@@ -10173,35 +10184,140 @@ export namespace Prisma {
     password?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    accountId: string
+    providerId: string
   }
 
-  export type JobCreateManyPosterInput = {
-    id?: string
-    title: string
-    hospital: string
-    location?: string | null
-    jobType: string
-    salary?: string | null
-    description: string
-    status?: $Enums.JobStatus
+  export type SessionCreateManyUserInput = {
+    id: string
+    expiresAt: Date | string
+    token: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    ipAddress?: string | null
+    userAgent?: string | null
   }
 
-  export type ApplicationCreateManyApplicantInput = {
-    id?: string
-    coverLetter?: string | null
-    resumeUrl?: string | null
-    status?: $Enums.AppStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    jobId: string
+  export type ApplicationUpdateWithoutApplicantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    job?: JobUpdateOneRequiredWithoutApplicationsNestedInput
+  }
+
+  export type ApplicationUncheckedUpdateWithoutApplicantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    jobId?: StringFieldUpdateOperationsInput | string
+    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+  }
+
+  export type ApplicationUncheckedUpdateManyWithoutApplicantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    jobId?: StringFieldUpdateOperationsInput | string
+    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+  }
+
+  export type JobUpdateWithoutPosterInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    title?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
+    hospital?: StringFieldUpdateOperationsInput | string
+    salary?: NullableStringFieldUpdateOperationsInput | string | null
+    jobType?: StringFieldUpdateOperationsInput | string
+    applications?: ApplicationUpdateManyWithoutJobNestedInput
+  }
+
+  export type JobUncheckedUpdateWithoutPosterInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    title?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
+    hospital?: StringFieldUpdateOperationsInput | string
+    salary?: NullableStringFieldUpdateOperationsInput | string | null
+    jobType?: StringFieldUpdateOperationsInput | string
+    applications?: ApplicationUncheckedUpdateManyWithoutJobNestedInput
+  }
+
+  export type JobUncheckedUpdateManyWithoutPosterInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    title?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
+    hospital?: StringFieldUpdateOperationsInput | string
+    salary?: NullableStringFieldUpdateOperationsInput | string | null
+    jobType?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AccountUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    idToken?: NullableStringFieldUpdateOperationsInput | string | null
+    accessTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accountId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AccountUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    idToken?: NullableStringFieldUpdateOperationsInput | string | null
+    accessTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accountId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AccountUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    idToken?: NullableStringFieldUpdateOperationsInput | string | null
+    accessTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accountId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type SessionUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    token?: StringFieldUpdateOperationsInput | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10210,8 +10326,8 @@ export namespace Prisma {
 
   export type SessionUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    token?: StringFieldUpdateOperationsInput | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10220,168 +10336,52 @@ export namespace Prisma {
 
   export type SessionUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    token?: StringFieldUpdateOperationsInput | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
     userAgent?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type AccountUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    accountId?: StringFieldUpdateOperationsInput | string
-    providerId?: StringFieldUpdateOperationsInput | string
-    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
-    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
-    idToken?: NullableStringFieldUpdateOperationsInput | string | null
-    accessTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    refreshTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type AccountUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    accountId?: StringFieldUpdateOperationsInput | string
-    providerId?: StringFieldUpdateOperationsInput | string
-    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
-    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
-    idToken?: NullableStringFieldUpdateOperationsInput | string | null
-    accessTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    refreshTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type AccountUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    accountId?: StringFieldUpdateOperationsInput | string
-    providerId?: StringFieldUpdateOperationsInput | string
-    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
-    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
-    idToken?: NullableStringFieldUpdateOperationsInput | string | null
-    accessTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    refreshTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type JobUpdateWithoutPosterInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    hospital?: StringFieldUpdateOperationsInput | string
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: StringFieldUpdateOperationsInput | string
-    salary?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    applications?: ApplicationUpdateManyWithoutJobNestedInput
-  }
-
-  export type JobUncheckedUpdateWithoutPosterInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    hospital?: StringFieldUpdateOperationsInput | string
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: StringFieldUpdateOperationsInput | string
-    salary?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    applications?: ApplicationUncheckedUpdateManyWithoutJobNestedInput
-  }
-
-  export type JobUncheckedUpdateManyWithoutPosterInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    hospital?: StringFieldUpdateOperationsInput | string
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    jobType?: StringFieldUpdateOperationsInput | string
-    salary?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    status?: EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ApplicationUpdateWithoutApplicantInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    job?: JobUpdateOneRequiredWithoutApplicationsNestedInput
-  }
-
-  export type ApplicationUncheckedUpdateWithoutApplicantInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    jobId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ApplicationUncheckedUpdateManyWithoutApplicantInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    jobId?: StringFieldUpdateOperationsInput | string
-  }
-
   export type ApplicationCreateManyJobInput = {
     id?: string
-    coverLetter?: string | null
-    resumeUrl?: string | null
-    status?: $Enums.AppStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     applicantId: string
+    coverLetter?: string | null
+    resumeUrl?: string | null
+    status?: $Enums.ApplicationStatus
   }
 
   export type ApplicationUpdateWithoutJobInput = {
     id?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
     applicant?: UserUpdateOneRequiredWithoutApplicationsNestedInput
   }
 
   export type ApplicationUncheckedUpdateWithoutJobInput = {
     id?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     applicantId?: StringFieldUpdateOperationsInput | string
+    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   }
 
   export type ApplicationUncheckedUpdateManyWithoutJobInput = {
     id?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumAppStatusFieldUpdateOperationsInput | $Enums.AppStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     applicantId?: StringFieldUpdateOperationsInput | string
+    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   }
 
 

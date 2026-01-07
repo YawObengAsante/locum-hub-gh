@@ -128,15 +128,15 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   emailVerified: 'emailVerified',
   image: 'image',
-  headline: 'headline',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  headline: 'headline'
 };
 
 exports.Prisma.SessionScalarFieldEnum = {
   id: 'id',
-  token: 'token',
   expiresAt: 'expiresAt',
+  token: 'token',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   ipAddress: 'ipAddress',
@@ -146,8 +146,6 @@ exports.Prisma.SessionScalarFieldEnum = {
 
 exports.Prisma.AccountScalarFieldEnum = {
   id: 'id',
-  accountId: 'accountId',
-  providerId: 'providerId',
   userId: 'userId',
   accessToken: 'accessToken',
   refreshToken: 'refreshToken',
@@ -157,7 +155,9 @@ exports.Prisma.AccountScalarFieldEnum = {
   scope: 'scope',
   password: 'password',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  accountId: 'accountId',
+  providerId: 'providerId'
 };
 
 exports.Prisma.VerificationScalarFieldEnum = {
@@ -171,27 +171,27 @@ exports.Prisma.VerificationScalarFieldEnum = {
 
 exports.Prisma.JobScalarFieldEnum = {
   id: 'id',
-  title: 'title',
-  hospital: 'hospital',
-  location: 'location',
-  jobType: 'jobType',
-  salary: 'salary',
-  description: 'description',
-  status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  posterId: 'posterId'
+  title: 'title',
+  location: 'location',
+  description: 'description',
+  status: 'status',
+  posterId: 'posterId',
+  hospital: 'hospital',
+  salary: 'salary',
+  jobType: 'jobType'
 };
 
 exports.Prisma.ApplicationScalarFieldEnum = {
   id: 'id',
-  coverLetter: 'coverLetter',
-  resumeUrl: 'resumeUrl',
-  status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   jobId: 'jobId',
-  applicantId: 'applicantId'
+  applicantId: 'applicantId',
+  coverLetter: 'coverLetter',
+  resumeUrl: 'resumeUrl',
+  status: 'status'
 };
 
 exports.Prisma.SortOrder = {
@@ -214,7 +214,7 @@ exports.JobStatus = exports.$Enums.JobStatus = {
   CLOSED: 'CLOSED'
 };
 
-exports.AppStatus = exports.$Enums.AppStatus = {
+exports.ApplicationStatus = exports.$Enums.ApplicationStatus = {
   PENDING: 'PENDING',
   REVIEWED: 'REVIEWED',
   REJECTED: 'REJECTED',

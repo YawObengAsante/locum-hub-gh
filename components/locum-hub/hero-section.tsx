@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="w-full py-20 lg:py-32">
-      <div className="px-4 sm:px-10 lg:px-20 mx-auto max-w-7xl">
+    <section className="w-full pb-10">
+      <div>
         <div
-          className="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-start justify-end px-6 pb-10 sm:px-10"
+          className="flex min-h-[480px] md:h-screen w-full flex-col gap-6 bg-cover bg-center bg-no-repeat items-start justify-end px-6 pb-10 sm:px-10"
           style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%), url("/diverse-group-of-ghanaian-healthcare-professionals.jpg")`,
           }}

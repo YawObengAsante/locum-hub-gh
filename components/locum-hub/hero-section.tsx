@@ -11,30 +11,33 @@ export function HeroSection() {
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%), url("/diverse-group-of-ghanaian-healthcare-professionals.jpg")`,
           }}
         >
-          <div className="flex flex-col gap-4 text-left max-w-3xl">
-            <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em] sm:text-5xl">
-              Connecting Ghana&apos;s Health Workforce to Opportunities Near You
-            </h1>
-            <p className="text-slate-200 text-base font-normal leading-normal sm:text-lg">
-              The premier platform connecting health facilities with qualified
-              health workers across Ghana.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Link href={"/jobs"}>
-              <Button size="lg" className="h-10 sm:h-12">
-                Find Health Job
-              </Button>
-            </Link>
-            <Link href={"/jobs/post"}>
-              <Button
-                size="lg"
-                variant="secondary"
-                className="h-10 sm:h-12 bg-[#e7ecf3] text-[#0d131b] hover:bg-slate-300"
-              >
-                Post a Vacancy
-              </Button>
-            </Link>
+          <div className="pb-20">
+            <div className="flex flex-col gap-4 text-left max-w-3xl">
+              <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em] sm:text-5xl">
+                Connecting Ghana&apos;s Health Workforce to Opportunities Near
+                You
+              </h1>
+              <p className="text-slate-200 text-base font-normal leading-normal sm:text-lg pb-5">
+                The premier platform connecting health facilities with qualified
+                health workers across Ghana.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Link href={"/jobs"}>
+                <Button size="lg" className="h-10 sm:h-12">
+                  Find Health Job
+                </Button>
+              </Link>
+              <Link href={"/jobs/post"}>
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="h-10 sm:h-12 bg-[#e7ecf3] text-[#0d131b] hover:bg-slate-300"
+                >
+                  Post a Vacancy
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

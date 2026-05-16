@@ -1,12 +1,12 @@
 import { prisma } from "@/lib/prisma";
 
-export async function getUserPostedJob(userId: string){
-    const postedJobs = await prisma.job.findMany({
-        where: { posterId: userId },
-        orderBy: {createdAt: "desc"}
-      });
+export async function getUserPostedJob(userId: string) {
+  const postedJobs = await prisma.job.findMany({
+    where: { posterId: userId },
+    orderBy: { createdAt: "desc" },
+  });
 
-    return postedJobs
+  return postedJobs;
 }
 
 export async function getUserAppliedJob(userId: string) {

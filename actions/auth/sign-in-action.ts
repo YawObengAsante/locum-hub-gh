@@ -7,7 +7,7 @@ import { SignInForm, SignInFormReturnType } from "@/types";
 
 export async function signInAction(
   prevState: SignInFormReturnType,
-  formData: FormData
+  formData: FormData,
 ): Promise<SignInFormReturnType> {
   try {
     const data: Partial<SignInForm> = {

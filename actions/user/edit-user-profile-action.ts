@@ -1,4 +1,4 @@
-"use server"
+"use server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { formatZodValidationErrors, parseError } from "@/lib/utils";
@@ -22,7 +22,7 @@ const editUserProfileSchema = z.object({
 
 export async function editUserProfileAction(
   prevState: EditUserProfileReturnType,
-  formData: FormData
+  formData: FormData,
 ): Promise<EditUserProfileReturnType> {
   try {
     const session = await auth.api.getSession({
@@ -31,7 +31,7 @@ export async function editUserProfileAction(
 
     if (!session || !session.user)
       throw new Error(
-        "Unauthorized. You cannot make changes to this user profile"
+        "Unauthorized. You cannot make changes to this user profile",
       );
 
     const data = {
@@ -60,7 +60,7 @@ export async function editUserProfileAction(
     });
 
     revalidatePath("/dashboard");
-    
+
     return {
       success: true,
       message: "Updated user profile successfully",

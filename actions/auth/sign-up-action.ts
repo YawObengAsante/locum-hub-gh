@@ -7,7 +7,7 @@ import { signUpSchema } from "../../schema";
 
 export async function signUpAction(
   prevState: SignUpFormReturnType,
-  formData: FormData
+  formData: FormData,
 ): Promise<SignUpFormReturnType> {
   try {
     const data: Partial<SignUpForm> = {

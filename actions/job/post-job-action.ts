@@ -6,13 +6,12 @@ import { JobForm, JobFormReturnType } from "@/types";
 import { serverAuthUser } from "@/lib/server-helpers";
 import { jobSchema } from "@/schema";
 
-
 export async function postJobAction(
   prevState: JobFormReturnType,
-  formData: FormData
+  formData: FormData,
 ): Promise<JobFormReturnType> {
   try {
-    const {userId} = await serverAuthUser()
+    const { userId } = await serverAuthUser();
 
     const data: Partial<JobForm> = {
       title: formData.get("title") as string | undefined,

@@ -38,3 +38,7 @@ export function timeAgo(date: Date) {
   
   return time.fromNow()
 }
+
+export function getFullYear() {
+  return new Date().getFullYear()
+}

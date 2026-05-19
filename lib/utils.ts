@@ -8,9 +8,9 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function formatZodValidationErrors<T>(validatedData: z.ZodSafeParseResult<T>) {
+export function formatZodValidationErrors<T>(error: z.ZodError<T>) {
   const formattedErrors: Partial<Record<keyof T, string[]>> = {}
-  validatedData.error?.issues.forEach((err) => {
+  error?.issues.forEach((err) => {
     const field = err.path[0] as keyof T
     if(!formattedErrors[field]) formattedErrors[field] = []
     formattedErrors[field].push(err.message)

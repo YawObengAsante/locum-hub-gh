@@ -100,7 +100,7 @@ model Application {
   updatedAt   DateTime  @updatedAt
   jobId       String
   applicantId String
-  coverLetter String?
+  coverLetterUrl String?
   resumeUrl   String?
   status      ApplicationStatus @default(PENDING)
   applicant   User      @relation(fields: [applicantId], references: [id], onDelete: Cascade)

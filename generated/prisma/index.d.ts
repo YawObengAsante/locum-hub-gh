@@ -6384,7 +6384,7 @@ export namespace Prisma {
     updatedAt: Date | null
     jobId: string | null
     applicantId: string | null
-    coverLetter: string | null
+    coverLetterUrl: string | null
     resumeUrl: string | null
     status: $Enums.ApplicationStatus | null
   }
@@ -6395,7 +6395,7 @@ export namespace Prisma {
     updatedAt: Date | null
     jobId: string | null
     applicantId: string | null
-    coverLetter: string | null
+    coverLetterUrl: string | null
     resumeUrl: string | null
     status: $Enums.ApplicationStatus | null
   }
@@ -6406,7 +6406,7 @@ export namespace Prisma {
     updatedAt: number
     jobId: number
     applicantId: number
-    coverLetter: number
+    coverLetterUrl: number
     resumeUrl: number
     status: number
     _all: number
@@ -6419,7 +6419,7 @@ export namespace Prisma {
     updatedAt?: true
     jobId?: true
     applicantId?: true
-    coverLetter?: true
+    coverLetterUrl?: true
     resumeUrl?: true
     status?: true
   }
@@ -6430,7 +6430,7 @@ export namespace Prisma {
     updatedAt?: true
     jobId?: true
     applicantId?: true
-    coverLetter?: true
+    coverLetterUrl?: true
     resumeUrl?: true
     status?: true
   }
@@ -6441,7 +6441,7 @@ export namespace Prisma {
     updatedAt?: true
     jobId?: true
     applicantId?: true
-    coverLetter?: true
+    coverLetterUrl?: true
     resumeUrl?: true
     status?: true
     _all?: true
@@ -6525,7 +6525,7 @@ export namespace Prisma {
     updatedAt: Date
     jobId: string
     applicantId: string
-    coverLetter: string | null
+    coverLetterUrl: string | null
     resumeUrl: string | null
     status: $Enums.ApplicationStatus
     _count: ApplicationCountAggregateOutputType | null
@@ -6553,7 +6553,7 @@ export namespace Prisma {
     updatedAt?: boolean
     jobId?: boolean
     applicantId?: boolean
-    coverLetter?: boolean
+    coverLetterUrl?: boolean
     resumeUrl?: boolean
     status?: boolean
     applicant?: boolean | UserDefaultArgs<ExtArgs>
@@ -6566,7 +6566,7 @@ export namespace Prisma {
     updatedAt?: boolean
     jobId?: boolean
     applicantId?: boolean
-    coverLetter?: boolean
+    coverLetterUrl?: boolean
     resumeUrl?: boolean
     status?: boolean
     applicant?: boolean | UserDefaultArgs<ExtArgs>
@@ -6579,7 +6579,7 @@ export namespace Prisma {
     updatedAt?: boolean
     jobId?: boolean
     applicantId?: boolean
-    coverLetter?: boolean
+    coverLetterUrl?: boolean
     resumeUrl?: boolean
     status?: boolean
   }
@@ -6605,7 +6605,7 @@ export namespace Prisma {
       updatedAt: Date
       jobId: string
       applicantId: string
-      coverLetter: string | null
+      coverLetterUrl: string | null
       resumeUrl: string | null
       status: $Enums.ApplicationStatus
     }, ExtArgs["result"]["application"]>
@@ -7008,7 +7008,7 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"Application", 'DateTime'>
     readonly jobId: FieldRef<"Application", 'String'>
     readonly applicantId: FieldRef<"Application", 'String'>
-    readonly coverLetter: FieldRef<"Application", 'String'>
+    readonly coverLetterUrl: FieldRef<"Application", 'String'>
     readonly resumeUrl: FieldRef<"Application", 'String'>
     readonly status: FieldRef<"Application", 'ApplicationStatus'>
   }
@@ -7439,7 +7439,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     jobId: 'jobId',
     applicantId: 'applicantId',
-    coverLetter: 'coverLetter',
+    coverLetterUrl: 'coverLetterUrl',
     resumeUrl: 'resumeUrl',
     status: 'status'
   };
@@ -7956,7 +7956,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Application"> | Date | string
     jobId?: StringFilter<"Application"> | string
     applicantId?: StringFilter<"Application"> | string
-    coverLetter?: StringNullableFilter<"Application"> | string | null
+    coverLetterUrl?: StringNullableFilter<"Application"> | string | null
     resumeUrl?: StringNullableFilter<"Application"> | string | null
     status?: EnumApplicationStatusFilter<"Application"> | $Enums.ApplicationStatus
     applicant?: XOR<UserRelationFilter, UserWhereInput>
@@ -7969,7 +7969,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     jobId?: SortOrder
     applicantId?: SortOrder
-    coverLetter?: SortOrderInput | SortOrder
+    coverLetterUrl?: SortOrderInput | SortOrder
     resumeUrl?: SortOrderInput | SortOrder
     status?: SortOrder
     applicant?: UserOrderByWithRelationInput
@@ -7986,7 +7986,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Application"> | Date | string
     jobId?: StringFilter<"Application"> | string
     applicantId?: StringFilter<"Application"> | string
-    coverLetter?: StringNullableFilter<"Application"> | string | null
+    coverLetterUrl?: StringNullableFilter<"Application"> | string | null
     resumeUrl?: StringNullableFilter<"Application"> | string | null
     status?: EnumApplicationStatusFilter<"Application"> | $Enums.ApplicationStatus
     applicant?: XOR<UserRelationFilter, UserWhereInput>
@@ -7999,7 +7999,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     jobId?: SortOrder
     applicantId?: SortOrder
-    coverLetter?: SortOrderInput | SortOrder
+    coverLetterUrl?: SortOrderInput | SortOrder
     resumeUrl?: SortOrderInput | SortOrder
     status?: SortOrder
     _count?: ApplicationCountOrderByAggregateInput
@@ -8016,7 +8016,7 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Application"> | Date | string
     jobId?: StringWithAggregatesFilter<"Application"> | string
     applicantId?: StringWithAggregatesFilter<"Application"> | string
-    coverLetter?: StringNullableWithAggregatesFilter<"Application"> | string | null
+    coverLetterUrl?: StringNullableWithAggregatesFilter<"Application"> | string | null
     resumeUrl?: StringNullableWithAggregatesFilter<"Application"> | string | null
     status?: EnumApplicationStatusWithAggregatesFilter<"Application"> | $Enums.ApplicationStatus
   }
@@ -8469,7 +8469,7 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    coverLetter?: string | null
+    coverLetterUrl?: string | null
     resumeUrl?: string | null
     status?: $Enums.ApplicationStatus
     applicant: UserCreateNestedOneWithoutApplicationsInput
@@ -8482,7 +8482,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     jobId: string
     applicantId: string
-    coverLetter?: string | null
+    coverLetterUrl?: string | null
     resumeUrl?: string | null
     status?: $Enums.ApplicationStatus
   }
@@ -8491,7 +8491,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    coverLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
     applicant?: UserUpdateOneRequiredWithoutApplicationsNestedInput
@@ -8504,7 +8504,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     jobId?: StringFieldUpdateOperationsInput | string
     applicantId?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    coverLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   }
@@ -8515,7 +8515,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     jobId: string
     applicantId: string
-    coverLetter?: string | null
+    coverLetterUrl?: string | null
     resumeUrl?: string | null
     status?: $Enums.ApplicationStatus
   }
@@ -8524,7 +8524,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    coverLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   }
@@ -8535,7 +8535,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     jobId?: StringFieldUpdateOperationsInput | string
     applicantId?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    coverLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   }
@@ -8952,7 +8952,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     jobId?: SortOrder
     applicantId?: SortOrder
-    coverLetter?: SortOrder
+    coverLetterUrl?: SortOrder
     resumeUrl?: SortOrder
     status?: SortOrder
   }
@@ -8963,7 +8963,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     jobId?: SortOrder
     applicantId?: SortOrder
-    coverLetter?: SortOrder
+    coverLetterUrl?: SortOrder
     resumeUrl?: SortOrder
     status?: SortOrder
   }
@@ -8974,7 +8974,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     jobId?: SortOrder
     applicantId?: SortOrder
-    coverLetter?: SortOrder
+    coverLetterUrl?: SortOrder
     resumeUrl?: SortOrder
     status?: SortOrder
   }
@@ -9482,7 +9482,7 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    coverLetter?: string | null
+    coverLetterUrl?: string | null
     resumeUrl?: string | null
     status?: $Enums.ApplicationStatus
     job: JobCreateNestedOneWithoutApplicationsInput
@@ -9493,7 +9493,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     jobId: string
-    coverLetter?: string | null
+    coverLetterUrl?: string | null
     resumeUrl?: string | null
     status?: $Enums.ApplicationStatus
   }
@@ -9641,7 +9641,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Application"> | Date | string
     jobId?: StringFilter<"Application"> | string
     applicantId?: StringFilter<"Application"> | string
-    coverLetter?: StringNullableFilter<"Application"> | string | null
+    coverLetterUrl?: StringNullableFilter<"Application"> | string | null
     resumeUrl?: StringNullableFilter<"Application"> | string | null
     status?: EnumApplicationStatusFilter<"Application"> | $Enums.ApplicationStatus
   }
@@ -9892,7 +9892,7 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    coverLetter?: string | null
+    coverLetterUrl?: string | null
     resumeUrl?: string | null
     status?: $Enums.ApplicationStatus
     applicant: UserCreateNestedOneWithoutApplicationsInput
@@ -9903,7 +9903,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     applicantId: string
-    coverLetter?: string | null
+    coverLetterUrl?: string | null
     resumeUrl?: string | null
     status?: $Enums.ApplicationStatus
   }
@@ -10155,7 +10155,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     jobId: string
-    coverLetter?: string | null
+    coverLetterUrl?: string | null
     resumeUrl?: string | null
     status?: $Enums.ApplicationStatus
   }
@@ -10202,7 +10202,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    coverLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
     job?: JobUpdateOneRequiredWithoutApplicationsNestedInput
@@ -10213,7 +10213,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     jobId?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    coverLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   }
@@ -10223,7 +10223,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     jobId?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    coverLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   }
@@ -10349,7 +10349,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     applicantId: string
-    coverLetter?: string | null
+    coverLetterUrl?: string | null
     resumeUrl?: string | null
     status?: $Enums.ApplicationStatus
   }
@@ -10358,7 +10358,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    coverLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
     applicant?: UserUpdateOneRequiredWithoutApplicationsNestedInput
@@ -10369,7 +10369,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     applicantId?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    coverLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   }
@@ -10379,7 +10379,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     applicantId?: StringFieldUpdateOperationsInput | string
-    coverLetter?: NullableStringFieldUpdateOperationsInput | string | null
+    coverLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
     resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   }

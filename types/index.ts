@@ -1,4 +1,4 @@
-import { jobSchema, signInSchema, signUpSchema } from "@/schema";
+import { fileUploadSchema, jobSchema, signInSchema, signUpSchema } from "@/schema";
 import { $Enums } from "@/generated/prisma";
 import z from "zod";
 import { auth } from "@/lib/auth";
@@ -86,6 +86,13 @@ type SearchParamsType = {
 
 type SessionType = typeof auth.$Infer.Session
 
+type FileUploadType = z.infer<typeof fileUploadSchema>
+
+type FileUploadReturnType = {
+  resumeUrl: string,
+  coverLetterUrl: string
+}
+
 export type {
   UserType,
   EditUserType,
@@ -100,5 +107,7 @@ export type {
   JobStatusType,
   SearchParamsType,
   JobWithPosterType,
-  SessionType
+  SessionType,
+  FileUploadType,
+  FileUploadReturnType
 };

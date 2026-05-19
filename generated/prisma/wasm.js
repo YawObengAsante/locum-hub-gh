@@ -189,7 +189,7 @@ exports.Prisma.ApplicationScalarFieldEnum = {
   updatedAt: 'updatedAt',
   jobId: 'jobId',
   applicantId: 'applicantId',
-  coverLetter: 'coverLetter',
+  coverLetterUrl: 'coverLetterUrl',
   resumeUrl: 'resumeUrl',
   status: 'status'
 };

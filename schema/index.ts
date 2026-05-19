@@ -1,4 +1,5 @@
 import { JobStatus } from "@/generated/prisma";
+import { resume } from "react-dom/server";
 import z from "zod";
 
 export const jobSchema = z.object({
@@ -8,7 +9,7 @@ export const jobSchema = z.object({
   jobType: z.string().min(1, "Job type is required"),
   description: z.string().min(1, "Description is required"),
   salary: z.string().min(1, "Salary is required"),
-  status: z.enum(JobStatus).optional()
+  status: z.enum(JobStatus).optional(),
 });
 
 export const signInSchema = z.object({
@@ -20,4 +21,17 @@ export const signUpSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.email().min(1, "Please enter a valid email"),
   password: z.string().min(8, "Password must be at least 8 characters"),
+});
+
+export const fileUploadSchema = z.object({
+  resume: z
+    .file()
+    .min(1)
+    .max(5 * 1024 * 1024, "File exceeds 5MB limit")
+    .mime("application/pdf"),
+  coverLetter: z
+    .file()
+    .min(1)
+    .max(5 * 1024 * 1024, "File exceeds 5MB limit")
+    .mime("application/msword"),
 });

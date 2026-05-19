@@ -11,7 +11,6 @@ export default async function JobApplicationPage({
   params: Promise<{ jobId: string }>;
 }) {
   const { jobId } = await params;
-  const {userId} = await serverAuthUser()
 
   // TODO: handle form submission to backend
   
@@ -32,7 +31,7 @@ export default async function JobApplicationPage({
             </div>
             <div>
               <h1>Upload Cover Letter</h1>
-              <Input type="file" name="hospital"  />
+              <Input type="file" name="cover-letter"  />
             </div>
 
             <div>

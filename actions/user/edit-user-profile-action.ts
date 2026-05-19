@@ -42,7 +42,7 @@ export async function editUserProfileAction(
     const validatedData = editUserProfileSchema.safeParse(data);
 
     if (!validatedData.success) {
-      const formattedErrors = formatZodValidationErrors(validatedData);
+      const formattedErrors = formatZodValidationErrors(validatedData.error);
       return {
         success: false,
         message: "There was an error. Please fill the form correctly",

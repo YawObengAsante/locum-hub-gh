@@ -3,7 +3,6 @@ import { serverAuthUser } from "@/lib/server-helpers";
 import { formatZodValidationErrors } from "@/lib/utils";
 import { fileUploadSchema } from "@/schema";
 import { handleFileStorage } from "@/services/s3";
-import { success } from "zod";
 
 async function applyToJobAction(
   prev: FormData,
@@ -39,6 +38,7 @@ async function applyToJobAction(
       applicantId: userId,
       resumeUrl,
       coverLetterUrl
-    }
+    }, 
+    include: {job: true, applicant: true}
   })
 }

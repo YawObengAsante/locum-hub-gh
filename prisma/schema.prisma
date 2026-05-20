@@ -95,16 +95,16 @@ model Job {
 }
 
 model Application {
-  id          String    @id @default(cuid())
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  jobId       String
-  applicantId String
-  coverLetterUrl String?
-  resumeUrl   String?
-  status      ApplicationStatus @default(PENDING)
-  applicant   User      @relation(fields: [applicantId], references: [id], onDelete: Cascade)
-  job         Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  id              String    @id @default(cuid())
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  jobId           String
+  applicantId     String
+  coverLetterUrl  String?
+  resumeUrl       String?
+  status          ApplicationStatus @default(PENDING)
+  applicant       User      @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  job             Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
 
   @@unique([jobId, applicantId])
   @@index([status])

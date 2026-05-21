@@ -2,20 +2,28 @@ import { prisma } from "@/lib/prisma";
 import { serverAuthUser } from "@/lib/server-helpers";
 import { formatZodValidationErrors } from "@/lib/utils";
 import { fileUploadSchema } from "@/schema";
-import { handleFileStorage } from "@/services/s3";
+import { handleFileStorageUpload } from "@/services/s3";
 
 async function applyToJobAction(
   prev: FormData,
   formData: FormData,
   jobId: string,
 ) {
-  const {userId} = await serverAuthUser();
+  const { userId } = await serverAuthUser();
 
-  if (!userId) return {success: false, error: "Unauthorized"}
+  if (!userId) return { success: false, error: "Unauthorized" };
 
   const job = await prisma.job.findUnique({ where: { id: jobId } });
 
   if (!job) return { success: false, error: "Job not found" };
+
+  const existingApplication = await prisma.application.findUnique({
+    where: { jobId_applicantId: { jobId, applicantId: userId } },
+  });
+
+  if (existingApplication) {
+    return { success: false, error: "You have already applied to this job" };
+  }
 
   const data = {
     resume: formData.get("resume") as File,
@@ -30,15 +38,19 @@ async function applyToJobAction(
       error: formatZodValidationErrors(validatedData.error),
     };
 
-  const {resumeUrl, coverLetterUrl} = await handleFileStorage(validatedData.data)
+  const { resumeUrl, coverLetterUrl } = await handleFileStorageUpload(
+    validatedData.data,
+  );
 
-  const application = prisma.application.create({
+  const application = await prisma.application.create({
     data: {
       jobId,
       applicantId: userId,
       resumeUrl,
-      coverLetterUrl
-    }, 
-    include: {job: true, applicant: true}
-  })
+      coverLetterUrl,
+    },
+    include: { job: true, applicant: true },
+  });
+
+  return { success: true, data: application };
 }

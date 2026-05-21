@@ -1,6 +1,6 @@
 import { FileUploadReturnType, FileUploadType } from "@/types";
 
-export async function handleFileStorage<T>(
+export async function handleFileStorageUpload<T>(
   payload: FileUploadType,
 ): Promise<FileUploadReturnType> {
   // TODO: handle upload to storage

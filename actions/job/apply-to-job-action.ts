@@ -2,7 +2,7 @@
 import { prisma } from "@/lib/prisma";
 import { serverAuthUser } from "@/lib/server-helpers";
 // import { formatZodValidationErrors } from "@/lib/utils";
-// import { fileUploadSchema } from "@/schema";
+import { fileUploadSchema } from "@/schema";
 import { handleFileStorageUpload } from "@/services/s3";
 import { ActionReturnType, JobApplicationType } from "@/types";
 
@@ -32,17 +32,17 @@ export async function applyToJobAction(
   }
 
 
-  // const validatedData = fileUploadSchema.safeParse({resume, coverLetter});
+  const validatedData = fileUploadSchema.safeParse({resume, coverLetter});
 
-  // if (!validatedData.success)
-  //   return {
-  //     success: false,
-  //     // error: formatZodValidationErrors(validatedData.error),
-  //     error: "Validation error occured"
-  //   };
+  if (!validatedData.success)
+    return {
+      success: false,
+      // error: formatZodValidationErrors(validatedData.error),
+      error: "Validation error occured"
+    };
 
   const { resumeUrl, coverLetterUrl } = await handleFileStorageUpload(
-    // validatedData.data,
+    validatedData.data,
   );
 
   const application = await prisma.application.create({

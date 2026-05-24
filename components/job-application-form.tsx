@@ -1,21 +1,24 @@
+"use client"
 import { Ring } from "ldrs/react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-// import { useActionState } from "react";
-// import { applyToJobAction } from "@/actions/job/apply-to-job-action";
-import { ActionReturnType, JobApplicationType } from "@/types";
+import { useActionState } from "react";
+import { applyToJobAction } from "@/actions/job/apply-to-job-action";
 
-export function JobApplicationForm({jobId, action, state, isPending}: {jobId: string, action: (payload: FormData) => void, state: ActionReturnType<JobApplicationType>, isPending: boolean }) {
-  
+export function JobApplicationForm({jobId}: {jobId: string }) {
+     const [state, action, isPending] = useActionState(applyToJobAction, {
+    success: false,
+    error: "",
+  });
   return (
     <form action={action} className="flex flex-col gap-5">
-      {!state.success && (
-        <div className="text-red-500 bg-red-300 p-3 border-red-500">
+      {!state.success && state.error && (
+        <div className="text-red-500 bg-red-200 p-3 border-red-500 rounded-2xl text-center">
           {state.error}
         </div>
       )}
-      <Input value={jobId} type="text" name="job-id" hidden />
+      <Input defaultValue={jobId} type="text" name="job-id" hidden />
       <div>
         <h1>Upload CV</h1>
         <Input type="file" name="resume" />

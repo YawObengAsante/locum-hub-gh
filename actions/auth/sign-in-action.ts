@@ -19,7 +19,7 @@ export async function signInAction(
     const validatedData = signInSchema.safeParse(data);
 
     if (!validatedData.success) {
-      const formattedErrors = formatZodValidationErrors(validatedData);
+      const formattedErrors = formatZodValidationErrors(validatedData.error);
       return {
         success: false,
         message: "Please fill the fields correctly",

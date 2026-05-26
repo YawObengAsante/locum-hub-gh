@@ -41,19 +41,24 @@ export async function applyToJobAction(
       error: "Validation error occured"
     };
 
-  const { resumeUrl, coverLetterUrl } = await handleFileStorageUpload(
-    validatedData.data,
-  );
-
-  const application = await prisma.application.create({
-    data: {
-      jobId,
-      applicantId: userId,
-      resumeUrl,
-      coverLetterUrl,
-    },
-    include: { job: true, applicant: true },
-  });
-
-  return { success: true, data: application };
+    try {
+      
+      const { resumeUrl, coverLetterUrl } = await handleFileStorageUpload(
+        validatedData.data,
+      );
+    
+      const application = await prisma.application.create({
+        data: {
+          jobId,
+          applicantId: userId,
+          resumeUrl,
+          coverLetterUrl,
+        },
+        include: { job: true, applicant: true },
+      });
+    
+      return { success: true, data: application };
+    } catch (error) {
+      return { success: false, error: "Failed to submit application" };
+    }
 }

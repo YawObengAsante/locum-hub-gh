@@ -8,7 +8,12 @@ export default async function JobDetailsPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [res, applicantsRes] = await Promise.all([getJob(id), getJobApplicants(id)])
+
+  const res = await getJob(id);
+  
+  const applicantsRes = res.success
+    ? await getJobApplicants(id)
+    : { success: false as const, error: "Job not found" };
 
   return (
     <div className="container w-full m-10  flex flex-col justify-center items-center">

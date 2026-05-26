@@ -1,5 +1,4 @@
 import { JobStatus } from "@/generated/prisma";
-import { resume } from "react-dom/server";
 import z from "zod";
 
 export const jobSchema = z.object({

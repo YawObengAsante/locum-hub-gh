@@ -61,9 +61,9 @@ export function UserJobCard({ job }: { job: JobType }) {
         </div>
       </div>
       <div className="flex justify-end gap-5 mt-3">
-        <Link href={`jobs/post/${job.id}`}>
+        <Link href={`jobs/uploaded/${job.id}`}>
         <Button size={"sm"}>
-          <p>Edit Details</p>
+          <p>View Details</p>
           <ArrowRightIcon className="w-5 h-5" />
         </Button>
         </Link>

@@ -93,6 +93,19 @@ type FileUploadReturnType = {
   coverLetterUrl: string
 }
 
+type JobApplicationType = {
+  id: string;
+    createdAt: Date;
+    updatedAt: Date;
+    coverLetterUrl: string | null;
+    resumeUrl: string | null;
+    status: $Enums.ApplicationStatus;
+    jobId: string;
+    applicantId: string;
+}
+
+type ActionReturnType<T> = {success: false, error: string} | {success: true, data: T}
+
 export type {
   UserType,
   EditUserType,
@@ -109,5 +122,7 @@ export type {
   JobWithPosterType,
   SessionType,
   FileUploadType,
-  FileUploadReturnType
+  FileUploadReturnType,
+  ActionReturnType,
+  JobApplicationType
 };

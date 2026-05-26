@@ -1,7 +1,6 @@
 import { getJobApplicants } from "@/actions/job-application/get-applicants";
 import { getJob } from "@/actions/job/get-job";
 import { EditJobForm } from "@/components/edit-job-form";
-import { prisma } from "@/lib/prisma";
 
 export default async function JobDetailsPage({
   params,
@@ -9,8 +8,7 @@ export default async function JobDetailsPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const res = await getJob(id);
-  const applicantsRes = await getJobApplicants(id);
+  const [res, applicantsRes] = await Promise.all([getJob(id), getJobApplicants(id)])
 
   return (
     <div className="container w-full m-10  flex flex-col justify-center items-center">

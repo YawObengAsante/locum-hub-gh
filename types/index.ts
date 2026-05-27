@@ -1,4 +1,9 @@
-import { fileUploadSchema, jobSchema, signInSchema, signUpSchema } from "@/schema";
+import {
+  fileUploadSchema,
+  jobSchema,
+  signInSchema,
+  signUpSchema,
+} from "@/schema";
 import { $Enums } from "@/generated/prisma";
 import z from "zod";
 import { auth } from "@/lib/auth";
@@ -30,9 +35,16 @@ type JobType = {
   posterId: string;
 };
 
+type JobWithApplicationsType = (JobType & { applications: JobApplicationType[] })
+
 type JobWithPosterType = JobType & {
-  poster: UserType
-}
+  poster: UserType;
+};
+
+type JobWithApplicantsType = {
+  job: JobWithApplicationsType;
+  applicants: UserType[];
+};
 
 type PostJobFormType = {
   state: JobFormReturnType;
@@ -77,34 +89,36 @@ type SignUpFormReturnType = {
 type JobStatusType = "OPEN" | "FILLED" | "CLOSED";
 
 type SearchParamsType = {
-    job: string | string[] | undefined,
-    jobType: string | string[] | undefined,
-    location: string | string[] | undefined,
-    page: string | string[] | undefined,
-    limit: string | string[] | undefined
-}
+  job: string | string[] | undefined;
+  jobType: string | string[] | undefined;
+  location: string | string[] | undefined;
+  page: string | string[] | undefined;
+  limit: string | string[] | undefined;
+};
 
-type SessionType = typeof auth.$Infer.Session
+type SessionType = typeof auth.$Infer.Session;
 
-type FileUploadType = z.infer<typeof fileUploadSchema>
+type FileUploadType = z.infer<typeof fileUploadSchema>;
 
 type FileUploadReturnType = {
-  resumeUrl: string,
-  coverLetterUrl: string
-}
+  resumeUrl: string;
+  coverLetterUrl: string;
+};
 
 type JobApplicationType = {
   id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    coverLetterUrl: string | null;
-    resumeUrl: string | null;
-    status: $Enums.ApplicationStatus;
-    jobId: string;
-    applicantId: string;
-}
+  createdAt: Date;
+  updatedAt: Date;
+  coverLetterUrl: string | null;
+  resumeUrl: string | null;
+  status: $Enums.ApplicationStatus;
+  jobId: string;
+  applicantId: string;
+};
 
-type ActionReturnType<T> = {success: false, error: string} | {success: true, data: T}
+type ActionReturnType<T> =
+  | { success: false; error: string }
+  | { success: true; data: T };
 
 export type {
   UserType,
@@ -119,10 +133,12 @@ export type {
   SignUpFormReturnType,
   JobStatusType,
   SearchParamsType,
+  JobWithApplicationsType,
   JobWithPosterType,
+  JobWithApplicantsType,
   SessionType,
   FileUploadType,
   FileUploadReturnType,
   ActionReturnType,
-  JobApplicationType
+  JobApplicationType,
 };

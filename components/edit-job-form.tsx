@@ -1,5 +1,5 @@
 "use client";
-import { JobFormReturnType, JobType } from "@/types";
+import { JobFormReturnType, JobType, JobWithApplicationsType } from "@/types";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -23,7 +23,7 @@ const initState: JobFormReturnType = {
   message: "",
 };
 
-export function EditJobForm({ job }: { job: JobType }) {
+export function EditJobForm({ job }: { job: JobWithApplicationsType }) {
   const editJobWithId = async (
     prevState: JobFormReturnType,
     formData: FormData

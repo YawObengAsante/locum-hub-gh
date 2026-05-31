@@ -75,7 +75,7 @@ export function PostedJobCard({ job }: { job: JobType }) {
 
     <div className="bg-card border border-border rounded-lg p-4 hover:shadow-md transition-shadow">
       <div className="flex justify-between items-start gap-4">
-        <div className="flex-grow">
+        <div className="grow">
           <h3 className="text-lg font-semibold text-foreground mb-1">
             {job.title}
           </h3>

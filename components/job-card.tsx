@@ -8,7 +8,7 @@ import {
 import { MapPin, Clock, User, Briefcase } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
-import { timeAgo } from "@/lib/utils";
+import { getJobStatusClass, timeAgo } from "@/lib/utils";
 import { type JobType, type UserType } from "@/types";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
@@ -20,18 +20,7 @@ export default function JobCard({
   job: JobType;
   postedBy: UserType;
 }) {
-  const jobStatusClass = () => {
-    switch (job.status) {
-      case "OPEN":
-        return "text-success border-success bg-green-100";
-      case "CLOSED":
-        return "text-error border-error bg-red-100";
-      case "FILLED":
-        return "text-info border-info bg-blue-100";
-      default:
-        return "text-success border border-success bg-green-100";
-    }
-  };
+  
   return (
     <Card className="w-full max-w-md overflow-hidden transition-all hover:shadow-lg dark:hover:shadow-primary/5">
       <CardHeader className="flex flex-row items-center gap-4 pb-4">
@@ -98,7 +87,7 @@ export default function JobCard({
             <span className="text-xl font-bold text-foreground">
               {job.salary}
             </span>
-            <Badge className={jobStatusClass()}>{job.status}</Badge>
+            <Badge className={getJobStatusClass(job.status)}>{job.status}</Badge>
           </div>
         </div>
         {job.status !== "CLOSED" && (

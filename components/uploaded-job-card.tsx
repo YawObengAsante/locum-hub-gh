@@ -13,7 +13,7 @@ import { DeleteJobButton } from "./delete-job-button";
 import { Button } from "./ui/button";
 import Link from "next/link";
 
-export function UserJobCard({ job }: { job: JobType }) {
+export function UploadedJobCard({ job }: { job: JobType }) {
   return (
     <div className="bg-background/45 border border-border rounded-xl shadow-xl px-4 py-3">
       <div className="flex flex-col gap-2 md:gap-4 w-full">

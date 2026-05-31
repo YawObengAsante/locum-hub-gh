@@ -86,7 +86,7 @@ type SignUpFormReturnType = {
   }>;
 };
 
-type JobStatusType = "OPEN" | "FILLED" | "CLOSED";
+// type JobStatusType = "OPEN" | "FILLED" | "CLOSED";
 
 type SearchParamsType = {
   job: string | string[] | undefined;
@@ -131,7 +131,7 @@ export type {
   SignInFormReturnType,
   SignUpForm,
   SignUpFormReturnType,
-  JobStatusType,
+  // JobStatusType,
   SearchParamsType,
   JobWithApplicationsType,
   JobWithPosterType,

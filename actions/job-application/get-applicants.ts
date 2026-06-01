@@ -1,13 +1,13 @@
 import { prisma } from "@/lib/prisma";
 import {
   ActionReturnType,
-  JobWithApplicantsType,
   JobWithApplicationsType,
+  UserType,
 } from "@/types";
 
-export async function getJobWithApplicants(
+export async function getJobApplicants(
   jobId: string,
-): Promise<ActionReturnType<JobWithApplicantsType>> {
+): Promise<ActionReturnType<UserType[]>> {
 
   const job: JobWithApplicationsType | null = await prisma.job.findUnique({
     where: { id: jobId },
@@ -24,5 +24,5 @@ export async function getJobWithApplicants(
     where: { id: { in: applicantIds } },
   });
 
-  return { success: true, data: { job, applicants } };
+  return { success: true, data: applicants  };
 }

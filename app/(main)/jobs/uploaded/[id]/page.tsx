@@ -1,5 +1,6 @@
-import { getJobWithApplicants } from "@/actions/job-application/get-applicants";
+import { getJob } from "@/actions/job/get-job";
 import { EditJobForm } from "@/components/edit-job-form";
+import { NotFound } from "@/components/not-found";
 
 export default async function JobDetailsPage({
   params,
@@ -7,34 +8,14 @@ export default async function JobDetailsPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  
-  const res = await getJobWithApplicants(id)
+
+  const res = await getJob(id);
+
+  if (!res.success) return <NotFound />;
 
   return (
-    <div className="container w-full m-10  flex flex-col justify-center items-center">
-      {!res.success && (
-        <div className="text-red-500 bg-red-200 p-3">{res.error}</div>
-      )}
-
-      {res.success && (
-        <div>
-          <div>{res.data.job?.hospital}</div>
-          <div>{res.data.job?.title}</div>
-        </div>
-      )}
-
-
-      <div>Applicants:</div>
-      {res.success && (
-        <ul>
-          {res.data.applicants.map((applicant) => (
-            <li key={applicant.id}>
-              {applicant.name}, {applicant.email}
-            </li>
-          ))}
-        </ul>
-      )}
-      {res.success && <EditJobForm job={res.data.job} />}
+    <div className="flex w-full h-full justify-center py-5">
+      <EditJobForm job={res.data} />
     </div>
   );
 }

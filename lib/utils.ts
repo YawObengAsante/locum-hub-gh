@@ -3,6 +3,7 @@ import { twMerge } from "tailwind-merge";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import z from "zod";
+import { JobStatusType } from "@/types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -43,7 +44,7 @@ export function getFullYear() {
   return new Date().getFullYear();
 }
 
-export function getJobStatusClass(jobStatus: string) {
+export function getJobStatusClass(jobStatus: JobStatusType) {
   switch (jobStatus) {
     case "OPEN":
       return "text-success border-success bg-green-100";

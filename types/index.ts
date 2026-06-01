@@ -41,11 +41,6 @@ type JobWithPosterType = JobType & {
   poster: UserType;
 };
 
-type JobWithApplicantsType = {
-  job: JobWithApplicationsType;
-  applicants: UserType[];
-};
-
 type PostJobFormType = {
   state: JobFormReturnType;
   action: (payload: FormData) => void;
@@ -86,7 +81,7 @@ type SignUpFormReturnType = {
   }>;
 };
 
-// type JobStatusType = "OPEN" | "FILLED" | "CLOSED";
+type JobStatusType = "OPEN" | "FILLED" | "CLOSED";
 
 type SearchParamsType = {
   job: string | string[] | undefined;
@@ -131,11 +126,10 @@ export type {
   SignInFormReturnType,
   SignUpForm,
   SignUpFormReturnType,
-  // JobStatusType,
+  JobStatusType,
   SearchParamsType,
   JobWithApplicationsType,
   JobWithPosterType,
-  JobWithApplicantsType,
   SessionType,
   FileUploadType,
   FileUploadReturnType,

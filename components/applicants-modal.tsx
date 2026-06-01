@@ -1,6 +1,5 @@
-import { Dialog, DialogTitle } from "./ui/dialog";
-import { DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
-import { UserType } from "@/types";
+import { Dialog, DialogTitle, DialogTrigger, DialogContent } from "./ui/dialog";
+import { type UserType } from "@/types";
 
 export async function ApplicantsModal({
   applicants,
@@ -9,7 +8,7 @@ export async function ApplicantsModal({
 }) {
   return (
     <Dialog>
-      <DialogTrigger className="text-sm text-accent">
+      <DialogTrigger className="text-sm text-accent hover:cursor-pointer">
         {`Applicants (${applicants.length})`}
       </DialogTrigger>
       <DialogContent>

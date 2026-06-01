@@ -1,6 +1,6 @@
 import { getUserAppliedJob } from "@/actions/user/get-user-jobs";
 import { NoData } from "./no-data";
-import { UploadedJobCard } from "./uploaded-job-card";
+import { AppliedJobCard } from "./applied-job-card";
 
 export async function UserAppliedJobs({ userId }: { userId: string }) {
   const appliedJobs = await getUserAppliedJob(userId);
@@ -10,7 +10,7 @@ export async function UserAppliedJobs({ userId }: { userId: string }) {
   return (
     <div className="w-full grid sm:grid-cols-2 gap-2">
       {appliedJobs.map((appliedJob, index) => (
-        <UploadedJobCard key={index} job={appliedJob.job} />
+        <AppliedJobCard key={index} job={appliedJob.job} />
       ))}
     </div>
   );

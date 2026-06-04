@@ -10,7 +10,7 @@ export async function JobApplicants({ jobId }: { jobId: string }) {
   return (
     <div>
       {res.data.length === 0 ? (
-        <div className="text-sm text-accent">No applicants yet</div>
+        <div className="text-xs text-accent text-center">No applicants yet</div>
       ) : (
         <ApplicantsModal applicants={res.data} />
       )}

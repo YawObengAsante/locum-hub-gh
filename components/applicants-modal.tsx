@@ -1,7 +1,13 @@
-import { Dialog, DialogTitle, DialogTrigger, DialogContent } from "./ui/dialog";
+import {
+  Dialog,
+  DialogTitle,
+  DialogTrigger,
+  DialogContent,
+  DialogClose,
+} from "./ui/dialog";
 import { type UserType } from "@/types";
 import { FileTextIcon } from "lucide-react";
-
+import { XIcon } from "lucide-react";
 export async function ApplicantsModal({
   applicants,
 }: {
@@ -9,11 +15,16 @@ export async function ApplicantsModal({
 }) {
   return (
     <Dialog>
-      <DialogTrigger className="text-sm text-accent hover:cursor-pointer">
+      <DialogTrigger className="text-xs text-accent hover:cursor-pointer">
         {`Applicants (${applicants.length})`}
       </DialogTrigger>
       <DialogContent>
-        <DialogTitle>Job Applicants</DialogTitle>
+        <DialogTitle className="flex justify-between items-center">
+          Job Applicants
+          <DialogClose>
+            <XIcon />
+          </DialogClose>
+        </DialogTitle>
         {applicants.map((applicant) => (
           <div
             key={applicant.id}
@@ -28,13 +39,13 @@ export async function ApplicantsModal({
               </p>
             </div>
             <div className="flex flex-col items-end gap-3">
-              <div className="flex flex-col gap-2">
-                <p className="text-sm text-accent hover:cursor-pointer flex items-center gap-1.5">
+              <div className="flex flex-col items-center justify-center gap-y-3.5">
+                <p className="text-xs md:text-sm text-accent hover:cursor-pointer flex justify-center items-center gap-2">
                   Download CV
                   <FileTextIcon size={15} />
                 </p>
-                <p className="text-sm text-accent hover:cursor-pointer flex items-center gap-1.5">
-                  Download Cover Letter
+                <p className="text-xs md:text-sm text-accent hover:cursor-pointer flex justify-center items-center gap-2">
+                  Cover Letter
                   <FileTextIcon size={15} />
                 </p>
               </div>

@@ -29,7 +29,7 @@ export function AppliedJobCard({ job }: { job: JobType }) {
         </div>
       </div>
       <div className="flex justify-end gap-5 mt-3">
-        <Link href={`jobs/uploaded/${job.id}`}>
+        <Link href={`jobs/applied/${job.id}`}>
           <Button size={"sm"}>
             <p>View Details</p>
             <ArrowRightIcon className="w-5 h-5" />

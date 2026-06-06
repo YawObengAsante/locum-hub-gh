@@ -2,7 +2,7 @@ import { getJob } from "@/actions/job/get-job";
 import { EditJobForm } from "@/components/edit-job-form";
 import { NotFound } from "@/components/not-found";
 
-export default async function JobDetailsPage({
+export default async function UploadedJobDetailsPage({
   params,
 }: {
   params: Promise<{ id: string }>;

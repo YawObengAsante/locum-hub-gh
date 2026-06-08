@@ -7,6 +7,7 @@ import { getJobStatusClass, timeAgo } from "@/lib/utils";
 import { Badge } from "./ui/badge";
 import { Suspense } from "react";
 import { JobApplicants } from "./job-applicants";
+import ApplicantsLoadingSkeleton from "./applicants-loading-skeleton";
 
 export function PostedJobCard({ job }: { job: JobType }) {
   return (
@@ -31,7 +32,7 @@ export function PostedJobCard({ job }: { job: JobType }) {
         </div>
       </div>
       <div className="flex justify-end items-center gap-5 mt-3">
-        <Suspense fallback={"loading..."}>
+        <Suspense fallback={<ApplicantsLoadingSkeleton/>}>
           <JobApplicants jobId={job.id} />
         </Suspense>
         <Link href={`jobs/uploaded/${job.id}`}>

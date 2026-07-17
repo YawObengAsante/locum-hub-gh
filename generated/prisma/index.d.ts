@@ -43,6 +43,16 @@ export type Job = $Result.DefaultSelection<Prisma.$JobPayload>
  * 
  */
 export type Application = $Result.DefaultSelection<Prisma.$ApplicationPayload>
+/**
+ * Model Resume
+ * 
+ */
+export type Resume = $Result.DefaultSelection<Prisma.$ResumePayload>
+/**
+ * Model CoverLetter
+ * 
+ */
+export type CoverLetter = $Result.DefaultSelection<Prisma.$CoverLetterPayload>
 
 /**
  * Enums
@@ -258,6 +268,26 @@ export class PrismaClient<
     * ```
     */
   get application(): Prisma.ApplicationDelegate<ExtArgs>;
+
+  /**
+   * `prisma.resume`: Exposes CRUD operations for the **Resume** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Resumes
+    * const resumes = await prisma.resume.findMany()
+    * ```
+    */
+  get resume(): Prisma.ResumeDelegate<ExtArgs>;
+
+  /**
+   * `prisma.coverLetter`: Exposes CRUD operations for the **CoverLetter** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CoverLetters
+    * const coverLetters = await prisma.coverLetter.findMany()
+    * ```
+    */
+  get coverLetter(): Prisma.CoverLetterDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -704,7 +734,9 @@ export namespace Prisma {
     Account: 'Account',
     Verification: 'Verification',
     Job: 'Job',
-    Application: 'Application'
+    Application: 'Application',
+    Resume: 'Resume',
+    CoverLetter: 'CoverLetter'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -720,7 +752,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "session" | "account" | "verification" | "job" | "application"
+      modelProps: "user" | "session" | "account" | "verification" | "job" | "application" | "resume" | "coverLetter"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1144,6 +1176,146 @@ export namespace Prisma {
           }
         }
       }
+      Resume: {
+        payload: Prisma.$ResumePayload<ExtArgs>
+        fields: Prisma.ResumeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ResumeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ResumeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>
+          }
+          findFirst: {
+            args: Prisma.ResumeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ResumeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>
+          }
+          findMany: {
+            args: Prisma.ResumeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>[]
+          }
+          create: {
+            args: Prisma.ResumeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>
+          }
+          createMany: {
+            args: Prisma.ResumeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ResumeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>[]
+          }
+          delete: {
+            args: Prisma.ResumeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>
+          }
+          update: {
+            args: Prisma.ResumeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>
+          }
+          deleteMany: {
+            args: Prisma.ResumeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ResumeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ResumeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>
+          }
+          aggregate: {
+            args: Prisma.ResumeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateResume>
+          }
+          groupBy: {
+            args: Prisma.ResumeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ResumeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ResumeCountArgs<ExtArgs>
+            result: $Utils.Optional<ResumeCountAggregateOutputType> | number
+          }
+        }
+      }
+      CoverLetter: {
+        payload: Prisma.$CoverLetterPayload<ExtArgs>
+        fields: Prisma.CoverLetterFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CoverLetterFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoverLetterPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CoverLetterFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoverLetterPayload>
+          }
+          findFirst: {
+            args: Prisma.CoverLetterFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoverLetterPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CoverLetterFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoverLetterPayload>
+          }
+          findMany: {
+            args: Prisma.CoverLetterFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoverLetterPayload>[]
+          }
+          create: {
+            args: Prisma.CoverLetterCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoverLetterPayload>
+          }
+          createMany: {
+            args: Prisma.CoverLetterCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CoverLetterCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoverLetterPayload>[]
+          }
+          delete: {
+            args: Prisma.CoverLetterDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoverLetterPayload>
+          }
+          update: {
+            args: Prisma.CoverLetterUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoverLetterPayload>
+          }
+          deleteMany: {
+            args: Prisma.CoverLetterDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CoverLetterUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CoverLetterUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CoverLetterPayload>
+          }
+          aggregate: {
+            args: Prisma.CoverLetterAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCoverLetter>
+          }
+          groupBy: {
+            args: Prisma.CoverLetterGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CoverLetterGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CoverLetterCountArgs<ExtArgs>
+            result: $Utils.Optional<CoverLetterCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1309,6 +1481,8 @@ export namespace Prisma {
     jobs: number
     accounts: number
     sessions: number
+    resume: number
+    coverLetter: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1316,6 +1490,8 @@ export namespace Prisma {
     jobs?: boolean | UserCountOutputTypeCountJobsArgs
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
+    resume?: boolean | UserCountOutputTypeCountResumeArgs
+    coverLetter?: boolean | UserCountOutputTypeCountCoverLetterArgs
   }
 
   // Custom InputTypes
@@ -1355,6 +1531,20 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SessionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountResumeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ResumeWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCoverLetterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CoverLetterWhereInput
   }
 
 
@@ -1585,6 +1775,8 @@ export namespace Prisma {
     jobs?: boolean | User$jobsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
+    resume?: boolean | User$resumeArgs<ExtArgs>
+    coverLetter?: boolean | User$coverLetterArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1615,6 +1807,8 @@ export namespace Prisma {
     jobs?: boolean | User$jobsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
+    resume?: boolean | User$resumeArgs<ExtArgs>
+    coverLetter?: boolean | User$coverLetterArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1626,6 +1820,8 @@ export namespace Prisma {
       jobs: Prisma.$JobPayload<ExtArgs>[]
       accounts: Prisma.$AccountPayload<ExtArgs>[]
       sessions: Prisma.$SessionPayload<ExtArgs>[]
+      resume: Prisma.$ResumePayload<ExtArgs>[]
+      coverLetter: Prisma.$CoverLetterPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2004,6 +2200,8 @@ export namespace Prisma {
     jobs<T extends User$jobsArgs<ExtArgs> = {}>(args?: Subset<T, User$jobsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, "findMany"> | Null>
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany"> | Null>
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany"> | Null>
+    resume<T extends User$resumeArgs<ExtArgs> = {}>(args?: Subset<T, User$resumeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findMany"> | Null>
+    coverLetter<T extends User$coverLetterArgs<ExtArgs> = {}>(args?: Subset<T, User$coverLetterArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoverLetterPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2432,6 +2630,46 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
+  }
+
+  /**
+   * User.resume
+   */
+  export type User$resumeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    where?: ResumeWhereInput
+    orderBy?: ResumeOrderByWithRelationInput | ResumeOrderByWithRelationInput[]
+    cursor?: ResumeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ResumeScalarFieldEnum | ResumeScalarFieldEnum[]
+  }
+
+  /**
+   * User.coverLetter
+   */
+  export type User$coverLetterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoverLetter
+     */
+    select?: CoverLetterSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoverLetterInclude<ExtArgs> | null
+    where?: CoverLetterWhereInput
+    orderBy?: CoverLetterOrderByWithRelationInput | CoverLetterOrderByWithRelationInput[]
+    cursor?: CoverLetterWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CoverLetterScalarFieldEnum | CoverLetterScalarFieldEnum[]
   }
 
   /**
@@ -7344,6 +7582,1988 @@ export namespace Prisma {
 
 
   /**
+   * Model Resume
+   */
+
+  export type AggregateResume = {
+    _count: ResumeCountAggregateOutputType | null
+    _avg: ResumeAvgAggregateOutputType | null
+    _sum: ResumeSumAggregateOutputType | null
+    _min: ResumeMinAggregateOutputType | null
+    _max: ResumeMaxAggregateOutputType | null
+  }
+
+  export type ResumeAvgAggregateOutputType = {
+    size: number | null
+  }
+
+  export type ResumeSumAggregateOutputType = {
+    size: number | null
+  }
+
+  export type ResumeMinAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    applicantId: string | null
+    name: string | null
+    type: string | null
+    size: number | null
+  }
+
+  export type ResumeMaxAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    applicantId: string | null
+    name: string | null
+    type: string | null
+    size: number | null
+  }
+
+  export type ResumeCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updatedAt: number
+    applicantId: number
+    name: number
+    type: number
+    size: number
+    _all: number
+  }
+
+
+  export type ResumeAvgAggregateInputType = {
+    size?: true
+  }
+
+  export type ResumeSumAggregateInputType = {
+    size?: true
+  }
+
+  export type ResumeMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    applicantId?: true
+    name?: true
+    type?: true
+    size?: true
+  }
+
+  export type ResumeMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    applicantId?: true
+    name?: true
+    type?: true
+    size?: true
+  }
+
+  export type ResumeCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    applicantId?: true
+    name?: true
+    type?: true
+    size?: true
+    _all?: true
+  }
+
+  export type ResumeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Resume to aggregate.
+     */
+    where?: ResumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Resumes to fetch.
+     */
+    orderBy?: ResumeOrderByWithRelationInput | ResumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ResumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Resumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Resumes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Resumes
+    **/
+    _count?: true | ResumeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ResumeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ResumeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ResumeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ResumeMaxAggregateInputType
+  }
+
+  export type GetResumeAggregateType<T extends ResumeAggregateArgs> = {
+        [P in keyof T & keyof AggregateResume]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateResume[P]>
+      : GetScalarType<T[P], AggregateResume[P]>
+  }
+
+
+
+
+  export type ResumeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ResumeWhereInput
+    orderBy?: ResumeOrderByWithAggregationInput | ResumeOrderByWithAggregationInput[]
+    by: ResumeScalarFieldEnum[] | ResumeScalarFieldEnum
+    having?: ResumeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ResumeCountAggregateInputType | true
+    _avg?: ResumeAvgAggregateInputType
+    _sum?: ResumeSumAggregateInputType
+    _min?: ResumeMinAggregateInputType
+    _max?: ResumeMaxAggregateInputType
+  }
+
+  export type ResumeGroupByOutputType = {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    applicantId: string
+    name: string
+    type: string
+    size: number
+    _count: ResumeCountAggregateOutputType | null
+    _avg: ResumeAvgAggregateOutputType | null
+    _sum: ResumeSumAggregateOutputType | null
+    _min: ResumeMinAggregateOutputType | null
+    _max: ResumeMaxAggregateOutputType | null
+  }
+
+  type GetResumeGroupByPayload<T extends ResumeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ResumeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ResumeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ResumeGroupByOutputType[P]>
+            : GetScalarType<T[P], ResumeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ResumeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    applicantId?: boolean
+    name?: boolean
+    type?: boolean
+    size?: boolean
+    applicant?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["resume"]>
+
+  export type ResumeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    applicantId?: boolean
+    name?: boolean
+    type?: boolean
+    size?: boolean
+    applicant?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["resume"]>
+
+  export type ResumeSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    applicantId?: boolean
+    name?: boolean
+    type?: boolean
+    size?: boolean
+  }
+
+  export type ResumeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    applicant?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ResumeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    applicant?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ResumePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Resume"
+    objects: {
+      applicant: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      createdAt: Date
+      updatedAt: Date
+      applicantId: string
+      name: string
+      type: string
+      size: number
+    }, ExtArgs["result"]["resume"]>
+    composites: {}
+  }
+
+  type ResumeGetPayload<S extends boolean | null | undefined | ResumeDefaultArgs> = $Result.GetResult<Prisma.$ResumePayload, S>
+
+  type ResumeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ResumeFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ResumeCountAggregateInputType | true
+    }
+
+  export interface ResumeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Resume'], meta: { name: 'Resume' } }
+    /**
+     * Find zero or one Resume that matches the filter.
+     * @param {ResumeFindUniqueArgs} args - Arguments to find a Resume
+     * @example
+     * // Get one Resume
+     * const resume = await prisma.resume.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ResumeFindUniqueArgs>(args: SelectSubset<T, ResumeFindUniqueArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Resume that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ResumeFindUniqueOrThrowArgs} args - Arguments to find a Resume
+     * @example
+     * // Get one Resume
+     * const resume = await prisma.resume.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ResumeFindUniqueOrThrowArgs>(args: SelectSubset<T, ResumeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Resume that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResumeFindFirstArgs} args - Arguments to find a Resume
+     * @example
+     * // Get one Resume
+     * const resume = await prisma.resume.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ResumeFindFirstArgs>(args?: SelectSubset<T, ResumeFindFirstArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Resume that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResumeFindFirstOrThrowArgs} args - Arguments to find a Resume
+     * @example
+     * // Get one Resume
+     * const resume = await prisma.resume.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ResumeFindFirstOrThrowArgs>(args?: SelectSubset<T, ResumeFindFirstOrThrowArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Resumes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResumeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Resumes
+     * const resumes = await prisma.resume.findMany()
+     * 
+     * // Get first 10 Resumes
+     * const resumes = await prisma.resume.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const resumeWithIdOnly = await prisma.resume.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ResumeFindManyArgs>(args?: SelectSubset<T, ResumeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Resume.
+     * @param {ResumeCreateArgs} args - Arguments to create a Resume.
+     * @example
+     * // Create one Resume
+     * const Resume = await prisma.resume.create({
+     *   data: {
+     *     // ... data to create a Resume
+     *   }
+     * })
+     * 
+     */
+    create<T extends ResumeCreateArgs>(args: SelectSubset<T, ResumeCreateArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Resumes.
+     * @param {ResumeCreateManyArgs} args - Arguments to create many Resumes.
+     * @example
+     * // Create many Resumes
+     * const resume = await prisma.resume.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ResumeCreateManyArgs>(args?: SelectSubset<T, ResumeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Resumes and returns the data saved in the database.
+     * @param {ResumeCreateManyAndReturnArgs} args - Arguments to create many Resumes.
+     * @example
+     * // Create many Resumes
+     * const resume = await prisma.resume.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Resumes and only return the `id`
+     * const resumeWithIdOnly = await prisma.resume.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ResumeCreateManyAndReturnArgs>(args?: SelectSubset<T, ResumeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Resume.
+     * @param {ResumeDeleteArgs} args - Arguments to delete one Resume.
+     * @example
+     * // Delete one Resume
+     * const Resume = await prisma.resume.delete({
+     *   where: {
+     *     // ... filter to delete one Resume
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ResumeDeleteArgs>(args: SelectSubset<T, ResumeDeleteArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Resume.
+     * @param {ResumeUpdateArgs} args - Arguments to update one Resume.
+     * @example
+     * // Update one Resume
+     * const resume = await prisma.resume.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ResumeUpdateArgs>(args: SelectSubset<T, ResumeUpdateArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Resumes.
+     * @param {ResumeDeleteManyArgs} args - Arguments to filter Resumes to delete.
+     * @example
+     * // Delete a few Resumes
+     * const { count } = await prisma.resume.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ResumeDeleteManyArgs>(args?: SelectSubset<T, ResumeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Resumes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResumeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Resumes
+     * const resume = await prisma.resume.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ResumeUpdateManyArgs>(args: SelectSubset<T, ResumeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Resume.
+     * @param {ResumeUpsertArgs} args - Arguments to update or create a Resume.
+     * @example
+     * // Update or create a Resume
+     * const resume = await prisma.resume.upsert({
+     *   create: {
+     *     // ... data to create a Resume
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Resume we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ResumeUpsertArgs>(args: SelectSubset<T, ResumeUpsertArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Resumes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResumeCountArgs} args - Arguments to filter Resumes to count.
+     * @example
+     * // Count the number of Resumes
+     * const count = await prisma.resume.count({
+     *   where: {
+     *     // ... the filter for the Resumes we want to count
+     *   }
+     * })
+    **/
+    count<T extends ResumeCountArgs>(
+      args?: Subset<T, ResumeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ResumeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Resume.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResumeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ResumeAggregateArgs>(args: Subset<T, ResumeAggregateArgs>): Prisma.PrismaPromise<GetResumeAggregateType<T>>
+
+    /**
+     * Group by Resume.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResumeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ResumeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ResumeGroupByArgs['orderBy'] }
+        : { orderBy?: ResumeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ResumeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetResumeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Resume model
+   */
+  readonly fields: ResumeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Resume.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ResumeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    applicant<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Resume model
+   */ 
+  interface ResumeFieldRefs {
+    readonly id: FieldRef<"Resume", 'String'>
+    readonly createdAt: FieldRef<"Resume", 'DateTime'>
+    readonly updatedAt: FieldRef<"Resume", 'DateTime'>
+    readonly applicantId: FieldRef<"Resume", 'String'>
+    readonly name: FieldRef<"Resume", 'String'>
+    readonly type: FieldRef<"Resume", 'String'>
+    readonly size: FieldRef<"Resume", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Resume findUnique
+   */
+  export type ResumeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * Filter, which Resume to fetch.
+     */
+    where: ResumeWhereUniqueInput
+  }
+
+  /**
+   * Resume findUniqueOrThrow
+   */
+  export type ResumeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * Filter, which Resume to fetch.
+     */
+    where: ResumeWhereUniqueInput
+  }
+
+  /**
+   * Resume findFirst
+   */
+  export type ResumeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * Filter, which Resume to fetch.
+     */
+    where?: ResumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Resumes to fetch.
+     */
+    orderBy?: ResumeOrderByWithRelationInput | ResumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Resumes.
+     */
+    cursor?: ResumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Resumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Resumes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Resumes.
+     */
+    distinct?: ResumeScalarFieldEnum | ResumeScalarFieldEnum[]
+  }
+
+  /**
+   * Resume findFirstOrThrow
+   */
+  export type ResumeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * Filter, which Resume to fetch.
+     */
+    where?: ResumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Resumes to fetch.
+     */
+    orderBy?: ResumeOrderByWithRelationInput | ResumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Resumes.
+     */
+    cursor?: ResumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Resumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Resumes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Resumes.
+     */
+    distinct?: ResumeScalarFieldEnum | ResumeScalarFieldEnum[]
+  }
+
+  /**
+   * Resume findMany
+   */
+  export type ResumeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * Filter, which Resumes to fetch.
+     */
+    where?: ResumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Resumes to fetch.
+     */
+    orderBy?: ResumeOrderByWithRelationInput | ResumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Resumes.
+     */
+    cursor?: ResumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Resumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Resumes.
+     */
+    skip?: number
+    distinct?: ResumeScalarFieldEnum | ResumeScalarFieldEnum[]
+  }
+
+  /**
+   * Resume create
+   */
+  export type ResumeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Resume.
+     */
+    data: XOR<ResumeCreateInput, ResumeUncheckedCreateInput>
+  }
+
+  /**
+   * Resume createMany
+   */
+  export type ResumeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Resumes.
+     */
+    data: ResumeCreateManyInput | ResumeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Resume createManyAndReturn
+   */
+  export type ResumeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Resumes.
+     */
+    data: ResumeCreateManyInput | ResumeCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Resume update
+   */
+  export type ResumeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Resume.
+     */
+    data: XOR<ResumeUpdateInput, ResumeUncheckedUpdateInput>
+    /**
+     * Choose, which Resume to update.
+     */
+    where: ResumeWhereUniqueInput
+  }
+
+  /**
+   * Resume updateMany
+   */
+  export type ResumeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Resumes.
+     */
+    data: XOR<ResumeUpdateManyMutationInput, ResumeUncheckedUpdateManyInput>
+    /**
+     * Filter which Resumes to update
+     */
+    where?: ResumeWhereInput
+  }
+
+  /**
+   * Resume upsert
+   */
+  export type ResumeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Resume to update in case it exists.
+     */
+    where: ResumeWhereUniqueInput
+    /**
+     * In case the Resume found by the `where` argument doesn't exist, create a new Resume with this data.
+     */
+    create: XOR<ResumeCreateInput, ResumeUncheckedCreateInput>
+    /**
+     * In case the Resume was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ResumeUpdateInput, ResumeUncheckedUpdateInput>
+  }
+
+  /**
+   * Resume delete
+   */
+  export type ResumeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * Filter which Resume to delete.
+     */
+    where: ResumeWhereUniqueInput
+  }
+
+  /**
+   * Resume deleteMany
+   */
+  export type ResumeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Resumes to delete
+     */
+    where?: ResumeWhereInput
+  }
+
+  /**
+   * Resume without action
+   */
+  export type ResumeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CoverLetter
+   */
+
+  export type AggregateCoverLetter = {
+    _count: CoverLetterCountAggregateOutputType | null
+    _avg: CoverLetterAvgAggregateOutputType | null
+    _sum: CoverLetterSumAggregateOutputType | null
+    _min: CoverLetterMinAggregateOutputType | null
+    _max: CoverLetterMaxAggregateOutputType | null
+  }
+
+  export type CoverLetterAvgAggregateOutputType = {
+    size: number | null
+  }
+
+  export type CoverLetterSumAggregateOutputType = {
+    size: number | null
+  }
+
+  export type CoverLetterMinAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    applicantId: string | null
+    name: string | null
+    type: string | null
+    size: number | null
+  }
+
+  export type CoverLetterMaxAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    applicantId: string | null
+    name: string | null
+    type: string | null
+    size: number | null
+  }
+
+  export type CoverLetterCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updatedAt: number
+    applicantId: number
+    name: number
+    type: number
+    size: number
+    _all: number
+  }
+
+
+  export type CoverLetterAvgAggregateInputType = {
+    size?: true
+  }
+
+  export type CoverLetterSumAggregateInputType = {
+    size?: true
+  }
+
+  export type CoverLetterMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    applicantId?: true
+    name?: true
+    type?: true
+    size?: true
+  }
+
+  export type CoverLetterMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    applicantId?: true
+    name?: true
+    type?: true
+    size?: true
+  }
+
+  export type CoverLetterCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    applicantId?: true
+    name?: true
+    type?: true
+    size?: true
+    _all?: true
+  }
+
+  export type CoverLetterAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CoverLetter to aggregate.
+     */
+    where?: CoverLetterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CoverLetters to fetch.
+     */
+    orderBy?: CoverLetterOrderByWithRelationInput | CoverLetterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CoverLetterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CoverLetters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CoverLetters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CoverLetters
+    **/
+    _count?: true | CoverLetterCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CoverLetterAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CoverLetterSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CoverLetterMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CoverLetterMaxAggregateInputType
+  }
+
+  export type GetCoverLetterAggregateType<T extends CoverLetterAggregateArgs> = {
+        [P in keyof T & keyof AggregateCoverLetter]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCoverLetter[P]>
+      : GetScalarType<T[P], AggregateCoverLetter[P]>
+  }
+
+
+
+
+  export type CoverLetterGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CoverLetterWhereInput
+    orderBy?: CoverLetterOrderByWithAggregationInput | CoverLetterOrderByWithAggregationInput[]
+    by: CoverLetterScalarFieldEnum[] | CoverLetterScalarFieldEnum
+    having?: CoverLetterScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CoverLetterCountAggregateInputType | true
+    _avg?: CoverLetterAvgAggregateInputType
+    _sum?: CoverLetterSumAggregateInputType
+    _min?: CoverLetterMinAggregateInputType
+    _max?: CoverLetterMaxAggregateInputType
+  }
+
+  export type CoverLetterGroupByOutputType = {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    applicantId: string
+    name: string
+    type: string
+    size: number
+    _count: CoverLetterCountAggregateOutputType | null
+    _avg: CoverLetterAvgAggregateOutputType | null
+    _sum: CoverLetterSumAggregateOutputType | null
+    _min: CoverLetterMinAggregateOutputType | null
+    _max: CoverLetterMaxAggregateOutputType | null
+  }
+
+  type GetCoverLetterGroupByPayload<T extends CoverLetterGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CoverLetterGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CoverLetterGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CoverLetterGroupByOutputType[P]>
+            : GetScalarType<T[P], CoverLetterGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CoverLetterSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    applicantId?: boolean
+    name?: boolean
+    type?: boolean
+    size?: boolean
+    applicant?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["coverLetter"]>
+
+  export type CoverLetterSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    applicantId?: boolean
+    name?: boolean
+    type?: boolean
+    size?: boolean
+    applicant?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["coverLetter"]>
+
+  export type CoverLetterSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    applicantId?: boolean
+    name?: boolean
+    type?: boolean
+    size?: boolean
+  }
+
+  export type CoverLetterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    applicant?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CoverLetterIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    applicant?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $CoverLetterPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CoverLetter"
+    objects: {
+      applicant: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      createdAt: Date
+      updatedAt: Date
+      applicantId: string
+      name: string
+      type: string
+      size: number
+    }, ExtArgs["result"]["coverLetter"]>
+    composites: {}
+  }
+
+  type CoverLetterGetPayload<S extends boolean | null | undefined | CoverLetterDefaultArgs> = $Result.GetResult<Prisma.$CoverLetterPayload, S>
+
+  type CoverLetterCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CoverLetterFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: CoverLetterCountAggregateInputType | true
+    }
+
+  export interface CoverLetterDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CoverLetter'], meta: { name: 'CoverLetter' } }
+    /**
+     * Find zero or one CoverLetter that matches the filter.
+     * @param {CoverLetterFindUniqueArgs} args - Arguments to find a CoverLetter
+     * @example
+     * // Get one CoverLetter
+     * const coverLetter = await prisma.coverLetter.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CoverLetterFindUniqueArgs>(args: SelectSubset<T, CoverLetterFindUniqueArgs<ExtArgs>>): Prisma__CoverLetterClient<$Result.GetResult<Prisma.$CoverLetterPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one CoverLetter that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {CoverLetterFindUniqueOrThrowArgs} args - Arguments to find a CoverLetter
+     * @example
+     * // Get one CoverLetter
+     * const coverLetter = await prisma.coverLetter.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CoverLetterFindUniqueOrThrowArgs>(args: SelectSubset<T, CoverLetterFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CoverLetterClient<$Result.GetResult<Prisma.$CoverLetterPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first CoverLetter that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoverLetterFindFirstArgs} args - Arguments to find a CoverLetter
+     * @example
+     * // Get one CoverLetter
+     * const coverLetter = await prisma.coverLetter.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CoverLetterFindFirstArgs>(args?: SelectSubset<T, CoverLetterFindFirstArgs<ExtArgs>>): Prisma__CoverLetterClient<$Result.GetResult<Prisma.$CoverLetterPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first CoverLetter that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoverLetterFindFirstOrThrowArgs} args - Arguments to find a CoverLetter
+     * @example
+     * // Get one CoverLetter
+     * const coverLetter = await prisma.coverLetter.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CoverLetterFindFirstOrThrowArgs>(args?: SelectSubset<T, CoverLetterFindFirstOrThrowArgs<ExtArgs>>): Prisma__CoverLetterClient<$Result.GetResult<Prisma.$CoverLetterPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more CoverLetters that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoverLetterFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CoverLetters
+     * const coverLetters = await prisma.coverLetter.findMany()
+     * 
+     * // Get first 10 CoverLetters
+     * const coverLetters = await prisma.coverLetter.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const coverLetterWithIdOnly = await prisma.coverLetter.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CoverLetterFindManyArgs>(args?: SelectSubset<T, CoverLetterFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoverLetterPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a CoverLetter.
+     * @param {CoverLetterCreateArgs} args - Arguments to create a CoverLetter.
+     * @example
+     * // Create one CoverLetter
+     * const CoverLetter = await prisma.coverLetter.create({
+     *   data: {
+     *     // ... data to create a CoverLetter
+     *   }
+     * })
+     * 
+     */
+    create<T extends CoverLetterCreateArgs>(args: SelectSubset<T, CoverLetterCreateArgs<ExtArgs>>): Prisma__CoverLetterClient<$Result.GetResult<Prisma.$CoverLetterPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many CoverLetters.
+     * @param {CoverLetterCreateManyArgs} args - Arguments to create many CoverLetters.
+     * @example
+     * // Create many CoverLetters
+     * const coverLetter = await prisma.coverLetter.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CoverLetterCreateManyArgs>(args?: SelectSubset<T, CoverLetterCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CoverLetters and returns the data saved in the database.
+     * @param {CoverLetterCreateManyAndReturnArgs} args - Arguments to create many CoverLetters.
+     * @example
+     * // Create many CoverLetters
+     * const coverLetter = await prisma.coverLetter.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CoverLetters and only return the `id`
+     * const coverLetterWithIdOnly = await prisma.coverLetter.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CoverLetterCreateManyAndReturnArgs>(args?: SelectSubset<T, CoverLetterCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoverLetterPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a CoverLetter.
+     * @param {CoverLetterDeleteArgs} args - Arguments to delete one CoverLetter.
+     * @example
+     * // Delete one CoverLetter
+     * const CoverLetter = await prisma.coverLetter.delete({
+     *   where: {
+     *     // ... filter to delete one CoverLetter
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CoverLetterDeleteArgs>(args: SelectSubset<T, CoverLetterDeleteArgs<ExtArgs>>): Prisma__CoverLetterClient<$Result.GetResult<Prisma.$CoverLetterPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one CoverLetter.
+     * @param {CoverLetterUpdateArgs} args - Arguments to update one CoverLetter.
+     * @example
+     * // Update one CoverLetter
+     * const coverLetter = await prisma.coverLetter.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CoverLetterUpdateArgs>(args: SelectSubset<T, CoverLetterUpdateArgs<ExtArgs>>): Prisma__CoverLetterClient<$Result.GetResult<Prisma.$CoverLetterPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more CoverLetters.
+     * @param {CoverLetterDeleteManyArgs} args - Arguments to filter CoverLetters to delete.
+     * @example
+     * // Delete a few CoverLetters
+     * const { count } = await prisma.coverLetter.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CoverLetterDeleteManyArgs>(args?: SelectSubset<T, CoverLetterDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CoverLetters.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoverLetterUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CoverLetters
+     * const coverLetter = await prisma.coverLetter.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CoverLetterUpdateManyArgs>(args: SelectSubset<T, CoverLetterUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one CoverLetter.
+     * @param {CoverLetterUpsertArgs} args - Arguments to update or create a CoverLetter.
+     * @example
+     * // Update or create a CoverLetter
+     * const coverLetter = await prisma.coverLetter.upsert({
+     *   create: {
+     *     // ... data to create a CoverLetter
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CoverLetter we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CoverLetterUpsertArgs>(args: SelectSubset<T, CoverLetterUpsertArgs<ExtArgs>>): Prisma__CoverLetterClient<$Result.GetResult<Prisma.$CoverLetterPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of CoverLetters.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoverLetterCountArgs} args - Arguments to filter CoverLetters to count.
+     * @example
+     * // Count the number of CoverLetters
+     * const count = await prisma.coverLetter.count({
+     *   where: {
+     *     // ... the filter for the CoverLetters we want to count
+     *   }
+     * })
+    **/
+    count<T extends CoverLetterCountArgs>(
+      args?: Subset<T, CoverLetterCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CoverLetterCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CoverLetter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoverLetterAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CoverLetterAggregateArgs>(args: Subset<T, CoverLetterAggregateArgs>): Prisma.PrismaPromise<GetCoverLetterAggregateType<T>>
+
+    /**
+     * Group by CoverLetter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CoverLetterGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CoverLetterGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CoverLetterGroupByArgs['orderBy'] }
+        : { orderBy?: CoverLetterGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CoverLetterGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCoverLetterGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CoverLetter model
+   */
+  readonly fields: CoverLetterFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CoverLetter.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CoverLetterClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    applicant<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CoverLetter model
+   */ 
+  interface CoverLetterFieldRefs {
+    readonly id: FieldRef<"CoverLetter", 'String'>
+    readonly createdAt: FieldRef<"CoverLetter", 'DateTime'>
+    readonly updatedAt: FieldRef<"CoverLetter", 'DateTime'>
+    readonly applicantId: FieldRef<"CoverLetter", 'String'>
+    readonly name: FieldRef<"CoverLetter", 'String'>
+    readonly type: FieldRef<"CoverLetter", 'String'>
+    readonly size: FieldRef<"CoverLetter", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CoverLetter findUnique
+   */
+  export type CoverLetterFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoverLetter
+     */
+    select?: CoverLetterSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoverLetterInclude<ExtArgs> | null
+    /**
+     * Filter, which CoverLetter to fetch.
+     */
+    where: CoverLetterWhereUniqueInput
+  }
+
+  /**
+   * CoverLetter findUniqueOrThrow
+   */
+  export type CoverLetterFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoverLetter
+     */
+    select?: CoverLetterSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoverLetterInclude<ExtArgs> | null
+    /**
+     * Filter, which CoverLetter to fetch.
+     */
+    where: CoverLetterWhereUniqueInput
+  }
+
+  /**
+   * CoverLetter findFirst
+   */
+  export type CoverLetterFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoverLetter
+     */
+    select?: CoverLetterSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoverLetterInclude<ExtArgs> | null
+    /**
+     * Filter, which CoverLetter to fetch.
+     */
+    where?: CoverLetterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CoverLetters to fetch.
+     */
+    orderBy?: CoverLetterOrderByWithRelationInput | CoverLetterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CoverLetters.
+     */
+    cursor?: CoverLetterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CoverLetters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CoverLetters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CoverLetters.
+     */
+    distinct?: CoverLetterScalarFieldEnum | CoverLetterScalarFieldEnum[]
+  }
+
+  /**
+   * CoverLetter findFirstOrThrow
+   */
+  export type CoverLetterFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoverLetter
+     */
+    select?: CoverLetterSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoverLetterInclude<ExtArgs> | null
+    /**
+     * Filter, which CoverLetter to fetch.
+     */
+    where?: CoverLetterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CoverLetters to fetch.
+     */
+    orderBy?: CoverLetterOrderByWithRelationInput | CoverLetterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CoverLetters.
+     */
+    cursor?: CoverLetterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CoverLetters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CoverLetters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CoverLetters.
+     */
+    distinct?: CoverLetterScalarFieldEnum | CoverLetterScalarFieldEnum[]
+  }
+
+  /**
+   * CoverLetter findMany
+   */
+  export type CoverLetterFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoverLetter
+     */
+    select?: CoverLetterSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoverLetterInclude<ExtArgs> | null
+    /**
+     * Filter, which CoverLetters to fetch.
+     */
+    where?: CoverLetterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CoverLetters to fetch.
+     */
+    orderBy?: CoverLetterOrderByWithRelationInput | CoverLetterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CoverLetters.
+     */
+    cursor?: CoverLetterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CoverLetters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CoverLetters.
+     */
+    skip?: number
+    distinct?: CoverLetterScalarFieldEnum | CoverLetterScalarFieldEnum[]
+  }
+
+  /**
+   * CoverLetter create
+   */
+  export type CoverLetterCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoverLetter
+     */
+    select?: CoverLetterSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoverLetterInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CoverLetter.
+     */
+    data: XOR<CoverLetterCreateInput, CoverLetterUncheckedCreateInput>
+  }
+
+  /**
+   * CoverLetter createMany
+   */
+  export type CoverLetterCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CoverLetters.
+     */
+    data: CoverLetterCreateManyInput | CoverLetterCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CoverLetter createManyAndReturn
+   */
+  export type CoverLetterCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoverLetter
+     */
+    select?: CoverLetterSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many CoverLetters.
+     */
+    data: CoverLetterCreateManyInput | CoverLetterCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoverLetterIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CoverLetter update
+   */
+  export type CoverLetterUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoverLetter
+     */
+    select?: CoverLetterSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoverLetterInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CoverLetter.
+     */
+    data: XOR<CoverLetterUpdateInput, CoverLetterUncheckedUpdateInput>
+    /**
+     * Choose, which CoverLetter to update.
+     */
+    where: CoverLetterWhereUniqueInput
+  }
+
+  /**
+   * CoverLetter updateMany
+   */
+  export type CoverLetterUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CoverLetters.
+     */
+    data: XOR<CoverLetterUpdateManyMutationInput, CoverLetterUncheckedUpdateManyInput>
+    /**
+     * Filter which CoverLetters to update
+     */
+    where?: CoverLetterWhereInput
+  }
+
+  /**
+   * CoverLetter upsert
+   */
+  export type CoverLetterUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoverLetter
+     */
+    select?: CoverLetterSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoverLetterInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CoverLetter to update in case it exists.
+     */
+    where: CoverLetterWhereUniqueInput
+    /**
+     * In case the CoverLetter found by the `where` argument doesn't exist, create a new CoverLetter with this data.
+     */
+    create: XOR<CoverLetterCreateInput, CoverLetterUncheckedCreateInput>
+    /**
+     * In case the CoverLetter was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CoverLetterUpdateInput, CoverLetterUncheckedUpdateInput>
+  }
+
+  /**
+   * CoverLetter delete
+   */
+  export type CoverLetterDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoverLetter
+     */
+    select?: CoverLetterSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoverLetterInclude<ExtArgs> | null
+    /**
+     * Filter which CoverLetter to delete.
+     */
+    where: CoverLetterWhereUniqueInput
+  }
+
+  /**
+   * CoverLetter deleteMany
+   */
+  export type CoverLetterDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CoverLetters to delete
+     */
+    where?: CoverLetterWhereInput
+  }
+
+  /**
+   * CoverLetter without action
+   */
+  export type CoverLetterDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoverLetter
+     */
+    select?: CoverLetterSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CoverLetterInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -7445,6 +9665,32 @@ export namespace Prisma {
   };
 
   export type ApplicationScalarFieldEnum = (typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum]
+
+
+  export const ResumeScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    applicantId: 'applicantId',
+    name: 'name',
+    type: 'type',
+    size: 'size'
+  };
+
+  export type ResumeScalarFieldEnum = (typeof ResumeScalarFieldEnum)[keyof typeof ResumeScalarFieldEnum]
+
+
+  export const CoverLetterScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    applicantId: 'applicantId',
+    name: 'name',
+    type: 'type',
+    size: 'size'
+  };
+
+  export type CoverLetterScalarFieldEnum = (typeof CoverLetterScalarFieldEnum)[keyof typeof CoverLetterScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7551,6 +9797,20 @@ export namespace Prisma {
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
   /**
    * Deep Input Types
    */
@@ -7572,6 +9832,8 @@ export namespace Prisma {
     jobs?: JobListRelationFilter
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
+    resume?: ResumeListRelationFilter
+    coverLetter?: CoverLetterListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -7587,6 +9849,8 @@ export namespace Prisma {
     jobs?: JobOrderByRelationAggregateInput
     accounts?: AccountOrderByRelationAggregateInput
     sessions?: SessionOrderByRelationAggregateInput
+    resume?: ResumeOrderByRelationAggregateInput
+    coverLetter?: CoverLetterOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -7605,6 +9869,8 @@ export namespace Prisma {
     jobs?: JobListRelationFilter
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
+    resume?: ResumeListRelationFilter
+    coverLetter?: CoverLetterListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -8021,6 +10287,140 @@ export namespace Prisma {
     status?: EnumApplicationStatusWithAggregatesFilter<"Application"> | $Enums.ApplicationStatus
   }
 
+  export type ResumeWhereInput = {
+    AND?: ResumeWhereInput | ResumeWhereInput[]
+    OR?: ResumeWhereInput[]
+    NOT?: ResumeWhereInput | ResumeWhereInput[]
+    id?: StringFilter<"Resume"> | string
+    createdAt?: DateTimeFilter<"Resume"> | Date | string
+    updatedAt?: DateTimeFilter<"Resume"> | Date | string
+    applicantId?: StringFilter<"Resume"> | string
+    name?: StringFilter<"Resume"> | string
+    type?: StringFilter<"Resume"> | string
+    size?: IntFilter<"Resume"> | number
+    applicant?: XOR<UserRelationFilter, UserWhereInput>
+  }
+
+  export type ResumeOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    applicantId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    size?: SortOrder
+    applicant?: UserOrderByWithRelationInput
+  }
+
+  export type ResumeWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ResumeWhereInput | ResumeWhereInput[]
+    OR?: ResumeWhereInput[]
+    NOT?: ResumeWhereInput | ResumeWhereInput[]
+    createdAt?: DateTimeFilter<"Resume"> | Date | string
+    updatedAt?: DateTimeFilter<"Resume"> | Date | string
+    applicantId?: StringFilter<"Resume"> | string
+    name?: StringFilter<"Resume"> | string
+    type?: StringFilter<"Resume"> | string
+    size?: IntFilter<"Resume"> | number
+    applicant?: XOR<UserRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type ResumeOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    applicantId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    size?: SortOrder
+    _count?: ResumeCountOrderByAggregateInput
+    _avg?: ResumeAvgOrderByAggregateInput
+    _max?: ResumeMaxOrderByAggregateInput
+    _min?: ResumeMinOrderByAggregateInput
+    _sum?: ResumeSumOrderByAggregateInput
+  }
+
+  export type ResumeScalarWhereWithAggregatesInput = {
+    AND?: ResumeScalarWhereWithAggregatesInput | ResumeScalarWhereWithAggregatesInput[]
+    OR?: ResumeScalarWhereWithAggregatesInput[]
+    NOT?: ResumeScalarWhereWithAggregatesInput | ResumeScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Resume"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Resume"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Resume"> | Date | string
+    applicantId?: StringWithAggregatesFilter<"Resume"> | string
+    name?: StringWithAggregatesFilter<"Resume"> | string
+    type?: StringWithAggregatesFilter<"Resume"> | string
+    size?: IntWithAggregatesFilter<"Resume"> | number
+  }
+
+  export type CoverLetterWhereInput = {
+    AND?: CoverLetterWhereInput | CoverLetterWhereInput[]
+    OR?: CoverLetterWhereInput[]
+    NOT?: CoverLetterWhereInput | CoverLetterWhereInput[]
+    id?: StringFilter<"CoverLetter"> | string
+    createdAt?: DateTimeFilter<"CoverLetter"> | Date | string
+    updatedAt?: DateTimeFilter<"CoverLetter"> | Date | string
+    applicantId?: StringFilter<"CoverLetter"> | string
+    name?: StringFilter<"CoverLetter"> | string
+    type?: StringFilter<"CoverLetter"> | string
+    size?: IntFilter<"CoverLetter"> | number
+    applicant?: XOR<UserRelationFilter, UserWhereInput>
+  }
+
+  export type CoverLetterOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    applicantId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    size?: SortOrder
+    applicant?: UserOrderByWithRelationInput
+  }
+
+  export type CoverLetterWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CoverLetterWhereInput | CoverLetterWhereInput[]
+    OR?: CoverLetterWhereInput[]
+    NOT?: CoverLetterWhereInput | CoverLetterWhereInput[]
+    createdAt?: DateTimeFilter<"CoverLetter"> | Date | string
+    updatedAt?: DateTimeFilter<"CoverLetter"> | Date | string
+    applicantId?: StringFilter<"CoverLetter"> | string
+    name?: StringFilter<"CoverLetter"> | string
+    type?: StringFilter<"CoverLetter"> | string
+    size?: IntFilter<"CoverLetter"> | number
+    applicant?: XOR<UserRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type CoverLetterOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    applicantId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    size?: SortOrder
+    _count?: CoverLetterCountOrderByAggregateInput
+    _avg?: CoverLetterAvgOrderByAggregateInput
+    _max?: CoverLetterMaxOrderByAggregateInput
+    _min?: CoverLetterMinOrderByAggregateInput
+    _sum?: CoverLetterSumOrderByAggregateInput
+  }
+
+  export type CoverLetterScalarWhereWithAggregatesInput = {
+    AND?: CoverLetterScalarWhereWithAggregatesInput | CoverLetterScalarWhereWithAggregatesInput[]
+    OR?: CoverLetterScalarWhereWithAggregatesInput[]
+    NOT?: CoverLetterScalarWhereWithAggregatesInput | CoverLetterScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CoverLetter"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"CoverLetter"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CoverLetter"> | Date | string
+    applicantId?: StringWithAggregatesFilter<"CoverLetter"> | string
+    name?: StringWithAggregatesFilter<"CoverLetter"> | string
+    type?: StringWithAggregatesFilter<"CoverLetter"> | string
+    size?: IntWithAggregatesFilter<"CoverLetter"> | number
+  }
+
   export type UserCreateInput = {
     id?: string
     name: string
@@ -8034,6 +10434,8 @@ export namespace Prisma {
     jobs?: JobCreateNestedManyWithoutPosterInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
+    resume?: ResumeCreateNestedManyWithoutApplicantInput
+    coverLetter?: CoverLetterCreateNestedManyWithoutApplicantInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -8049,6 +10451,8 @@ export namespace Prisma {
     jobs?: JobUncheckedCreateNestedManyWithoutPosterInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    resume?: ResumeUncheckedCreateNestedManyWithoutApplicantInput
+    coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutApplicantInput
   }
 
   export type UserUpdateInput = {
@@ -8064,6 +10468,8 @@ export namespace Prisma {
     jobs?: JobUpdateManyWithoutPosterNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    resume?: ResumeUpdateManyWithoutApplicantNestedInput
+    coverLetter?: CoverLetterUpdateManyWithoutApplicantNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -8079,6 +10485,8 @@ export namespace Prisma {
     jobs?: JobUncheckedUpdateManyWithoutPosterNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    resume?: ResumeUncheckedUpdateManyWithoutApplicantNestedInput
+    coverLetter?: CoverLetterUncheckedUpdateManyWithoutApplicantNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -8540,6 +10948,144 @@ export namespace Prisma {
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   }
 
+  export type ResumeCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    type: string
+    size: number
+    applicant: UserCreateNestedOneWithoutResumeInput
+  }
+
+  export type ResumeUncheckedCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    applicantId: string
+    name: string
+    type: string
+    size: number
+  }
+
+  export type ResumeUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    applicant?: UserUpdateOneRequiredWithoutResumeNestedInput
+  }
+
+  export type ResumeUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    applicantId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ResumeCreateManyInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    applicantId: string
+    name: string
+    type: string
+    size: number
+  }
+
+  export type ResumeUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ResumeUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    applicantId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CoverLetterCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    type: string
+    size: number
+    applicant: UserCreateNestedOneWithoutCoverLetterInput
+  }
+
+  export type CoverLetterUncheckedCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    applicantId: string
+    name: string
+    type: string
+    size: number
+  }
+
+  export type CoverLetterUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    applicant?: UserUpdateOneRequiredWithoutCoverLetterNestedInput
+  }
+
+  export type CoverLetterUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    applicantId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CoverLetterCreateManyInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    applicantId: string
+    name: string
+    type: string
+    size: number
+  }
+
+  export type CoverLetterUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CoverLetterUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    applicantId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -8610,6 +11156,18 @@ export namespace Prisma {
     none?: SessionWhereInput
   }
 
+  export type ResumeListRelationFilter = {
+    every?: ResumeWhereInput
+    some?: ResumeWhereInput
+    none?: ResumeWhereInput
+  }
+
+  export type CoverLetterListRelationFilter = {
+    every?: CoverLetterWhereInput
+    some?: CoverLetterWhereInput
+    none?: CoverLetterWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -8628,6 +11186,14 @@ export namespace Prisma {
   }
 
   export type SessionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ResumeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CoverLetterOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8989,6 +11555,109 @@ export namespace Prisma {
     _max?: NestedEnumApplicationStatusFilter<$PrismaModel>
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type ResumeCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    applicantId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    size?: SortOrder
+  }
+
+  export type ResumeAvgOrderByAggregateInput = {
+    size?: SortOrder
+  }
+
+  export type ResumeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    applicantId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    size?: SortOrder
+  }
+
+  export type ResumeMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    applicantId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    size?: SortOrder
+  }
+
+  export type ResumeSumOrderByAggregateInput = {
+    size?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type CoverLetterCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    applicantId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    size?: SortOrder
+  }
+
+  export type CoverLetterAvgOrderByAggregateInput = {
+    size?: SortOrder
+  }
+
+  export type CoverLetterMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    applicantId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    size?: SortOrder
+  }
+
+  export type CoverLetterMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    applicantId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    size?: SortOrder
+  }
+
+  export type CoverLetterSumOrderByAggregateInput = {
+    size?: SortOrder
+  }
+
   export type ApplicationCreateNestedManyWithoutApplicantInput = {
     create?: XOR<ApplicationCreateWithoutApplicantInput, ApplicationUncheckedCreateWithoutApplicantInput> | ApplicationCreateWithoutApplicantInput[] | ApplicationUncheckedCreateWithoutApplicantInput[]
     connectOrCreate?: ApplicationCreateOrConnectWithoutApplicantInput | ApplicationCreateOrConnectWithoutApplicantInput[]
@@ -9017,6 +11686,20 @@ export namespace Prisma {
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
+  export type ResumeCreateNestedManyWithoutApplicantInput = {
+    create?: XOR<ResumeCreateWithoutApplicantInput, ResumeUncheckedCreateWithoutApplicantInput> | ResumeCreateWithoutApplicantInput[] | ResumeUncheckedCreateWithoutApplicantInput[]
+    connectOrCreate?: ResumeCreateOrConnectWithoutApplicantInput | ResumeCreateOrConnectWithoutApplicantInput[]
+    createMany?: ResumeCreateManyApplicantInputEnvelope
+    connect?: ResumeWhereUniqueInput | ResumeWhereUniqueInput[]
+  }
+
+  export type CoverLetterCreateNestedManyWithoutApplicantInput = {
+    create?: XOR<CoverLetterCreateWithoutApplicantInput, CoverLetterUncheckedCreateWithoutApplicantInput> | CoverLetterCreateWithoutApplicantInput[] | CoverLetterUncheckedCreateWithoutApplicantInput[]
+    connectOrCreate?: CoverLetterCreateOrConnectWithoutApplicantInput | CoverLetterCreateOrConnectWithoutApplicantInput[]
+    createMany?: CoverLetterCreateManyApplicantInputEnvelope
+    connect?: CoverLetterWhereUniqueInput | CoverLetterWhereUniqueInput[]
+  }
+
   export type ApplicationUncheckedCreateNestedManyWithoutApplicantInput = {
     create?: XOR<ApplicationCreateWithoutApplicantInput, ApplicationUncheckedCreateWithoutApplicantInput> | ApplicationCreateWithoutApplicantInput[] | ApplicationUncheckedCreateWithoutApplicantInput[]
     connectOrCreate?: ApplicationCreateOrConnectWithoutApplicantInput | ApplicationCreateOrConnectWithoutApplicantInput[]
@@ -9043,6 +11726,20 @@ export namespace Prisma {
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
     createMany?: SessionCreateManyUserInputEnvelope
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+  }
+
+  export type ResumeUncheckedCreateNestedManyWithoutApplicantInput = {
+    create?: XOR<ResumeCreateWithoutApplicantInput, ResumeUncheckedCreateWithoutApplicantInput> | ResumeCreateWithoutApplicantInput[] | ResumeUncheckedCreateWithoutApplicantInput[]
+    connectOrCreate?: ResumeCreateOrConnectWithoutApplicantInput | ResumeCreateOrConnectWithoutApplicantInput[]
+    createMany?: ResumeCreateManyApplicantInputEnvelope
+    connect?: ResumeWhereUniqueInput | ResumeWhereUniqueInput[]
+  }
+
+  export type CoverLetterUncheckedCreateNestedManyWithoutApplicantInput = {
+    create?: XOR<CoverLetterCreateWithoutApplicantInput, CoverLetterUncheckedCreateWithoutApplicantInput> | CoverLetterCreateWithoutApplicantInput[] | CoverLetterUncheckedCreateWithoutApplicantInput[]
+    connectOrCreate?: CoverLetterCreateOrConnectWithoutApplicantInput | CoverLetterCreateOrConnectWithoutApplicantInput[]
+    createMany?: CoverLetterCreateManyApplicantInputEnvelope
+    connect?: CoverLetterWhereUniqueInput | CoverLetterWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -9117,6 +11814,34 @@ export namespace Prisma {
     deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
   }
 
+  export type ResumeUpdateManyWithoutApplicantNestedInput = {
+    create?: XOR<ResumeCreateWithoutApplicantInput, ResumeUncheckedCreateWithoutApplicantInput> | ResumeCreateWithoutApplicantInput[] | ResumeUncheckedCreateWithoutApplicantInput[]
+    connectOrCreate?: ResumeCreateOrConnectWithoutApplicantInput | ResumeCreateOrConnectWithoutApplicantInput[]
+    upsert?: ResumeUpsertWithWhereUniqueWithoutApplicantInput | ResumeUpsertWithWhereUniqueWithoutApplicantInput[]
+    createMany?: ResumeCreateManyApplicantInputEnvelope
+    set?: ResumeWhereUniqueInput | ResumeWhereUniqueInput[]
+    disconnect?: ResumeWhereUniqueInput | ResumeWhereUniqueInput[]
+    delete?: ResumeWhereUniqueInput | ResumeWhereUniqueInput[]
+    connect?: ResumeWhereUniqueInput | ResumeWhereUniqueInput[]
+    update?: ResumeUpdateWithWhereUniqueWithoutApplicantInput | ResumeUpdateWithWhereUniqueWithoutApplicantInput[]
+    updateMany?: ResumeUpdateManyWithWhereWithoutApplicantInput | ResumeUpdateManyWithWhereWithoutApplicantInput[]
+    deleteMany?: ResumeScalarWhereInput | ResumeScalarWhereInput[]
+  }
+
+  export type CoverLetterUpdateManyWithoutApplicantNestedInput = {
+    create?: XOR<CoverLetterCreateWithoutApplicantInput, CoverLetterUncheckedCreateWithoutApplicantInput> | CoverLetterCreateWithoutApplicantInput[] | CoverLetterUncheckedCreateWithoutApplicantInput[]
+    connectOrCreate?: CoverLetterCreateOrConnectWithoutApplicantInput | CoverLetterCreateOrConnectWithoutApplicantInput[]
+    upsert?: CoverLetterUpsertWithWhereUniqueWithoutApplicantInput | CoverLetterUpsertWithWhereUniqueWithoutApplicantInput[]
+    createMany?: CoverLetterCreateManyApplicantInputEnvelope
+    set?: CoverLetterWhereUniqueInput | CoverLetterWhereUniqueInput[]
+    disconnect?: CoverLetterWhereUniqueInput | CoverLetterWhereUniqueInput[]
+    delete?: CoverLetterWhereUniqueInput | CoverLetterWhereUniqueInput[]
+    connect?: CoverLetterWhereUniqueInput | CoverLetterWhereUniqueInput[]
+    update?: CoverLetterUpdateWithWhereUniqueWithoutApplicantInput | CoverLetterUpdateWithWhereUniqueWithoutApplicantInput[]
+    updateMany?: CoverLetterUpdateManyWithWhereWithoutApplicantInput | CoverLetterUpdateManyWithWhereWithoutApplicantInput[]
+    deleteMany?: CoverLetterScalarWhereInput | CoverLetterScalarWhereInput[]
+  }
+
   export type ApplicationUncheckedUpdateManyWithoutApplicantNestedInput = {
     create?: XOR<ApplicationCreateWithoutApplicantInput, ApplicationUncheckedCreateWithoutApplicantInput> | ApplicationCreateWithoutApplicantInput[] | ApplicationUncheckedCreateWithoutApplicantInput[]
     connectOrCreate?: ApplicationCreateOrConnectWithoutApplicantInput | ApplicationCreateOrConnectWithoutApplicantInput[]
@@ -9171,6 +11896,34 @@ export namespace Prisma {
     update?: SessionUpdateWithWhereUniqueWithoutUserInput | SessionUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: SessionUpdateManyWithWhereWithoutUserInput | SessionUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
+  }
+
+  export type ResumeUncheckedUpdateManyWithoutApplicantNestedInput = {
+    create?: XOR<ResumeCreateWithoutApplicantInput, ResumeUncheckedCreateWithoutApplicantInput> | ResumeCreateWithoutApplicantInput[] | ResumeUncheckedCreateWithoutApplicantInput[]
+    connectOrCreate?: ResumeCreateOrConnectWithoutApplicantInput | ResumeCreateOrConnectWithoutApplicantInput[]
+    upsert?: ResumeUpsertWithWhereUniqueWithoutApplicantInput | ResumeUpsertWithWhereUniqueWithoutApplicantInput[]
+    createMany?: ResumeCreateManyApplicantInputEnvelope
+    set?: ResumeWhereUniqueInput | ResumeWhereUniqueInput[]
+    disconnect?: ResumeWhereUniqueInput | ResumeWhereUniqueInput[]
+    delete?: ResumeWhereUniqueInput | ResumeWhereUniqueInput[]
+    connect?: ResumeWhereUniqueInput | ResumeWhereUniqueInput[]
+    update?: ResumeUpdateWithWhereUniqueWithoutApplicantInput | ResumeUpdateWithWhereUniqueWithoutApplicantInput[]
+    updateMany?: ResumeUpdateManyWithWhereWithoutApplicantInput | ResumeUpdateManyWithWhereWithoutApplicantInput[]
+    deleteMany?: ResumeScalarWhereInput | ResumeScalarWhereInput[]
+  }
+
+  export type CoverLetterUncheckedUpdateManyWithoutApplicantNestedInput = {
+    create?: XOR<CoverLetterCreateWithoutApplicantInput, CoverLetterUncheckedCreateWithoutApplicantInput> | CoverLetterCreateWithoutApplicantInput[] | CoverLetterUncheckedCreateWithoutApplicantInput[]
+    connectOrCreate?: CoverLetterCreateOrConnectWithoutApplicantInput | CoverLetterCreateOrConnectWithoutApplicantInput[]
+    upsert?: CoverLetterUpsertWithWhereUniqueWithoutApplicantInput | CoverLetterUpsertWithWhereUniqueWithoutApplicantInput[]
+    createMany?: CoverLetterCreateManyApplicantInputEnvelope
+    set?: CoverLetterWhereUniqueInput | CoverLetterWhereUniqueInput[]
+    disconnect?: CoverLetterWhereUniqueInput | CoverLetterWhereUniqueInput[]
+    delete?: CoverLetterWhereUniqueInput | CoverLetterWhereUniqueInput[]
+    connect?: CoverLetterWhereUniqueInput | CoverLetterWhereUniqueInput[]
+    update?: CoverLetterUpdateWithWhereUniqueWithoutApplicantInput | CoverLetterUpdateWithWhereUniqueWithoutApplicantInput[]
+    updateMany?: CoverLetterUpdateManyWithWhereWithoutApplicantInput | CoverLetterUpdateManyWithWhereWithoutApplicantInput[]
+    deleteMany?: CoverLetterScalarWhereInput | CoverLetterScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSessionsInput = {
@@ -9295,6 +12048,42 @@ export namespace Prisma {
     upsert?: JobUpsertWithoutApplicationsInput
     connect?: JobWhereUniqueInput
     update?: XOR<XOR<JobUpdateToOneWithWhereWithoutApplicationsInput, JobUpdateWithoutApplicationsInput>, JobUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type UserCreateNestedOneWithoutResumeInput = {
+    create?: XOR<UserCreateWithoutResumeInput, UserUncheckedCreateWithoutResumeInput>
+    connectOrCreate?: UserCreateOrConnectWithoutResumeInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type UserUpdateOneRequiredWithoutResumeNestedInput = {
+    create?: XOR<UserCreateWithoutResumeInput, UserUncheckedCreateWithoutResumeInput>
+    connectOrCreate?: UserCreateOrConnectWithoutResumeInput
+    upsert?: UserUpsertWithoutResumeInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutResumeInput, UserUpdateWithoutResumeInput>, UserUncheckedUpdateWithoutResumeInput>
+  }
+
+  export type UserCreateNestedOneWithoutCoverLetterInput = {
+    create?: XOR<UserCreateWithoutCoverLetterInput, UserUncheckedCreateWithoutCoverLetterInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCoverLetterInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutCoverLetterNestedInput = {
+    create?: XOR<UserCreateWithoutCoverLetterInput, UserUncheckedCreateWithoutCoverLetterInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCoverLetterInput
+    upsert?: UserUpsertWithoutCoverLetterInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCoverLetterInput, UserUpdateWithoutCoverLetterInput>, UserUncheckedUpdateWithoutCoverLetterInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -9478,6 +12267,33 @@ export namespace Prisma {
     _max?: NestedEnumApplicationStatusFilter<$PrismaModel>
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type ApplicationCreateWithoutApplicantInput = {
     id?: string
     createdAt?: Date | string
@@ -9616,6 +12432,62 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ResumeCreateWithoutApplicantInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    type: string
+    size: number
+  }
+
+  export type ResumeUncheckedCreateWithoutApplicantInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    type: string
+    size: number
+  }
+
+  export type ResumeCreateOrConnectWithoutApplicantInput = {
+    where: ResumeWhereUniqueInput
+    create: XOR<ResumeCreateWithoutApplicantInput, ResumeUncheckedCreateWithoutApplicantInput>
+  }
+
+  export type ResumeCreateManyApplicantInputEnvelope = {
+    data: ResumeCreateManyApplicantInput | ResumeCreateManyApplicantInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CoverLetterCreateWithoutApplicantInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    type: string
+    size: number
+  }
+
+  export type CoverLetterUncheckedCreateWithoutApplicantInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    type: string
+    size: number
+  }
+
+  export type CoverLetterCreateOrConnectWithoutApplicantInput = {
+    where: CoverLetterWhereUniqueInput
+    create: XOR<CoverLetterCreateWithoutApplicantInput, CoverLetterUncheckedCreateWithoutApplicantInput>
+  }
+
+  export type CoverLetterCreateManyApplicantInputEnvelope = {
+    data: CoverLetterCreateManyApplicantInput | CoverLetterCreateManyApplicantInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ApplicationUpsertWithWhereUniqueWithoutApplicantInput = {
     where: ApplicationWhereUniqueInput
     update: XOR<ApplicationUpdateWithoutApplicantInput, ApplicationUncheckedUpdateWithoutApplicantInput>
@@ -9744,6 +12616,64 @@ export namespace Prisma {
     userId?: StringFilter<"Session"> | string
   }
 
+  export type ResumeUpsertWithWhereUniqueWithoutApplicantInput = {
+    where: ResumeWhereUniqueInput
+    update: XOR<ResumeUpdateWithoutApplicantInput, ResumeUncheckedUpdateWithoutApplicantInput>
+    create: XOR<ResumeCreateWithoutApplicantInput, ResumeUncheckedCreateWithoutApplicantInput>
+  }
+
+  export type ResumeUpdateWithWhereUniqueWithoutApplicantInput = {
+    where: ResumeWhereUniqueInput
+    data: XOR<ResumeUpdateWithoutApplicantInput, ResumeUncheckedUpdateWithoutApplicantInput>
+  }
+
+  export type ResumeUpdateManyWithWhereWithoutApplicantInput = {
+    where: ResumeScalarWhereInput
+    data: XOR<ResumeUpdateManyMutationInput, ResumeUncheckedUpdateManyWithoutApplicantInput>
+  }
+
+  export type ResumeScalarWhereInput = {
+    AND?: ResumeScalarWhereInput | ResumeScalarWhereInput[]
+    OR?: ResumeScalarWhereInput[]
+    NOT?: ResumeScalarWhereInput | ResumeScalarWhereInput[]
+    id?: StringFilter<"Resume"> | string
+    createdAt?: DateTimeFilter<"Resume"> | Date | string
+    updatedAt?: DateTimeFilter<"Resume"> | Date | string
+    applicantId?: StringFilter<"Resume"> | string
+    name?: StringFilter<"Resume"> | string
+    type?: StringFilter<"Resume"> | string
+    size?: IntFilter<"Resume"> | number
+  }
+
+  export type CoverLetterUpsertWithWhereUniqueWithoutApplicantInput = {
+    where: CoverLetterWhereUniqueInput
+    update: XOR<CoverLetterUpdateWithoutApplicantInput, CoverLetterUncheckedUpdateWithoutApplicantInput>
+    create: XOR<CoverLetterCreateWithoutApplicantInput, CoverLetterUncheckedCreateWithoutApplicantInput>
+  }
+
+  export type CoverLetterUpdateWithWhereUniqueWithoutApplicantInput = {
+    where: CoverLetterWhereUniqueInput
+    data: XOR<CoverLetterUpdateWithoutApplicantInput, CoverLetterUncheckedUpdateWithoutApplicantInput>
+  }
+
+  export type CoverLetterUpdateManyWithWhereWithoutApplicantInput = {
+    where: CoverLetterScalarWhereInput
+    data: XOR<CoverLetterUpdateManyMutationInput, CoverLetterUncheckedUpdateManyWithoutApplicantInput>
+  }
+
+  export type CoverLetterScalarWhereInput = {
+    AND?: CoverLetterScalarWhereInput | CoverLetterScalarWhereInput[]
+    OR?: CoverLetterScalarWhereInput[]
+    NOT?: CoverLetterScalarWhereInput | CoverLetterScalarWhereInput[]
+    id?: StringFilter<"CoverLetter"> | string
+    createdAt?: DateTimeFilter<"CoverLetter"> | Date | string
+    updatedAt?: DateTimeFilter<"CoverLetter"> | Date | string
+    applicantId?: StringFilter<"CoverLetter"> | string
+    name?: StringFilter<"CoverLetter"> | string
+    type?: StringFilter<"CoverLetter"> | string
+    size?: IntFilter<"CoverLetter"> | number
+  }
+
   export type UserCreateWithoutSessionsInput = {
     id?: string
     name: string
@@ -9756,6 +12686,8 @@ export namespace Prisma {
     applications?: ApplicationCreateNestedManyWithoutApplicantInput
     jobs?: JobCreateNestedManyWithoutPosterInput
     accounts?: AccountCreateNestedManyWithoutUserInput
+    resume?: ResumeCreateNestedManyWithoutApplicantInput
+    coverLetter?: CoverLetterCreateNestedManyWithoutApplicantInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -9770,6 +12702,8 @@ export namespace Prisma {
     applications?: ApplicationUncheckedCreateNestedManyWithoutApplicantInput
     jobs?: JobUncheckedCreateNestedManyWithoutPosterInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    resume?: ResumeUncheckedCreateNestedManyWithoutApplicantInput
+    coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutApplicantInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -9800,6 +12734,8 @@ export namespace Prisma {
     applications?: ApplicationUpdateManyWithoutApplicantNestedInput
     jobs?: JobUpdateManyWithoutPosterNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    resume?: ResumeUpdateManyWithoutApplicantNestedInput
+    coverLetter?: CoverLetterUpdateManyWithoutApplicantNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -9814,6 +12750,8 @@ export namespace Prisma {
     applications?: ApplicationUncheckedUpdateManyWithoutApplicantNestedInput
     jobs?: JobUncheckedUpdateManyWithoutPosterNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    resume?: ResumeUncheckedUpdateManyWithoutApplicantNestedInput
+    coverLetter?: CoverLetterUncheckedUpdateManyWithoutApplicantNestedInput
   }
 
   export type UserCreateWithoutAccountsInput = {
@@ -9828,6 +12766,8 @@ export namespace Prisma {
     applications?: ApplicationCreateNestedManyWithoutApplicantInput
     jobs?: JobCreateNestedManyWithoutPosterInput
     sessions?: SessionCreateNestedManyWithoutUserInput
+    resume?: ResumeCreateNestedManyWithoutApplicantInput
+    coverLetter?: CoverLetterCreateNestedManyWithoutApplicantInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -9842,6 +12782,8 @@ export namespace Prisma {
     applications?: ApplicationUncheckedCreateNestedManyWithoutApplicantInput
     jobs?: JobUncheckedCreateNestedManyWithoutPosterInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    resume?: ResumeUncheckedCreateNestedManyWithoutApplicantInput
+    coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutApplicantInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -9872,6 +12814,8 @@ export namespace Prisma {
     applications?: ApplicationUpdateManyWithoutApplicantNestedInput
     jobs?: JobUpdateManyWithoutPosterNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    resume?: ResumeUpdateManyWithoutApplicantNestedInput
+    coverLetter?: CoverLetterUpdateManyWithoutApplicantNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -9886,6 +12830,8 @@ export namespace Prisma {
     applications?: ApplicationUncheckedUpdateManyWithoutApplicantNestedInput
     jobs?: JobUncheckedUpdateManyWithoutPosterNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    resume?: ResumeUncheckedUpdateManyWithoutApplicantNestedInput
+    coverLetter?: CoverLetterUncheckedUpdateManyWithoutApplicantNestedInput
   }
 
   export type ApplicationCreateWithoutJobInput = {
@@ -9930,6 +12876,8 @@ export namespace Prisma {
     applications?: ApplicationCreateNestedManyWithoutApplicantInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
+    resume?: ResumeCreateNestedManyWithoutApplicantInput
+    coverLetter?: CoverLetterCreateNestedManyWithoutApplicantInput
   }
 
   export type UserUncheckedCreateWithoutJobsInput = {
@@ -9944,6 +12892,8 @@ export namespace Prisma {
     applications?: ApplicationUncheckedCreateNestedManyWithoutApplicantInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    resume?: ResumeUncheckedCreateNestedManyWithoutApplicantInput
+    coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutApplicantInput
   }
 
   export type UserCreateOrConnectWithoutJobsInput = {
@@ -9990,6 +12940,8 @@ export namespace Prisma {
     applications?: ApplicationUpdateManyWithoutApplicantNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    resume?: ResumeUpdateManyWithoutApplicantNestedInput
+    coverLetter?: CoverLetterUpdateManyWithoutApplicantNestedInput
   }
 
   export type UserUncheckedUpdateWithoutJobsInput = {
@@ -10004,6 +12956,8 @@ export namespace Prisma {
     applications?: ApplicationUncheckedUpdateManyWithoutApplicantNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    resume?: ResumeUncheckedUpdateManyWithoutApplicantNestedInput
+    coverLetter?: CoverLetterUncheckedUpdateManyWithoutApplicantNestedInput
   }
 
   export type UserCreateWithoutApplicationsInput = {
@@ -10018,6 +12972,8 @@ export namespace Prisma {
     jobs?: JobCreateNestedManyWithoutPosterInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
+    resume?: ResumeCreateNestedManyWithoutApplicantInput
+    coverLetter?: CoverLetterCreateNestedManyWithoutApplicantInput
   }
 
   export type UserUncheckedCreateWithoutApplicationsInput = {
@@ -10032,6 +12988,8 @@ export namespace Prisma {
     jobs?: JobUncheckedCreateNestedManyWithoutPosterInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    resume?: ResumeUncheckedCreateNestedManyWithoutApplicantInput
+    coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutApplicantInput
   }
 
   export type UserCreateOrConnectWithoutApplicationsInput = {
@@ -10095,6 +13053,8 @@ export namespace Prisma {
     jobs?: JobUpdateManyWithoutPosterNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    resume?: ResumeUpdateManyWithoutApplicantNestedInput
+    coverLetter?: CoverLetterUpdateManyWithoutApplicantNestedInput
   }
 
   export type UserUncheckedUpdateWithoutApplicationsInput = {
@@ -10109,6 +13069,8 @@ export namespace Prisma {
     jobs?: JobUncheckedUpdateManyWithoutPosterNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    resume?: ResumeUncheckedUpdateManyWithoutApplicantNestedInput
+    coverLetter?: CoverLetterUncheckedUpdateManyWithoutApplicantNestedInput
   }
 
   export type JobUpsertWithoutApplicationsInput = {
@@ -10148,6 +13110,166 @@ export namespace Prisma {
     hospital?: StringFieldUpdateOperationsInput | string
     salary?: NullableStringFieldUpdateOperationsInput | string | null
     jobType?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserCreateWithoutResumeInput = {
+    id?: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    headline?: string | null
+    applications?: ApplicationCreateNestedManyWithoutApplicantInput
+    jobs?: JobCreateNestedManyWithoutPosterInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    coverLetter?: CoverLetterCreateNestedManyWithoutApplicantInput
+  }
+
+  export type UserUncheckedCreateWithoutResumeInput = {
+    id?: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    headline?: string | null
+    applications?: ApplicationUncheckedCreateNestedManyWithoutApplicantInput
+    jobs?: JobUncheckedCreateNestedManyWithoutPosterInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    coverLetter?: CoverLetterUncheckedCreateNestedManyWithoutApplicantInput
+  }
+
+  export type UserCreateOrConnectWithoutResumeInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutResumeInput, UserUncheckedCreateWithoutResumeInput>
+  }
+
+  export type UserUpsertWithoutResumeInput = {
+    update: XOR<UserUpdateWithoutResumeInput, UserUncheckedUpdateWithoutResumeInput>
+    create: XOR<UserCreateWithoutResumeInput, UserUncheckedCreateWithoutResumeInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutResumeInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutResumeInput, UserUncheckedUpdateWithoutResumeInput>
+  }
+
+  export type UserUpdateWithoutResumeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUpdateManyWithoutApplicantNestedInput
+    jobs?: JobUpdateManyWithoutPosterNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    coverLetter?: CoverLetterUpdateManyWithoutApplicantNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutResumeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUncheckedUpdateManyWithoutApplicantNestedInput
+    jobs?: JobUncheckedUpdateManyWithoutPosterNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    coverLetter?: CoverLetterUncheckedUpdateManyWithoutApplicantNestedInput
+  }
+
+  export type UserCreateWithoutCoverLetterInput = {
+    id?: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    headline?: string | null
+    applications?: ApplicationCreateNestedManyWithoutApplicantInput
+    jobs?: JobCreateNestedManyWithoutPosterInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    resume?: ResumeCreateNestedManyWithoutApplicantInput
+  }
+
+  export type UserUncheckedCreateWithoutCoverLetterInput = {
+    id?: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    headline?: string | null
+    applications?: ApplicationUncheckedCreateNestedManyWithoutApplicantInput
+    jobs?: JobUncheckedCreateNestedManyWithoutPosterInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    resume?: ResumeUncheckedCreateNestedManyWithoutApplicantInput
+  }
+
+  export type UserCreateOrConnectWithoutCoverLetterInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCoverLetterInput, UserUncheckedCreateWithoutCoverLetterInput>
+  }
+
+  export type UserUpsertWithoutCoverLetterInput = {
+    update: XOR<UserUpdateWithoutCoverLetterInput, UserUncheckedUpdateWithoutCoverLetterInput>
+    create: XOR<UserCreateWithoutCoverLetterInput, UserUncheckedCreateWithoutCoverLetterInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCoverLetterInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCoverLetterInput, UserUncheckedUpdateWithoutCoverLetterInput>
+  }
+
+  export type UserUpdateWithoutCoverLetterInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUpdateManyWithoutApplicantNestedInput
+    jobs?: JobUpdateManyWithoutPosterNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    resume?: ResumeUpdateManyWithoutApplicantNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCoverLetterInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    headline?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUncheckedUpdateManyWithoutApplicantNestedInput
+    jobs?: JobUncheckedUpdateManyWithoutPosterNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    resume?: ResumeUncheckedUpdateManyWithoutApplicantNestedInput
   }
 
   export type ApplicationCreateManyApplicantInput = {
@@ -10196,6 +13318,24 @@ export namespace Prisma {
     updatedAt?: Date | string
     ipAddress?: string | null
     userAgent?: string | null
+  }
+
+  export type ResumeCreateManyApplicantInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    type: string
+    size: number
+  }
+
+  export type CoverLetterCreateManyApplicantInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    type: string
+    size: number
   }
 
   export type ApplicationUpdateWithoutApplicantInput = {
@@ -10344,6 +13484,60 @@ export namespace Prisma {
     userAgent?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type ResumeUpdateWithoutApplicantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ResumeUncheckedUpdateWithoutApplicantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ResumeUncheckedUpdateManyWithoutApplicantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CoverLetterUpdateWithoutApplicantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CoverLetterUncheckedUpdateWithoutApplicantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CoverLetterUncheckedUpdateManyWithoutApplicantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+  }
+
   export type ApplicationCreateManyJobInput = {
     id?: string
     createdAt?: Date | string
@@ -10421,6 +13615,14 @@ export namespace Prisma {
      * @deprecated Use ApplicationDefaultArgs instead
      */
     export type ApplicationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ApplicationDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ResumeDefaultArgs instead
+     */
+    export type ResumeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ResumeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CoverLetterDefaultArgs instead
+     */
+    export type CoverLetterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CoverLetterDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

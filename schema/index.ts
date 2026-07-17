@@ -22,15 +22,14 @@ export const signUpSchema = z.object({
   password: z.string().min(8, "Password must be at least 8 characters"),
 });
 
-export const fileUploadSchema = z.object({
-  resume: z
-    .file()
+export const resumeUploadSchema = z.object({
+  type: z
+    .string()
     .min(1)
-    .max(5 * 1024 * 1024, "File exceeds 5MB limit")
-    .mime("application/pdf"),
-  coverLetter: z
-    .file()
-    .min(1)
-    .max(5 * 1024 * 1024, "File exceeds 5MB limit")
-    .mime("application/msword"),
+    .max(5 * 1024 * 1024, "File exceeds 5MB limit"),
+    // .mime("application/pdf"),
+  filename: z.string().min(3, "File name must be at least 3 characters long"),
+  size: z.number().max(5 * 1024 * 1024, "File exceeds 5MB limit")
 });
+
+export const coverLetterUploadSchema = z.object({})

@@ -23,6 +23,8 @@ model User {
   jobs          Job[]         @relation("PostedJobs")
   accounts      Account[]
   sessions      Session[]
+  resume        Resume[]      @relation("ApplicantResume")
+  coverLetter   CoverLetter[] @relation("ApplicantCoverLetter")
 
   @@map("user")
 }
@@ -95,19 +97,41 @@ model Job {
 }
 
 model Application {
-  id              String    @id @default(cuid())
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-  jobId           String
-  applicantId     String
-  coverLetterUrl  String?
-  resumeUrl       String?
-  status          ApplicationStatus @default(PENDING)
-  applicant       User      @relation(fields: [applicantId], references: [id], onDelete: Cascade)
-  job             Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  id             String            @id @default(cuid())
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  jobId          String
+  applicantId    String
+  coverLetterUrl String?
+  resumeUrl      String?
+  status         ApplicationStatus @default(PENDING)
+  applicant      User              @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  job            Job               @relation(fields: [jobId], references: [id], onDelete: Cascade)
 
   @@unique([jobId, applicantId])
   @@index([status])
+}
+
+model Resume {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+  applicantId String
+  name        String
+  type        String
+  size        Int
+  applicant   User     @relation("ApplicantResume", fields: [applicantId], references: [id], onDelete: Cascade)
+}
+
+model CoverLetter {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+  applicantId String
+  name        String
+  type        String
+  size        Int
+  applicant   User     @relation("ApplicantCoverLetter", fields: [applicantId], references: [id], onDelete: Cascade)
 }
 
 enum JobStatus {

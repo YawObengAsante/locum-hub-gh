@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { serverAuthUser } from "@/lib/server-helpers";
 // import { formatZodValidationErrors } from "@/lib/utils";
 import { fileUploadSchema } from "@/schema";
-import { handleFileStorageUpload } from "@/services/s3";
+import { handleFileStorageUpload } from "@/services/s3/s3";
 import { ActionReturnType, JobApplicationType } from "@/types";
 
 export async function applyToJobAction(

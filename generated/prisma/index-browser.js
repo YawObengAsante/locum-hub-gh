@@ -194,6 +194,26 @@ exports.Prisma.ApplicationScalarFieldEnum = {
   status: 'status'
 };
 
+exports.Prisma.ResumeScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  applicantId: 'applicantId',
+  name: 'name',
+  type: 'type',
+  size: 'size'
+};
+
+exports.Prisma.CoverLetterScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  applicantId: 'applicantId',
+  name: 'name',
+  type: 'type',
+  size: 'size'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -227,7 +247,9 @@ exports.Prisma.ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   Job: 'Job',
-  Application: 'Application'
+  Application: 'Application',
+  Resume: 'Resume',
+  CoverLetter: 'CoverLetter'
 };
 
 /**

@@ -1,5 +1,4 @@
 import {
-  fileUploadSchema,
   jobSchema,
   signInSchema,
   signUpSchema,
@@ -93,8 +92,6 @@ type SearchParamsType = {
 
 type SessionType = typeof auth.$Infer.Session;
 
-type FileUploadType = z.infer<typeof fileUploadSchema>;
-
 type FileUploadReturnType = {
   resumeUrl: string;
   coverLetterUrl: string;
@@ -131,7 +128,6 @@ export type {
   JobWithApplicationsType,
   JobWithPosterType,
   SessionType,
-  FileUploadType,
   FileUploadReturnType,
   ActionReturnType,
   JobApplicationType,

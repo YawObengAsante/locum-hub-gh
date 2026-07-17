@@ -1,9 +1,6 @@
 "use server"
 import { prisma } from "@/lib/prisma";
 import { serverAuthUser } from "@/lib/server-helpers";
-// import { formatZodValidationErrors } from "@/lib/utils";
-import { fileUploadSchema } from "@/schema";
-import { handleFileStorageUpload } from "@/services/s3/s3";
 import { ActionReturnType, JobApplicationType } from "@/types";
 
 export async function applyToJobAction(
@@ -11,9 +8,7 @@ export async function applyToJobAction(
   formData: FormData,
 ): Promise<ActionReturnType<JobApplicationType>> {
   const { userId } = await serverAuthUser();
-  const {resume, coverLetter, jobId} = {
-    resume: formData.get("resume") as File,
-    coverLetter: formData.get("cover-letter") as File,
+  const {jobId} = {
     jobId: formData.get("job-id") as string
   };
 
@@ -31,28 +26,12 @@ export async function applyToJobAction(
     return { success: false, error: "You have already applied to this job" };
   }
 
-
-  const validatedData = fileUploadSchema.safeParse({resume, coverLetter});
-
-  if (!validatedData.success)
-    return {
-      success: false,
-      // error: formatZodValidationErrors(validatedData.error),
-      error: "Validation error occured"
-    };
-
     try {
-      
-      const { resumeUrl, coverLetterUrl } = await handleFileStorageUpload(
-        validatedData.data,
-      );
     
       const application = await prisma.application.create({
         data: {
           jobId,
           applicantId: userId,
-          resumeUrl,
-          coverLetterUrl,
         },
         include: { job: true, applicant: true },
       });

@@ -120,6 +120,7 @@ model Resume {
   name        String
   type        String
   size        Int
+  key         String
   applicant   User     @relation("ApplicantResume", fields: [applicantId], references: [id], onDelete: Cascade)
 }
 
@@ -131,6 +132,7 @@ model CoverLetter {
   name        String
   type        String
   size        Int
+  key         String
   applicant   User     @relation("ApplicantCoverLetter", fields: [applicantId], references: [id], onDelete: Cascade)
 }
 

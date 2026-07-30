@@ -201,7 +201,8 @@ exports.Prisma.ResumeScalarFieldEnum = {
   applicantId: 'applicantId',
   name: 'name',
   type: 'type',
-  size: 'size'
+  size: 'size',
+  key: 'key'
 };
 
 exports.Prisma.CoverLetterScalarFieldEnum = {
@@ -211,7 +212,8 @@ exports.Prisma.CoverLetterScalarFieldEnum = {
   applicantId: 'applicantId',
   name: 'name',
   type: 'type',
-  size: 'size'
+  size: 'size',
+  key: 'key'
 };
 
 exports.Prisma.SortOrder = {

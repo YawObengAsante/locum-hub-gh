@@ -18,7 +18,7 @@ export function createS3Client() {
   });
 }
 
-export function generateKey(filename: string, userId: string) {
+export function generateKey(folder:string, filename: string, userId: string) {
  const uuid = crypto.randomUUID()
- return `users/${userId}/${uuid}-${filename}.pdf`
+ return `${folder}/${userId}/${uuid}-${filename}.pdf`
 }

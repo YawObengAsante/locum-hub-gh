@@ -7609,6 +7609,7 @@ export namespace Prisma {
     name: string | null
     type: string | null
     size: number | null
+    key: string | null
   }
 
   export type ResumeMaxAggregateOutputType = {
@@ -7619,6 +7620,7 @@ export namespace Prisma {
     name: string | null
     type: string | null
     size: number | null
+    key: string | null
   }
 
   export type ResumeCountAggregateOutputType = {
@@ -7629,6 +7631,7 @@ export namespace Prisma {
     name: number
     type: number
     size: number
+    key: number
     _all: number
   }
 
@@ -7649,6 +7652,7 @@ export namespace Prisma {
     name?: true
     type?: true
     size?: true
+    key?: true
   }
 
   export type ResumeMaxAggregateInputType = {
@@ -7659,6 +7663,7 @@ export namespace Prisma {
     name?: true
     type?: true
     size?: true
+    key?: true
   }
 
   export type ResumeCountAggregateInputType = {
@@ -7669,6 +7674,7 @@ export namespace Prisma {
     name?: true
     type?: true
     size?: true
+    key?: true
     _all?: true
   }
 
@@ -7766,6 +7772,7 @@ export namespace Prisma {
     name: string
     type: string
     size: number
+    key: string
     _count: ResumeCountAggregateOutputType | null
     _avg: ResumeAvgAggregateOutputType | null
     _sum: ResumeSumAggregateOutputType | null
@@ -7795,6 +7802,7 @@ export namespace Prisma {
     name?: boolean
     type?: boolean
     size?: boolean
+    key?: boolean
     applicant?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["resume"]>
 
@@ -7806,6 +7814,7 @@ export namespace Prisma {
     name?: boolean
     type?: boolean
     size?: boolean
+    key?: boolean
     applicant?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["resume"]>
 
@@ -7817,6 +7826,7 @@ export namespace Prisma {
     name?: boolean
     type?: boolean
     size?: boolean
+    key?: boolean
   }
 
   export type ResumeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7839,6 +7849,7 @@ export namespace Prisma {
       name: string
       type: string
       size: number
+      key: string
     }, ExtArgs["result"]["resume"]>
     composites: {}
   }
@@ -8240,6 +8251,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Resume", 'String'>
     readonly type: FieldRef<"Resume", 'String'>
     readonly size: FieldRef<"Resume", 'Int'>
+    readonly key: FieldRef<"Resume", 'String'>
   }
     
 
@@ -8600,6 +8612,7 @@ export namespace Prisma {
     name: string | null
     type: string | null
     size: number | null
+    key: string | null
   }
 
   export type CoverLetterMaxAggregateOutputType = {
@@ -8610,6 +8623,7 @@ export namespace Prisma {
     name: string | null
     type: string | null
     size: number | null
+    key: string | null
   }
 
   export type CoverLetterCountAggregateOutputType = {
@@ -8620,6 +8634,7 @@ export namespace Prisma {
     name: number
     type: number
     size: number
+    key: number
     _all: number
   }
 
@@ -8640,6 +8655,7 @@ export namespace Prisma {
     name?: true
     type?: true
     size?: true
+    key?: true
   }
 
   export type CoverLetterMaxAggregateInputType = {
@@ -8650,6 +8666,7 @@ export namespace Prisma {
     name?: true
     type?: true
     size?: true
+    key?: true
   }
 
   export type CoverLetterCountAggregateInputType = {
@@ -8660,6 +8677,7 @@ export namespace Prisma {
     name?: true
     type?: true
     size?: true
+    key?: true
     _all?: true
   }
 
@@ -8757,6 +8775,7 @@ export namespace Prisma {
     name: string
     type: string
     size: number
+    key: string
     _count: CoverLetterCountAggregateOutputType | null
     _avg: CoverLetterAvgAggregateOutputType | null
     _sum: CoverLetterSumAggregateOutputType | null
@@ -8786,6 +8805,7 @@ export namespace Prisma {
     name?: boolean
     type?: boolean
     size?: boolean
+    key?: boolean
     applicant?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["coverLetter"]>
 
@@ -8797,6 +8817,7 @@ export namespace Prisma {
     name?: boolean
     type?: boolean
     size?: boolean
+    key?: boolean
     applicant?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["coverLetter"]>
 
@@ -8808,6 +8829,7 @@ export namespace Prisma {
     name?: boolean
     type?: boolean
     size?: boolean
+    key?: boolean
   }
 
   export type CoverLetterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8830,6 +8852,7 @@ export namespace Prisma {
       name: string
       type: string
       size: number
+      key: string
     }, ExtArgs["result"]["coverLetter"]>
     composites: {}
   }
@@ -9231,6 +9254,7 @@ export namespace Prisma {
     readonly name: FieldRef<"CoverLetter", 'String'>
     readonly type: FieldRef<"CoverLetter", 'String'>
     readonly size: FieldRef<"CoverLetter", 'Int'>
+    readonly key: FieldRef<"CoverLetter", 'String'>
   }
     
 
@@ -9674,7 +9698,8 @@ export namespace Prisma {
     applicantId: 'applicantId',
     name: 'name',
     type: 'type',
-    size: 'size'
+    size: 'size',
+    key: 'key'
   };
 
   export type ResumeScalarFieldEnum = (typeof ResumeScalarFieldEnum)[keyof typeof ResumeScalarFieldEnum]
@@ -9687,7 +9712,8 @@ export namespace Prisma {
     applicantId: 'applicantId',
     name: 'name',
     type: 'type',
-    size: 'size'
+    size: 'size',
+    key: 'key'
   };
 
   export type CoverLetterScalarFieldEnum = (typeof CoverLetterScalarFieldEnum)[keyof typeof CoverLetterScalarFieldEnum]
@@ -10298,6 +10324,7 @@ export namespace Prisma {
     name?: StringFilter<"Resume"> | string
     type?: StringFilter<"Resume"> | string
     size?: IntFilter<"Resume"> | number
+    key?: StringFilter<"Resume"> | string
     applicant?: XOR<UserRelationFilter, UserWhereInput>
   }
 
@@ -10309,6 +10336,7 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     size?: SortOrder
+    key?: SortOrder
     applicant?: UserOrderByWithRelationInput
   }
 
@@ -10323,6 +10351,7 @@ export namespace Prisma {
     name?: StringFilter<"Resume"> | string
     type?: StringFilter<"Resume"> | string
     size?: IntFilter<"Resume"> | number
+    key?: StringFilter<"Resume"> | string
     applicant?: XOR<UserRelationFilter, UserWhereInput>
   }, "id">
 
@@ -10334,6 +10363,7 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     size?: SortOrder
+    key?: SortOrder
     _count?: ResumeCountOrderByAggregateInput
     _avg?: ResumeAvgOrderByAggregateInput
     _max?: ResumeMaxOrderByAggregateInput
@@ -10352,6 +10382,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Resume"> | string
     type?: StringWithAggregatesFilter<"Resume"> | string
     size?: IntWithAggregatesFilter<"Resume"> | number
+    key?: StringWithAggregatesFilter<"Resume"> | string
   }
 
   export type CoverLetterWhereInput = {
@@ -10365,6 +10396,7 @@ export namespace Prisma {
     name?: StringFilter<"CoverLetter"> | string
     type?: StringFilter<"CoverLetter"> | string
     size?: IntFilter<"CoverLetter"> | number
+    key?: StringFilter<"CoverLetter"> | string
     applicant?: XOR<UserRelationFilter, UserWhereInput>
   }
 
@@ -10376,6 +10408,7 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     size?: SortOrder
+    key?: SortOrder
     applicant?: UserOrderByWithRelationInput
   }
 
@@ -10390,6 +10423,7 @@ export namespace Prisma {
     name?: StringFilter<"CoverLetter"> | string
     type?: StringFilter<"CoverLetter"> | string
     size?: IntFilter<"CoverLetter"> | number
+    key?: StringFilter<"CoverLetter"> | string
     applicant?: XOR<UserRelationFilter, UserWhereInput>
   }, "id">
 
@@ -10401,6 +10435,7 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     size?: SortOrder
+    key?: SortOrder
     _count?: CoverLetterCountOrderByAggregateInput
     _avg?: CoverLetterAvgOrderByAggregateInput
     _max?: CoverLetterMaxOrderByAggregateInput
@@ -10419,6 +10454,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"CoverLetter"> | string
     type?: StringWithAggregatesFilter<"CoverLetter"> | string
     size?: IntWithAggregatesFilter<"CoverLetter"> | number
+    key?: StringWithAggregatesFilter<"CoverLetter"> | string
   }
 
   export type UserCreateInput = {
@@ -10955,6 +10991,7 @@ export namespace Prisma {
     name: string
     type: string
     size: number
+    key: string
     applicant: UserCreateNestedOneWithoutResumeInput
   }
 
@@ -10966,6 +11003,7 @@ export namespace Prisma {
     name: string
     type: string
     size: number
+    key: string
   }
 
   export type ResumeUpdateInput = {
@@ -10975,6 +11013,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
+    key?: StringFieldUpdateOperationsInput | string
     applicant?: UserUpdateOneRequiredWithoutResumeNestedInput
   }
 
@@ -10986,6 +11025,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
+    key?: StringFieldUpdateOperationsInput | string
   }
 
   export type ResumeCreateManyInput = {
@@ -10996,6 +11036,7 @@ export namespace Prisma {
     name: string
     type: string
     size: number
+    key: string
   }
 
   export type ResumeUpdateManyMutationInput = {
@@ -11005,6 +11046,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
+    key?: StringFieldUpdateOperationsInput | string
   }
 
   export type ResumeUncheckedUpdateManyInput = {
@@ -11015,6 +11057,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
+    key?: StringFieldUpdateOperationsInput | string
   }
 
   export type CoverLetterCreateInput = {
@@ -11024,6 +11067,7 @@ export namespace Prisma {
     name: string
     type: string
     size: number
+    key: string
     applicant: UserCreateNestedOneWithoutCoverLetterInput
   }
 
@@ -11035,6 +11079,7 @@ export namespace Prisma {
     name: string
     type: string
     size: number
+    key: string
   }
 
   export type CoverLetterUpdateInput = {
@@ -11044,6 +11089,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
+    key?: StringFieldUpdateOperationsInput | string
     applicant?: UserUpdateOneRequiredWithoutCoverLetterNestedInput
   }
 
@@ -11055,6 +11101,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
+    key?: StringFieldUpdateOperationsInput | string
   }
 
   export type CoverLetterCreateManyInput = {
@@ -11065,6 +11112,7 @@ export namespace Prisma {
     name: string
     type: string
     size: number
+    key: string
   }
 
   export type CoverLetterUpdateManyMutationInput = {
@@ -11074,6 +11122,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
+    key?: StringFieldUpdateOperationsInput | string
   }
 
   export type CoverLetterUncheckedUpdateManyInput = {
@@ -11084,6 +11133,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
+    key?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -11574,6 +11624,7 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     size?: SortOrder
+    key?: SortOrder
   }
 
   export type ResumeAvgOrderByAggregateInput = {
@@ -11588,6 +11639,7 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     size?: SortOrder
+    key?: SortOrder
   }
 
   export type ResumeMinOrderByAggregateInput = {
@@ -11598,6 +11650,7 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     size?: SortOrder
+    key?: SortOrder
   }
 
   export type ResumeSumOrderByAggregateInput = {
@@ -11628,6 +11681,7 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     size?: SortOrder
+    key?: SortOrder
   }
 
   export type CoverLetterAvgOrderByAggregateInput = {
@@ -11642,6 +11696,7 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     size?: SortOrder
+    key?: SortOrder
   }
 
   export type CoverLetterMinOrderByAggregateInput = {
@@ -11652,6 +11707,7 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     size?: SortOrder
+    key?: SortOrder
   }
 
   export type CoverLetterSumOrderByAggregateInput = {
@@ -12439,6 +12495,7 @@ export namespace Prisma {
     name: string
     type: string
     size: number
+    key: string
   }
 
   export type ResumeUncheckedCreateWithoutApplicantInput = {
@@ -12448,6 +12505,7 @@ export namespace Prisma {
     name: string
     type: string
     size: number
+    key: string
   }
 
   export type ResumeCreateOrConnectWithoutApplicantInput = {
@@ -12467,6 +12525,7 @@ export namespace Prisma {
     name: string
     type: string
     size: number
+    key: string
   }
 
   export type CoverLetterUncheckedCreateWithoutApplicantInput = {
@@ -12476,6 +12535,7 @@ export namespace Prisma {
     name: string
     type: string
     size: number
+    key: string
   }
 
   export type CoverLetterCreateOrConnectWithoutApplicantInput = {
@@ -12643,6 +12703,7 @@ export namespace Prisma {
     name?: StringFilter<"Resume"> | string
     type?: StringFilter<"Resume"> | string
     size?: IntFilter<"Resume"> | number
+    key?: StringFilter<"Resume"> | string
   }
 
   export type CoverLetterUpsertWithWhereUniqueWithoutApplicantInput = {
@@ -12672,6 +12733,7 @@ export namespace Prisma {
     name?: StringFilter<"CoverLetter"> | string
     type?: StringFilter<"CoverLetter"> | string
     size?: IntFilter<"CoverLetter"> | number
+    key?: StringFilter<"CoverLetter"> | string
   }
 
   export type UserCreateWithoutSessionsInput = {
@@ -13327,6 +13389,7 @@ export namespace Prisma {
     name: string
     type: string
     size: number
+    key: string
   }
 
   export type CoverLetterCreateManyApplicantInput = {
@@ -13336,6 +13399,7 @@ export namespace Prisma {
     name: string
     type: string
     size: number
+    key: string
   }
 
   export type ApplicationUpdateWithoutApplicantInput = {
@@ -13491,6 +13555,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
+    key?: StringFieldUpdateOperationsInput | string
   }
 
   export type ResumeUncheckedUpdateWithoutApplicantInput = {
@@ -13500,6 +13565,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
+    key?: StringFieldUpdateOperationsInput | string
   }
 
   export type ResumeUncheckedUpdateManyWithoutApplicantInput = {
@@ -13509,6 +13575,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
+    key?: StringFieldUpdateOperationsInput | string
   }
 
   export type CoverLetterUpdateWithoutApplicantInput = {
@@ -13518,6 +13585,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
+    key?: StringFieldUpdateOperationsInput | string
   }
 
   export type CoverLetterUncheckedUpdateWithoutApplicantInput = {
@@ -13527,6 +13595,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
+    key?: StringFieldUpdateOperationsInput | string
   }
 
   export type CoverLetterUncheckedUpdateManyWithoutApplicantInput = {
@@ -13536,6 +13605,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     size?: IntFieldUpdateOperationsInput | number
+    key?: StringFieldUpdateOperationsInput | string
   }
 
   export type ApplicationCreateManyJobInput = {

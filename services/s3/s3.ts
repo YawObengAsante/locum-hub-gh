@@ -17,8 +17,8 @@ export class S3Factory {
     private s3Client: S3Client = createS3Client(),
   ) {}
 
-  async generatePresignedUploadUrl(file: File) {
-    const key = generateKey(file.filename, this.userId);
+  async generatePresignedUploadUrl(folder: string, file: File) {
+    const key = generateKey(folder, file.filename, this.userId);
     const command = new PutObjectCommand({
       Bucket: BUCKET_NAME,
       Key: key,
@@ -27,6 +27,6 @@ export class S3Factory {
 
     const url = await getSignedUrl(this.s3Client, command, { expiresIn: 300 });
 
-    return url;
+    return {url, key};
   }
 }

@@ -8,11 +8,14 @@ export async function applyToJobAction(
   formData: FormData,
 ): Promise<ActionReturnType<JobApplicationType>> {
   const { userId } = await serverAuthUser();
-  const {jobId} = {
-    jobId: formData.get("job-id") as string
+  const {jobId, resume, coverLetter} = {
+    jobId: formData.get("job-id") as string,
+    resume: formData.get("resume") as File,
+    coverLetter: formData.get("cover-letter") as File
   };
 
-  if (!userId) return { success: false, error: "Unauthorized" };
+
+  // if (!userId) return { success: false, error: "Unauthorized" };
 
   const job = await prisma.job.findUnique({ where: { id: jobId } });
 

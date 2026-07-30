@@ -12,6 +12,16 @@ export async function serverAuthUser() {
   return { userId: session.user.id };
 }
 
+export async function apiAuthUser() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session || !session.user) return null;
+
+  return { userId: session.user.id };
+}
+
 export async function isAuthorizedUser() {
   const session = await auth.api.getSession({
     headers: await headers(),

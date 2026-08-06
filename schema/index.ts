@@ -22,7 +22,7 @@ export const signUpSchema = z.object({
   password: z.string().min(8, "Password must be at least 8 characters"),
 });
 
-export const resumeUploadSchema = z.object({
+ const resumeUploadSchema = z.object({
   type: z.literal("application/pdf"),
   filename: z
     .string()
@@ -34,8 +34,13 @@ export const resumeUploadSchema = z.object({
     .max(5 * 1024 * 1024, "File exceeds 5MB limit"),
 });
 
-export const coverLetterUploadSchema = z.object({
+ const coverLetterUploadSchema = z.object({
   type: z.literal("application/pdf", "application/msword"),
   filename: z.string().min(3, "File name must be at least 3 characters long"),
   size: z.number().max(5 * 1024 * 1024, "File exceeds 5MB limit"),
 });
+
+export const fileUploadSchema = z.discriminatedUnion("type", [
+  resumeUploadSchema,
+  coverLetterUploadSchema,
+]);

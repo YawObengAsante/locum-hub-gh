@@ -14,7 +14,6 @@ export async function applyToJobAction(
     coverLetter: formData.get("cover-letter") as File
   };
 
-
   // if (!userId) return { success: false, error: "Unauthorized" };
 
   const job = await prisma.job.findUnique({ where: { id: jobId } });

@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { apiAuthUser } from "@/lib/server-helpers";
 import { formatZodValidationErrors } from "@/lib/utils";
-import { resumeUploadSchema } from "@/schema";
+import { fileUploadSchema } from "@/schema";
 import { S3Factory } from "@/services/s3/s3";
 import { NextResponse } from "next/server";
 
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
 
     const s3 = new S3Factory(user.userId);
 
-    const validatedData = resumeUploadSchema.safeParse(file);
+    const validatedData = fileUploadSchema.safeParse(file);
 
     if (!validatedData.success) {
       return NextResponse.json(
